@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Cairo', sans-serif !important;
+}
+.n-main{
+    background-color: #e4efe7;
+}
+.n-main .navbar-brand img{
+    width: 50px;
+}
+.navbar-light .navbar-nav .nav-link{
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+}
+.navbar-light .navbar-nav .nav-link:hover{
+    background-color: #f4a9a8;
+    color: #e4efe7 !important;
+}
