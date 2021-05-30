@@ -60,15 +60,14 @@
         </nav>
       </div>
     </div>
-    <div></div>
 
     <!--Main Screen  section -->
-    <div class="container">
-      <div class="main-screen">
-        <div class="row">
-          <div class="col-12 col-lg-8 main-content">
+    <div class="container main-screen">
+      <div class="row">
+        <div class="col-12 col-lg-8">
+          <div class="right-side">
             <!-- profile section -->
-            <div class="card col profile">
+            <div class="card col-12 profile">
               <div class="card-body row">
                 <div class="col-md-4">
                   <img src="./images/logo.jpg" alt="" class="profile-img" />
@@ -80,7 +79,8 @@
                     <span>Rate:</span>
                     <span>
                       <i class="fas fa-star"></i><i class="fas fa-star"></i
-                      ><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
                     </span>
                     <span> total review is 200 user </span>
                   </div>
@@ -89,23 +89,24 @@
             </div>
             <!--  -->
             <!-- about section -->
-            <div class="card col">
+            <div class="card col-12">
               <div class="card-body">
-                <h5 class="card-title">About Me</h5>
-                <p class="card-text">
+                <h5 class="card-title about-me-head">About Me</h5>
+                <p class="card-text about-me-body">
                   5yat b2aly fatra tawela awy men bta3 1965 men ayam gedy al
                   keber zaki.
                 </p>
               </div>
             </div>
             <!--  -->
+
             <!--Gallery section -->
-            <div class="card col">
+            <div class="card col-12 mx-auto">
               <div class="card-body">
-                <h5 class="card-title">My Gallery</h5>
+                <h5 class="card-title my-gallery-head">My Gallery</h5>
                 <div
                   id="carouselExampleFade"
-                  class="carousel slide carousel-fade"
+                  class="carousel slide carousel-fade my-gallery-body "
                   data-bs-ride="carousel"
                 >
                   <div class="carousel-inner">
@@ -161,66 +162,81 @@
             <!--  -->
 
             <!-- comment section -->
-            <div class="card col">
-              <div class="card-body">
-                <h5 class="card-title">Comments</h5>
-                <div class="card-text">
-                  <div class="rate">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i
-                    ><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <div class="card col-12">
+              <!-- Rate -->
+              <section class="rate">
+                <div class="card-body">
+                  <h5 class="card-title rate-head">Rate</h5>
+                  <div class="card-text">
+                    <div class="rate-body">
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                    </div>
+                    <div class="rate-text">Overall Rating</div>
+                    <div class="rate-review-counter">from 200 customer</div>
                   </div>
-                  <div>Overall Rating</div>
-                  <div>from 200 customer</div>
                 </div>
-              </div>
+              </section>
               <div class="card-footer"></div>
+
               <!-- comment1 -->
-              <div class="card-body">
-                <h6 class="card-title">
-                  <span>
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i
-                    ><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  </span>
-                  <span>Overall Rating</span>
-                </h6>
-                <div class="card-text">
-                  <span>Odin</span>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Odio facilis dolorum vitae autem neque blanditiis
-                    perspiciatis vel rerum quo tenetur. Asperiores voluptatum
-                    incidunt laborum, quis nihil esse mollitia beatae
-                    consequuntur.
-                  </p>
+              <section class="comment">
+                <div class="card-body">
+                  <h6 class="card-title comment-head">
+                    <div>
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                    </div>
+                  </h6>
+                  <div class="card-text comment-body">
+                    <span>Odin</span>
+                    <p>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Odio facilis dolorum vitae autem neque blanditiis
+                      perspiciatis vel rerum quo tenetur. Asperiores voluptatum
+                      incidunt laborum, quis nihil esse mollitia beatae
+                      consequuntur.
+                    </p>
+                  </div>
                 </div>
-              </div>
+                <div class="card-footer comment-footer"></div>
+              </section>
+              <!--  -->
+
               <!-- comment2 -->
-              <div class="card-body">
-                <h6 class="card-title">
-                  <span>
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i
-                    ><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                  </span>
-                  <span>Overall Rating</span>
-                </h6>
-                <div class="card-text">
-                  <span>Loki</span>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Odio facilis dolorum vitae autem neque blanditiis
-                    perspiciatis vel rerum quo tenetur. Asperiores voluptatum
-                    incidunt laborum, quis nihil esse mollitia beatae
-                    consequuntur.
-                  </p>
+              <section class="comment">
+                <div class="card-body">
+                  <h6 class="card-title comment-head">
+                    <div>
+                      <i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
+                      ><i class="fas fa-star"></i>
+                    </div>
+                  </h6>
+                  <div class="card-text comment-body">
+                    <span>Loki</span>
+                    <p>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Odio facilis dolorum vitae autem neque blanditiis
+                      perspiciatis vel rerum quo tenetur. Asperiores voluptatum
+                      incidunt laborum, quis nihil esse mollitia beatae
+                      consequuntur.
+                    </p>
+                  </div>
                 </div>
-              </div>
+              </section>
+              <!--  -->
             </div>
           </div>
           <!--  -->
+        </div>
 
-          <!-- booking section -->
-          <div class="col-12 col-lg-4 side-bar">
-            <div class="card col">
+        <!-- booking section -->
+        <div class="col-12 col-lg-4">
+          <div class="side-bar">
+            <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Booking Information</h5>
                 <p class="card-text">
@@ -234,6 +250,7 @@
       </div>
     </div>
 
+    <!-- scripts section -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
