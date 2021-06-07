@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditTailorProfileComponent } from './components/edit-tailor-profile/edit-tailor-profile.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
-  declarations: [AppComponent, EditTailorProfileComponent],
+  declarations: [AppComponent, EditTailorProfileComponent, NavBarComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
