@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EditTailorProfileComponent } from './components/edit-tailor-profile/edit-tailor-profile.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditTailorProfileComponent
   ],
   imports: [
     BrowserModule,
