@@ -1,0 +1,22 @@
+/* start footer */
+
+.footer-links a {
+  text-decoration: none;
+}
+/*        icon style*/
+.footer-print-icon:hover {
+  color: teal !important;
+  transition: 1s;
+}
+.footer-phone-icon:hover {
+  color: #233e8b !important;
+  transition: 1s;
+}
+.footer-envelope-icon:hover {
+  color: #ffc947 !important;
+  transition: 1s;
+}
+.footer-home-icon:hover {
+  color: black !important;
+  transition: 1s;
+}
