@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/my profile .css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
 
-    <title>Tailor Profile</title>
+    <title>My Profile</title>
   </head>
 
   <body class="bg-light">
@@ -38,13 +38,13 @@
                                       <a class="nav-link" href="tailer.html">Tailars</a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="#">Profile-Tailer</a>
+                                      <a class="nav-link" href="profile.html">Profile-Tailer</a>
                                   </li>
                                   <li class="nav-item">
                                       <a class="nav-link" href="user.html">User</a>
                                   </li>
                                   <li class="nav-item">
-                                      <a class="nav-link" href="my profile .html">Profile-Tailer</a>
+                                      <a class="nav-link" href="#">Profile-Tailer</a>
                                   </li>
                                   <li class="nav-item">
                                       <a class="nav-link" href="registration.html">Sing Up</a>
@@ -63,36 +63,6 @@
       </div>
   </div>
 
-
-     <!-- start header -->
-
-  <div class="card">
-    <img src="photos/head.jpg" style="height: 550px;" class="card-img" alt="...">
-    <div class="card-img-overlay mt-5 mb-5">
-      <div class="container">
-      <h2 class="card-title" style="color: #2E86AB; font-weight: bold; ">Card title</h>
-        <p class="card-text"
-          style="color: white; padding: 10px; font-weight: 100; margin-top: 30px; background-color: rgba(0,139,139,.2);">This is a
-          wider card with supporting text below as a natural lead-in to additional content. This content is a little bit
-          longer.</p>
-        <div class="container">
-          <div class="row height d-flex justify-content-center align-items-center mt-5">
-            <div class="col-md-8">
-              <div class="search">
-                <input type="text" class="form-control" placeholder="Have a question ?">
-                <button class="btn btn-primary">Search</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-
-  <!-- end header -->
-
     <!--Main Screen  section -->
     <div class="container main-screen">
       <div class="row">
@@ -105,7 +75,11 @@
                   <img src="photos/logo.jpg" alt="" class="profile-img" />
                 </div>
                 <div class="col-md-8 profile-info">
-                  <div class="profile-info-name">Zaki el5yat</div>
+                  <div class="col-md-2 d-inline float-end me-5"><!--button edit profile  -->
+                    <input type="submit" class="btn btn-primary" name="btnAddMore" value="Edit Profile" />
+                  </div>
+                  <div class="profile-info-name d-inline">zaki el5yat</div>
+                  
                   <div class="profile-info-i">Since 1965 ya abo 3amo</div>
                   <div class="profile-info-rate">
                     <span>Rate:</span>
@@ -123,7 +97,9 @@
             <!-- about section -->
             <div class="card col-12">
               <div class="card-body">
-                <h5 class="card-title about-me-head">About Me</h5>
+                
+                <h5 class="card-title about-me-head d-inline">About Me</h5>
+                <button class="d-inline float-end btn btn-primary btn-sm">edit</button>
                 <p class="card-text about-me-body">
                   5yat b2aly fatra tawela awy men bta3 1965 men ayam gedy al
                   keber zaki.
@@ -135,7 +111,27 @@
             <!--Gallery section -->
             <div class="card col-12 mx-auto">
               <div class="card-body">
-                <h5 class="card-title my-gallery-head">My Gallery</h5>
+                <h5 class="card-title my-gallery-head d-inline">My Gallery</h5>
+                <button class="d-inline float-end btn btn-primary btn-sm " data-bs-toggle="modal" data-bs-target="#staticBackdrop">edit</button>
+                            <!-- Modal -->
+                  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="staticBackdropLabel">change image</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <label for="formFile" class="form-label">select image</label>
+                          <input class="form-control" type="file" id="formFile">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">save change</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                
                 <div
                   id="carouselExampleFade"
                   class="carousel slide carousel-fade my-gallery-body "
@@ -192,8 +188,6 @@
               </div>
             </div>
             <!--  -->
-
-            <!-- comment section -->
             <div class="card col-12">
               <!-- Rate -->
               <section class="rate">
@@ -210,72 +204,20 @@
                   </div>
                 </div>
               </section>
-              <div class="card-footer"></div>
-
-              <!-- comment1 -->
-              <section class="comment">
-                <div class="card-body">
-                  <h6 class="card-title comment-head">
-                    <div>
-                      <i class="fas fa-star"></i><i class="fas fa-star"></i
-                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                      ><i class="fas fa-star"></i>
-                    </div>
-                  </h6>
-                  <div class="card-text comment-body">
-                    <span>Odin</span>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Odio facilis dolorum vitae autem neque blanditiis
-                      perspiciatis vel rerum quo tenetur. Asperiores voluptatum
-                      incidunt laborum, quis nihil esse mollitia beatae
-                      consequuntur.
-                    </p>
-                  </div>
-                </div>
-                <div class="card-footer comment-footer"></div>
-              </section>
-              <!--  -->
-
-              <!-- comment2 -->
-              <section class="comment">
-                <div class="card-body">
-                  <h6 class="card-title comment-head">
-                    <div>
-                      <i class="fas fa-star"></i><i class="fas fa-star"></i
-                      ><i class="fas fa-star"></i><i class="fas fa-star"></i
-                      ><i class="fas fa-star"></i>
-                    </div>
-                  </h6>
-                  <div class="card-text comment-body">
-                    <span>Loki</span>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Odio facilis dolorum vitae autem neque blanditiis
-                      perspiciatis vel rerum quo tenetur. Asperiores voluptatum
-                      incidunt laborum, quis nihil esse mollitia beatae
-                      consequuntur.
-                    </p>
-                  </div>
-                </div>
-              </section>
-              <!--  -->
-            </div>
+              </div>
           </div>
           <!--  -->
         </div>
-
-        <!-- booking section -->
-        <div class="col-12 col-lg-4">
+<!-- end right side -->
+        <!-- start left side  -->
+        <div class="col-12 col-lg-4 order-first order-lg-last">
           <div class="side-bar">
             <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Booking Information</h5>
-                <p class="card-text">
-                  send me your design to calculate the cost
-                </p>
-                <a href="#" class="btn btn-primary">Send your design</a>
-              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Ahmed send request<button class="btn btn-primary float-end">ok</button></li>
+                <li class="list-group-item">Aly send request<button class="btn btn-primary float-end">ok</button></li>
+                <li class="list-group-item">Mohamed send request<button class="btn btn-primary float-end">ok</button></li>
+              </ul>
             </div>
           </div>
         </div>
