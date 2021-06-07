@@ -1,0 +1,91 @@
+.main-screen {
+  margin-top: 1em;
+}
+.card {
+  margin-bottom: 1em;
+}
+.profile {
+  width: 100%;
+  height: 30%;
+}
+.profile-img {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-info {
+  padding: 2em;
+}
+.profile-info-name {
+  font-size: 2em;
+  padding-bottom: 0.5em;
+  color: #156d92;
+}
+.profile-info-i {
+  font-size: 1.3em;
+  padding-bottom: 0.5em;
+}
+.profile-info-rate {
+  font-size: 1.1em;
+  padding-bottom: 0.5em;
+}
+.about-me-body {
+  margin-left: 2em;
+  padding-bottom: 2em;
+}
+.my-gallery-body {
+  margin: 2em;
+}
+.fa-star {
+  color: #ffb624;
+  padding-right: 0.1em;
+}
+
+.rate {
+  text-align: center;
+}
+.rate-head,
+.about-me-head,
+.my-gallery-head {
+  text-align: left;
+  font-size: 1.7rem;
+  margin-left: 1em;
+  padding-bottom: 1em;
+}
+.rate-body {
+  font-size: 2rem;
+}
+.rate-text {
+  font-size: 1.5rem;
+}
+.rate-review-counter {
+  font-size: 0.9em;
+  padding-bottom: 1em;
+}
+
+.comment-footer {
+  padding: 0.1em !important;
+}
+
+/* start footer */
+
+.footer-links a {
+  text-decoration: none;
+}
+/*        icon style*/
+.footer-print-icon:hover {
+  color: teal !important;
+  transition: 1s;
+}
+.footer-phone-icon:hover {
+  color: #233e8b !important;
+  transition: 1s;
+}
+.footer-envelope-icon:hover {
+  color: #ffc947 !important;
+  transition: 1s;
+}
+.footer-home-icon:hover {
+  color: black !important;
+  transition: 1s;
+}

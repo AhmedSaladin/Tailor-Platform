@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: "Cairo", sans-serif !important;
+}
+
+
+/* end navbar */
+
+.n-main {
+    background-color: #2E86AB;
+}
+
+.n-main .navbar-brand img {
+    width: 50px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #f3f3f3 !important;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px;
+    font-weight: 300;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    border-bottom: #FBCCB1 2px solid !important;
+    font-weight: 600;
+    color: #FBCCB1 !important;
+}
+
+
+/* end navbar */
+
+.main {
+    background-color: #f3f3f3;
+}
+h1 {
+    color: #FDFFFC;
+}
+h2, h3 {
+    color: #D7263D;
+}
+
+.header .btn {
+    background-color: #2E86AB;
+    color: #FDFFFC;
+}
+.header .btn:hover {
+    background-color: #96cce2;
+    color: #0D1F2D;
+}
+
+.header .input-group {
+    width: 65%;
+}
+
+/* start footer */
+
+.footer-links a {
+    text-decoration: none;
+}
+
+
+/* icon style */
+
+.footer-print-icon:hover {
+    color: teal !important;
+    transition: 1s;
+}
+
+.footer-phone-icon:hover {
+    color: #233e8b !important;
+    transition: 1s;
+}
+
+.footer-envelope-icon:hover {
+    color: #ffc947 !important;
+    transition: 1s;
+}
+
+.footer-home-icon:hover {
+    color: black !important;
+    transition: 1s;
+}
