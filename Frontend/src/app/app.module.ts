@@ -3,14 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditTailorProfileComponent } from './components/edit-tailor-profile/edit-tailor-profile.component';
+import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TailorInformationComponent } from './components/Tailor/tailor-information/tailor-information.component';
+import { TailorAboutComponent } from './components/Tailor/tailor-about/tailor-about.component';
+import { TailorGallaryComponent } from './components/Tailor/tailor-gallary/tailor-gallary.component';
+import { TailorRateComponent } from './components/Tailor/tailor-rate/tailor-rate.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutTailorComponent } from './components/home/about-tailor/about-tailor.component';
 
 @NgModule({
-  declarations: [AppComponent, EditTailorProfileComponent, NavBarComponent, FooterComponent, HomeComponent, AboutTailorComponent],
+  declarations: [
+    AppComponent,
+    EditTailorProfileComponent,
+    NavBarComponent,
+    FooterComponent,
+    TailorInformationComponent,
+    TailorAboutComponent,
+    TailorGallaryComponent,
+    TailorRateComponent,
+    HomeComponent,
+    AboutTailorComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

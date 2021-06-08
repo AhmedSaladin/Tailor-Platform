@@ -13,8 +13,12 @@ export class EditTailorProfileComponent implements OnInit {
   user: any = {
     name: 'kiki',
     about: '3la allah 7kaytk',
-    avatar: '',
-    gallary: ['', '', ''],
+    avatar: 'assets/images/tailor1.jpg',
+    gallary: [
+      'assets/images/services1.jpeg',
+      'assets/images/services2.jpeg',
+      'assets/images/services3.jpeg',
+    ],
   };
   information() {
     this.api.get_tailor_info(2).subscribe(

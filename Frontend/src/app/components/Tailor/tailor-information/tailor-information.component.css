@@ -1,0 +1,33 @@
+.card {
+  margin-bottom: 1em;
+}
+.profile {
+  width: 100%;
+  height: 30%;
+}
+.profile-img {
+  width: 100%;
+  height: 100%;
+}
+
+.profile-info {
+  padding: 2em;
+}
+.profile-info-name {
+  font-size: 2em;
+  padding-bottom: 0.5em;
+  color: #156d92;
+}
+.profile-info-i {
+  font-size: 1.3em;
+  padding-bottom: 0.5em;
+}
+.profile-info-rate {
+  font-size: 1.1em;
+  padding-bottom: 0.5em;
+}
+
+.fa-star {
+  color: #ffb624;
+  padding-right: 0.1em;
+}
