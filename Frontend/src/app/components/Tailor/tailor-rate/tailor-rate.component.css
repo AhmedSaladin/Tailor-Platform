@@ -1,0 +1,31 @@
+.card {
+  margin-bottom: 1em;
+}
+
+.fa-star {
+  color: #ffb624;
+  padding-right: 0.1em;
+}
+
+.rate {
+  text-align: center;
+}
+
+.rate-head {
+  text-align: left;
+  font-size: 1.7rem;
+  margin-left: 1em;
+  padding-bottom: 1em;
+}
+.rate-body {
+  font-size: 2rem;
+}
+
+.rate-text {
+  font-size: 1.5rem;
+}
+
+.rate-review-counter {
+  font-size: 0.9em;
+  padding-bottom: 1em;
+}
