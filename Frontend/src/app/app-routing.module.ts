@@ -4,9 +4,9 @@ import { HomeComponent } from './components/home/home.component';
 import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: './profile/edit/:id', pathMatch: 'full' },
-  { path: './profile/edit/:id', component: EditTailorProfileComponent },
-  { path: './home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, // TODO Change it with the landing-page when it's done
+  { path: 'profile/edit/:id', component: EditTailorProfileComponent },
 ];
 
 @NgModule({
