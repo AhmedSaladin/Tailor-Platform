@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { EditTailorProfileComponent } from './components/edit-tailor-profile/edit-tailor-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
-  declarations: [AppComponent, EditTailorProfileComponent, NavBarComponent, FooterComponent],
+  declarations: [AppComponent, EditTailorProfileComponent, NavBarComponent, FooterComponent, RegistrationComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
