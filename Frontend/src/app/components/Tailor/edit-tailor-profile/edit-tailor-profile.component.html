@@ -3,9 +3,10 @@
   <div class="row">
     <div class="col-12 col-lg-8">
       <div class="right-side">
-        <app-tailor-information></app-tailor-information>
-        <app-tailor-about></app-tailor-about>
-        <app-tailor-gallary></app-tailor-gallary>
+        <!-- you send all user data here futuer hint -->
+        <app-tailor-information [user_info]="user"></app-tailor-information>
+        <app-tailor-about [user_info]="user"></app-tailor-about>
+        <app-tailor-gallary [user_info]="user"></app-tailor-gallary>
         <app-tailor-rate></app-tailor-rate>
       </div>
       <!--  -->

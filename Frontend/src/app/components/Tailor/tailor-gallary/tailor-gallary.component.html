@@ -5,21 +5,21 @@
     <button
       class="d-inline float-end btn btn-primary btn-sm"
       data-bs-toggle="modal"
-      data-bs-target="#staticBackdrop"
+      data-bs-target="#gallary"
     >
       edit
     </button>
-    <!-- Modal -->
+    <!-- gallary pop-up -->
     <div
       class="modal fade"
-      id="staticBackdrop"
+      id="gallary"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
       tabindex="-1"
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">change image</h5>
@@ -47,6 +47,7 @@
         </div>
       </div>
     </div>
+    <!--  -->
     <div
       id="carouselExampleFade"
       class="carousel slide carousel-fade my-gallery-body"
@@ -55,7 +56,7 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
-            src="ssssssss"
+            src="{{ user_info.gallary[0] }}"
             class="d-block w-100"
             style="height: 500px !important"
             alt="..."
@@ -63,7 +64,7 @@
         </div>
         <div class="carousel-item">
           <img
-            src="ssssssss"
+            src="{{ user_info.gallary[2] }}"
             class="d-block w-100"
             style="height: 500px !important"
             alt="..."
@@ -71,7 +72,7 @@
         </div>
         <div class="carousel-item">
           <img
-            src="ssssssss"
+            src="{{ user_info.gallary[1] }}"
             class="d-block w-100"
             style="height: 500px !important"
             alt="..."

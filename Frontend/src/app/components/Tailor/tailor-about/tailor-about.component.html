@@ -2,8 +2,63 @@
 <div class="card col-12">
   <div class="card-body">
     <h5 class="card-title about-me-head d-inline">About Me</h5>
-    <button class="d-inline float-end btn btn-primary btn-sm">edit</button>
-    <p class="card-text about-me-body">sssssss</p>
+    <button
+      class="d-inline float-end btn btn-primary btn-sm"
+      data-bs-toggle="modal"
+      data-bs-target="#aboutModel"
+    >
+      edit
+    </button>
+    <div
+      class="modal fade"
+      id="aboutModel"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit About Me</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">About Me:</label>
+              <textarea
+                class="form-control"
+                id="message-text"
+                value="{{ user_info.about }}"
+                #About
+              ></textarea>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Discard
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="update_tailor_about_section(About.value)"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="card-text about-me-body mt-2">{{ user_info.about }}</p>
   </div>
+  <!--  -->
 </div>
-<!--  -->

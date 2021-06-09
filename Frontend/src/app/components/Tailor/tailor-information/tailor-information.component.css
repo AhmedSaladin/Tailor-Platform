@@ -11,7 +11,7 @@
 }
 
 .profile-info {
-  padding: 2em;
+  padding-left: 10px;
 }
 .profile-info-name {
   font-size: 2em;
@@ -30,4 +30,10 @@
 .fa-star {
   color: #ffb624;
   padding-right: 0.1em;
+}
+
+.img-pop {
+width: 200px;
+height: 200px; 
+border-radius: 50%; 
 }

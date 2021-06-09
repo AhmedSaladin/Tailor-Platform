@@ -1,22 +1,144 @@
-<!-- profile section -->
 <div class="card col-12 profile">
   <div class="card-body row">
     <div class="col-md-4">
-      <img src="sssssss" alt="" class="profile-img" />
-    </div>
-    <div class="col-md-8 profile-info">
-      <div class="col-md-2 d-inline float-end me-5">
-        <!--button edit profile  -->
-        <input
-          type="submit"
-          class="btn btn-primary"
-          name="btnAddMore"
-          value="Edit Profile"
-        />
+      <img
+        src="{{ user_info.avatar }}"
+        class="profile-img"
+        data-bs-target="#staticBackdrop"
+        data-bs-toggle="modal"
+      />
+      <!-- start popup -->
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img src="{{ user_info.avatar }}" class="profile-img img-pop" />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Save
+              </button>
+              <!-- upload button needed and third-party-api -->
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="profile-info-name d-inline">ssssssss</div>
+      <!-- end popup -->
+      <!-- end image -->
+    </div>
+    <!-- Edit button -->
+    <!-- <button class="d-inline float-end btn btn-primary btn-sm">edit</button> -->
 
-      <div class="profile-info-i">ssssssss</div>
+    <div class="col-md-8 profile-info">
+      <div class="d-inline-block float-end">
+        <button
+          style="margin-top: 7px"
+          type="button"
+          class="btn btn-primary btn-sm "
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Edit
+        </button>
+        <!--  -->
+        <!-- Edit pop-up -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  Edit Information
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="name" class="col-form-label">Name:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    value="{{ user_info.name }}"
+                    #Name
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="inputState" class="form-label"
+                    >Designing For:</label
+                  >
+                  <!-- reactive form .... -->
+                  <select id="inputState" class="form-select">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>All</option>
+                  </select>
+                </div>
+                <!--  -->
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Discard
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  (click)="update_tailor_name(Name.value)"
+                  data-bs-dismiss="modal"
+                >
+                  Save changes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end  Edit pop-up  -->
+      </div>
+      <div class="profile-info-name d-inline">{{ user_info.name }}</div>
+
+      <div class="profile-info-i">Designing for: {{ user_info.designFor }}</div>
       <div class="profile-info-rate">
         <span>Rate:</span>
         <span>
