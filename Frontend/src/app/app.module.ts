@@ -10,6 +10,8 @@ import { TailorInformationComponent } from './components/Tailor/tailor-informati
 import { TailorAboutComponent } from './components/Tailor/tailor-about/tailor-about.component';
 import { TailorGallaryComponent } from './components/Tailor/tailor-gallary/tailor-gallary.component';
 import { TailorRateComponent } from './components/Tailor/tailor-rate/tailor-rate.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutTailorComponent } from './components/home/about-tailor/about-tailor.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { TailorRateComponent } from './components/Tailor/tailor-rate/tailor-rate
     TailorAboutComponent,
     TailorGallaryComponent,
     TailorRateComponent,
+    HomeComponent,
+    AboutTailorComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
