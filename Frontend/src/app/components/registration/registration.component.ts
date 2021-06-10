@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./registration.component.css'],
 })
 export class RegistrationComponent implements OnInit {
-  constructor(private myCustomer: CustomerService) {}
+  constructor(private myCustomer: CustomerService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -47,15 +48,23 @@ export class RegistrationComponent implements OnInit {
   }
 
   AddCustomer(fname: any, lname: any, email: any, password: any) {
-    let isTailor: any;
-    let customer = {
-      fname: fname,
-      lname: lname,
-      email: email,
-      password: password,
-      IsTailor: false,
-    };
-
-    this.myCustomer.AddNewCustomer(customer).subscribe();
+    if (
+      this.formValidation.controls.fname.valid &&
+      this.formValidation.controls.lname.valid &&
+      this.formValidation.controls.email.valid &&
+      this.formValidation.controls.password.valid
+    ) {
+      let customer = {
+        fname: fname,
+        lname: lname,
+        email: email,
+        password: password,
+        IsTailor: false,
+      };
+      this.myCustomer.AddNewCustomer(customer).subscribe();
+      this.router.navigateByUrl('home');
+    } else {
+      alert('Enter Valid Data');
+    }
   }
 }
