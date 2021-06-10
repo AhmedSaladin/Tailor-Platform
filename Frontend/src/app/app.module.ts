@@ -7,10 +7,23 @@ import { EditTailorProfileComponent } from './components/edit-tailor-profile/edi
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, EditTailorProfileComponent, NavBarComponent, FooterComponent, RegistrationComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    EditTailorProfileComponent,
+    NavBarComponent,
+    FooterComponent,
+    RegistrationComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

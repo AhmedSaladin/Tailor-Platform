@@ -11,11 +11,12 @@
         <div class="col-md-8">
           <div class="card-body">
             <h3 class="card-title"><b>Sign Up</b></h3>
-            <form>
+            <form class="signUpForm" [formGroup]="formValidation">
               <div class="form-row mt-4">
-                <div class="mb-4">
+                <div class="mb-3">
                   <!-- <label for="fname" class="form-label">First Name</label> -->
                   <input
+                    formControlName="fname"
                     #fname
                     id="fname"
                     name="fname"
@@ -23,12 +24,14 @@
                     placeholder="First Name"
                     class="form-control"
                   />
+                  <div class="checkValid" *ngIf="!fnameValid">* Required</div>
                 </div>
               </div>
               <div class="form-row">
-                <div class="mb-4">
+                <div class="mb-3">
                   <!-- <label for="lname" class="form-label">Last Name</label> -->
                   <input
+                    formControlName="lname"
                     #lname
                     id="lname"
                     name="lname"
@@ -36,12 +39,14 @@
                     placeholder="Last Name"
                     class="form-control"
                   />
+                  <div class="checkValid" *ngIf="!lnameValid">* Required</div>
                 </div>
               </div>
-              <div class="mb-4">
+              <div class="mb-3">
                 <!-- <label for="exampleInputEmail1" class="form-label">Email address</label
               > -->
                 <input
+                  formControlName="email"
                   #email
                   type="email"
                   class="form-control"
@@ -49,18 +54,26 @@
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                 />
+                <div class="checkValid" *ngIf="!emailValid">
+                  *email must be valid
+                </div>
               </div>
-              <div class="mb-4">
+              <div class="mb-3">
                 <!-- <label for="exampleInputPassword1" class="form-label"
                 >Password</label
               > -->
                 <input
+                  formControlName="password"
                   #password
                   type="password"
                   class="form-control"
                   placeholder="********"
                   id="exampleInputPassword1"
                 />
+                <div class="checkValid" *ngIf="!passwordValid">
+                  At least 8 characters ,Lowercase ,Uppercase
+                  letters Numbers Special characters
+                </div>
               </div>
               <!-- <div class="mb-3 form-check">
               <input
@@ -72,7 +85,20 @@
                 >Check me out</label
               >
             </div> -->
-              <button type="button" class="btn1 btn btn-dark" (click)="AddCustomer(fname.value,lname.value,email.value,password.value)">Sign Up</button>
+              <button
+                type="button"
+                class="btn1 btn btn-dark"
+                (click)="
+                  AddCustomer(
+                    fname.value,
+                    lname.value,
+                    email.value,
+                    password.value
+                  )
+                "
+              >
+                Sign Up
+              </button>
             </form>
             <p class="card-text">
               Already have an account?

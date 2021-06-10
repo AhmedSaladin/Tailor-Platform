@@ -17,6 +17,11 @@
     width: 100%;
 }
 
+.checkValid {
+  color: blue;
+  font-size: small;
+}
+
 
 /* * {
   padding: 0;
