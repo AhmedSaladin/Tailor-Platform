@@ -15,11 +15,11 @@ export class RegistrationComponent implements OnInit {
   formValidation = new FormGroup({
     fname: new FormControl('', [
       Validators.required,
-      Validators.pattern('[a-z0-9_-]{8,15}$'),
+      Validators.pattern('[a-z0-9_-]{3,10}$'),
     ]),
     lname: new FormControl('', [
       Validators.required,
-      Validators.pattern('[a-z0-9_-]{8,15}$'),
+      Validators.pattern('[a-z0-9_-]{3,10}$'),
     ]),
     email: new FormControl('', [
       Validators.required,
@@ -57,6 +57,5 @@ export class RegistrationComponent implements OnInit {
     };
 
     this.myCustomer.AddNewCustomer(customer).subscribe();
-    console.log(this.formValidation);
   }
 }
