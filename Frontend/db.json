@@ -35,6 +35,14 @@
       "password": "123456789",
       "IsTailor": false,
       "id": 3
+    },
+    {
+      "fname": "Nancy",
+      "lname": "Moris",
+      "email": "nancy@gmail.com",
+      "password": "1236521458",
+      "IsTailor": false,
+      "id": 4
     }
   ],
   "orders": [],

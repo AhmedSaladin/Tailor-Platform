@@ -7,15 +7,15 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  
-  constructor(private myCustomer:CustomerService) { }
-  
+
+  constructor(private myCustomer: CustomerService) { }
+
   ngOnInit(): void {
   }
-    
-   AddCustomer(fname:any,lname:any,email:any,password:any){
-    let isTailor =false;
-     let customer ={fname:fname,lname:lname,email:email,password:password,IsTailor:false}
-      this.myCustomer.AddNewCustomer(customer).subscribe();
+
+  AddCustomer(fname: any, lname: any, email: any, password: any) {
+    let isTailor: any;
+    let customer = { fname: fname, lname: lname, email: email, password: password, IsTailor: false }
+    this.myCustomer.AddNewCustomer(customer).subscribe();
   }
 }
