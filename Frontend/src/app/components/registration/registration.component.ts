@@ -13,9 +13,18 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {}
 
   formValidation = new FormGroup({
-    fname: new FormControl('', Validators.required),
-    lname: new FormControl('', Validators.required),
-    email: new FormControl('',  [Validators.required,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),
+    fname: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[a-z0-9_-]{8,15}$'),
+    ]),
+    lname: new FormControl('', [
+      Validators.required,
+      Validators.pattern('[a-z0-9_-]{8,15}$'),
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
+    ]),
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
@@ -24,16 +33,16 @@ export class RegistrationComponent implements OnInit {
     ]),
   });
 
-  get fnameValid(){
+  get fnameValid() {
     return this.formValidation.controls.fname.valid;
   }
-  get lnameValid(){
+  get lnameValid() {
     return this.formValidation.controls.lname.valid;
   }
-  get emailValid(){
+  get emailValid() {
     return this.formValidation.controls.email.valid;
   }
-  get passwordValid(){
+  get passwordValid() {
     return this.formValidation.controls.password.valid;
   }
 
@@ -49,7 +58,5 @@ export class RegistrationComponent implements OnInit {
 
     this.myCustomer.AddNewCustomer(customer).subscribe();
     console.log(this.formValidation);
-
-
   }
 }
