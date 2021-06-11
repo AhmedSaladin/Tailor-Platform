@@ -41,47 +41,6 @@
 
 /* button search */
 
-/* start informtion card*/
-.info-tailor .star .fa-star{
-    color: #ffc93c;
-    font-size: 20px;
-}
-
-/* .info-tailor button:hover{
-    color: #D7263D !important;
-    background-color: white !important;
-    transition: 1s;
-} */
-.social{
-    position: relative;
-    display: flex;
-
-}
-.info-tailor .social a i{
-    display: inline-block;
-   justify-content: flex-end;
-}
-.info-tailor .fa-address-card:hover{
-    color: #005792 !important;
-    transition: 1s;
-}
-.info-tailor .social .fa-facebook-square:hover{
-    color: #233e8b !important;
-    transition: 1s;
-}
-.info-tailor .social .fa-whatsapp-square:hover{
-    color: #4aa96c !important;
-    transition: 1s;   
-}
-.info-tailor .social .fa-instagram-square:hover{
-    color: #e93b81 !important;
-    transition: 1s;
-}
-.info-tailor .social .fa-twitter-square:hover{
-    color: #77acf1 !important;
-    transition: 1s;   
-}
-
 /* Start Side-Bar */
 
 .accordion {

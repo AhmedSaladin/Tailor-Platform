@@ -1,3 +1,4 @@
+import { Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { TailorService } from 'src/app/services/tailor.service';
 
@@ -9,12 +10,19 @@ import { TailorService } from 'src/app/services/tailor.service';
 export class EditTailorProfileComponent implements OnInit {
   constructor(private api: TailorService) {}
 
-  ngOnInit(): void {}
-  user: any = {
+  ngOnInit(): void {
+    this.information();
+  }
+  @Output() user: any = {
     name: 'kiki',
+    designFor: 'male',
     about: '3la allah 7kaytk',
-    avatar: '',
-    gallary: ['', '', ''],
+    avatar: 'assets/images/tailor1.jpg',
+    gallary: [
+      'assets/images/services1.jpeg',
+      'assets/images/services2.jpeg',
+      'assets/images/services3.jpeg',
+    ],
   };
   information() {
     this.api.get_tailor_info(2).subscribe(

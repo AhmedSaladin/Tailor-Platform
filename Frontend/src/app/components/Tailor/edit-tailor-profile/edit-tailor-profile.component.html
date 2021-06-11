@@ -1,0 +1,40 @@
+<!--Main Screen  section -->
+<div class="container main-screen">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="right-side">
+        <!-- you send all user data here futuer hint -->
+        <app-tailor-information [user_info]="user"></app-tailor-information>
+        <app-tailor-about [user_info]="user"></app-tailor-about>
+        <app-tailor-gallary [user_info]="user"></app-tailor-gallary>
+        <app-tailor-rate></app-tailor-rate>
+      </div>
+      <!--  -->
+    </div>
+    <!-- end right side -->
+    <!-- start left side  -->
+    <div class="col-12 col-lg-4 order-first order-lg-last">
+      <div class="side-bar">
+        <div class="card">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              Ahmed send request<button class="btn btn-primary float-end">
+                ok
+              </button>
+            </li>
+            <li class="list-group-item">
+              Aly send request<button class="btn btn-primary float-end">
+                ok
+              </button>
+            </li>
+            <li class="list-group-item">
+              Mohamed send request<button class="btn btn-primary float-end">
+                ok
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

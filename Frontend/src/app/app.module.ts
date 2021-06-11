@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditTailorProfileComponent } from './components/edit-tailor-profile/edit-tailor-profile.component';
+import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,15 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditTailorProfileComponent,
     NavBarComponent,
     FooterComponent,
-    RegistrationComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
+
   providers: [],
   bootstrap: [AppComponent],
 })
