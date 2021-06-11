@@ -1,0 +1,165 @@
+<div class="container">
+  <div
+    class="card m-auto"
+    style="max-width: 70%; margin-top: 100px !important; border-radius: 30px"
+  >
+    <div class="row-registration">
+      <div class="row g-0">
+        <div class="col-md-4 d-none d-sm-block">
+          <img class="img1" src="assets/images/tailor1.jpg" alt="Tailor" />
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title"><b>Sign Up</b></h3>
+            <form class="signUpForm" [formGroup]="formValidation">
+              <div class="form-row mt-4">
+                <div class="mb-3">
+                  <!-- <label for="fname" class="form-label">First Name</label> -->
+                  <input
+                    formControlName="fname"
+                    #fname
+                    id="fname"
+                    name="fname"
+                    type="text"
+                    placeholder="First Name"
+                    class="form-control"
+                  />
+                  <div class="checkValid" *ngIf="!fnameValid">* Required</div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="mb-3">
+                  <!-- <label for="lname" class="form-label">Last Name</label> -->
+                  <input
+                    formControlName="lname"
+                    #lname
+                    id="lname"
+                    name="lname"
+                    type="text"
+                    placeholder="Last Name"
+                    class="form-control"
+                  />
+                  <div class="checkValid" *ngIf="!lnameValid">* Required</div>
+                </div>
+              </div>
+              <div class="mb-3">
+                <!-- <label for="exampleInputEmail1" class="form-label">Email address</label
+              > -->
+                <input
+                  formControlName="email"
+                  #email
+                  type="email"
+                  class="form-control"
+                  placeholder="Email address"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+                <div class="checkValid" *ngIf="!emailValid">
+                  *email must be valid
+                </div>
+              </div>
+              <div class="mb-3">
+                <!-- <label for="exampleInputPassword1" class="form-label"
+                >Password</label
+              > -->
+                <input
+                  formControlName="password"
+                  #password
+                  type="password"
+                  class="form-control"
+                  placeholder="********"
+                  id="exampleInputPassword1"
+                />
+                <div class="checkValid" *ngIf="!passwordValid">
+                  At least 8 characters ,Lowercase ,Uppercase letters,Numbers
+                  Special characters
+                </div>
+              </div>
+              <!-- <div class="mb-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label" for="exampleCheck1"
+                >Check me out</label
+              >
+            </div> -->
+              <button
+                type="button"
+                class="btn1 btn btn-dark"
+                (click)="
+                  AddCustomer(
+                    fname.value,
+                    lname.value,
+                    email.value,
+                    password.value
+                  )
+                "
+              >
+                Sign Up
+              </button>
+            </form>
+            <p class="card-text">
+              Already have an account?
+              <a href="#"> <strong>Log In</strong></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <section class="form my-4 mx-5">
+  <div class="container">
+    <div class="sec row no-gutters">
+      <div class="col-lg-5">
+        <img
+          src="photos/tailor-SignUP.jpg"
+          class="img-fluid"
+          alt="Tailor"
+        />
+      </div>
+      <div class="col-lg-7 px-5 pt-5">
+        <h1 class="font-weight-bold py-3">Sign Up</h1>
+        <form>
+          <div class="form-row">
+            <div class="col-lg-7">
+              <label for="fname">First Name</label>
+                            <input id="fname" name="fname" type="text" placeholder="First Name" class="form-control my-2 p-3" />
+                        </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-7">
+                        <label for="fname">Last Name</label>
+                        <input id="lname" name="lname" type="text" placeholder="Last Name" class="form-control my-2 p-3" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-7">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="Email-Address" class="form-control my-2 p-3" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-7">
+                        <label for="password">password</label>
+                        <input id="password" name="password" placeholder="***********" class="form-control my-2 p-3" type="password" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-lg-7">
+                        <button type="button" class="btn1 btn btn-primary mt-2 mb-3">
+                Sign Up
+              </button>
+                    </div>
+                </div>
+                <p>
+                    Already have an account?
+                    <a href="#"> <strong>Log In</strong></a>
+                </p>
+                </form>
+            </div>
+        </div>
+    </div>
+    </section> -->
