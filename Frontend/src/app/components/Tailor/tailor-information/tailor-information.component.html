@@ -1,5 +1,6 @@
 <div class="card col-12 profile">
   <div class="card-body row">
+    <!-- start image section -->
     <div class="col-md-4">
       <img
         src="{{ user_info.avatar }}"
@@ -7,7 +8,7 @@
         data-bs-target="#staticBackdrop"
         data-bs-toggle="modal"
       />
-      <!-- start popup -->
+      <!-- start image popup -->
       <div
         class="modal fade"
         id="staticBackdrop"
@@ -51,25 +52,25 @@
           </div>
         </div>
       </div>
-      <!-- end popup -->
-      <!-- end image -->
+      <!-- end image popup -->
     </div>
-    <!-- Edit button -->
-    <!-- <button class="d-inline float-end btn btn-primary btn-sm">edit</button> -->
+    <!-- end image section -->
 
+    <!-- start info section -->
     <div class="col-md-8 profile-info">
+      <!-- start Edit pop-up -->
       <div class="d-inline-block float-end">
+        <!-- edit button -->
         <button
           style="margin-top: 7px"
           type="button"
-          class="btn btn-primary btn-sm "
+          class="btn btn-primary btn-sm"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >
           Edit
         </button>
-        <!--  -->
-        <!-- Edit pop-up -->
+        <!-- end -->
         <div
           class="modal fade"
           id="exampleModal"
@@ -91,28 +92,33 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <div class="mb-3">
-                  <label for="name" class="col-form-label">Name:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    value="{{ user_info.name }}"
-                    #Name
-                  />
-                </div>
-                <div class="mb-3">
-                  <label for="inputState" class="form-label"
-                    >Designing For:</label
-                  >
-                  <!-- reactive form .... -->
-                  <select id="inputState" class="form-select">
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>All</option>
-                  </select>
-                </div>
-                <!--  -->
+                <form #form="ngForm">
+                  <div class="mb-3">
+                    <label for="name" class="col-form-label">Name:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      name="name"
+                      [ngModel]="user_info.name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputState" class="form-label"
+                      >Designing For:</label
+                    >
+                    <select
+                      id="inputState"
+                      class="form-select"
+                      name="design"
+                      [ngModel]="user_info.designFor"
+                    >
+                      <option>Male</option>
+                      <option>Female</option>
+                      <option>All</option>
+                    </select>
+                  </div>
+                </form>
               </div>
               <div class="modal-footer">
                 <button
@@ -124,8 +130,8 @@
                 </button>
                 <button
                   type="button"
-                  class="btn btn-primary"
-                  (click)="update_tailor_name(Name.value)"
+                  class="btn btn-primary form"
+                  (click)="update_tailor_name(form)"
                   data-bs-dismiss="modal"
                 >
                   Save changes
@@ -134,10 +140,9 @@
             </div>
           </div>
         </div>
-        <!-- end  Edit pop-up  -->
       </div>
+      <!-- end of popup model -->
       <div class="profile-info-name d-inline">{{ user_info.name }}</div>
-
       <div class="profile-info-i">Designing for: {{ user_info.designFor }}</div>
       <div class="profile-info-rate">
         <span>Rate:</span>
@@ -149,6 +154,7 @@
         <span> total review is 200 user </span>
       </div>
     </div>
+    <!-- end info section -->
   </div>
 </div>
 <!--  -->
