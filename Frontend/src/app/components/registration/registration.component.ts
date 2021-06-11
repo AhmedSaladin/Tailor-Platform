@@ -16,11 +16,11 @@ export class RegistrationComponent implements OnInit {
   formValidation = new FormGroup({
     fname: new FormControl('', [
       Validators.required,
-      Validators.pattern('[a-z0-9_-]{3,10}$'),
+      Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
     ]),
     lname: new FormControl('', [
       Validators.required,
-      Validators.pattern('[a-z0-9_-]{3,10}$'),
+      Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
     ]),
     email: new FormControl('', [
       Validators.required,
@@ -55,8 +55,8 @@ export class RegistrationComponent implements OnInit {
       this.formValidation.controls.password.valid
     ) {
       let customer = {
-        fname: fname,
-        lname: lname,
+        name: fname + " " + lname,
+        // lname: lname,
         email: email,
         password: password,
         IsTailor: false,

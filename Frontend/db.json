@@ -31,12 +31,18 @@
       "designFor": "Male"
     },
     {
-      "fname": "ahmed",
-      "lname": "khaled",
-      "email": "ahmed_salah2002455@hotbird.com",
-      "password": "As1@12535422442",
+      "name": "Muhammad SabahAllah",
+      "email": "musabahallah@gmail.com",
+      "password": "asD123!eee",
       "IsTailor": false,
       "id": 3
+    },
+    {
+      "name": "Omar Salama",
+      "email": "omar_salma@gmail.com",
+      "password": "aaA12!aaaa",
+      "IsTailor": false,
+      "id": 4
     }
   ],
   "orders": [],
