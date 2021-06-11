@@ -29,6 +29,14 @@
       ],
       "about": "ay ha7ga w5las ya3ny",
       "designFor": "Male"
+    },
+    {
+      "fname": "ahmed",
+      "lname": "khaled",
+      "email": "ahmed_salah2002455@hotbird.com",
+      "password": "As1@12535422442",
+      "IsTailor": false,
+      "id": 3
     }
   ],
   "orders": [],

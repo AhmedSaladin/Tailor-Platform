@@ -12,7 +12,8 @@ import { TailorGallaryComponent } from './components/Tailor/tailor-gallary/tailo
 import { TailorRateComponent } from './components/Tailor/tailor-rate/tailor-rate.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutTailorComponent } from './components/home/about-tailor/about-tailor.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,15 @@ import { FormsModule } from '@angular/forms';
     TailorRateComponent,
     HomeComponent,
     AboutTailorComponent,
+    RegistrationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
