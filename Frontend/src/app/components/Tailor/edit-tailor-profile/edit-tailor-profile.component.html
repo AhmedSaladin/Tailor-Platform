@@ -14,27 +14,7 @@
     <!-- end right side -->
     <!-- start left side  -->
     <div class="col-12 col-lg-4 order-first order-lg-last">
-      <div class="side-bar">
-        <div class="card">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              Ahmed send request<button class="btn btn-primary float-end">
-                ok
-              </button>
-            </li>
-            <li class="list-group-item">
-              Aly send request<button class="btn btn-primary float-end">
-                ok
-              </button>
-            </li>
-            <li class="list-group-item">
-              Mohamed send request<button class="btn btn-primary float-end">
-                ok
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <app-tailor-requests [user_id]="user.id"></app-tailor-requests>
     </div>
   </div>
 </div>

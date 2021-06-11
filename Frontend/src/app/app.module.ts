@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutTailorComponent } from './components/home/about-tailor/about-tailor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     HomeComponent,
     AboutTailorComponent,
     RegistrationComponent,
+    TailorRequestsComponent,
   ],
   imports: [
     BrowserModule,
