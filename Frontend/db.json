@@ -47,6 +47,28 @@
     {
       "id": 1,
       "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "customer_sizes": {
+        "chest": 127,
+        "armLength": 73.5,
+        "waist": 99,
+        "hight": 180,
+        "inseam": 85,
+        "shoulder": 50
+      },
+      "design": [
+        "assets/images/suit/s2.jpg",
+        "assets/images/suit/s5.jpg",
+        "assets/images/suit/s3.jpg",
+        "assets/images/suit/s4.jpg"
+      ],
+      "request": true
+    },
+    {
+      "id": 2,
+      "customer_id": "3",
+      "customer_name": "Muhammad SabahAllah",
       "tailor_id": "2",
       "customer_sizes": {
         "chest": 127,
@@ -59,7 +81,7 @@
         "assets/images/suit/s2.jpg",
         "assets/images/suit/s5.jpg",
         "assets/images/suit/s3.jpg",
-        "assets/images/suit/s4.jpg"
+        "assets/images/suit/s10.jpg"
       ],
       "request": true
     }
