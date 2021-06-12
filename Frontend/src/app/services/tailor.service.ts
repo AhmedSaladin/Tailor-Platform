@@ -16,4 +16,14 @@ export class TailorService {
   update_tailor_info(id: any, body: any) {
     return this.http.put(`${this.url}/${id}`, body, { observe: 'response' });
   }
+  get_tailor_info_by_email(email: any) {
+    return this.http.get(`${this.url}/?email=${email}`, { observe: 'response' });
+  }
+  get_tailor_info_by_designFor(designFor: any) {
+    if(designFor=="all"){
+      return this.http.get(`${this.url}/?isTailor=true`, { observe: 'response' });
+    }else{
+      return this.http.get(`${this.url}/?isTailor=true&designFor=${designFor}`, { observe: 'response' });
+    }
+  }
 }
