@@ -1,155 +1,19 @@
 <div class="side-bar">
   <div class="card">
-    <ul class="list-group list-group-flush" *ngFor="let request of requests">
-      <li class="list-group-item">
-        {{ request.customer_id }}
+    <div class="card-header">Clients Requests</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let request of requests">
+        <span>{{ request.customer_name }} </span>
         <button
           class="btn btn-primary float-end"
           data-bs-toggle="modal"
-          data-bs-target="#viewModel"
+          attr.data-bs-target="#order{{ request.id }}"
         >
           view
         </button>
-
-        <!-- end -->
-        <div
-          class="modal fade"
-          id="viewModel"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <!-- START POPUP -->
-          <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Request View</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <div class="card mb-3">
-                  <div class="row g-0">
-                    <div class="col-md-4">
-                      <div
-                        id="carouselExampleIndicators"
-                        class="carousel slide"
-                        data-bs-ride="false"
-                        data-bs-pause="hover"
-                      >
-                        <div class="carousel-indicators">
-                          <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="0"
-                            class="active"
-                            aria-current="true"
-                            aria-label="Slide 1"
-                          ></button>
-                          <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="1"
-                            aria-label="Slide 2"
-                          ></button>
-                          <button
-                            type="button"
-                            data-bs-target="#carouselExampleIndicators"
-                            data-bs-slide-to="2"
-                            aria-label="Slide 3"
-                          ></button>
-                        </div>
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img
-                              src="../../../../assets/images/suit/s2.jpg"
-                              class="d-block w-100"
-                              alt="..."
-                            />
-                          </div>
-                          <div class="carousel-item">
-                            <img
-                              src="../../../../assets/images/suit/s4.jpg"
-                              class="d-block w-100"
-                              alt="..."
-                            />
-                          </div>
-                          <div class="carousel-item">
-                            <img
-                              src="../../../../assets/images/suit/s3.jpg"
-                              class="d-block w-100"
-                              alt="..."
-                            />
-                          </div>
-                        </div>
-                        <button
-                          class="carousel-control-prev"
-                          type="button"
-                          data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="prev"
-                        >
-                          <span
-                            class="carousel-control-prev-icon"
-                            aria-hidden="true"
-                          ></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button
-                          class="carousel-control-next"
-                          type="button"
-                          data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="next"
-                        >
-                          <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                          ></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                          This is a wider card with supporting text below as a
-                          natural lead-in to additional content. This content is
-                          a little bit longer.
-                        </p>
-                        <p class="card-text">
-                          <small class="text-muted"
-                            >Last updated 3 mins ago</small
-                          >
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Decline
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary form"
-                  data-bs-dismiss="modal"
-                >
-                  Accept
-                </button>
-              </div>
-            </div>
-            <!-- END POPUP -->
-          </div>
-        </div>
+        <app-tailor-single-request
+          [order]="request"
+        ></app-tailor-single-request>
       </li>
     </ul>
   </div>
