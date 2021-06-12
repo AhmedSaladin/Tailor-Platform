@@ -17,6 +17,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
+import { HeaderComponent } from './components/home/header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tai
     LoginComponent,
     LandingComponent,
     TailorRequestsComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
