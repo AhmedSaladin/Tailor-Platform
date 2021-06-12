@@ -46,13 +46,14 @@ export class LoginComponent implements OnInit {
         (res)=>{
           if(res.status==200){
             //console.log(res)
-            console.log(res.body)
+            //console.log(res.body)
             this.uesr=res;
             if(this.uesr.body.length!=0){
               //console.log(this.uesr.body[0].password)
               if(this.uesr.body[0].password==this.password?.value){
                 this.correctPass=true;
-                console.log(this.correctPass)
+                console.log(this.correctPass);
+                this.router.navigateByUrl('/landing');
               }else{
                 this.correctPass=false;
               }
@@ -67,7 +68,9 @@ export class LoginComponent implements OnInit {
         err=>console.log(err)
       )
     }
-    this.router.navigateByUrl('/landing');
+    // if(this.correctPass){
+    //   this.router.navigateByUrl('/landing');
+    // }
     //console.log("jj")
   }
 
