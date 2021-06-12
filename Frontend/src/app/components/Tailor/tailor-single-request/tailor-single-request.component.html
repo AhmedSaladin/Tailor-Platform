@@ -1,0 +1,155 @@
+<div
+  class="modal fade"
+  id="aliModel"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <!-- START POPUP -->
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- template error -->
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="card mb-3">
+          <div class="row g-0">
+            <div class="col-md-7">
+              <div
+                id="carouselExampleIndicators"
+                class="carousel slide"
+                data-bs-ride="carousel"
+                style="height: 100% !important"
+              >
+                <div class="carousel-indicators">
+                  <!-- <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to="0"
+                  class="active"
+                  aria-current="true"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide-to="2"
+                  aria-label="Slide 3"
+                ></button> -->
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img
+                      src=""
+                      class="d-block w-100"
+                      style="min-height: 500px"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="card-body">
+                <h3 class="card-title">Customer Name: {{ user.name }}</h3>
+                <h5 class="card-title">Phone Number: {{ user.phone }}</h5>
+                <h5 class="card-title">Email: {{ user.email }}</h5>
+                <div class="row">
+                  <p>Customer Sizes</p>
+                  <div class="row">
+                    <div class="col-12 col-lg-6">
+                      <p class="card-text">
+                        Chest: {{ order.customer_sizes.chest }} CM
+                      </p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                      <p class="card-text">
+                        Shoulder:
+                        {{ order.customer_sizes.shoulder }} CM
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-lg-6">
+                      <p class="card-text">
+                        Inseam: {{ order.customer_sizes.inseam }} CM
+                      </p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                      <p class="card-text">
+                        Waist: {{ order.customer_sizes.waist }} CM
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12 col-lg-6">
+                      <p class="card-text">
+                        Height:{{ order.customer_sizes.hight }} CM
+                      </p>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                      <p class="card-text">
+                        Arm Length:
+                        {{ order.customer_sizes.armLength }} CM
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Decline
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary form"
+          data-bs-dismiss="modal"
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+    <!-- END POPUP -->
+  </div>
+</div>
