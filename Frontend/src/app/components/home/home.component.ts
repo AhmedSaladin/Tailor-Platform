@@ -28,15 +28,20 @@ export class HomeComponent implements OnInit {
       this.tempFilter = this.tailors.filter(
         (tailor: any) => tailor.designFor === e.target.value
       );
-      // this.filteredTailors.push(this.tempFilter); //temp array of object
+      this.filteredTailors.push(...this.tempFilter);
       this.selectedItems.push(e.target.id);
     } else {
-      this.selectedItems = this.selectedItems.filter(elm => elm != e.target.id)
+      this.selectedItems = this.selectedItems.filter(
+        (elm) => elm != e.target.id
+      );
+
+      this.filteredTailors = this.filteredTailors.filter(
+        (elm: any) => elm.designFor != e.target.value
+      );
     }
-    console.log(this.tempFilter);
-    // console.log(this.selectedItems)
   }
+
   isFiltered() {
-    return  !(this.selectedItems.length === 0);
+    return !(this.selectedItems.length === 0);
   }
 }

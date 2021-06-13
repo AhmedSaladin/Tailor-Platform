@@ -139,7 +139,7 @@
           <app-about-tailor *ngFor = "let tailor of tailors" [tailor] = "tailor"></app-about-tailor>
         </ng-container>
         <ng-template #filtered>
-          <app-about-tailor *ngFor = "let tailor of tempFilter" [tailor] = "tailor"></app-about-tailor>
+          <app-about-tailor *ngFor = "let tailor of filteredTailors" [tailor] = "tailor"></app-about-tailor>
         </ng-template>
       </div>
     </div>
