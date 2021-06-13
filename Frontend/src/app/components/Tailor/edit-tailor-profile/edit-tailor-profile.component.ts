@@ -14,6 +14,7 @@ export class EditTailorProfileComponent implements OnInit {
     this.information();
   }
   @Output() user: any = {
+    id: 2,
     name: 'kiki',
     designFor: 'male',
     about: '3la allah 7kaytk',
