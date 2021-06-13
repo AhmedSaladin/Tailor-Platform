@@ -6,8 +6,9 @@
       "email": "aali@ali.com",
       "phone": "01005551155",
       "password": "01005551155",
-      "gender": "Male",
+      "gender": "male",
       "isTailor": false,
+      "designFor": "male",
       "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI"
     },
     {
@@ -16,7 +17,7 @@
       "email": "ali@ali22.com",
       "password": "01005551155",
       "phone": "01005551155",
-      "gender": "Male",
+      "gender": "female",
       "isTailor": true,
       "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI",
       "gallary": [
@@ -26,7 +27,7 @@
         "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5a65a679-60e7-46be-92b9-4dd88bc46ebf/d2nf3c1-739756d8-b74e-4af2-93fd-904e17a40cf6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVhNjVhNjc5LTYwZTctNDZiZS05MmI5LTRkZDg4YmM0NmViZlwvZDJuZjNjMS03Mzk3NTZkOC1iNzRlLTRhZjItOTNmZC05MDRlMTdhNDBjZjYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gnJ5-cvhTVpvVfxYakt-Zueu-s7w14wJf6ABW4HAH3I"
       ],
       "about": "شغال اهو",
-      "designFor": "All"
+      "designFor": "female"
     },
     {
       "name": "Muhammad SabahAllah",
