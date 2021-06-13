@@ -45,15 +45,15 @@
 
                 <div class="list-group">
                   <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <input class="form-check-input me-1" type="checkbox" id="Spec1" value="male" (change) = "filterTailors($event)">
                     Men
                   </label>
                   <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <input class="form-check-input me-1" type="checkbox" id="Spec2" value="female" (change) = "filterTailors($event)">
                     Women
                   </label>
                   <label class="list-group-item">
-                    <input class="form-check-input me-1" type="checkbox" value="">
+                    <input class="form-check-input me-1" type="checkbox" id="Spec3" value="children"  (change) = "filterTailors($event)">
                     Children
                   </label>
                 </div>
@@ -135,7 +135,12 @@
       </div> <!-- / side bar -->
 
       <div class="col-12 col-lg-9">
+        <ng-container *ngIf = "!isFiltered(); else filtered">
           <app-about-tailor *ngFor = "let tailor of tailors" [tailor] = "tailor"></app-about-tailor>
+        </ng-container>
+        <ng-template #filtered>
+          <app-about-tailor *ngFor = "let tailor of tempFilter" [tailor] = "tailor"></app-about-tailor>
+        </ng-template>
       </div>
     </div>
   </div>
