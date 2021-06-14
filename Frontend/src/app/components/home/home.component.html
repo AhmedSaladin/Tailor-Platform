@@ -3,57 +3,87 @@
 
 <!-- tailor information -->
 <div class="container">
-    <div class="row">
-        <!-- side bar -->
-        <div class="col-12 col-lg-3 mt-5 m-auto mb-5 d-none d-lg-block order-lg-last">
-            <div class="accordion" id="accordionPanelsStayOpenExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+  <div class="row">
+    <!-- side bar -->
+    <div
+      class="col-12 col-lg-3 mt-5 m-auto mb-5 d-none d-lg-block order-lg-last"
+    >
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseOne"
+              aria-expanded="true"
+              aria-controls="panelsStayOpen-collapseOne"
+            >
               Specialization
             </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                        <div class="accordion-body">
-                            <div class="list-group">
-                                <label class="list-group-item">
+          </h2>
+          <div
+            id="panelsStayOpen-collapseOne"
+            class="accordion-collapse collapse show"
+            aria-labelledby="panelsStayOpen-headingOne"
+          >
+            <div class="accordion-body">
+              <div class="list-group">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
-                    value=""
+                    id="Spec1"
+                    value="male"
+                    (change)="filterTailors($event)"
                   />
                   Men
                 </label>
-                                <label class="list-group-item">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
-                    value=""
+                    id="Spec2"
+                    value="female"
+                    (change)="filterTailors($event)"
                   />
                   Women
                 </label>
-                                <label class="list-group-item">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
-                    value=""
+                    id="Spec3"
+                    value="children"
+                    (change)="filterTailors($event)"
                   />
                   Children
                 </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseTwo"
+              aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseTwo"
+            >
               Gender
             </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-                        <div class="accordion-body">
-                            <div class="list-group">
-                                <label class="list-group-item">
+          </h2>
+          <div
+            id="panelsStayOpen-collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingTwo"
+          >
+            <div class="accordion-body">
+              <div class="list-group">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
@@ -61,7 +91,7 @@
                   />
                   Male
                 </label>
-                                <label class="list-group-item">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
@@ -69,20 +99,31 @@
                   />
                   Female
                 </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button
+              class="accordion-button collapsed"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#panelsStayOpen-collapseThree"
+              aria-expanded="false"
+              aria-controls="panelsStayOpen-collapseThree"
+            >
               Rate
             </button>
-                    </h2>
-                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-                        <div class="accordion-body">
-                            <div class="list-group">
-                                <label class="list-group-item">
+          </h2>
+          <div
+            id="panelsStayOpen-collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="panelsStayOpen-headingThree"
+          >
+            <div class="accordion-body">
+              <div class="list-group">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
@@ -90,7 +131,7 @@
                   />
                   <i class="fas fa-star"></i>
                 </label>
-                                <label class="list-group-item">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
@@ -99,7 +140,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </label>
-                                <label class="list-group-item">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
@@ -109,18 +150,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </label>
-                                <label class="list-group-item">
-                  <input
-                    class="form-check-input me-1"
-                    type="checkbox"
-                    value=""
-                  />
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                </label>
-                                <label class="list-group-item rateFive">
+                <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
                     type="checkbox"
@@ -130,18 +160,40 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
+                </label>
+                <label class="list-group-item rateFive">
+                  <input
+                    class="form-check-input me-1"
+                    type="checkbox"
+                    value=""
+                  />
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                 </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <!-- / side bar -->
-
-        <div class="col-12 col-lg-9">
-            <app-about-tailor *ngFor="let tailor of tailors" [tailor]="tailor"></app-about-tailor>
-        </div>
+      </div>
     </div>
+    <!-- / side bar -->
+
+    <div class="col-12 col-lg-9">
+      <ng-container *ngIf="!isFiltered(); else filtered">
+        <app-about-tailor
+          *ngFor="let tailor of tailors"
+          [tailor]="tailor"
+        ></app-about-tailor>
+      </ng-container>
+      <ng-template #filtered>
+        <app-about-tailor
+          *ngFor="let tailor of filteredTailors"
+          [tailor]="tailor"
+        ></app-about-tailor>
+      </ng-template>
+    </div>
+  </div>
 </div>
