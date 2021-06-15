@@ -8,12 +8,20 @@ import { TailorService } from 'src/app/services/tailor.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private tailorService: TailorService) {}
-
+  constructor(
+    private tailorService: TailorService,
+    private MyActived: ActivatedRoute,
+    private router: Router
+  ) {}
+  tailors: any;
   ngOnInit(): void {
     this.tailorService.get_tailor_info_by_name('').subscribe(
-      () => {},
-      () => {}
+      (res) => {
+        this.tailors = res;
+      },
+      (err) => {
+        console.log(err);
+      }
     );
   }
 }
