@@ -63,9 +63,6 @@ export class RegistrationComponent implements OnInit {
     return this.formValidation.controls;
   }
 
-  onSubmit(){
-    console.log("hi");
-  }
 
 
       //Old way Validation
