@@ -19,6 +19,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
 import { HeaderComponent } from './components/home/header/header.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
+import { UcWidgetModule } from 'ngx-uploadcare-widget';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    UcWidgetModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
