@@ -10,5 +10,10 @@ import { TailorService } from 'src/app/services/tailor.service';
 export class HeaderComponent implements OnInit {
   constructor(private tailorService: TailorService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tailorService.get_tailor_info_by_name('').subscribe(
+      () => {},
+      () => {}
+    );
+  }
 }
