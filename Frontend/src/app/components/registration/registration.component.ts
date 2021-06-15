@@ -101,12 +101,12 @@ export class RegistrationComponent implements OnInit {
   //   }
 
   AddCustomer(fname: any, lname: any, email: any, password: any) {
-    // if (
-    //   this.formValidation.controls.fname.valid &&
-    //   this.formValidation.controls.lname.valid &&
-    //   this.formValidation.controls.email.valid &&
-    //   this.formValidation.controls.password.valid
-    // ) {
+    if (
+      this.formValidation.controls.fname.valid &&
+      this.formValidation.controls.lname.valid &&
+      this.formValidation.controls.email.valid &&
+      this.formValidation.controls.password.valid
+    ) {
       let customer = {
         name: fname + ' ' + lname,
         // lname: lname,
@@ -116,8 +116,8 @@ export class RegistrationComponent implements OnInit {
       };
       this.myCustomer.AddNewCustomer(customer).subscribe();
       this.router.navigateByUrl('login');
-    // } else {
-    //   alert('Enter Valid Data');
-    // }
+    } else {
+      alert('Enter Valid Data');
+    }
   }
 }
