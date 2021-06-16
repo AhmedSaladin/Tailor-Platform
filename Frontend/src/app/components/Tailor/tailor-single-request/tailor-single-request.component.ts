@@ -25,7 +25,6 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
     this.eve = this.customer_api.getCustomerInfoByID(id).subscribe(
       (response: any) => {
         this.user = response;
-        console.log(response);
       },
       (err) => {
         console.error(err);

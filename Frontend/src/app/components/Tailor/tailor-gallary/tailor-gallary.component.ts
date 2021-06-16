@@ -7,7 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TailorGallaryComponent implements OnInit {
   @Input() user_info: any;
-  constructor() {}
+  images: any;
+  constructor() {
 
-  ngOnInit(): void {}
+  }
+
+  ngOnInit(): void {
+  }
 }
