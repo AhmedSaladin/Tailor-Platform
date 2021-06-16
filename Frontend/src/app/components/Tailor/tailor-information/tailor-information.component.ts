@@ -43,8 +43,4 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.eve.unsubscribe();
   }
-  clearUploads(ddd:any) {
-    console.log(ddd.done());
-    
-  }
 }
