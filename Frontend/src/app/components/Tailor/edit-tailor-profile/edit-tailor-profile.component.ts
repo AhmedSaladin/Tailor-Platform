@@ -28,7 +28,6 @@ export class EditTailorProfileComponent implements OnInit {
   information() {
     this.api.get_tailor_info(2).subscribe(
       (res) => {
-        console.log(res);
         this.user = res.body;
       },
       (err) => {

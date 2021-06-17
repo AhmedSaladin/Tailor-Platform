@@ -1,6 +1,6 @@
 <div
   class="modal fade"
-  id="order{{ order.id }}"
+  id="order{{ order.id }}Model"
   tabindex="-1"
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
@@ -9,7 +9,6 @@
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- template error -->
         <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button
           type="button"
@@ -28,35 +27,13 @@
                 data-bs-ride="carousel"
                 style="height: 100% !important"
               >
-                <div class="carousel-indicators">
-                  <!-- <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="0"
-                  class="active"
-                  aria-current="true"
-                  aria-label="Slide 1"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="1"
-                  aria-label="Slide 2"
-                ></button>
-                <button
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide-to="2"
-                  aria-label="Slide 3"
-                ></button> -->
-                </div>
+                <div class="carousel-indicators"></div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src=""
+                      src="{{ current_image }}"
                       class="d-block w-100"
                       style="min-height: 500px"
-                      alt="..."
                     />
                   </div>
                 </div>
@@ -65,6 +42,7 @@
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="prev"
+                  (click)="last_img()"
                 >
                   <span
                     class="carousel-control-prev-icon"
@@ -77,6 +55,7 @@
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="next"
+                  (click)="next_img()"
                 >
                   <span
                     class="carousel-control-next-icon"
@@ -89,10 +68,8 @@
             <div class="col-md-5">
               <div class="card-body">
                 <h3 class="card-title">Customer Name: {{ user.name }}</h3>
-                <h5 class="card-title">Phone Number: {{ user.phone }}</h5>
-                <h5 class="card-title">Email: {{ user.email }}</h5>
                 <div class="row">
-                  <p>Customer Sizes</p>
+                  <h5>Customer Sizes</h5>
                   <div class="row">
                     <div class="col-12 col-lg-6">
                       <p class="card-text">

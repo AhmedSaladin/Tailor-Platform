@@ -62,7 +62,7 @@ export class RegistrationComponent implements OnInit {
         IsTailor: false,
       };
       this.myCustomer.AddNewCustomer(customer).subscribe();
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('login');
     } else {
       alert('Enter Valid Data');
     }

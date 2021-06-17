@@ -6,8 +6,9 @@
       "email": "aali@ali.com",
       "phone": "01005551155",
       "password": "01005551155",
-      "gender": "Male",
+      "gender": "male",
       "isTailor": false,
+      "designFor": "male",
       "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI"
     },
     {
@@ -16,17 +17,27 @@
       "email": "ali@ali22.com",
       "password": "01005551155",
       "phone": "01005551155",
-      "gender": "Male",
+      "gender": "female",
       "isTailor": true,
-      "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI",
       "gallary": [
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/b27d5e01-c84c-4725-bf23-ceca0a4a796f/deg90ek-1950759d-e191-40b2-8bfe-19f67cb1b932.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2IyN2Q1ZTAxLWM4NGMtNDcyNS1iZjIzLWNlY2EwYTRhNzk2ZlwvZGVnOTBlay0xOTUwNzU5ZC1lMTkxLTQwYjItOGJmZS0xOWY2N2NiMWI5MzIuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.PV3kKcczfFFD7OwmiwEqCwn1aXNjYFfrpEKVByB6sXM",
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5a65a679-60e7-46be-92b9-4dd88bc46ebf/d325lhw-fca12cd7-f02a-4fcc-bb29-8b3f811dd326.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVhNjVhNjc5LTYwZTctNDZiZS05MmI5LTRkZDg4YmM0NmViZlwvZDMyNWxody1mY2ExMmNkNy1mMDJhLTRmY2MtYmIyOS04YjNmODExZGQzMjYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.io3Nc--OtxS9TRxwQGhtb52QXjUn2KiH-acivlCGDoo",
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5a65a679-60e7-46be-92b9-4dd88bc46ebf/d4ctpl0-61e16076-e57b-40a7-b702-58ca6e2e69e2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVhNjVhNjc5LTYwZTctNDZiZS05MmI5LTRkZDg4YmM0NmViZlwvZDRjdHBsMC02MWUxNjA3Ni1lNTdiLTQwYTctYjcwMi01OGNhNmUyZTY5ZTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.zdDyTpFIxEN3-P2cV1YOHn3ndfLd25Oo6HetGJdlyYk",
-        "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5a65a679-60e7-46be-92b9-4dd88bc46ebf/d2nf3c1-739756d8-b74e-4af2-93fd-904e17a40cf6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzVhNjVhNjc5LTYwZTctNDZiZS05MmI5LTRkZDg4YmM0NmViZlwvZDJuZjNjMS03Mzk3NTZkOC1iNzRlLTRhZjItOTNmZC05MDRlMTdhNDBjZjYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gnJ5-cvhTVpvVfxYakt-Zueu-s7w14wJf6ABW4HAH3I"
+        "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+        "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+        "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1267&q=80",
+        "https://images.unsplash.com/photo-1542060748-10c28b62716f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2xvdGhlc3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=564&q=80",
+        "https://images.unsplash.com/photo-1540221652346-e5dd6b50f3e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1349&q=80",
+        "https://images.unsplash.com/photo-1467043237213-65f2da53396f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=649&q=80",
+        "https://ucarecdn.com/941b8cfb-209d-4715-96b5-99dbc0e505b6~5/nth/0/",
+        "https://ucarecdn.com/941b8cfb-209d-4715-96b5-99dbc0e505b6~5/nth/1/",
+        "https://ucarecdn.com/941b8cfb-209d-4715-96b5-99dbc0e505b6~5/nth/2/",
+        "https://ucarecdn.com/941b8cfb-209d-4715-96b5-99dbc0e505b6~5/nth/3/",
+        "https://ucarecdn.com/941b8cfb-209d-4715-96b5-99dbc0e505b6~5/nth/4/",
+        "https://ucarecdn.com/f727300f-dc47-4ff2-aa32-790d552fe433~1/nth/0/"
       ],
-      "about": "ay ha7ga w5las ya3nydddddd",
-      "designFor": "All"
+      "about": "شغال اهو",
+      "designFor": "All",
+      "avatar": "https://ucarecdn.com/1d234ac7-ec4f-4816-8633-4f500ba58325/"
     },
     {
       "name": "Muhammad SabahAllah",
@@ -63,7 +74,8 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "request": true
+      "request": "pending",
+      "rate": 1
     },
     {
       "id": 2,
@@ -86,5 +98,5 @@
       "request": true
     }
   ],
-  "rates": []
+  "comment": [{ "rate": 4, "body": "he is a talented tailor" }]
 }
