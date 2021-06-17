@@ -9,7 +9,6 @@
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
-        <!-- template error -->
         <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button
           type="button"
@@ -32,10 +31,9 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src=""
+                      src="{{ current_image }}"
                       class="d-block w-100"
                       style="min-height: 500px"
-                      alt="..."
                     />
                   </div>
                 </div>
@@ -44,6 +42,7 @@
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="prev"
+                  (click)="last_img()"
                 >
                   <span
                     class="carousel-control-prev-icon"
@@ -56,6 +55,7 @@
                   type="button"
                   data-bs-target="#carouselExampleIndicators"
                   data-bs-slide="next"
+                  (click)="next_img()"
                 >
                   <span
                     class="carousel-control-next-icon"
@@ -68,8 +68,6 @@
             <div class="col-md-5">
               <div class="card-body">
                 <h3 class="card-title">Customer Name: {{ user.name }}</h3>
-                <h5 class="card-title">Phone Number: {{ user.phone }}</h5>
-                <h5 class="card-title">Email: {{ user.email }}</h5>
                 <div class="row">
                   <h5>Customer Sizes</h5>
                   <div class="row">

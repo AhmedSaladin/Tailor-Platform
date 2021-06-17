@@ -35,10 +35,10 @@
             <div class="modal-body text-center">
               <img src="{{ img }}" class="profile-img img-pop" />
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="justify-content: flex-start !important;">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-secondary  justify-content-start"
                 data-bs-dismiss="modal"
                 (click)="not_saving_tailor_avatar()"
               >
@@ -46,7 +46,7 @@
               </button>
               <button
                 type="button"
-                class="btn btn-primary flex-end"
+                class="btn btn-primary d-flex justify-content-start"
                 data-bs-dismiss="modal"
                 (click)="save_new_tailor_avatar()"
               >
@@ -55,8 +55,8 @@
               <ngx-uploadcare-widget
                 public-key="d2eaba00baf97d93aeb1"
                 (on-upload-complete)="on_upload_complete($event)"
-                upll
                 crop="free"
+                class="d-flex justify-content-end"
                 [images-only]="true"
                 input-accept-types="image/*"
                 tabs="file camera url gphotos instagram facebook"

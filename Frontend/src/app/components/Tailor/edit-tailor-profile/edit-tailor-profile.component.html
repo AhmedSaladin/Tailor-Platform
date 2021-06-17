@@ -9,7 +9,10 @@
           [img]="user.avatar"
         ></app-tailor-information>
         <app-tailor-about [user_info]="user"></app-tailor-about>
-        <app-tailor-gallary [user_info]="user"></app-tailor-gallary>
+        <app-tailor-gallary
+          [user_info]="user"
+          [gallery]="user.gallary"
+        ></app-tailor-gallary>
         <app-tailor-rate></app-tailor-rate>
       </div>
       <!--  -->
