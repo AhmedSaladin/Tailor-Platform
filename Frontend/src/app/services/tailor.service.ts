@@ -10,6 +10,9 @@ export class TailorService {
   get_tailors_info() {
     return this.http.get(this.url, { observe: 'response' });
   }
+  get_tailors_info_filter(filter: any) {
+    return this.http.get(`${this.url}?${filter}`, { observe: 'response' });
+  }
   get_tailor_info(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }
@@ -20,11 +23,13 @@ export class TailorService {
     return this.http.get(`${this.url}/?email=${email}`, {
       observe: 'response',
     });
+
   }
   get_tailor_info_by_name(name: any) {
     return this.http.get(`${this.url}/?name=${name}`, {
       observe: 'response',
     });
+
   }
   get_tailor_info_by_designFor(designFor: any) {
     if (designFor == 'all') {

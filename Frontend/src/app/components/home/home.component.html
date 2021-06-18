@@ -32,9 +32,10 @@
                 <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
-                    type="checkbox"
+                    type="radio"
                     id="Spec1"
-                    value="male"
+                    name="designFor"
+                    value="Male"
                     (change)="filterTailors($event)"
                   />
                   Men
@@ -42,9 +43,10 @@
                 <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
-                    type="checkbox"
+                    type="radio"
                     id="Spec2"
-                    value="female"
+                    name="designFor"
+                    value="Female"
                     (change)="filterTailors($event)"
                   />
                   Women
@@ -52,12 +54,13 @@
                 <label class="list-group-item">
                   <input
                     class="form-check-input me-1"
-                    type="checkbox"
+                    type="radio"
                     id="Spec3"
-                    value="children"
+                    name="designFor"
+                    value="All"
                     (change)="filterTailors($event)"
                   />
-                  Children
+                  Both
                 </label>
               </div>
             </div>
@@ -182,18 +185,6 @@
     <!-- / side bar -->
 
     <div class="col-12 col-lg-9">
-      <ng-container *ngIf="!isFiltered(); else filtered">
-        <app-about-tailor
-          *ngFor="let tailor of tailors"
-          [tailor]="tailor"
-        ></app-about-tailor>
-      </ng-container>
-      <ng-template #filtered>
-        <app-about-tailor
-          *ngFor="let tailor of filteredTailors"
-          [tailor]="tailor"
-        ></app-about-tailor>
-      </ng-template>
     </div>
   </div>
 </div>
