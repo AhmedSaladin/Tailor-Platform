@@ -11,14 +11,16 @@ import { TailorAboutComponent } from './components/Tailor/tailor-about/tailor-ab
 import { TailorGallaryComponent } from './components/Tailor/tailor-gallary/tailor-gallary.component';
 import { TailorRateComponent } from './components/Tailor/tailor-rate/tailor-rate.component';
 import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/home/header/header.component';
 import { AboutTailorComponent } from './components/home/about-tailor/about-tailor.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
-import { HeaderComponent } from './components/home/header/header.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
+import { UcWidgetModule } from 'ngx-uploadcare-widget';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-
     TailorGallaryComponent,
     TailorRateComponent,
     HomeComponent,
+    HeaderComponent,
     AboutTailorComponent,
     RegistrationComponent,
     LoginComponent,
@@ -44,6 +47,7 @@ import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    UcWidgetModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

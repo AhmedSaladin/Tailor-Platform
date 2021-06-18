@@ -21,32 +21,47 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Profile Picture
+              </h5>
               <button
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                (click)="not_saving_tailor_avatar()"
               ></button>
             </div>
             <div class="modal-body text-center">
-              <img src="{{ user_info.avatar }}" class="profile-img img-pop" />
+              <img src="{{ img }}" class="profile-img img-pop" />
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="justify-content: flex-start !important;">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn btn-secondary  justify-content-start"
                 data-bs-dismiss="modal"
+                (click)="not_saving_tailor_avatar()"
               >
                 Close
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                class="btn btn-primary d-flex justify-content-start"
                 data-bs-dismiss="modal"
+                (click)="save_new_tailor_avatar()"
               >
                 Save
               </button>
+              <ngx-uploadcare-widget
+                public-key="d2eaba00baf97d93aeb1"
+                (on-upload-complete)="on_upload_complete($event)"
+                crop="free"
+                class="d-flex justify-content-end"
+                [images-only]="true"
+                input-accept-types="image/*"
+                tabs="file camera url gphotos instagram facebook"
+              >
+              </ngx-uploadcare-widget>
               <!-- upload button needed and third-party-api -->
             </div>
           </div>
@@ -131,7 +146,7 @@
                 <button
                   type="button"
                   class="btn btn-primary form"
-                  (click)="update_tailor_name(form)"
+                  (click)="update_tailor_info(form)"
                   data-bs-dismiss="modal"
                 >
                   Save changes
