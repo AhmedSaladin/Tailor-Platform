@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TailorService } from 'src/app/services/tailor.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   LoginForm: any;
   correctPass=true;
 
-  constructor(private tailorService:TailorService,private MyActiveed:ActivatedRoute,private router:Router) { }
+  constructor(private authServ:AuthService,private MyActiveed:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     this.LoginForm=new FormGroup({
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
     if(this.LoginForm.valid){
       console.log(this.email?.value)
-      this.tailorService.get_tailor_info_by_email(this.email?.value).subscribe(
+      this.authServ.loginByEmail(this.email?.value).subscribe(
         (res)=>{
           if(res.status==200){
             //console.log(res)
