@@ -37,7 +37,7 @@
       ],
       "about": "شغال اهو",
       "designFor": "All",
-      "avatar": "https://ucarecdn.com/1d234ac7-ec4f-4816-8633-4f500ba58325/"
+      "avatar": "https://ucarecdn.com/17d8fcfd-7ba5-43ce-8e65-506910d1ff49/"
     },
     {
       "name": "Muhammad SabahAllah",
@@ -98,5 +98,10 @@
       "request": true
     }
   ],
-  "comment": [{ "rate": 4, "body": "he is a talented tailor" }]
+  "comment": [
+    {
+      "rate": 4,
+      "body": "he is a talented tailor"
+    }
+  ]
 }
