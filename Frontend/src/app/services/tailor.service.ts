@@ -23,13 +23,11 @@ export class TailorService {
     return this.http.get(`${this.url}/?email=${email}`, {
       observe: 'response',
     });
-
   }
   get_tailor_info_by_name(name: any) {
     return this.http.get(`${this.url}/?name=${name}`, {
       observe: 'response',
     });
-
   }
   get_tailor_info_by_designFor(designFor: any) {
     if (designFor == 'all') {
