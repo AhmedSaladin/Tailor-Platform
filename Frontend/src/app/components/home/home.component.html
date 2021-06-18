@@ -185,6 +185,12 @@
     <!-- / side bar -->
 
     <div class="col-12 col-lg-9">
+      <ng-container >
+        <app-about-tailor
+          *ngFor="let tailor of tailors"
+          [tailor]="tailor"
+        ></app-about-tailor>
+      </ng-container>
     </div>
   </div>
 </div>

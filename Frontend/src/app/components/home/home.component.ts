@@ -21,12 +21,12 @@ export class HomeComponent implements OnInit {
       (err) => {
         console.log(err);
       }
-      );
-    }
+    );
+  }
 
   filterTailors(e: any) {
-    if(e.target.checked){
-      let filter = e.target.value
+    if (e.target.checked) {
+      let filter = e.target.value;
       this.tailorInfo.get_tailors_info_filter(`designFor=${filter}`).subscribe(
         (res) => {
           this.tailors = res.body;
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
         (err) => {
           console.log(err);
         }
-      )
+      );
     }
 
     // if (e.target.checked) {
@@ -53,9 +53,6 @@ export class HomeComponent implements OnInit {
     //   );
     // }
   }
-    );
-  }
-
 
   isFiltered() {
     return !(this.selectedItems.length === 0);
