@@ -1,5 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { TailorService } from 'src/app/services/tailor.service';
   styleUrls: ['./tailor-information.component.css'],
 })
 export class TailorInformationComponent implements OnInit, OnDestroy {
+  @ViewChild('upload_component') upload_component!: UcWidgetComponent;
   @Input() user_info: any;
   @Input() img: any;
   eve: any;
@@ -22,22 +24,21 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {}
-
   on_upload_complete(event: any) {
     this.img = event.cdnUrl;
-    console.log(event);
-    event = null;
   }
-
+ 
   save_new_tailor_avatar() {
     this.user_info.avatar = this.img;
     this.eve = this.api
       .update_tailor_info(this.user_info.id, this.user_info)
       .subscribe();
+    this.upload_component.clearUploads();
   }
 
   not_saving_tailor_avatar() {
     if (this.img != this.user_info.avatar) this.img = this.user_info.avatar;
+    this.upload_component.clearUploads();
   }
 
   ngOnDestroy(): void {
