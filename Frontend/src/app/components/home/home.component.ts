@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private tailorInfo: TailorService) {}
   tailors: any;
   selectedItems: string[] = new Array();
+
   ngOnInit(): void {
     this.tailorInfo.get_tailors_info().subscribe(
       (res) => {
@@ -25,20 +26,32 @@ export class HomeComponent implements OnInit {
 
   filterTailors(e: any) {
     if (e.target.checked) {
-      this.tempFilter = this.tailors.filter(
-        (tailor: any) => tailor.designFor === e.target.value
-      );
-      this.filteredTailors.push(...this.tempFilter);
-      this.selectedItems.push(e.target.id);
-    } else {
-      this.selectedItems = this.selectedItems.filter(
-        (elm) => elm != e.target.id
-      );
-
-      this.filteredTailors = this.filteredTailors.filter(
-        (elm: any) => elm.designFor != e.target.value
+      let filter = e.target.value;
+      this.tailorInfo.get_tailors_info_filter(`designFor=${filter}`).subscribe(
+        (res) => {
+          this.tailors = res.body;
+        },
+        (err) => {
+          console.log(err);
+        }
       );
     }
+
+    // if (e.target.checked) {
+    //   this.tempFilter = this.tailors.filter(
+    //     (tailor: any) => tailor.designFor === e.target.value
+    //   );
+    //   this.filteredTailors.push(...this.tempFilter);
+    //   this.selectedItems.push(e.target.id);
+    // } else {
+    //   this.selectedItems = this.selectedItems.filter(
+    //     (elm) => elm != e.target.id
+    //   );
+
+    //   this.filteredTailors = this.filteredTailors.filter(
+    //     (elm: any) => elm.designFor != e.target.value
+    //   );
+    // }
   }
 
   isFiltered() {
