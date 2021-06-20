@@ -1,0 +1,13 @@
+/* apply some styles on single request */
+
+.card-body{
+    background-color: snow;
+}
+
+table, td {
+    padding: 5px;
+  }
+  
+ 
+
+  
