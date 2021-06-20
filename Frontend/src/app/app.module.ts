@@ -21,6 +21,7 @@ import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tai
 import { HeaderComponent } from './components/home/header/header.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { UcWidgetModule } from 'ngx-uploadcare-widget';
     TailorRequestsComponent,
     HeaderComponent,
     TailorSingleRequestComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
