@@ -13,8 +13,9 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   imags: any;
   count: any = 0;
   current_image: any;
-  constructor(private customer_api: CustomerService) {}
-
+  constructor(private customer_api: CustomerService) {
+  }
+  
   ngOnInit(): void {
     this.get_customer_details(this.order.customer_id);
     this.imags = this.order.design;
@@ -42,6 +43,5 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
     this.current_image = this.imags[this.count];
   }
   ngOnDestroy(): void {
-    this.eve.unsubscribe();
-  }
+    if (this.eve != undefined) this.eve.unsubscribe();  }
 }
