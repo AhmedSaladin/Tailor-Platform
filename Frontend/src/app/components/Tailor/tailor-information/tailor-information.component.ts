@@ -27,7 +27,7 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   on_upload_complete(event: any) {
     this.img = event.cdnUrl;
   }
- 
+
   save_new_tailor_avatar() {
     this.user_info.avatar = this.img;
     this.eve = this.api
@@ -42,6 +42,6 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.eve.unsubscribe();
+    if (this.eve != undefined) this.eve.unsubscribe();
   }
 }

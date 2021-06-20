@@ -1,5 +1,6 @@
-import { Output } from '@angular/core';
+import { OnDestroy, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
@@ -7,26 +8,17 @@ import { TailorService } from 'src/app/services/tailor.service';
   templateUrl: './edit-tailor-profile.component.html',
   styleUrls: ['./edit-tailor-profile.component.css'],
 })
-export class EditTailorProfileComponent implements OnInit {
-  constructor(private api: TailorService) {}
-
-  ngOnInit(): void {
-    this.information();
+export class EditTailorProfileComponent implements OnInit, OnDestroy {
+  eve: any;
+  constructor(private api: TailorService, private id: ActivatedRoute) {
+    this.information(id.snapshot.params.id);
   }
-  @Output() user: any = {
-    id: 2,
-    name: 'kiki',
-    designFor: 'male',
-    about: '3la allah 7kaytk',
-    avatar: 'assets/images/tailor1.jpg',
-    gallary: [
-      'assets/images/services1.jpeg',
-      'assets/images/services2.jpeg',
-      'assets/images/services3.jpeg',
-    ],
-  };
-  information() {
-    this.api.get_tailor_info(2).subscribe(
+
+  ngOnInit(): void {}
+  @Output() user: any;
+
+  information(id: string) {
+    this.eve = this.api.get_tailor_info(id).subscribe(
       (res) => {
         this.user = res.body;
       },
@@ -34,5 +26,9 @@ export class EditTailorProfileComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    if (this.eve != undefined) this.eve.unsubscribe();
   }
 }
