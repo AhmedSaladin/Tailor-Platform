@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
   constructor(private tailorInfo: TailorService) {}
   tailors: any;
   selectedItems: string[] = new Array();
-
+  desginFor:any;
+  gender:any;
+  
   ngOnInit(): void {
     this.tailorInfo.get_tailors_info().subscribe(
       (res) => {
@@ -53,9 +55,5 @@ export class HomeComponent implements OnInit {
     //     (elm: any) => elm.designFor != e.target.value
     //   );
     // }
-  }
-
-  isFiltered() {
-    return !(this.selectedItems.length === 0);
   }
 }
