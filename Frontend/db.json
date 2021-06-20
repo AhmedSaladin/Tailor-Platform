@@ -110,7 +110,8 @@
         "armLength": 73.5,
         "waist": 99,
         "hight": 180,
-        "inseam": 85
+        "inseam": 85,
+        "shoulder": 60
       },
       "design": [
         "assets/images/suit/s2.jpg",
