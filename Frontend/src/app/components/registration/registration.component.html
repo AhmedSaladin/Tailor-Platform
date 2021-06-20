@@ -1,7 +1,6 @@
 <div class="container">
   <div
-    class="card m-auto col-lg-5 col-md-10 col-11"
-    style="margin-top: 100px !important; border-radius: 30px"
+    class="card m-auto col-lg-5 col-md-10 col-11 pt-2 px-3 shadow mt-5"
   >
     <div class="row-registration">
       <div class="row g-0">
@@ -10,7 +9,7 @@
         </div> -->
         <div class="col-md-10 m-auto p-2">
           <div class="card-body">
-            <h3 class="card-title"><b>Sign Up</b></h3>
+            <h3 class="card-title mb-5"><b>Sign Up</b></h3>
             <form class="signUpForm" [formGroup]="formValidation" novalidate>
               <div class="form-row">
                 <div class="mb-3">
@@ -115,7 +114,7 @@
             </div> -->
               <button
                 type="submit"
-                class="btnSignUp btn btn-dark no-box-shadow"
+                class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
                 (click)="
                   AddCustomer(
                     fname.value,

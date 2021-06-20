@@ -1,7 +1,6 @@
-.row-registration {
+.row-registration ,.card{
     background-color: white;
-    box-shadow: 10px 10px 20px gray;
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 /* .img1 {
