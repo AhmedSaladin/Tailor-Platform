@@ -14,17 +14,17 @@ export class HeaderComponent implements OnInit {
     private MyActived: ActivatedRoute,
     private router: Router
   ) {
-    this.name = MyActived.snapshot.params.user;
+    // this.name = MyActived.snapshot.params.user;
   }
   tailors: any;
   ngOnInit(): void {
-    this.tailorService.get_tailor_info_by_name(this.name).subscribe(
+    /*this.tailorService.get_tailor_info_by_name(this.name).subscribe(
       (res) => {
         this.tailors = res.body;
       },
       (err) => {
         console.log(err);
       }
-    );
+    );*/
   }
 }
