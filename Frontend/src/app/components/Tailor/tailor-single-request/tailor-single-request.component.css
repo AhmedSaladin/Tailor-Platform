@@ -1,5 +1,4 @@
 /* apply some styles on single request */
-
 .card {
     border: none;
 }
@@ -16,6 +15,11 @@
 table, td {
     padding: 5px;
   }
+
+table, td {
+    padding: 5px;
+  }
+  
  
 
   
