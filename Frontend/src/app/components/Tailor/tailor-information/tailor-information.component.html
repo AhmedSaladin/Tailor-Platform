@@ -1,10 +1,10 @@
 <div class="card col-12 profile">
   <div class="card-body row">
     <!-- start image section -->
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2 text-center">
       <img
         src="{{ user_info.avatar }}"
-        class="profile-img"
+        class="profile-img img-fluid"
         data-bs-target="#staticBackdrop"
         data-bs-toggle="modal"
       />
@@ -161,13 +161,13 @@
       <div class="profile-info-name d-inline">{{ user_info.name }}</div>
       <div class="profile-info-i">Designing for: {{ user_info.designFor }}</div>
       <div class="profile-info-rate">
-        <span>Rate:</span>
+        <span>Rate: </span>
         <span>
           <i class="fas fa-star"></i><i class="fas fa-star"></i
           ><i class="fas fa-star"></i><i class="fas fa-star"></i
           ><i class="fas fa-star"></i>
-        </span>
-        <span> total review is 200 user </span>
+        </span> <br>
+        <span> Total Reviews: 200 </span>
       </div>
     </div>
     <!-- end info section -->

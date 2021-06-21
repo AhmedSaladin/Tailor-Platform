@@ -1,13 +1,21 @@
 /* apply some styles on single request */
 
+.card {
+    border: none;
+}
+
 .card-body{
     background-color: snow;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: bold;
 }
 
 table, td {
     padding: 5px;
   }
-  
  
 
   
