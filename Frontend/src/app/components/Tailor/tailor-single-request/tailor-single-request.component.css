@@ -16,10 +16,14 @@ table, td {
     padding: 5px;
   }
 
-table, td {
-    padding: 5px;
-  }
   
- 
+  .tableBody td {
+    text-align: center;
+  }
+
+  .tableBody td:nth-child(1) {
+    width: 50%;
+  }
+
 
   

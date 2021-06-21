@@ -22,6 +22,9 @@
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-md-6">
+              
+              <!-- Start Carousel  -->
+
               <div
                 id="carouselExampleIndicators"
                 class="carousel slide"
@@ -65,53 +68,62 @@
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
+
+              <!-- End Carousel  -->
             </div>
             <div class="col-1"></div>
             <div class="col-md-4">
               <h3 class="card-title mt-2 col-12">
                 Customer Name: {{ user.name }}
               </h3>
+
+              <!-- Start Customer Sizes Table  -->
+
               <table class="table table-sm table-bordered w-100 mt-3">
                 <thead>
                   <tr>
                     <th class="px-3 py-3 text-center" colspan="6">
-                      Customer Sizes
+                      Customer Sizes (CM)
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody class="tableBody">
                   <tr>
                     <td>Chest</td>
-                    <td colspan="">{{ order.customer_sizes.chest }}</td>
-                    <td>CM</td>
+                    <td colspan="2">{{ order.customer_sizes.chest }}</td>
+                    <!-- <td>CM</td> -->
                   </tr>
                   <tr>
                     <td>Shoulder</td>
-                    <td colspan="">{{ order.customer_sizes.shoulder }}</td>
-                    <td>CM</td>
+                    <td colspan="2">{{ order.customer_sizes.shoulder }}</td>
+                    <!-- <td>CM</td> -->
                   </tr>
                   <tr>
                     <td>Inseam</td>
-                    <td colspan="">{{ order.customer_sizes.inseam }}</td>
-                    <td>CM</td>
+                    <td colspan="2">{{ order.customer_sizes.inseam }}</td>
+                    <!-- <td>CM</td> -->
                   </tr>
                   <tr>
                     <td>Waist</td>
-                    <td colspan="">{{ order.customer_sizes.waist }}</td>
-                    <td>CM</td>
+                    <td colspan="2">{{ order.customer_sizes.waist }}</td>
+                    <!-- <td>CM</td> -->
                   </tr>
                   <tr>
                     <td>Height</td>
-                    <td colspan="">{{ order.customer_sizes.hight }}</td>
-                    <td>CM</td>
+                    <td colspan="2">{{ order.customer_sizes.hight }}</td>
+                    <!-- <td>CM</td> -->
                   </tr>
                   <tr>
                     <td>Arm Length</td>
-                    <td colspan="">{{ order.customer_sizes.armLength }}</td>
-                    <td>CM</td>
+                    <td colspan="2">{{ order.customer_sizes.armLength }}</td>
+                    <!-- <td>CM</td> -->
                   </tr>
                 </tbody>
               </table>
+
+              <!-- End Customer Sizes Table  -->
+
+              <!-- div for Page division -->
               <div class="col-1"></div>
             </div>
           </div>
