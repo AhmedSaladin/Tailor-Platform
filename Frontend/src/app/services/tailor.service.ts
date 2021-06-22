@@ -11,6 +11,7 @@ export class TailorService {
     return this.http.get(this.url, { observe: 'response' });
   }
   get_tailors_info_filter(filter: any) {
+    console.log(filter);
     return this.http.get(`${this.url}?${filter}`, { observe: 'response' });
   }
   get_tailor_info(id: any) {
