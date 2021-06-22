@@ -24,3 +24,9 @@
   width: 15em;
   height: 15em;
 }
+.carousel-control-prev-icon{
+  background-color: #919191;
+}
+.carousel-control-next-icon{
+  background-color: #919191;
+}
