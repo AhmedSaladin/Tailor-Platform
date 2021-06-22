@@ -1,20 +1,22 @@
 <div class="side-bar">
-  <div class="card">
+  <div class="card mb-3">
     <div class="card-header">Clients Requests</div>
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let request of requests">
         <span>{{ request.customer_name }} </span>
         <button
-          class="btn btn-primary float-end"
+          class="btn btn-primary float-end btn-sm"
           data-bs-toggle="modal"
           attr.data-bs-target="#order{{ request.id }}Model"
         >
-          view
+          View
         </button>
         <app-tailor-single-request
           [order]="request"
         ></app-tailor-single-request>
       </li>
     </ul>
+    <div class="card-footer">
+    </div>
   </div>
 </div>

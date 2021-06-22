@@ -1,5 +1,7 @@
 .card {
   margin-bottom: 1em;
+  border-radius: 15px;
+
 }
 
 .fa-star {
@@ -13,7 +15,8 @@
 
 .rate-head {
   text-align: left;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
+  font-weight: bold;
   margin-left: 1em;
   padding-bottom: 1em;
 }

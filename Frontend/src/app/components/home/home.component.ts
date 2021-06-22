@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
   filterTailors(e: any) {
     if (e.target.checked) {
       let filter = e.target.value;
-      this.tailorInfo.get_tailors_info_filter(`designFor=${filter}`).subscribe(
+      const def = { designFor: 'All', gender: 'Male', rate: '5' };
+      this.tailorInfo.get_tailors_info_filter(`designFor=${filter}&gender`).subscribe(
         (res) => {
           this.tailors = res.body;
         },

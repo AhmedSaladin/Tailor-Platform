@@ -1,7 +1,6 @@
-.row-registration {
+.row-registration ,.card{
     background-color: white;
-    box-shadow: 10px 10px 20px gray;
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 /* .img1 {
@@ -11,16 +10,42 @@
     border-bottom-left-radius: 30px;
 } */
 
-.btn1 {
-    border: none;
-    outline: none;
-    width: 100%;
+
+/* apply some styles on SignUp button */
+
+.btnSignUp{
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.btnSignUp:hover{
+  background-color: white;
+  color: black;
+  border: 2px solid;
 }
 
-/* .checkValid {
-  color: blue;
-  font-size: small;
-} */
+/* change border color to red when invalid */
+
+input.ng-invalid.ng-touched {
+  border: 1.5px solid red;
+}
+
+/* change border color to green when invalid */
+
+input.ng-valid.ng-touched {
+  border: 1.5px solid green;
+}
+
+/* remove default input border shadow */
+
+.no-box-shadow{
+  box-shadow: none;
+}
 
 
 /* * {

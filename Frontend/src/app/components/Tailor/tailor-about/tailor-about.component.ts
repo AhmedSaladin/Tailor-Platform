@@ -20,6 +20,5 @@ export class TailorAboutComponent implements OnInit, OnDestroy {
       .subscribe();
   }
   ngOnDestroy(): void {
-    this.eve.unsubscribe();
-  }
+    if (this.eve != undefined) this.eve.unsubscribe();  }
 }

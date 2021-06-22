@@ -20,6 +20,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,8 @@ import { UcWidgetModule } from 'ngx-uploadcare-widget';
     LoginComponent,
     LandingComponent,
     TailorRequestsComponent,
-    HeaderComponent,
     TailorSingleRequestComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
