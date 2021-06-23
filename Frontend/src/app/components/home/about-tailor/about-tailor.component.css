@@ -1,3 +1,13 @@
+
+.card {
+    border-radius: 15px;
+}
+
+.info-tailor img{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
 .info-tailor .star .fa-star{
     color: #ffc93c;
     font-size: 20px;
