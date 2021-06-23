@@ -24,3 +24,25 @@
   width: 15em;
   height: 15em;
 }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 40px;
+  width: 40px;
+  background-color: #2e86ab;
+  background-size: 45%, 45%;
+}
+
+.carousel-control-next-icon {
+  background-image: url("../../../../assets/images/chevron-right-solid.svg");
+  border-radius: 20px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../../../../assets/images/chevron-left-solid.svg");
+  border-radius: 20px;
+
+}
+
+
+
