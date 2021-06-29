@@ -14,6 +14,16 @@ h2, h3 {
   color: #0D1F2D;
 }
 
-.header .input-group {
-  width: 65%;
+.input-group {
+
+  width: 100%;
+  height: 35%;
+}
+
+.form-select {
+  border-radius: 15px;
+}
+
+.input-group button{
+  border-radius: 15px;
 }
