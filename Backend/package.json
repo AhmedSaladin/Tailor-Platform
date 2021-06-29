@@ -11,6 +11,7 @@
   "author": "Ahmed Saladin <ahmed_salahdin@hotmail.com>",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.1",
     "mongoose": "^5.13.0",
     "winston": "^3.3.3"
