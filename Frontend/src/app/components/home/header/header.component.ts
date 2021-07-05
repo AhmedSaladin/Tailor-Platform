@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TailorService } from 'src/app/services/tailor.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -14,24 +15,10 @@ export class HeaderComponent implements OnInit {
   constructor(
     private tailorService: TailorService,
     private MyActived: ActivatedRoute,
-    private http: Http,
+    private http: HttpClient,
     private router: Router
   ) {
-    this.http.get(this.url).subscribe((data) => {
-      data.json().forEach((element) => {
-        this.usersArray.push(element.name);
-      });
-    });
-    // this.name = MyActived.snapshot.params.user;
+    this.http.get(this.url).subscribe((db) => {});
   }
-  ngOnInit(): void {
-    /*this.tailorService.get_tailor_info_by_name(this.name).subscribe(
-      (res) => {
-        this.tailors = res.body;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );*/
-  }
+  ngOnInit(): void {}
 }
