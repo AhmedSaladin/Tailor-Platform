@@ -6,8 +6,7 @@
       "email": "aali@ali.com",
       "phone": "01005551155",
       "password": "01005551155",
-      "gender": "Female",
-      "designFor": "Male",
+      "gender": "Male",
       "isTailor": false,
       "chest": 127,
       "armLength": 73.5,
@@ -23,7 +22,7 @@
       "email": "ali@ali22.com",
       "password": "01005551155",
       "phone": "01005551155",
-      "gender": "Female",
+      "gender": "Male",
       "isTailor": true,
       "gallary": [
         "https://images.unsplash.com/photo-1603400521630-9f2de124b33b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
