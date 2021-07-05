@@ -26,5 +26,11 @@ export class CustomerService {
     return this.MyCustomer.put(`${this.BaseUrl}/${id}`,customer)
   }
 
+  get_customer_info_id(id: any) {
+    return this.MyCustomer.get(`${this.BaseUrl}/${id}`, { observe: 'response' });
+  }
 
+  update_customer_info(id: any, body: any) {
+    return this.MyCustomer.put(`${this.BaseUrl}/${id}`, body, { observe: 'response' });
+  }
 }
