@@ -15,10 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private tailorService: TailorService,
     private MyActived: ActivatedRoute,
-    private http: HttpClient,
-    private router: Router
-  ) {
-    this.http.get(this.url).subscribe((db) => {});
+
   }
   ngOnInit(): void {}
 }
