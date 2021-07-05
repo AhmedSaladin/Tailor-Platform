@@ -1,4 +1,4 @@
-<div class="card col-12 emp-profile">
+<div class="card col-12 emp-profile mt-4">
   <form method="post">
     <!-- start card section -->
     <div class="card-body row">
@@ -6,66 +6,38 @@
       <div class="col-md-4">
 
         <!-- Start Profile Image -->
-        <div class="profile-img col-md-9 col-sm-8">
+        <div class="profile-img text-center mb-3 mt-4 me-2">
 
-          <img src="{{ user_info.avatar }}"
-          class="profile-img img-fluid"
-          data-bs-target="#staticBackdrop"
-          data-bs-toggle="modal" alt="" />
+          <img src="{{ user_info.avatar }}" class="profile-img img-fluid" data-bs-target="#staticBackdrop"
+            data-bs-toggle="modal" alt="" />
           <!-- start image popup -->
-          <div
-          class="modal fade"
-          id="staticBackdrop"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-          tabindex="-1"
-          aria-labelledby="staticBackdropLabel"
-          aria-hidden="true"
-          >
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="staticBackdropLabel">
                     Profile Picture
                   </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                    (click)="notSavingCustAvatar()"
-                  ></button>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="notSavingCustAvatar()"></button>
                 </div>
                 <div class="modal-body text-center">
                   <img src="{{ img }}" class="profile-img img-pop" style="width: 100%;" />
                 </div>
                 <div class="modal-footer" style="justify-content: flex-start !important;">
-                  <button
-                    type="button"
-                    class="btn btn-secondary  justify-content-start"
-                    data-bs-dismiss="modal"
-                    (click)="notSavingCustAvatar()"
-                  >
+                  <button type="button" class="btn btn-secondary  justify-content-start" data-bs-dismiss="modal"
+                    (click)="notSavingCustAvatar()">
                     Close
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary d-flex justify-content-start"
-                    data-bs-dismiss="modal"
-                    (click)="saveNewTailorAvatar()"
-                  >
+                  <button type="button" class="btn btn-primary d-flex justify-content-start" data-bs-dismiss="modal"
+                    (click)="saveNewTailorAvatar()">
                     Save
                   </button>
-                  <ngx-uploadcare-widget
-                    public-key="d2eaba00baf97d93aeb1"
-                    (on-upload-complete)="on_upload_complete($event)"
-                    crop="free"
-                    class="d-flex justify-content-end"
-                    [images-only]="true"
-                    input-accept-types="image/*"
-                    tabs="file camera url gphotos instagram facebook"
-                    #upload_component
-                  >
+                  <ngx-uploadcare-widget public-key="d2eaba00baf97d93aeb1"
+                    (on-upload-complete)="on_upload_complete($event)" crop="free" class="d-flex justify-content-end"
+                    [images-only]="true" input-accept-types="image/*" tabs="file camera url gphotos instagram facebook"
+                    #upload_component>
                   </ngx-uploadcare-widget>
                   <!-- upload button needed and third-party-api -->
                 </div>
@@ -73,9 +45,11 @@
             </div>
           </div>
           <!-- end image popup -->
+        </div>
       </div>
-    </div>
-        <!-- End Photo -->
+      <!-- End Photo -->
+
+
 
       <div class="col-md-6">
         <div class="profile-head">
@@ -86,8 +60,8 @@
             <!--Customer About -->
 
             <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab"
-                aria-controls="home" aria-selected="true">About</a>
+              <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home"
+                aria-selected="true">About</a>
             </li>
 
             <!--Customer Fitting sizes -->
@@ -98,208 +72,48 @@
             </li>
           </ul>
         </div>
-      </div>
-
-        <!-- Button edit about and size -->
-      <div class="col-md-2">
-        <input type="submit" class="btn btn-primary" name="btnAddMore" value="Edit Profile" data-bs-toggle="modal"
-        data-bs-target="#exampleModal"/>
-      </div>
-        <!-- start popup model abut and size -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered modal-sm">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  Edit Information
-                </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body">
-                <form #form="ngForm">
-                  <div class="mb-3">
-                    <label for="name" class="col-form-label">Name:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="name"
-                      name="name"
-                      [ngModel]="user_info.name"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="email" class="col-form-label">Email:</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="email"
-                      name="email"
-                      [ngModel]="user_info.email"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="phone" class="col-form-label">Phone:</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="phone"
-                      name="phone"
-                      [ngModel]="user_info.phone"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="inputState" class="form-label"
-                      >Gender</label>
-                    <select
-                      id="inputState"
-                      class="form-select"
-                      name="gender"
-                      [ngModel]="user_info.gender"
-                    >
-                      <option>Male</option>
-                      <option>Female</option>
-                    </select>
-                  </div>
-                  <div class="mb-3">
-                    <label for="chest" class="col-form-label">Chest:</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="chest"
-                      name="chest"
-                      [ngModel]="user_info.chest"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="armLength" class="col-form-label">ArmLength:</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="armLength"
-                      name="armLength"
-                      [ngModel]="user_info.armLength"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="waist" class="col-form-label">Waist:</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="waist"
-                      name="waist"
-                      [ngModel]="user_info.waist"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="hight" class="col-form-label">Hight:</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="hight"
-                      name="hight"
-                      [ngModel]="user_info.hight"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="inseam" class="col-form-label">Inseam:</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="inseam"
-                      name="inseam"
-                      [ngModel]="user_info.inseam"
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="shoulder" class="col-form-label">Shoulder:</label>
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="shoulder"
-                      name="shoulder"
-                      [ngModel]="user_info.shoulder"
-                    />
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Discard
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary form"
-                  (click)="updateCustInfo(form)"
-                  data-bs-dismiss="modal"
-                >
-                  Save changes
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      <!-- end of popup model -->
-      <!-- End Card -->
-
-    </div>
-
-  <!--  -->
-
-
-    <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-6">
         <div class="tab-content profile-tab" id="myTabContent">
 
           <!-- Start About -->
 
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row">
-              <div class="col-md-4">
-                <label>Name</label>
+            <div class="row mt-4">
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-md-3 mx-1">
+                    <label>Name:</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ user_info.name }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 mx-1">
+                    <label>Phone:</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ user_info.phone }}</p>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-8">
-                <p>{{ user_info.name }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label>Email</label>
-              </div>
-              <div class="col-md-8">
-                <p>{{ user_info.email }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label>Phone</label>
-              </div>
-              <div class="col-md-8">
-                <p>{{ user_info.phone }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4">
-                <label>Gender</label>
-              </div>
-              <div class="col-md-8">
-                <p>{{ user_info.gender }}</p>
+              <div class="col-6">
+
+                <div class="row">
+                  <div class="col-md-3 mx-1">
+                    <label>Email:</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ user_info.email }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3 mx-1">
+                    <label>Gender:</label>
+                  </div>
+                  <div class="col-md-8">
+                    <p>{{ user_info.gender }}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -309,51 +123,154 @@
           <!-- Start Sizes -->
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="row">
-              <div class="col-md-5">
-                <label>Chest</label>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-md-7">
+                    <label>Chest</label>
+                  </div>
+                  <div class="col-md-5">
+                    <p>{{ user_info.chest }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7">
+                    <label>Arm Lenght</label>
+                  </div>
+                  <div class="col-md-5">
+                    <p>{{ user_info.armLength }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-7">
+                    <label>Waist</label>
+                  </div>
+                  <div class="col-md-5">
+                    <p>{{ user_info.waist }}</p>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-7">
-                <p>{{ user_info.chest }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-5">
-                <label>Arm Lenght</label>
-              </div>
-              <div class="col-md-7">
-                <p>{{ user_info.armLength }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-5">
-                <label>Waist</label>
-              </div>
-              <div class="col-md-7">
-                <p>{{ user_info.waist }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-5">
-                <label>Hight</label>
-              </div>
-              <div class="col-md-7">
-                <p>{{ user_info.hight }}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-5">
-                <label>Inseam</label>
-              </div>
-              <div class="col-md-7">
-                <p>{{ user_info.inseam }}</p>
+              <div class="col-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Hight</label>
+                  </div>
+                  <div class="col-md-5">
+                    <p>{{ user_info.hight }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Inseam</label>
+                  </div>
+                  <div class="col-md-5">
+                    <p>{{ user_info.inseam }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <label>Inseam</label>
+                  </div>
+                  <div class="col-md-5">
+                    <p>{{ user_info.inseam }}</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
           <!-- End Sizes -->
         </div>
       </div>
+      <!-- Button edit about and size -->
+      <div class="col-md-2 text-end">
+        <input type="submit" class="btn btn-primary btn-sm" name="btnAddMore" value="Edit" data-bs-toggle="modal"
+          data-bs-target="#exampleModal" />
+      </div>
+
+      <!-- start popup model about and size -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Edit Information
+              </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form class=" row g-3" #form="ngForm">
+                <div class="mb-2 col-6">
+                  <label for="name" class="col-form-label">Name:</label>
+                  <input type="text" class="form-control" id="name" name="name" [ngModel]="user_info.name" />
+                </div>
+                <div class="col-6">
+                  <label for="email" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="email" name="email" [ngModel]="user_info.email" />
+                </div>
+                <div class="col-md-6">
+                  <label for="phone" class="col-form-label">Phone:</label>
+                  <input type="text" class="form-control" id="phone" name="phone" [ngModel]="user_info.phone" />
+                </div>
+                <div class="col-md-6">
+                  <label for="inputState" class="form-label">Gender:</label>
+                  <select id="inputState" class="form-select" name="gender" [ngModel]="user_info.gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label for="chest" class="col-form-label">Chest:</label>
+                  <input type="number" class="form-control" id="chest" name="chest" [ngModel]="user_info.chest" />
+                </div>
+                <div class="col-md-4">
+                  <label for="armLength" class="col-form-label">ArmLength:</label>
+                  <input type="number" class="form-control" id="armLength" name="armLength"
+                    [ngModel]="user_info.armLength" />
+                </div>
+                <div class="col-md-4">
+                  <label for="waist" class="col-form-label">Waist:</label>
+                  <input type="number" class="form-control" id="waist" name="waist" [ngModel]="user_info.waist" />
+                </div>
+                <div class="col-md-4">
+                  <label for="hight" class="col-form-label">Hight:</label>
+                  <input type="number" class="form-control" id="hight" name="hight" [ngModel]="user_info.hight" />
+                </div>
+                <div class="col-md-4">
+                  <label for="inseam" class="col-form-label">Inseam:</label>
+                  <input type="number" class="form-control" id="inseam" name="inseam" [ngModel]="user_info.inseam" />
+                </div>
+                <div class="col-md-4">
+                  <label for="shoulder" class="col-form-label">Shoulder:</label>
+                  <input type="number" class="form-control" id="shoulder" name="shoulder"
+                    [ngModel]="user_info.shoulder" />
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                Discard
+              </button>
+              <button type="button" class="btn btn-primary form" (click)="updateCustInfo(form)" data-bs-dismiss="modal">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end of popup model -->
+      <!-- End Card -->
+
     </div>
+
+    <!--  -->
+
+
+    <!-- <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-6">
+
+      </div>
+    </div> -->
   </form>
 </div>
 <!-- End Card -->
-
