@@ -14,8 +14,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private tailorService: TailorService,
-    private MyActived: ActivatedRoute,
-
-  }
+    private MyActived: ActivatedRoute
+  ) {}
   ngOnInit(): void {}
 }

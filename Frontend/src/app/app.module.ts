@@ -15,6 +15,7 @@ import { AboutTailorComponent } from './components/home/about-tailor/about-tailo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/home/header/header.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
