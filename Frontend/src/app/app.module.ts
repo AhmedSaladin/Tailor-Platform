@@ -21,6 +21,10 @@ import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tai
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { FilterPipe } from './filter.pipe';
+import { CustomerInformationComponent } from './components/Customer/customer-information/customer-information.component';
+import { CustomerSingleRequestComponent } from './components/Customer/customer-single-request/customer-single-request.component';
+import { CustomerRequestsComponent } from './components/Customer/customer-requests/customer-requests.component';
+import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,10 @@ import { FilterPipe } from './filter.pipe';
     TailorRequestsComponent,
     TailorSingleRequestComponent,
     FilterPipe,
+    CustomerInformationComponent,
+    CustomerSingleRequestComponent,
+    CustomerRequestsComponent,
+    EditCustomerProfileComponent,
   ],
   imports: [
     BrowserModule,
