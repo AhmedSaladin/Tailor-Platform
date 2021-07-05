@@ -1,4 +1,5 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
@@ -9,13 +10,13 @@ import { TailorService } from 'src/app/services/tailor.service';
 export class TailorGallaryComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
   @Input() gallery: any;
+  @ViewChild('upload_component')
+  upload_component!: UcWidgetComponent;
   images: any;
   eve: any;
   constructor(private api: TailorService) {}
 
-  ngOnInit(): void {
-    console.log(this.gallery);
-  }
+  ngOnInit(): void {}
   on_upload_complete(event: any) {
     let url = event.cdnUrl;
     let length = event.count;
@@ -26,8 +27,8 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
     this.eve = this.api
       .update_tailor_info(this.user_info.id, this.user_info)
       .subscribe();
+    this.upload_component.clearUploads();
   }
   ngOnDestroy(): void {
-    this.eve.unsubscribe();
-  }
+    if (this.eve != undefined) this.eve.unsubscribe();  }
 }

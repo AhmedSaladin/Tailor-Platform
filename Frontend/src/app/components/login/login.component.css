@@ -19,3 +19,21 @@
   color: black;
   border: 2px solid;
 }
+
+/* change email input  border color to red when invalid */
+
+#email.ng-invalid.ng-touched {
+  border: 1.5px solid red;
+}
+
+/* change email input border color to green when invalid */
+
+#email.ng-valid.ng-touched {
+  border: 1.5px solid green;
+}
+
+/* remove default input border shadow */
+
+.no-box-shadow{
+  box-shadow: none;
+}

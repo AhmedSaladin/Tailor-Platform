@@ -18,10 +18,13 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
-import { HeaderComponent } from './components/home/header/header.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { FilterPipe } from './filter.pipe';
+import { CustomerInformationComponent } from './components/Customer/customer-information/customer-information.component';
+import { CustomerSingleRequestComponent } from './components/Customer/customer-single-request/customer-single-request.component';
+import { CustomerRequestsComponent } from './components/Customer/customer-requests/customer-requests.component';
+import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
 
 @NgModule({
   declarations: [
@@ -40,9 +43,12 @@ import { FilterPipe } from './filter.pipe';
     LoginComponent,
     LandingComponent,
     TailorRequestsComponent,
-    HeaderComponent,
     TailorSingleRequestComponent,
     FilterPipe,
+    CustomerInformationComponent,
+    CustomerSingleRequestComponent,
+    CustomerRequestsComponent,
+    EditCustomerProfileComponent,
   ],
   imports: [
     BrowserModule,

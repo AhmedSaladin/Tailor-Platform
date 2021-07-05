@@ -1,44 +1,32 @@
 <div class="main">
   <section class="header card text-white border-0">
-      <img src="assets/images/header.jpeg" class="card-img rounded-0">
+      <img src="assets/images/header.jpeg" class="card-img rounded-0 img-fluid">
       <div class="card-img-overlay">
           <div class="container">
               <div class="row">
                   <div class="col-12 col-md-6 mx-auto mx-md-4 mt-2 mt-md-4">
                       <h1 class="card-title text-center text-md-start">We Stitch Designs that Perfectly Suits You!</h1>
                       <div class="input-group mx-auto mx-md-0 mt-4">
-                          <select class="form-select">
+                          <select class="form-select" [(ngModel)]="designFor">
                               <option selected>Choose...</option>
-                              <option value="1">male</option>
-                              <option value="2">female</option>
-                              <option value="3">all</option>
+                              <option [value]="male">Male</option>
+                              <option [value]="female">Female</option>
+                              <option [value]="all">Both</option>
+
                           </select>
-                          <button class="btn btn-outline-secondary" type="button">Search</button>
+                          <button class="btn btn-outline-secondary" (click)="sendSearchToHome()" >Search</button>
                       </div>
                   </div>
               </div>
           </div>
       </div>
-  </section>
-  <!-- end of main header -->
-
-  <!-- about us section -->
-  <div class="container">
-      <section class="about-us m-auto mt-5 text-center">
-          <h2 class="mb-4">About Us</h2>
-          <p class="lead">We are a platform for any creative tailor to offer their quality worksmanship for our daily customers who visit our website. We only deliver the best to our customers. Let it be any type of clothes you want to be stitched, our tailors
-              do it. They focus on perfect fit, suitable styles and avail our tailoring services with beautifully made clothing. We are committed to magnify customers’ satisfaction and that belief have helped us garner a vast clientele, which continues
-              to grow by everyday.</p>
-      </section>
-  </div>
-  <!-- end of about-us section -->
-
+  </section> <!-- end of main header -->
 
   <!-- services section -->
   <div class="container mt-5">
       <h2 class="text-center mb-5">Services</h2>
       <div class="card-group">
-          <div class="card shadow-sm me-sm-3">
+          <div class="card shadow-sm me-sm-3 col-12">
               <img class="card-img-top" src="assets/images/services1.jpeg" alt="Card image cap">
               <div class="card-body text-center">
                   <h3 class="card-title">Altering</h3>
@@ -60,5 +48,15 @@
               </div>
           </div>
       </div>
-  </div>
-  <!-- end of services section -->
+  </div> <!-- end of services section -->
+
+
+  <!-- about us section -->
+  <div class="container">
+    <section class="about-us m-auto mt-5 text-center">
+        <h2 class="mb-4">About Us</h2>
+        <p class="lead">We are a platform for any creative tailor to offer their quality worksmanship for our daily customers who visit our website. We only deliver the best to our customers. Let it be any type of clothes you want to be stitched, our tailors
+            do it. They focus on perfect fit, suitable styles and avail our tailoring services with beautifully made clothing. We are committed to magnify customers’ satisfaction and that belief have helped us garner a vast clientele, which continues
+            to grow by everyday.</p>
+    </section>
+</div>
