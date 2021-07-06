@@ -4,10 +4,8 @@
     <div class="card-body row">
       <!-- start image section -->
       <div class="col-md-4">
-
         <!-- Start Profile Image -->
         <div class="profile-img text-center mb-3 mt-4 me-2">
-
           <img src="{{ user_info.avatar }}" class="profile-img img-fluid" data-bs-target="#staticBackdrop"
             data-bs-toggle="modal" alt="" />
           <!-- start image popup -->
@@ -23,10 +21,10 @@
                     (click)="notSavingCustAvatar()"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="{{ img }}" class="profile-img img-pop" style="width: 100%;" />
+                  <img src="{{ img }}" class="profile-img img-pop" style="width: 100%" />
                 </div>
-                <div class="modal-footer" style="justify-content: flex-start !important;">
-                  <button type="button" class="btn btn-secondary  justify-content-start" data-bs-dismiss="modal"
+                <div class="modal-footer" style="justify-content: flex-start !important">
+                  <button type="button" class="btn btn-secondary justify-content-start" data-bs-dismiss="modal"
                     (click)="notSavingCustAvatar()">
                     Close
                   </button>
@@ -49,14 +47,13 @@
       </div>
       <!-- End Photo -->
 
-
-
       <div class="col-md-6">
         <div class="profile-head">
-          <h5>{{ user_info.name }}</h5>
+          <h5 class="d-flex justify-content-center justify-content-md-start">
+            {{ user_info.name }}
+          </h5>
           <!-- <p class="profile-rating">RANKINGS : <span>8/10</span></p> -->
           <ul class="nav nav-tabs" id="myTab" role="tablist">
-
             <!--Customer About -->
 
             <li class="nav-item" role="presentation">
@@ -74,44 +71,40 @@
           </ul>
         </div>
         <div class="tab-content profile-tab" id="myTabContent">
-
           <!-- Start About -->
 
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row mt-4">
-              <div class="col-6">
+            <div class="row mt-1">
+              <div class="row">
                 <div class="row">
-                  <div class="col-md-3 mx-1">
+                  <div class="col-2">
                     <label>Name:</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-9">
                     <p>{{ user_info.name }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-3 mx-1">
+                  <div class="col-2">
                     <label>Phone:</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-9">
                     <p>{{ user_info.phone }}</p>
                   </div>
                 </div>
-              </div>
-              <div class="col-6">
-
                 <div class="row">
-                  <div class="col-md-3 mx-1">
+                  <div class="col-2">
                     <label>Email:</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-9">
                     <p>{{ user_info.email }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-3 mx-1">
+                  <div class="col-2">
                     <label>Gender:</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-9">
                     <p>{{ user_info.gender }}</p>
                   </div>
                 </div>
@@ -123,55 +116,55 @@
 
           <!-- Start Sizes -->
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="row">
+            <div class="row mt-4">
               <div class="col-6">
                 <div class="row">
-                  <div class="col-md-7">
+                  <div class="col-4">
                     <label>Chest</label>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-6">
                     <p>{{ user_info.chest }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-7">
-                    <label>Arm Lenght</label>
+                  <div class="col-4">
+                    <label>Arm:</label>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-6">
                     <p>{{ user_info.armLength }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-7">
-                    <label>Waist</label>
+                  <div class="col-4">
+                    <label>Waist:</label>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-6">
                     <p>{{ user_info.waist }}</p>
                   </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="row">
-                  <div class="col-md-6">
-                    <label>Hight</label>
+                  <div class="col-6">
+                    <label>Hight:</label>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-6">
                     <p>{{ user_info.hight }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6">
-                    <label>Inseam</label>
+                  <div class="col-6">
+                    <label>Inseam:</label>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-6">
                     <p>{{ user_info.inseam }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6">
-                    <label>Inseam</label>
+                  <div class="col-6">
+                    <label>Inseam:</label>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-6">
                     <p>{{ user_info.inseam }}</p>
                   </div>
                 </div>
@@ -198,7 +191,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form class=" row g-3" #form="ngForm">
+              <form class="row g-3" #form="ngForm">
                 <div class="mb-2 col-6">
                   <label for="name" class="col-form-label">Name:</label>
                   <input type="text" class="form-control" id="name" name="name" [ngModel]="user_info.name" />
@@ -212,7 +205,7 @@
                   <input type="text" class="form-control" id="phone" name="phone" [ngModel]="user_info.phone" />
                 </div>
                 <div class="col-md-6">
-                  <label for="inputState" class="form-label">Gender:</label>
+                  <label for="inputState" class="form-label"style="line-height: 1.9;">Gender:</label>
                   <select id="inputState" class="form-select" name="gender" [ngModel]="user_info.gender">
                     <option>Male</option>
                     <option>Female</option>
@@ -260,11 +253,9 @@
 
       <!-- end of popup model -->
       <!-- End Card -->
-
     </div>
 
     <!--  -->
-
 
     <!-- <div class="row">
       <div class="col-md-4"></div>
