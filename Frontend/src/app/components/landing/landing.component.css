@@ -15,9 +15,8 @@ h2, h3 {
 }
 
 .input-group {
-
   width: 100%;
-  height: 35%;
+  height: 20%;
 }
 
 .form-select {
@@ -27,3 +26,45 @@ h2, h3 {
 .input-group button{
   border-radius: 15px;
 }
+
+/*Start Services Section Styles*/
+
+.card{
+  border-bottom-right-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+}
+
+.card .services-photo  {
+  position: relative;
+  bottom: 18px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.services-photo {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background-color: #000;
+
+}
+
+.services-photo img {
+  opacity: 0.7;
+  width: 100%;
+  height: auto;
+  -webkit-transform: scale(1.15);
+  transform: scale(1.15);  /* photo zoom in*/
+  -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: opacity 0.5s, -webkit-transform 0.5s;
+  transition: transform 0.5s, opacity 0.5s;
+  transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;   /* zoom in and out slowly */
+}
+
+.services-photo img:hover {
+  opacity: 1;
+  -webkit-transform: scale(1.03);
+  transform: scale(1.03);   /*zoom out when hover to original */
+}
+
+/*End Services Section Styles*/
