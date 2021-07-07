@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about-tailor',
@@ -6,7 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./about-tailor.component.css'],
 })
 export class AboutTailorComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
+  goToTailorProfile(id: any) {
+    this.router.navigateByUrl(`profile/edit/${id}`);
+  }
   ngOnInit(): void {}
   @Input() tailor: any;
 }
