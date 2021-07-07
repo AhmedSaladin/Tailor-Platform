@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TailorService } from 'src/app/services/tailor.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,51 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  filteredTailors: string[] = new Array();
-  tempFilter: any;
-  constructor(private tailorInfo: TailorService) {}
+  constructor(
+    private tailorInfo: TailorService,
+    private route: ActivatedRoute
+  ) {}
+  queryParamsFilter: any = this.route.snapshot.queryParams;
   tailors: any;
-  selectedItems: string[] = new Array();
-  desginFor:any;
-  gender:any;
 
-  FilteredArr = [];
-  
-  filterForm = new FormGroup ({
+  filterForm = new FormGroup({
     'designFor=Male': new FormControl(''),
     'designFor=Female': new FormControl(''),
     'gender=Male': new FormControl(''),
     'gender=Female': new FormControl(''),
-  })
-
-
-  submit(formValue: any) {
+  });
+  // filtering based on sidebar selection
+  filterTailors(formValue: any) {
     const Filtered = Object.keys(formValue).filter(
-      filter => formValue[filter],
-      );
-      console.log(Filtered)
-
-    // TODO Looking for a better solution
-    // const queryString = Object.entries(Filtered).map(([key, value]) => `designFor=${value}`).join("&")
-    const queryString = Filtered.join("&");
-    console.log(queryString);
-
+      (filter) => formValue[filter]
+    );
+    const queryString = Filtered.join('&');
     this.tailorInfo.get_tailors_info_filter(queryString).subscribe(
-            (res) => {
-              this.tailors = res.body;
-            },
-            (err) => {
-              console.log(err);
-            }
-          );
-
-  }
-
-  ngOnInit(): void {
-
-
-
-    this.tailorInfo.get_tailors_info().subscribe(
       (res) => {
         this.tailors = res.body;
       },
@@ -62,6 +36,34 @@ export class HomeComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  ngOnInit(): void {
+    // show tailors based on landing page filtering
+    if (this.queryParamsFilter) {
+      const queryString = Object.entries(this.queryParamsFilter)
+        .map(([key, value]) => `${key}=${value}`)
+        .join('&');
+
+      this.tailorInfo.get_tailors_info_filter(queryString).subscribe(
+        (res) => {
+          this.tailors = res.body;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+      // get all tailors
+    } else {
+      this.tailorInfo.get_tailors_info().subscribe(
+        (res) => {
+          this.tailors = res.body;
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
   }
 
   // filterTailors(e: any) {
@@ -79,19 +81,23 @@ export class HomeComponent implements OnInit {
   //   }
   // }
 
-    // if (e.target.checked) {
-    //   this.tempFilter = this.tailors.filter(
-    //     (tailor: any) => tailor.designFor === e.target.value
-    //   );
-    //   this.filteredTailors.push(...this.tempFilter);
-    //   this.selectedItems.push(e.target.id);
-    // } else {
-    //   this.selectedItems = this.selectedItems.filter(
-    //     (elm) => elm != e.target.id
-    //   );
+  // filteredTailors: string[] = new Array();
+  // tempFilter: any;
+  // selectedItems: string[] = new Array();
 
-    //   this.filteredTailors = this.filteredTailors.filter(
-    //     (elm: any) => elm.designFor != e.target.value
-    //   );
-    // }
+  // if (e.target.checked) {
+  //   this.tempFilter = this.tailors.filter(
+  //     (tailor: any) => tailor.designFor === e.target.value
+  //   );
+  //   this.filteredTailors.push(...this.tempFilter);
+  //   this.selectedItems.push(e.target.id);
+  // } else {
+  //   this.selectedItems = this.selectedItems.filter(
+  //     (elm) => elm != e.target.id
+  //   );
+
+  //   this.filteredTailors = this.filteredTailors.filter(
+  //     (elm: any) => elm.designFor != e.target.value
+  //   );
+  // }
 }
