@@ -65,7 +65,7 @@
 
             <li class="nav-item">
               <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
-                aria-controls="profile" aria-selected="false">Fitting sizes</a>
+                aria-controls="profile" aria-selected="false">Fitting sizes <span class="cm">( CM )</span></a>
             </li>
           </ul>
         </div>
@@ -73,37 +73,37 @@
           <!-- Start About -->
 
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="row mt-1">
+            <div class="row mt-3">
               <div class="row">
                 <div class="row">
-                  <div class="col-2">
+                  <div class="col-3 col-lg-2">
                     <label>Name:</label>
                   </div>
-                  <div class="col-9">
+                  <div class="col-9 col-lg-10">
                     <p>{{ user_info.name }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-2">
+                  <div class="col-3 col-lg-2">
                     <label>Phone:</label>
                   </div>
-                  <div class="col-9">
+                  <div class="col-9 col-lg-10">
                     <p>{{ user_info.phone }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-2">
+                  <div class="col-3 col-lg-2">
                     <label>Email:</label>
                   </div>
-                  <div class="col-9">
+                  <div class="col-9 col-lg-10">
                     <p>{{ user_info.email }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-2">
+                  <div class="col-3 col-lg-2">
                     <label>Gender:</label>
                   </div>
-                  <div class="col-9">
+                  <div class="col-9 col-lg-10">
                     <p>{{ user_info.gender }}</p>
                   </div>
                 </div>
@@ -115,59 +115,76 @@
 
           <!-- Start Sizes -->
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="row mt-4">
-              <div class="col-6">
+            <div class="row mt-3">
+              <div class="col-5">
                 <div class="row">
-                  <div class="col-4">
-                    <label>Chest</label>
+                  <div class="col-5 col-lg-4">
+                    <label>Chest:</label>
                   </div>
-                  <div class="col-6">
-                    <p>{{ user_info.chest }}</p>
+                  <div class="col-7 col-lg-8">
+                    <p>{{ user_info.chest }} </p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-4">
-                    <label>Arm:</label>
-                  </div>
-                  <div class="col-6">
-                    <p>{{ user_info.armLength }}</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-4">
+                  <div class="col-5 col-lg-4">
                     <label>Waist:</label>
                   </div>
-                  <div class="col-6">
-                    <p>{{ user_info.waist }}</p>
+                  <div class="col-7 col-lg-8">
+                    <p>{{ user_info.waist }} </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-5 col-lg-4">
+                    <label>Collar:</label>
+                  </div>
+                  <div class="col-7 col-lg-8">
+                    <p>{{ user_info.waist }} </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-5 col-lg-4">
+                    <label>Arm:</label>
+                  </div>
+                  <div class="col-7 col-lg-8">
+                    <p>{{ user_info.armLength }} </p>
                   </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="row">
-                  <div class="col-6">
-                    <label>Hight:</label>
+                  <div class="col-6 col-lg-4">
+                    <label>Shoulder:</label>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 col-lg-8">
                     <p>{{ user_info.hight }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-6">
+                  <div class="col-6 col-lg-4">
                     <label>Inseam:</label>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 col-lg-8">
                     <p>{{ user_info.inseam }}</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-6">
-                    <label>Inseam:</label>
+                  <div class="col-6 col-lg-4">
+                    <label>Sleeve:</label>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 col-lg-8">
+                    <p>{{ user_info.inseam }}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 col-lg-4">
+                    <label>Thigh:</label>
+                  </div>
+                  <div class="col-6 col-lg-8">
                     <p>{{ user_info.inseam }}</p>
                   </div>
                 </div>
               </div>
+              <div class="col-1"></div>
             </div>
           </div>
           <!-- End Sizes -->
