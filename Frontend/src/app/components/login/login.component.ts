@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
 
   emailtest:any;
-  uesr:any;
+  user:any;
   LoginForm: any;
   correctPass=true;
 
@@ -45,15 +45,15 @@ export class LoginComponent implements OnInit {
       this.authServ.loginByEmail(this.email?.value).subscribe(
         (res)=>{
           if(res.status==200){
-            //console.log(res)
+            // console.log(res)
             //console.log(res.body)
-            this.uesr=res;
-            if(this.uesr.body.length!=0){
+            this.user=res;
+            if(this.user.body.length!=0){
               //console.log(this.uesr.body[0].password)
-              if(this.uesr.body[0].password==this.password?.value){
+              if(this.user.body[0].password==this.password?.value){
                 this.correctPass=true;
                 console.log(this.correctPass);
-                this.router.navigateByUrl('/landing');
+                this.router.navigateByUrl('/');
               }else{
                 this.correctPass=false;
               }
