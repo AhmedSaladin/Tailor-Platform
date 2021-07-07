@@ -25,6 +25,7 @@ import { CustomerInformationComponent } from './components/Customer/customer-inf
 import { CustomerSingleRequestComponent } from './components/Customer/customer-single-request/customer-single-request.component';
 import { CustomerRequestsComponent } from './components/Customer/customer-requests/customer-requests.component';
 import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
+import { BookingComponent } from './components/Tailor/booking/booking.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { EditCustomerProfileComponent } from './components/Customer/edit-custome
     CustomerSingleRequestComponent,
     CustomerRequestsComponent,
     EditCustomerProfileComponent,
+    BookingComponent,
   ],
   imports: [
     BrowserModule,

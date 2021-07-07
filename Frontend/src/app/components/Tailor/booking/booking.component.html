@@ -1,0 +1,234 @@
+<div class="side-bar">
+  <div class="card mb-3 text-center">
+    <div class="card-header">Booking Information</div>
+    <div class="card-body">
+      <p>Send me your design and your sizes to calculate your initial cost.</p>
+
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#bookingModal"
+      >
+        Send Your Design
+      </button>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="bookingModal"
+        tabindex="-1"
+        aria-labelledby="bookingModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bookingModalLabel">Booking</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button
+                    class="nav-link active"
+                    id="your-sizes-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#your-sizes"
+                    type="button"
+                    role="tab"
+                    aria-controls="your-sizes"
+                    aria-selected="true"
+                  >
+                    Your Sizes (cm)
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="edit-size-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#edit-size"
+                    type="button"
+                    role="tab"
+                    aria-controls="edit-size"
+                    aria-selected="false"
+                  >
+                    Edit Your Sizes (cm)
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="upload-designs-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#upload-designs"
+                    type="button"
+                    role="tab"
+                    aria-controls="upload-designs"
+                    aria-selected="false"
+                  >
+                    Upload Your Designs
+                  </button>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="your-sizes"
+                  role="tabpanel"
+                  aria-labelledby="your-sizes-tab"
+                >
+                  <!-- Start Sizes Table  -->
+
+                  <table class="table table-sm table-bordered w-100 mt-3">
+                    <tbody class="tableBody">
+                      <tr>
+                        <td>Chest</td>
+                        <td colspan="2">{{ user.chest }}</td>
+                        <!-- <td>CM</td> -->
+                      </tr>
+                      <tr>
+                        <td>Shoulder</td>
+                        <td colspan="2">{{ user.shoulder }}</td>
+                        <!-- <td>CM</td> -->
+                      </tr>
+                      <tr>
+                        <td>Inseam</td>
+                        <td colspan="2">{{ user.inseam }}</td>
+                        <!-- <td>CM</td> -->
+                      </tr>
+                      <tr>
+                        <td>Waist</td>
+                        <td colspan="2">{{ user.waist }}</td>
+                        <!-- <td>CM</td> -->
+                      </tr>
+                      <tr>
+                        <td>Height</td>
+                        <td colspan="2">{{ user.hight }}</td>
+                        <!-- <td>CM</td> -->
+                      </tr>
+                      <tr>
+                        <td>Arm Length</td>
+                        <td colspan="2">
+                          {{ user.armLength }}
+                        </td>
+                        <!-- <td>CM</td> -->
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End  Sizes Table  -->
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="edit-size"
+                  role="tabpanel"
+                  aria-labelledby="edit-size-tab"
+                >
+                  <!-- Start Editable Sizes Table  -->
+                  <table class="table table-sm table-bordered w-100 mt-3">
+                    <tbody class="tableBody">
+                      <tr>
+                        <td>Chest</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            [value]="user.chest"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Shoulder</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            [value]="user.shoulder"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Inseam</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            [value]="user.inseam"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Waist</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            [value]="user.waist"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Height</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            [value]="user.hight"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Arm Length</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            [value]="user.armLength"
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Editable Sizes Table  -->
+                </div>
+                <div
+                  class="tab-pane fade show mt-3"
+                  id="upload-designs"
+                  role="tabpanel"
+                  aria-labelledby="upload-designs-tab"
+                >
+                  <ngx-uploadcare-widget
+                    public-key="d2eaba00baf97d93aeb1"
+                    upll
+                    crop="free"
+                    class="d-flex justify-content-end"
+                    [images-only]="true"
+                    input-accept-types="image/*"
+                    tabs="file gphotos instagram facebook"
+                    [multiple]="true"
+                    #upload_component
+                  >
+                  </ngx-uploadcare-widget>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-primary">Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+</div>
