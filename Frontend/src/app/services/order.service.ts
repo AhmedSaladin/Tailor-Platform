@@ -12,6 +12,11 @@ export class OrderService {
       observe: 'response',
     });
   }
+  get_customer_requests(id: any) {
+    return this.http.get(`${this.url}?customer_id=${id}`, {
+      observe: 'response',
+    });
+  }
   get_tailor_request(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }

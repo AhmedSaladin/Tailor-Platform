@@ -1,0 +1,48 @@
+.card {
+  border-radius: 15px;
+}
+
+.profile-head h5 {
+  color: #333;
+  font-weight: bold;
+  /* margin-bottom: 2.5%; */
+}
+
+.profile-head .nav-tabs {
+  margin-bottom: 6px;
+}
+
+.profile-head .nav-tabs .nav-link {
+  font-weight: 600;
+  border: none;
+}
+
+.profile-head .nav-tabs .nav-link.active {
+  border: none;
+  border-bottom: 2px solid #0062cc;
+}
+
+.profile-head h5 {
+
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+.profile-tab label {
+  font-weight: bold;
+}
+
+.profile-tab p {
+  font-weight: 600;
+  color: #0062cc;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10%;
+}
+
+.modal-header h5 {
+  font-weight: bold;
+}
