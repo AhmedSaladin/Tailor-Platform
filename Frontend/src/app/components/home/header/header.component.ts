@@ -12,9 +12,6 @@ export class HeaderComponent implements OnInit {
   url: string = 'http://localhost:3000/users';
   usersArray: Array<any> = [];
 
-  constructor(
-    private tailorService: TailorService,
-    private MyActived: ActivatedRoute
-  ) {}
+  constructor() {}
   ngOnInit(): void {}
 }
