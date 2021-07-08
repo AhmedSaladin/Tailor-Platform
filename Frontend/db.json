@@ -103,7 +103,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "request": "pending",
+      "status": "pending",
       "rate": 1
     },
     {
@@ -125,13 +125,14 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s10.jpg"
       ],
+      "status": "pending",
       "request": true
     },
     {
       "id": 3,
       "customer_id": "1",
       "customer_name": "Ali user",
-      "tailor_id": "2",
+      "tailor_id": "6",
       "customer_sizes": {
         "chest": 127,
         "armLength": 73.5,
@@ -146,7 +147,29 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "request": "pending",
+      "status": "Done",
+      "rate": 1
+    },
+    {
+      "id": 4,
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "5",
+      "customer_sizes": {
+        "chest": 127,
+        "armLength": 73.5,
+        "waist": 99,
+        "hight": 180,
+        "inseam": 85,
+        "shoulder": 50
+      },
+      "design": [
+        "assets/images/suit/s2.jpg",
+        "assets/images/suit/s5.jpg",
+        "assets/images/suit/s3.jpg",
+        "assets/images/suit/s4.jpg"
+      ],
+      "status": "Rejected",
       "rate": 1
     }
   ],
