@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
@@ -6,25 +7,26 @@ import { CommentService } from 'src/app/services/comment.service';
   templateUrl: './tailor-rate.component.html',
   styleUrls: ['./tailor-rate.component.css'],
 })
-export class TailorRateComponent implements OnInit {
+export class TailorRateComponent implements OnInit, OnDestroy {
   @Input() comments: any;
-  constructor(private api: CommentService) {}
-
-  ngOnInit(): void {
-    this.get_comments();
-    console.log(this.comments);
+  eve: any;
+  constructor(private api: CommentService, private url: ActivatedRoute) {
+    let id = url.snapshot.params.id;
+    this.get_tailor_comments(id);
   }
-  get_comments() {
-    let arr: [];
-    this.comments.map((id: string) => {
-      this.api.get_singel_comment(id).subscribe(
-        (res) => {
-          // arr.push(res.body);
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    });
+
+  ngOnInit(): void {}
+
+  get_tailor_comments(id: string) {
+    this.eve = this.api.get_comments_by_tailor_id(id).subscribe(
+      (res) => {
+        this.comments = res.body;
+        console.log(this.comments);
+      },
+      (err) => console.log(err)
+    );
+  }
+  ngOnDestroy(): void {
+    this.eve.subscribe();
   }
 }
