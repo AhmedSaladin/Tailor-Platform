@@ -46,8 +46,14 @@ export class CustomerInformationComponent implements OnInit {
     this.user_info.email = user.value.email;
     this.user_info.phone = user.value.phone;
     this.user_info.gender = user.value.gender;
+    this.user_info.chest = user.value.chest;
+    this.user_info.armLength = user.value.armLength;
+    this.user_info.waist = user.value.waist;
+    this.user_info.hight = user.value.hight;
+    this.user_info.inseam = user.value.inseam;
+    this.user_info.shoulder = user.value.shoulder;
     this.eve = this.api
-      .update_customer_info(this.user_info.id, this.user_info)
+    .update_customer_info(this.user_info.id, this.user_info)
       .subscribe();
   }
 
