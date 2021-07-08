@@ -16,6 +16,15 @@ export class HomeComponent implements OnInit {
   queryParamsFilter: any = this.route.snapshot.queryParams;
   tailors: any;
 
+  // ==========search from header ========================
+  FilterArr = [];
+  arrTailorFromHeader = [];
+  sendSearch(tailorSearchResult: any) {
+    this.tailors = tailorSearchResult;
+  }
+
+  // ============================================
+
   filterForm = new FormGroup({
     'designFor=Male': new FormControl(''),
     'designFor=Female': new FormControl(''),
