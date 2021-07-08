@@ -1,25 +1,21 @@
 <header class="header text-white border-0">
-  <div class="">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-6 mt-2 mt-md-5 heading-text">
-          <h1 class="text-center">Custom tailored dresses, suits and more!</h1>
-          <h3 class="text-center text-md-0">
-            Meet our tailors, discover the true personalization.
-          </h3>
-          <div class="col-md-8 md-form">
-            <div class="search">
-              <input
-                type="search"
-                class="form-control"
-                [(ngModel)]="searchText"
-                placeholder="Search text"
-              />
-              <button class="btn btn-primary" (click)="sendSearch()">
-                Search
-              </button>
-            </div>
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-10 col-md-12 mt-5 mx-auto text-center heading-text">
+        <h1>Discover true personalization!</h1>
+        <h4 class=" mt-2">Meet our talented tailors.</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 col-md-8 col-lg-5 mx-auto mt-4">
+        <div class="input-group mx-auto">
+          <input
+            type="search"
+            class="form-control"
+            [(ngModel)]="searchText"
+            placeholder="Find tailor by name"
+          />
+          <button class="btn btn-primary" (click)="sendSearch()">Search</button>
         </div>
       </div>
     </div>

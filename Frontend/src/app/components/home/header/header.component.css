@@ -1,71 +1,40 @@
 header {
-  /* background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../../../assets/images/header.jpeg); */
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
     url(../../../../assets/images/head.jpg);
   background-size: cover;
   background-position: center;
-  height: 45vh;
-  /* background-attachment: fixed; */
+  height: 33vh;
+  background-attachment: fixed;
   border-radius: 0;
 }
 
-.heading-text {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.heading-text h1 {
+  font-size: 4vh;
 }
 
-/* @media screen and (min-width: 601px) {
+.heading-text h4 {
+  font-size: 2.5vh;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    height: 40vh;
+  }
   .heading-text h1 {
-    font-size: 80px;
-    font-weight: bold;
+    font-size: 6vh;
+    font-weight: bolder;
   }
-} */
-
-/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
-/* @media screen and (max-width: 600px) {
-  .heading-text h1{
-    font-size: 35px;
-    font-weight: bold;
+  .heading-text h4 {
+    font-size: 4.5vh;
   }
-}  */
+} /*End Header Styles*/
 
-/*End Header Styles*/
-
-.search {
-  position: relative;
-  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
-}
-
-.search input {
-  margin-top: 50px;
-  height: 60px;
-  border: 2px solid #d6d4d4;
-}
-
-.search input:focus {
-  box-shadow: none;
-  border: 2px solid #2e86ab;
-}
-
-.search .fa-search {
-  position: absolute;
-  top: 20px;
-  left: 16px;
-}
-
-.search button {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  height: 50px;
-  width: 110px;
+.input-group .btn {
   background: #2e86ab;
   border: none;
 }
 
-.search button:hover {
-  background-color: #2e86ab;
-  border: none;
+.input-group .btn:hover {
+  background-color: #96cce2;
+  color: #0d1f2d;
 }
