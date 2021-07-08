@@ -26,6 +26,7 @@ import { CustomerSingleRequestComponent } from './components/Customer/customer-s
 import { CustomerRequestsComponent } from './components/Customer/customer-requests/customer-requests.component';
 import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
 import { BookingComponent } from './components/Tailor/booking/booking.component';
+import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { BookingComponent } from './components/Tailor/booking/booking.component'
     CustomerRequestsComponent,
     EditCustomerProfileComponent,
     BookingComponent,
+    TailorCommentsComponent,
   ],
   imports: [
     BrowserModule,
