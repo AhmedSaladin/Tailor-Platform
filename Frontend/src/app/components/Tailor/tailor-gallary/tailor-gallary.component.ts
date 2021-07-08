@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { TailorService } from 'src/app/services/tailor.service';
-
+// add delete to uploaded images from UI and DB
 @Component({
   selector: 'app-tailor-gallary',
   templateUrl: './tailor-gallary.component.html',
@@ -12,7 +12,6 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
   @Input() gallery: any;
   @ViewChild('upload_component')
   upload_component!: UcWidgetComponent;
-  images: any;
   eve: any;
   constructor(private api: TailorService) {}
 
