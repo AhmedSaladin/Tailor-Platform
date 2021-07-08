@@ -11,8 +11,7 @@
       <div class="col-md-8">
         <div class="card-body">
           <h5
-            class="card-title mb-1"
-            style="color: #d7263d; font-weight: bold; font-size: 25px"
+            class="tailor-name card-title mb-1"
           >
             {{ tailor.name }}
           </h5>
@@ -33,7 +32,7 @@
           </p>
           <p class="card-text">
             <small class="text-muted"
-              >Designs For: {{ tailor.designFor }}</small
+              >Specialization: {{ tailor.designFor }}</small
             >
           </p>
           <p class="card-text mb-3" style="font-weight: bold">
@@ -45,7 +44,6 @@
               <button
                 type="button"
                 class="btn btn-danger"
-                style="background-color: #d7263d !important"
                 (click)="goToTailorProfile(tailor.id)"
               >
                 Call Me
