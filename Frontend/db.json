@@ -9,12 +9,14 @@
       "gender": "Male",
       "isTailor": false,
       "chest": 127,
-      "armLength": 73.5,
-      "waist": 99,
-      "hight": 180,
-      "inseam": 85,
-      "shoulder": 60,
-      "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI"
+        "waist": 99,
+        "collar":20,
+        "armLength": 73.5,
+        "shoulder":50,
+        "inseam": 85,
+        "sleeve": 80,
+        "hight": 180,
+        "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI"
     },
     {
       "id": 2,
@@ -93,11 +95,13 @@
       "tailor_id": "2",
       "customer_sizes": {
         "chest": 127,
-        "armLength": 73.5,
         "waist": 99,
-        "hight": 180,
+        "collar":20,
+        "armLength": 73.5,
+        "shoulder":50,
         "inseam": 85,
-        "shoulder": 50
+        "sleeve": 80,
+        "hight": 180
       },
       "design": [
         "assets/images/suit/s2.jpg",
