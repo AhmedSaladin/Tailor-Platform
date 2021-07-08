@@ -5,12 +5,28 @@
       <h5 class="card-title rate-head">Rate</h5>
       <div class="card-text">
         <div class="rate-body">
+          <!--  function defined at tailor home -->
           <i class="fas fa-star"></i><i class="fas fa-star"></i
           ><i class="fas fa-star"></i><i class="fas fa-star"></i
           ><i class="fas fa-star"></i>
         </div>
         <div class="rate-text">Overall Rating</div>
-        <div class="rate-review-counter">from 200 customer</div>
+        <div class="rate-review-counter">
+          from {{ comments.length }} customers
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="card col-12">
+  <!-- Rate -->
+  <section class="rate">
+    <div class="card-body">
+      <h5 class="card-title rate-head">Comments</h5>
+      <div class="card-text">
+        <!--  map comments -->
+        <app-tailor-comments></app-tailor-comments>
       </div>
     </div>
   </section>
