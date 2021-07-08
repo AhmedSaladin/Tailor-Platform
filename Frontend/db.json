@@ -103,7 +103,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "request": "pending",
+      "status": "pending",
       "rate": 1
     },
     {
@@ -125,7 +125,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s10.jpg"
       ],
-      "request": true
+      "status": "pending"
     },
     {
       "id": 3,
@@ -146,7 +146,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "request": "pending",
+      "status": "pending",
       "rate": 1
     }
   ],
