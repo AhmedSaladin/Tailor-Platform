@@ -1,30 +1,22 @@
 header {
   /* background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../../../assets/images/header.jpeg); */
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
     url(../../../../assets/images/head.jpg);
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 45vh;
   /* background-attachment: fixed; */
   border-radius: 0;
 }
 
-.heading-text{
+.heading-text {
   position: absolute;
-  top: 50%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.heading-text h1 {
-font-size: 7vh;
-font-weight: bolder;
-}
-.heading-text h4 {
-  font-weight: bolder;
-  font-size: 3.5vh;
-}
 
- /* @media screen and (min-width: 601px) {
+/* @media screen and (min-width: 601px) {
   .heading-text h1 {
     font-size: 80px;
     font-weight: bold;
@@ -41,42 +33,39 @@ font-weight: bolder;
 
 /*End Header Styles*/
 
-
-
-
 .search {
-    position: relative;
-    box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
 }
 
 .search input {
-    margin-top: 50px;
-    height: 60px;
-    border: 2px solid #d6d4d4;
+  margin-top: 50px;
+  height: 60px;
+  border: 2px solid #d6d4d4;
 }
 
 .search input:focus {
-    box-shadow: none;
-    border: 2px solid #2e86ab;
+  box-shadow: none;
+  border: 2px solid #2e86ab;
 }
 
 .search .fa-search {
-    position: absolute;
-    top: 20px;
-    left: 16px;
+  position: absolute;
+  top: 20px;
+  left: 16px;
 }
 
 .search button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    height: 50px;
-    width: 110px;
-    background: #2e86ab;
-    border: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 50px;
+  width: 110px;
+  background: #2e86ab;
+  border: none;
 }
 
 .search button:hover {
-    background-color: #2e86ab;
-    border: none;
+  background-color: #2e86ab;
+  border: none;
 }
