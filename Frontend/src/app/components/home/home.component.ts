@@ -16,6 +16,15 @@ export class HomeComponent implements OnInit {
   queryParamsFilter: any = this.route.snapshot.queryParams;
   tailors: any;
 
+  // ==========search from header ========================
+  FilterArr = [];
+  arrTailorFromHeader = [];
+  sendSearch(tailorSearchResult: any) {
+    this.tailors = tailorSearchResult;
+  }
+
+  // ============================================
+
   filterForm = new FormGroup({
     'designFor=Male': new FormControl(''),
     'designFor=Female': new FormControl(''),
@@ -37,33 +46,26 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
+  sub: any;
   ngOnInit(): void {
     // show tailors based on landing page filtering
     if (this.queryParamsFilter) {
       const queryString = Object.entries(this.queryParamsFilter)
         .map(([key, value]) => `${key}=${value}`)
         .join('&');
-
-      this.tailorInfo.get_tailors_info_filter(queryString).subscribe(
-        (res) => {
-          this.tailors = res.body;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-      // get all tailors
+      this.sub = this.tailorInfo.get_tailors_info_filter(queryString);
     } else {
-      this.tailorInfo.get_tailors_info().subscribe(
-        (res) => {
-          this.tailors = res.body;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      // get all tailors
+      this.sub = this.tailorInfo.get_tailors_info();
     }
+    this.sub.subscribe(
+      (res: any) => {
+        this.tailors = res.body;
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   // filterTailors(e: any) {
