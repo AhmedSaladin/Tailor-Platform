@@ -18,7 +18,7 @@
     },
     {
       "id": 2,
-      "name": "Ali The Tailor",
+      "name": "Muhammed the tailor",
       "email": "ali@ali22.com",
       "password": "01005551155",
       "phone": "01005551155",
@@ -40,7 +40,9 @@
         "https://ucarecdn.com/941b8cfb-209d-4715-96b5-99dbc0e505b6~5/nth/4/",
         "https://ucarecdn.com/f727300f-dc47-4ff2-aa32-790d552fe433~1/nth/0/",
         "https://ucarecdn.com/17dd846d-e43b-4910-af86-85b70f421445~1/nth/0/",
-        "https://ucarecdn.com/4bece7fb-acef-44a4-a826-895c93b7c9d4~1/nth/0/"
+        "https://ucarecdn.com/4bece7fb-acef-44a4-a826-895c93b7c9d4~1/nth/0/",
+        "https://ucarecdn.com/e97fc883-4b05-4ed9-ae4d-c0388b731963~1/nth/0/",
+        "https://ucarecdn.com/5f499e43-25ea-4a0f-b234-4970559d3cbc~1/nth/0/"
       ],
       "about": "شغال اهو",
       "designFor": "Male",
@@ -148,6 +150,29 @@
       ],
       "status": "pending",
       "rate": 1
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "pending",
+      "design": [
+        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/0/",
+        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/1/",
+        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/2/",
+        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/3/",
+        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/4/",
+        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/5/"
+      ],
+      "customer_sizes": {
+        "chest": "127",
+        "height": "180",
+        "armLength": "73.5",
+        "waist": "99",
+        "inseam": "85",
+        "shoulder": "60"
+      },
+      "id": 4
     }
   ],
   "comment": [

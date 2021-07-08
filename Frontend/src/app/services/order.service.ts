@@ -20,4 +20,7 @@ export class OrderService {
   get_tailor_request(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }
+  create_new_order(order: any) {
+    return this.http.post(this.url, order, { observe: 'response' });
+  }
 }
