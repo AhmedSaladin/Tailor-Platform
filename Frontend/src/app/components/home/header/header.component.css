@@ -1,3 +1,49 @@
+header {
+  /* background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../../../assets/images/header.jpeg); */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+    url(../../../../assets/images/head.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  /* background-attachment: fixed; */
+  border-radius: 0;
+}
+
+.heading-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.heading-text h1 {
+font-size: 7vh;
+font-weight: bolder;
+}
+.heading-text h4 {
+  font-weight: bolder;
+  font-size: 3.5vh;
+}
+
+ /* @media screen and (min-width: 601px) {
+  .heading-text h1 {
+    font-size: 80px;
+    font-weight: bold;
+  }
+} */
+
+/* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
+/* @media screen and (max-width: 600px) {
+  .heading-text h1{
+    font-size: 35px;
+    font-weight: bold;
+  }
+}  */
+
+/*End Header Styles*/
+
+
+
+
 .search {
     position: relative;
     box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
