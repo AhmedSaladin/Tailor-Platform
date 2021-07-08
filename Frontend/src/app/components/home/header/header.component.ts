@@ -13,9 +13,9 @@ export class HeaderComponent implements OnInit {
   tailors: any;
 
   constructor(private tailorService: TailorService) {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
   @Output() send = new EventEmitter();
 
@@ -43,7 +43,7 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
-  gOnInit(): void {
+  ngOnInit(): void {
     this.filter();
   }
 }
