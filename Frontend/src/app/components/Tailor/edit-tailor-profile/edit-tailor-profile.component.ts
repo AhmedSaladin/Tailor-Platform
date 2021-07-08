@@ -10,8 +10,8 @@ import { TailorService } from 'src/app/services/tailor.service';
 })
 export class EditTailorProfileComponent implements OnInit, OnDestroy {
   eve: any;
-  constructor(private api: TailorService, private id: ActivatedRoute) {
-    this.information(id.snapshot.params.id);
+  constructor(private api: TailorService, private url: ActivatedRoute) {
+    this.information(url.snapshot.params.id);
   }
 
   ngOnInit(): void {}

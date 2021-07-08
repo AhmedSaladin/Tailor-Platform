@@ -5,6 +5,7 @@
 
 .n-main .navbar-brand img {
   width: 50px;
+  border-radius: 50%;
 }
 
 .navbar-light .navbar-nav .nav-link {

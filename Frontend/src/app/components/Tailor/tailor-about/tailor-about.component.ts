@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TailorService } from 'src/app/services/tailor.service';
+// form need validation
 
 @Component({
   selector: 'app-tailor-about',

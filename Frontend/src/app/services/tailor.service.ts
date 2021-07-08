@@ -8,11 +8,10 @@ export class TailorService {
   private url = 'http://localhost:3000/users';
   constructor(private http: HttpClient) {}
   get_tailors_info() {
-    return this.http.get(this.url, { observe: 'response' });
+    return this.http.get(`${this.url}?isTailor=true`, { observe: 'response' });
   }
   get_tailors_info_filter(filter: any) {
-    console.log(filter);
-    return this.http.get(`${this.url}?${filter}`, { observe: 'response' });
+    return this.http.get(`${this.url}?isTailor=true&${filter}`, { observe: 'response' });
   }
   get_tailor_info(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });

@@ -1,0 +1,270 @@
+<div class="side-bar">
+  <div class="card mb-3 text-center">
+    <div class="card-header">Booking Information</div>
+    <div class="card-body">
+      <p>Send me your design and your sizes to calculate your initial cost.</p>
+
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#bookingModal"
+      >
+        Send Your Design
+      </button>
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="bookingModal"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        aria-labelledby="bookingModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content" *ngIf="user; else dd">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bookingModalLabel">Booking</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                (click)="clear_uploads()"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <button
+                    class="nav-link active"
+                    id="your-sizes-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#your-sizes"
+                    type="button"
+                    role="tab"
+                    aria-controls="your-sizes"
+                    aria-selected="true"
+                  >
+                    Your Sizes (cm)
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="edit-size-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#edit-size"
+                    type="button"
+                    role="tab"
+                    aria-controls="edit-size"
+                    aria-selected="false"
+                  >
+                    Edit Your Sizes (cm)
+                  </button>
+                  <button
+                    class="nav-link"
+                    id="upload-designs-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#upload-designs"
+                    type="button"
+                    role="tab"
+                    aria-controls="upload-designs"
+                    aria-selected="false"
+                  >
+                    Upload Your Designs
+                  </button>
+                </div>
+              </nav>
+              <div class="tab-content" id="nav-tabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="your-sizes"
+                  role="tabpanel"
+                  aria-labelledby="your-sizes-tab"
+                >
+                  <!-- Start Sizes Table  -->
+
+                  <table class="table table-sm table-bordered w-100 mt-3">
+                    <tbody class="tableBody">
+                      <tr>
+                        <td>Chest</td>
+                        <td colspan="2">{{ user.chest }}</td>
+                      </tr>
+                      <tr>
+                        <td>Shoulder</td>
+                        <td colspan="2">{{ user.shoulder }}</td>
+                      </tr>
+                      <tr>
+                        <td>Inseam</td>
+                        <td colspan="2">{{ user.inseam }}</td>
+                      </tr>
+                      <tr>
+                        <td>Waist</td>
+                        <td colspan="2">{{ user.waist }}</td>
+                      </tr>
+                      <tr>
+                        <td>Height</td>
+                        <td colspan="2">{{ user.hight }}</td>
+                      </tr>
+                      <tr>
+                        <td>Arm Length</td>
+                        <td colspan="2">{{ user.armLength }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End  Sizes Table  -->
+                </div>
+
+                <div
+                  class="tab-pane fade"
+                  id="edit-size"
+                  role="tabpanel"
+                  aria-labelledby="edit-size-tab"
+                >
+                  <!-- Start Editable Sizes Table  -->
+                  <table class="table table-sm table-bordered w-100 mt-3">
+                    <tbody class="tableBody">
+                      <tr>
+                        <td>Chest</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            value="{{ user.chest }}"
+                            #chest
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Shoulder</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            value="{{ user.shoulder }}"
+                            #shoulder
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Inseam</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            value="{{ user.inseam }}"
+                            #inseam
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Waist</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            value="{{ user.waist }}"
+                            #waist
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Height</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            value="{{ user.hight }}"
+                            #height
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Arm Length</td>
+                        <td colspan="2">
+                          <input
+                            type="number"
+                            class="form-control"
+                            name="armLength"
+                            [ngModel]="user.armLength"
+                            #arm
+                          />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Editable Sizes Table  -->
+                </div>
+                <!-- Start Upload Your Designs  -->
+                <div
+                  class="tab-pane fade show mt-3 text-center"
+                  id="upload-designs"
+                  role="tabpanel"
+                  aria-labelledby="upload-designs-tab"
+                >
+                  <div class="row scroll">
+                    <p *ngIf="images.length == 0">
+                      You haven't upload designs yet.
+                    </p>
+                    <div
+                      class="col-12 col-md-6 col-lg-3"
+                      *ngFor="let image of images"
+                    >
+                      <img
+                        src="{{ image }}"
+                        class="border border-3 m-2 mb-2 model-img"
+                      />
+                    </div>
+                  </div>
+                  <ngx-uploadcare-widget
+                    public-key="d2eaba00baf97d93aeb1"
+                    (on-upload-complete)="on_upload_complete($event)"
+                    upll
+                    crop="free"
+                    [images-only]="true"
+                    input-accept-types="image/*"
+                    tabs="file gphotos instagram facebook"
+                    [multiple]="true"
+                    #order_upload_component
+                  >
+                  </ngx-uploadcare-widget>
+                </div>
+                <!-- End Upload Your Designs  -->
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                (click)="clear_uploads()"
+              >
+                Close
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="
+                  submitD({
+                    chest: chest.value,
+                    height: height.value,
+                    armLength: arm.value,
+                    waist: waist.value,
+                    inseam: inseam.value,
+                    shoulder: shoulder.value
+                  })
+                "
+              >
+                Order
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer"></div>
+  </div>
+</div>
+<ng-template #dd>content here...</ng-template>
