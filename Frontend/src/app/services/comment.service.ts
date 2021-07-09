@@ -11,11 +11,13 @@ export class CommentService {
   get_single_comment(id: string) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }
+
   get_comments_by_tailor_id(id: string) {
     return this.http.get(`${this.url}?tailor_id=${id}`, {
       observe: 'response',
     });
   }
+  
   CreateCommenr(comment: any) {
     return this.http.post(this.url,comment, {observe: 'response'});
   }

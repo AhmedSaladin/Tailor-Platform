@@ -24,6 +24,7 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   constructor(private api: TailorService, public formBulider: FormBuilder) {}
 
   update_tailor_info(user: NgForm) {
+    console.log(user);
     this.user_info.name = user.value.name;
     this.user_info.designFor = user.value.design;
     this.eve = this.api
@@ -34,7 +35,10 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //validate Tailor Name input
     this.formValidation = this.formBulider.group({
-      tName: ['', [Validators.required, Validators.minLength(3)]],
+      tName: [
+        `${this.user_info.name}`,
+        [Validators.required, Validators.minLength(3)],
+      ],
     });
   }
 

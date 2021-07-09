@@ -19,8 +19,8 @@
       "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI"
     },
     {
+      "name": "Nasser",
       "id": 2,
-      "name": "Muhammed the tailor",
       "email": "ali@ali22.com",
       "password": "01005551155",
       "phone": "01005551155",
@@ -49,11 +49,7 @@
       "about": "شغال اهو",
       "designFor": "Male",
       "avatar": "https://ucarecdn.com/30a081d5-274e-4bd2-b664-26e07a5e8a25/",
-      "comments": [
-        1,
-        2,
-        3
-      ]
+      "comments": [1, 2, 3]
     },
     {
       "name": "Muhammad SabahAllah",
@@ -106,7 +102,7 @@
         "shoulder": 50,
         "inseam": 85,
         "sleeve": 80,
-        "hight": 180
+        "height": 180
       },
       "design": [
         "assets/images/suit/s2.jpg",
@@ -123,11 +119,13 @@
       "tailor_id": "2",
       "customer_sizes": {
         "chest": 127,
-        "armLength": 73.5,
         "waist": 99,
-        "hight": 180,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
         "inseam": 85,
-        "shoulder": 60
+        "sleeve": 80,
+        "height": 180
       },
       "design": [
         "assets/images/suit/s2.jpg",
@@ -135,7 +133,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s10.jpg"
       ],
-      "status": "pending"
+      "status": "rejected"
     },
     {
       "id": 3,
@@ -144,11 +142,13 @@
       "tailor_id": "6",
       "customer_sizes": {
         "chest": 127,
-        "armLength": 73.5,
         "waist": 99,
-        "hight": 180,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
         "inseam": 85,
-        "shoulder": 50
+        "sleeve": 80,
+        "height": 180
       },
       "design": [
         "assets/images/suit/s2.jpg",
@@ -156,7 +156,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "status": "Done",
+      "status": "done",
       "rate": 1
     },
     {
@@ -166,11 +166,13 @@
       "tailor_id": "5",
       "customer_sizes": {
         "chest": 127,
-        "armLength": 73.5,
         "waist": 99,
-        "hight": 180,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
         "inseam": 85,
-        "shoulder": 50
+        "sleeve": 80,
+        "height": 180
       },
       "design": [
         "assets/images/suit/s2.jpg",
@@ -178,7 +180,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "status": "Rejected",
+      "status": "rejected",
       "rate": 1
     },
     {
@@ -195,14 +197,34 @@
         "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/5/"
       ],
       "customer_sizes": {
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
+      },
+      "id": 4
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "finished",
+      "design": [
+        "https://ucarecdn.com/137add5d-67fb-406a-9a44-3ed4d57551cc~1/nth/0/"
+      ],
+      "customer_sizes": {
         "chest": "127",
         "height": "180",
         "armLength": "73.5",
         "waist": "99",
         "inseam": "85",
-        "shoulder": "60"
+        "shoulder": "51"
       },
-      "id": 4
+      "id": 5
     }
   ],
   "comments": [
@@ -231,7 +253,8 @@
       "body": "he is a talented tailor"
     },
     {
-      "comment": "nancy comment",
+      "body": "nancy comment",
+      "customer_name": "Ali user",
       "rate": 3,
       "tailor_id": "2",
       "customer_id": "1",
@@ -239,7 +262,8 @@
       "id": 4
     },
     {
-      "comment": "nancy comment",
+      "body": "nancy comment",
+      "customer_name": "Ali user",
       "rate": 3,
       "tailor_id": "2",
       "customer_id": "1",
@@ -247,7 +271,8 @@
       "id": 5
     },
     {
-      "comment": "Star test",
+      "body": "Star test",
+      "customer_name": "Ali user",
       "rate": 4,
       "tailor_id": "2",
       "customer_id": "1",

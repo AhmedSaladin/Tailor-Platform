@@ -123,6 +123,7 @@
                       id="name"
                       name="name"
                       [ngModel]="user_info.name"
+                      #Name
                     />
                     <div
                       class="text-danger"
@@ -131,7 +132,7 @@
                       "
                     >
                       <div *ngIf="getControl.tName.errors.required">
-                        About can't be empty
+                        Name can't be empty
                       </div>
                       <div *ngIf="getControl.tName.errors?.minlength">
                         Minimum Length is 3 Characters
@@ -160,6 +161,7 @@
                   type="button"
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
+                  (click)="Name.value = user_info.name"
                 >
                   Discard
                 </button>
