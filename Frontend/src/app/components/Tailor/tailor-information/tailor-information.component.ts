@@ -1,5 +1,12 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {
+  NgForm,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validator,
+  Validators,
+} from '@angular/forms';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { TailorService } from 'src/app/services/tailor.service';
 // form need validation
@@ -13,7 +20,8 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
   @Input() img: any;
   eve: any;
-  constructor(private api: TailorService) {}
+  formValidation: any;
+  constructor(private api: TailorService, public formBulider: FormBuilder) {}
 
   update_tailor_info(user: NgForm) {
     this.user_info.name = user.value.name;
@@ -23,7 +31,17 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
       .subscribe();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //validate Tailor Name input
+    this.formValidation = this.formBulider.group({
+      tName: ['', [Validators.required, Validators.minLength(3)]],
+    });
+  }
+
+  get getControl() {
+    return this.formValidation.controls;
+  }
+
   on_upload_complete(event: any) {
     this.img = event.cdnUrl;
   }
