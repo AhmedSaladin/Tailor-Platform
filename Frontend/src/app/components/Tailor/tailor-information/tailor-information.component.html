@@ -114,15 +114,29 @@
               </div>
               <div class="modal-body">
                 <form #form="ngForm">
-                  <div class="mb-3">
+                  <div class="mb-3" [formGroup]="formValidation">
                     <label for="name" class="col-form-label">Name:</label>
                     <input
+                      formControlName="tName"
                       type="text"
-                      class="form-control"
+                      class="form-control no-box-shadow"
                       id="name"
                       name="name"
                       [ngModel]="user_info.name"
                     />
+                    <div
+                      class="text-danger"
+                      *ngIf="
+                        getControl.tName.touched && getControl.tName.invalid
+                      "
+                    >
+                      <div *ngIf="getControl.tName.errors.required">
+                        About can't be empty
+                      </div>
+                      <div *ngIf="getControl.tName.errors?.minlength">
+                        Minimum Length is 3 Characters
+                      </div>
+                    </div>
                   </div>
                   <div class="mb-3">
                     <label for="inputState" class="form-label"
@@ -154,6 +168,7 @@
                   class="btn btn-primary form"
                   (click)="update_tailor_info(form)"
                   data-bs-dismiss="modal"
+                  [disabled]="formValidation.invalid"
                 >
                   Save changes
                 </button>
