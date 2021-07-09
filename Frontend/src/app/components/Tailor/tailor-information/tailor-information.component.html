@@ -114,6 +114,7 @@
               </div>
               <div class="modal-body">
                 <form #form="ngForm">
+                  <!-- ngForm & form Group problem -->
                   <div class="mb-3" [formGroup]="formValidation">
                     <label for="name" class="col-form-label">Name:</label>
                     <input
@@ -122,7 +123,6 @@
                       class="form-control no-box-shadow"
                       id="name"
                       name="name"
-                      [ngModel]="user_info.name"
                       #Name
                     />
                     <div
