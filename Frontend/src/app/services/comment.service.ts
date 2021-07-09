@@ -16,4 +16,7 @@ export class CommentService {
       observe: 'response',
     });
   }
+  CreateCommenr(comment: any) {
+    return this.http.post(this.url,comment, {observe: 'response'});
+  }
 }
