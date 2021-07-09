@@ -81,7 +81,7 @@ export class CustomerSingleRequestComponent implements OnInit {
     if(this.CommentForm.valid){
       // console.log(this.comment?.value)
       let newComment={
-        comment:this.comment?.value,
+        body:this.comment?.value,
         rate:this.orderRate,
         tailor_id:this.order.tailor_id,
         customer_id:this.order.customer_id,
