@@ -18,6 +18,7 @@ export class CustomerSingleRequestComponent implements OnInit {
   count: any = 0;
   current_image: any;
   CommentForm:any;
+  orderRate:any;
   constructor(private commentApi: CommentService,private customer_api: CustomerService,private tailor_api:TailorService) {
   }
 
@@ -81,7 +82,7 @@ export class CustomerSingleRequestComponent implements OnInit {
       // console.log(this.comment?.value)
       let newComment={
         comment:this.comment?.value,
-        rate:this.rate?.value,
+        rate:this.orderRate,
         tailor_id:this.order.tailor_id,
         customer_id:this.order.customer_id,
         order_id:this.order.id
@@ -89,6 +90,15 @@ export class CustomerSingleRequestComponent implements OnInit {
       this.commentApi.CreateCommenr(newComment).subscribe();
     }
   }
+
+  // average = 0;
+  // coun = 0;
+  // currentRate = 6;
+
+  // avg() {
+  //   this.average = (this.average*this.coun + this.currentRate) / (this.coun + 1);
+  //   this.coun += 1;
+  // }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();  }
 }

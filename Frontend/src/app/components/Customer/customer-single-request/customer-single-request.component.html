@@ -21,7 +21,17 @@
             <span id="rateMe2" class="empty-stars"></span>
             <div class="container">
 
-                <input type="number" formControlName="rate">
+                <!-- <input type="number" formControlName="rate"> -->
+                <ngb-rating [max]=5 [(rate)]="orderRate">
+                  <ng-template let-fill="fill" let-index="index">
+                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+                <!-- <span>{{ orderRate }} </span> -->
+                <!-- <ngb-rating [max]=5 [(rate)]="orderRate" [readonly]="false"></ngb-rating> -->
+                <span>{{ orderRate }} </span>
+
+
                 <div class="
                 starrating
                 risingstar

@@ -245,6 +245,14 @@
       "customer_id": "1",
       "order_id": 1,
       "id": 5
+    },
+    {
+      "comment": "Star test",
+      "rate": 4,
+      "tailor_id": "2",
+      "customer_id": "1",
+      "order_id": 1,
+      "id": 6
     }
   ]
 }
