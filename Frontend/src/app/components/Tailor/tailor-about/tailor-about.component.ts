@@ -1,5 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TailorService } from 'src/app/services/tailor.service';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 // form need validation
 
 @Component({
@@ -10,9 +16,17 @@ import { TailorService } from 'src/app/services/tailor.service';
 export class TailorAboutComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
   eve: any;
-  constructor(private api: TailorService) {}
+  formValidation: any;
+  constructor(private api: TailorService, public formBulider: FormBuilder) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.formValidation = this.formBulider.group({
+      about: ['', [Validators.required, Validators.minLength(10)]],
+    });
+  }
+  get getControl() {
+    return this.formValidation.controls;
+  }
 
   update_tailor_about_section(about: string) {
     this.user_info.about = about;
@@ -21,5 +35,6 @@ export class TailorAboutComponent implements OnInit, OnDestroy {
       .subscribe();
   }
   ngOnDestroy(): void {
-    if (this.eve != undefined) this.eve.unsubscribe();  }
+    if (this.eve != undefined) this.eve.unsubscribe();
+  }
 }

@@ -289,7 +289,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form class="row g-3" #form="ngForm">
+              <form class="row g-3"  [formGroup]="editForm" >
                 <div class="mb-2 col-6">
                   <label for="name" class="col-form-label">Name:</label>
                   <input
@@ -297,7 +297,7 @@
                     class="form-control"
                     id="name"
                     name="name"
-                    [ngModel]="user_info.name"
+                    formControlName="name"
                   />
                 </div>
                 <div class="col-6">
@@ -307,7 +307,7 @@
                     class="form-control"
                     id="email"
                     name="email"
-                    [ngModel]="user_info.email"
+                    formControlName="email"
                   />
                 </div>
                 <div class="col-md-6">
@@ -317,7 +317,7 @@
                     class="form-control"
                     id="phone"
                     name="phone"
-                    [ngModel]="user_info.phone"
+                    formControlName="phone"
                   />
                 </div>
                 <div class="col-md-6">
@@ -331,23 +331,23 @@
                     id="inputState"
                     class="form-select"
                     name="gender"
-                    [ngModel]="user_info.gender"
+                    formControlName="gender"
                   >
                     <option>Male</option>
                     <option>Female</option>
                   </select>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="chest" class="col-form-label">Chest:</label>
                   <input
                     type="number"
                     class="form-control"
                     id="chest"
                     name="chest"
-                    [ngModel]="user_info.chest"
+                    formControlName="chest"
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="armLength" class="col-form-label"
                     >ArmLength:</label
                   >
@@ -356,47 +356,67 @@
                     class="form-control"
                     id="armLength"
                     name="armLength"
-                    [ngModel]="user_info.armLength"
+                    formControlName="armLength"
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="waist" class="col-form-label">Waist:</label>
                   <input
                     type="number"
                     class="form-control"
                     id="waist"
                     name="waist"
-                    [ngModel]="user_info.waist"
+                    formControlName="waist"
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="hight" class="col-form-label">Hight:</label>
                   <input
                     type="number"
                     class="form-control"
                     id="hight"
                     name="hight"
-                    [ngModel]="user_info.hight"
+                    formControlName="hight"
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="inseam" class="col-form-label">Inseam:</label>
                   <input
                     type="number"
                     class="form-control"
                     id="inseam"
                     name="inseam"
-                    [ngModel]="user_info.inseam"
+                    formControlName="inseam"
                   />
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                   <label for="shoulder" class="col-form-label">Shoulder:</label>
                   <input
                     type="number"
                     class="form-control"
                     id="shoulder"
                     name="shoulder"
-                    [ngModel]="user_info.shoulder"
+                    formControlName="shoulder"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="shoulder" class="col-form-label">Collar:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shoulder"
+                    name="shoulder"
+                    formControlName="collar"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="shoulder" class="col-form-label">Sleeve:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="shoulder"
+                    name="shoulder"
+                    formControlName="sleeve"
                   />
                 </div>
               </form>
@@ -412,7 +432,7 @@
               <button
                 type="button"
                 class="btn btn-primary form"
-                (click)="updateCustInfo(form)"
+                (click)="updateCustInfo()"
                 data-bs-dismiss="modal"
               >
                 Save changes
