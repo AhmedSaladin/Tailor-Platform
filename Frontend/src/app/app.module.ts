@@ -27,6 +27,7 @@ import { CustomerRequestsComponent } from './components/Customer/customer-reques
 import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
 import { BookingComponent } from './components/Tailor/booking/booking.component';
 import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tai
     FormsModule,
     ReactiveFormsModule,
     UcWidgetModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
