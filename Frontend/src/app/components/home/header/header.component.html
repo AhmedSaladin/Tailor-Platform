@@ -1,39 +1,23 @@
-<div class="card">
-    <img src="assets/images/head.jpg" style="height: 550px" class="card-img" alt="..." />
-
-    <div class="card-img-overlay mt-5 mb-5">
-        <div class="container">
-            <h2 class="card-title" style="color: #2e86ab; font-weight: bold">
-                Card title
-            </h2>
-            <p class="card-text" style="
-          color: white;
-          padding: 10px;
-          font-weight: 100;
-          margin-top: 30px;
-          background-color: rgba(0, 139, 139, 0.2);
-        ">
-                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-            </p>
-            <div class="container">
-                <div class="
-            row
-            height
-            d-flex
-            justify-content-center
-            align-items-center
-            mt-5
-          ">
-                    <div class="col-md-8 md-form">
-                        <div class="search">
-                            <input type="search" class="form-control" [(ngModel)]="searchText" placeholder="Search text" />
-                            <button class="btn btn-primary" (click)="sendSearch()">
-                Search
-              </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<header class="header text-white border-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 mt-5 mx-auto text-center heading-text">
+        <h1>Discover true personalization!</h1>
+        <h4 class=" mt-2">Meet our talented tailors.</h4>
+      </div>
     </div>
-</div>
+    <div class="row">
+      <div class="col-10 col-md-8 col-lg-5 mx-auto mt-4">
+        <div class="input-group mx-auto">
+          <input
+            type="search"
+            class="form-control"
+            [(ngModel)]="searchText"
+            placeholder="Find tailor by name"
+          />
+          <button class="btn btn-primary" (click)="sendSearch()">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

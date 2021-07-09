@@ -1,0 +1,16 @@
+<section class="comment">
+  <div class="card-body text-start">
+    <h6 class="card-title comment-head">
+      <div>
+        <i class="fas fa-star" *ngFor="let star of rate"></i>
+      </div>
+    </h6>
+    <div class="card-text comment-body">
+      <span>{{ comment.customer_name }}</span>
+      <p>
+        {{ comment.body }}
+      </p>
+    </div>
+  </div>
+  <div class="card-footer"></div>
+</section>

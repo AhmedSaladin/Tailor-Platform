@@ -18,6 +18,8 @@
         class="modal fade"
         id="bookingModal"
         tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
         aria-labelledby="bookingModal"
         aria-hidden="true"
       >
@@ -30,6 +32,7 @@
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                (click)="clear_uploads()"
               ></button>
             </div>
             <div class="modal-body">
@@ -87,34 +90,26 @@
                       <tr>
                         <td>Chest</td>
                         <td colspan="2">{{ user.chest }}</td>
-                        <!-- <td>CM</td> -->
                       </tr>
                       <tr>
                         <td>Shoulder</td>
                         <td colspan="2">{{ user.shoulder }}</td>
-                        <!-- <td>CM</td> -->
                       </tr>
                       <tr>
                         <td>Inseam</td>
                         <td colspan="2">{{ user.inseam }}</td>
-                        <!-- <td>CM</td> -->
                       </tr>
                       <tr>
                         <td>Waist</td>
                         <td colspan="2">{{ user.waist }}</td>
-                        <!-- <td>CM</td> -->
                       </tr>
                       <tr>
                         <td>Height</td>
                         <td colspan="2">{{ user.hight }}</td>
-                        <!-- <td>CM</td> -->
                       </tr>
                       <tr>
                         <td>Arm Length</td>
-                        <td colspan="2">
-                          {{ user.armLength }}
-                        </td>
-                        <!-- <td>CM</td> -->
+                        <td colspan="2">{{ user.armLength }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -136,7 +131,8 @@
                           <input
                             type="number"
                             class="form-control"
-                            value="{{ order.customer_sizes.chest }}"
+                            value="{{ user.chest }}"
+                            #chest
                           />
                         </td>
                       </tr>
@@ -146,7 +142,8 @@
                           <input
                             type="number"
                             class="form-control"
-                            value="{{ order.customer_sizes.shoulder }}"
+                            value="{{ user.shoulder }}"
+                            #shoulder
                           />
                         </td>
                       </tr>
@@ -156,7 +153,8 @@
                           <input
                             type="number"
                             class="form-control"
-                            value="{{ order.customer_sizes.inseam }}"
+                            value="{{ user.inseam }}"
+                            #inseam
                           />
                         </td>
                       </tr>
@@ -166,7 +164,8 @@
                           <input
                             type="number"
                             class="form-control"
-                            value="{{ order.customer_sizes.waist }}"
+                            value="{{ user.waist }}"
+                            #waist
                           />
                         </td>
                       </tr>
@@ -176,7 +175,8 @@
                           <input
                             type="number"
                             class="form-control"
-                            value="{{ order.customer_sizes.hight }}"
+                            value="{{ user.hight }}"
+                            #height
                           />
                         </td>
                       </tr>
@@ -187,7 +187,8 @@
                             type="number"
                             class="form-control"
                             name="armLength"
-                            [ngModel]="order.customer_sizes.armLength"
+                            [ngModel]="user.armLength"
+                            #arm
                           />
                         </td>
                       </tr>
@@ -195,25 +196,41 @@
                   </table>
                   <!-- End Editable Sizes Table  -->
                 </div>
+                <!-- Start Upload Your Designs  -->
                 <div
                   class="tab-pane fade show mt-3 text-center"
                   id="upload-designs"
                   role="tabpanel"
                   aria-labelledby="upload-designs-tab"
                 >
-                  <p>You haven't upload designs yet.</p>
+                  <div class="row scroll">
+                    <p *ngIf="images.length == 0">
+                      You haven't upload designs yet.
+                    </p>
+                    <div
+                      class="col-12 col-md-6 col-lg-3"
+                      *ngFor="let image of images"
+                    >
+                      <img
+                        src="{{ image }}"
+                        class="border border-3 m-2 mb-2 model-img"
+                      />
+                    </div>
+                  </div>
                   <ngx-uploadcare-widget
                     public-key="d2eaba00baf97d93aeb1"
+                    (on-upload-complete)="on_upload_complete($event)"
                     upll
                     crop="free"
                     [images-only]="true"
                     input-accept-types="image/*"
                     tabs="file gphotos instagram facebook"
                     [multiple]="true"
-                    #upload_component
+                    #order_upload_component
                   >
                   </ngx-uploadcare-widget>
                 </div>
+                <!-- End Upload Your Designs  -->
               </div>
             </div>
             <div class="modal-footer">
@@ -221,10 +238,25 @@
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
+                (click)="clear_uploads()"
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" (click)="submitD()">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="
+                  submitD({
+                    chest: chest.value,
+                    height: height.value,
+                    armLength: arm.value,
+                    waist: waist.value,
+                    inseam: inseam.value,
+                    shoulder: shoulder.value
+                  })
+                "
+              >
                 Order
               </button>
             </div>

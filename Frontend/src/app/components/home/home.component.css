@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:weight@100;200;300;400;500;600;700;800&display=swap"); */
 
 /* Start Side-Bar */
 
@@ -17,6 +17,13 @@
 
 .list-group .fa-star {
     color: gold !important;
+}
+
+.accordion-item .accBtn {
+    color: rgb(12, 99, 228);
+}
+.accordion-item .accBtn:hover {
+    background-color: rgb(231, 241, 255);
 }
 
 

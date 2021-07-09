@@ -13,7 +13,7 @@
           [user_info]="user"
           [gallery]="user.gallary"
         ></app-tailor-gallary>
-        <app-tailor-rate></app-tailor-rate>
+        <app-tailor-rate [comments]="user.comments"></app-tailor-rate>
       </div>
       <!--  -->
     </div>
@@ -21,7 +21,7 @@
     <!-- start left side  -->
     <div class="col-12 col-lg-4 order-first order-lg-last">
       <app-tailor-requests [user_id]="user.id"></app-tailor-requests>
-      <app-booking ></app-booking>
+      <app-booking></app-booking>
     </div>
   </div>
 </div>

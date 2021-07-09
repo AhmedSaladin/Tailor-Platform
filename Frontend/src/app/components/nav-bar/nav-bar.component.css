@@ -2,7 +2,9 @@
 .n-main {
   background-color: #2e86ab;
 }
-
+.navbar {
+  z-index: 999;
+}
 .n-main .navbar-brand img {
   width: 50px;
   border-radius: 50%;
