@@ -6,6 +6,7 @@
       <div class="card-text">
         <div class="rate-body">
           <!--  function defined at tailor home -->
+          <!-- need to handle -->
           <i class="fas fa-star"></i><i class="fas fa-star"></i
           ><i class="fas fa-star"></i><i class="fas fa-star"></i
           ><i class="fas fa-star"></i>
@@ -24,9 +25,8 @@
   <section class="rate">
     <div class="card-body">
       <h5 class="card-title rate-head">Comments</h5>
-      <div class="card-text">
-        <!--  map comments -->
-        <app-tailor-comments></app-tailor-comments>
+      <div class="card-text" *ngFor="let comment of comments">
+        <app-tailor-comments [comment]="comment"></app-tailor-comments>
       </div>
     </div>
   </section>
