@@ -12,7 +12,7 @@
       "waist": 99,
       "collar": 20,
       "armLength": 73.5,
-      "shoulder": 50,
+      "shoulder": 51,
       "inseam": 85,
       "sleeve": 80,
       "hight": 180,
@@ -49,7 +49,11 @@
       "about": "شغال اهو",
       "designFor": "Male",
       "avatar": "https://ucarecdn.com/30a081d5-274e-4bd2-b664-26e07a5e8a25/",
-      "comments": [1, 2, 3]
+      "comments": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "name": "Muhammad SabahAllah",
@@ -225,6 +229,30 @@
       "tailor_id": "2",
       "rate": 2,
       "body": "he is a talented tailor"
+    },
+    {
+      "comment": "nancy comment",
+      "rate": 3,
+      "tailor_id": "2",
+      "customer_id": "1",
+      "order_id": 1,
+      "id": 4
+    },
+    {
+      "comment": "nancy comment",
+      "rate": 3,
+      "tailor_id": "2",
+      "customer_id": "1",
+      "order_id": 1,
+      "id": 5
+    },
+    {
+      "comment": "Star test",
+      "rate": 4,
+      "tailor_id": "2",
+      "customer_id": "1",
+      "order_id": 1,
+      "id": 6
     }
   ]
 }
