@@ -8,8 +8,5 @@ module.exports = (app) => {
   app.use(morgan("dev"));
   app.use(express.json());
   app.use("/api/users", User);
-  app.use("/", (req, res) => {
-    res.status(300).json("dd");
-  });
   app.use(err);
 };
