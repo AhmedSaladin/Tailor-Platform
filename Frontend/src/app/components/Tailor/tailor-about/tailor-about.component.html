@@ -36,7 +36,6 @@
                 class="form-control no-box-shadow"
                 id="message-text"
                 formControlName="about"
-                value="{{ user_info.about }}"
                 #About
               ></textarea>
               <div
@@ -56,6 +55,7 @@
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
+                (click)="About.value = user_info.about"
               >
                 Discard
               </button>

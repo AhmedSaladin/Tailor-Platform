@@ -12,15 +12,26 @@ export class OrderService {
       observe: 'response',
     });
   }
+
   get_customer_requests(id: any) {
     return this.http.get(`${this.url}?customer_id=${id}`, {
       observe: 'response',
     });
   }
+
   get_tailor_request(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }
+
   create_new_order(order: any) {
     return this.http.post(this.url, order, { observe: 'response' });
+  }
+
+  update_status(state: string, id: string) {
+    return this.http.patch(
+      `${this.url}/${id}`,
+      { status: state },
+      { observe: 'response' }
+    );
   }
 }

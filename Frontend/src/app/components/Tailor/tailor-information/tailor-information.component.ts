@@ -1,15 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {
-  NgForm,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validator,
-  Validators,
-} from '@angular/forms';
+import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { TailorService } from 'src/app/services/tailor.service';
-// form need validation
 @Component({
   selector: 'app-tailor-information',
   templateUrl: './tailor-information.component.html',
@@ -34,7 +26,11 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     //validate Tailor Name input
     this.formValidation = this.formBulider.group({
-      tName: ['', [Validators.required, Validators.minLength(3)]],
+      name: [
+        `${this.user_info.name}`,
+        [Validators.required, Validators.minLength(3)],
+      ],
+      design: [`${this.user_info.designFor}`, Validators.required],
     });
   }
 

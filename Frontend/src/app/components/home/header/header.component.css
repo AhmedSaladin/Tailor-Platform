@@ -1,6 +1,6 @@
 header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
-    url(../../../../assets/images/head.jpg);
+    url(../../../../assets/images/test.jpg);
   background-size: cover;
   background-position: center;
   height: 33vh;
@@ -18,7 +18,7 @@ header {
 
 @media screen and (min-width: 768px) {
   .header {
-    height: 40vh;
+    height: 55vh;
   }
   .heading-text h1 {
     font-size: 6vh;
@@ -32,9 +32,11 @@ header {
 .input-group .btn {
   background: #2e86ab;
   border: none;
+  font-weight: bold;
 }
 
 .input-group .btn:hover {
-  background-color: #96cce2;
-  color: #0d1f2d;
+  /* background-color: #96cce2; */
+  background-color: #062d3d;
+  color: #6a98ac;
 }

@@ -113,14 +113,7 @@
               <button
                 type="submit"
                 class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
-                (click)="
-                  AddCustomer(
-                    fname.value,
-                    lname.value,
-                    email.value,
-                    password.value
-                  )
-                "
+                (click)="AddCustomer(formValidation)"
                 [disabled]="formValidation.invalid"
               >
                 Sign Up
