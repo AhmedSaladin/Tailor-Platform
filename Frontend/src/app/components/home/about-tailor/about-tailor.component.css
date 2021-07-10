@@ -1,7 +1,6 @@
 /* PLEASE STICK TO MOBILE FIRST TECHNIQU */
 .card {
   border-radius: 15px;
-  text-align: center;
 }
 .tailor-name {
   color: #d7263d;
@@ -18,9 +17,6 @@
   font-size: 20px;
 }
 @media screen and (min-width: 768px) {
-  .card {
-    text-align: left;
-  }
   .info-tailor img {
     border-bottom-left-radius: 15px;
     border-top-right-radius: 0;

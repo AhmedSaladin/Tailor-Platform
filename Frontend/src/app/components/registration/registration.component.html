@@ -1,7 +1,5 @@
 <div class="container">
-  <div
-    class="card m-auto col-lg-5 col-md-10 col-11 pt-2 px-3 shadow mt-5"
-  >
+  <div class="card m-auto col-lg-5 col-md-10 col-11 pt-2 px-3 shadow mt-5">
     <div class="row-registration">
       <div class="row g-0">
         <!-- <div class="col-md-4 d-none d-sm-block">
@@ -115,14 +113,7 @@
               <button
                 type="submit"
                 class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
-                (click)="
-                  AddCustomer(
-                    fname.value,
-                    lname.value,
-                    email.value,
-                    password.value
-                  )
-                "
+                (click)="AddCustomer(formValidation)"
                 [disabled]="formValidation.invalid"
               >
                 Sign Up

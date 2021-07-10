@@ -3,6 +3,7 @@ import {
   FormBuilder,
   FormControl,
   FormGroup,
+  NgForm,
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -64,9 +65,7 @@ export class RegistrationComponent implements OnInit {
     return this.formValidation.controls;
   }
 
-
-
-      //Old way Validation
+  //Old way Validation
   //   formValidation = new FormGroup({
   //     fname: new FormControl('', [
   //       Validators.required,
@@ -101,24 +100,23 @@ export class RegistrationComponent implements OnInit {
   //     return this.formValidation.controls.password.valid;
   //   }
 
-  AddCustomer(fname: any, lname: any, email: any, password: any) {
-    if (
-      this.formValidation.controls.fname.valid &&
-      this.formValidation.controls.lname.valid &&
-      this.formValidation.controls.email.valid &&
-      this.formValidation.controls.password.valid
-    ) {
-      let customer = {
-        name: fname + ' ' + lname,
-        // lname: lname,
-        email: email,
-        password: password,
-        IsTailor: false,
-      };
-      this.myCustomer.AddNewCustomer(customer).subscribe();
-      this.router.navigateByUrl('login');
-    } else {
-      alert('Enter Valid Data');
-    }
+  AddCustomer(form: NgForm) {
+    let customer = {
+      name: form.value.fname + ' ' + form.value.lname,
+      email: form.value.email,
+      password: form.value.password,
+      IsTailor: false,
+    };
+    // if (
+    //   this.formValidation.controls.fname.valid &&
+    //   this.formValidation.controls.lname.valid &&
+    //   this.formValidation.controls.email.valid &&
+    //   this.formValidation.controls.password.valid
+    // ) {
+    this.myCustomer.AddNewCustomer(customer).subscribe();
+    this.router.navigateByUrl('login');
+    // } else {
+    //   alert('Enter Valid Data');
+    // }
   }
 }

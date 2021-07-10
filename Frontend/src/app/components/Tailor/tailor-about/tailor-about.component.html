@@ -30,20 +30,32 @@
             ></button>
           </div>
           <div class="modal-body">
-            <div class="mb-3">
+            <div class="mb-3" [formGroup]="formValidation">
               <label for="message-text" class="col-form-label">About Me:</label>
               <textarea
-                class="form-control"
+                class="form-control no-box-shadow"
                 id="message-text"
-                value="{{ user_info.about }}"
+                formControlName="about"
                 #About
               ></textarea>
+              <div
+                class="text-danger"
+                *ngIf="getControl.about.touched && getControl.about.invalid"
+              >
+                <div *ngIf="getControl.about.errors.required">
+                  About can't be empty
+                </div>
+                <div *ngIf="getControl.about.errors?.minlength">
+                  Minimum Length is 10 Characters
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal"
+                (click)="About.value = user_info.about"
               >
                 Discard
               </button>
@@ -52,6 +64,7 @@
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
                 (click)="update_tailor_about_section(About.value)"
+                [disabled]="formValidation.invalid"
               >
                 Save changes
               </button>

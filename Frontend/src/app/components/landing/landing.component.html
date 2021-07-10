@@ -1,27 +1,25 @@
 <div class="main">
   <header class="header text-white border-0">
     <!-- <img src="assets/images/header.jpeg" class="card-img rounded-0 img-fluid"> -->
-    <div class="">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-md-6 mt-2 mt-md-4 search-bar">
-            <h1 class="card-title text-center text-md-0">
-              We Stitch Designs Perfectly Suits You!
-            </h1>
-            <div class="input-group mt-4">
-              <select class="form-select" [(ngModel)]="designFor">
-                <option selected>Choose...</option>
-                <option [value]="male">Male</option>
-                <option [value]="female">Female</option>
-                <option [value]="all">Both</option>
-              </select>
-              <button
-                class="btn btn-outline-secondary"
-                (click)="sendSearchToHome()"
-              >
-                Search
-              </button>
-            </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mt-2 mt-md-4 search-bar">
+          <h1 class="card-title text-center">
+            We Stitch Designs That Perfectly Suits You!
+          </h1>
+          <div class="input-group mt-4 mx-auto">
+            <select class="form-select" [(ngModel)]="designFor">
+              <option selected>Choose...</option>
+              <option [value]="male">Male</option>
+              <option [value]="female">Female</option>
+              <option [value]="all">Both</option>
+            </select>
+            <button
+              class="btn btn-outline-secondary"
+              (click)="sendSearchToHome()"
+            >
+              Search
+            </button>
           </div>
         </div>
       </div>
@@ -29,11 +27,106 @@
   </header>
   <!-- end of main header -->
 
+  <!-- services section -->
+  <section class="services">
+    <div class="container">
+      <h2 class="text-center mb-5">Services</h2>
+      <div class="card-group">
+        <div class="card me-sm-3 col-12">
+          <div class="services-photo">
+            <img
+              class="card-img-top"
+              src="assets/images/sewing-machine-sew-craft-needle.jpg"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body text-center">
+            <h3 class="card-title">Altering</h3>
+            <p class="card-text">
+              The perfect cut for your outfit is something we believe in. We
+              offer the best altering options helping you look more classy.
+            </p>
+          </div>
+        </div>
+        <div class="card me-sm-3 mt-4 mt-md-0">
+          <div class="services-photo">
+            <img
+              class="card-img-top"
+              src="assets/images/Dress-Suits-for-Men-Measure.jpeg"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body text-center">
+            <h3 class="card-title">Custom Fitting</h3>
+            <p class="card-text">
+              We are engaged in providing custom tailoring so that you can
+              choose all details you want, from buttons to pockets and lapels.
+            </p>
+          </div>
+        </div>
+        <div class="card mt-4 mt-md-0">
+          <div class="services-photo">
+            <img
+              class="card-img-top"
+              src="assets/images/pexels-anna-shvets-5830641.jpg"
+              alt="Card image cap"
+            />
+          </div>
+          <div class="card-body text-center">
+            <h3 class="card-title">Designing</h3>
+            <p class="card-text">
+              We design wide range of creative & fantastic embroidery patterns
+              and keep a set of these designs for our customers to pick from.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end of services section -->
+
+  <div class="colored-section">
+    <section class="features-section text-center">
+      <div class="container">
+        <div class="row">
+          <h2>How it works!</h2>
+          <p class="mb-5 h4">A few simple steps towards a better fit</p>
+        </div>
+
+        <div class="row text-start">
+          <div class="col-md-4 box">
+            <h3>Making it fit.</h3>
+            <p>
+              You’re one of a kind, so why shouldn't your dress shirts be? A
+              made-to-measure shirt from Tailor Store isn’t just another dress
+              shirt for men - it's an experience tailored only for you.
+            </p>
+          </div>
+          <div class="col-md-4 box">
+            <h3>Making it right.</h3>
+            <p>
+              No shady business. Just really good dress shirts. Our tailors take
+              pride in every step of the craft, cutting, sewing and stitching
+              made-to-measure shirts with the utmost precision and care.
+            </p>
+          </div>
+          <div class="col-md-4 box">
+            <h3>Making it personal.</h3>
+            <p>
+              You want it - we’ve got it. Discover the true potential in custom
+              shirtmaking with nearly unlimited design options.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <!-- about us section -->
-  <div class="container">
-    <section class="about-us m-auto mt-5 text-center">
-      <h2 class="mb-3">About Us</h2>
-      <p class="lead">
+  <section class="about-us w-75 mx-auto">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>
         We are a platform for any creative tailor to offer their quality
         worksmanship for our daily customers who visit our website. We only
         deliver the best to our customers. Let it be any type of clothes you
@@ -43,154 +136,6 @@
         belief have helped us garner a vast clientele, which continues to grow
         by everyday.
       </p>
-    </section>
-
-    <section class="section-features text-center mt-5">
-      <div class="row">
-        <h2>It's all &mdash; in Measurements</h2>
-        <p class="long-copy">A few simple steps towards a better fit</p>
-      </div>
-
-      <div class="row about-us text-start">
-        <div class="col-md-4 box">
-          <!-- <i class="ion-ios-infinite-outline icon-big"></i> -->
-          <h3>Making it fit.</h3>
-          <p>
-            You’re one of a kind, so why shouldn't your dress shirts be? A
-            made-to-measure shirt from Tailor Store isn’t just another dress
-            shirt for men - it's an experience tailored only for you.
-          </p>
-        </div>
-        <div class="col-md-4 box">
-          <!-- <i class="ion-ios-stopwatch-outline icon-big"></i> -->
-          <h3>Making it right.</h3>
-          <p>
-            No shady business. Just really good dress shirts. Our tailors take
-            pride in every step of the craft, cutting, sewing and stitching
-            made-to-measure shirts with the utmost precision and care.
-          </p>
-        </div>
-        <div class="col-md-4 box">
-          <!-- <i class="ion-ios-nutrition-outline icon-big"></i> -->
-          <h3>Making it personal.</h3>
-          <p>
-            You want it - we’ve got it. Discover the true potential in custom
-            shirtmaking with nearly unlimited design options.
-          </p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- services section -->
-  <div class="container mt-5">
-    <h2 class="text-center mb-5">Services</h2>
-    <div class="card-group">
-      <div class="card me-sm-3 col-12">
-        <div class="services-photo">
-          <img
-            class="card-img-top"
-            src="assets/images/sewing-machine-sew-craft-needle.jpg"
-            alt="Card image cap"
-          />
-        </div>
-        <div class="card-body text-center">
-          <h3 class="card-title">Altering</h3>
-          <p class="card-text">
-            The perfect cut for your outfit is something we believe in. We offer
-            the best altering options helping you look more classy.
-          </p>
-        </div>
-      </div>
-      <div class="card me-sm-3 mt-4 mt-md-0">
-        <div class="services-photo">
-          <img
-            class="card-img-top"
-            src="assets/images/Dress-Suits-for-Men-Measure.jpeg"
-            alt="Card image cap"
-          />
-        </div>
-        <div class="card-body text-center">
-          <h3 class="card-title">Custom Fitting</h3>
-          <p class="card-text">
-            We are engaged in providing custom tailoring so that you can choose
-            all details you want, from buttons to pockets and lapels.
-          </p>
-        </div>
-      </div>
-      <div class="card mt-4 mt-md-0">
-        <div class="services-photo">
-          <img
-            class="card-img-top"
-            src="assets/images/pexels-anna-shvets-5830641.jpg"
-            alt="Card image cap"
-          />
-        </div>
-        <div class="card-body text-center">
-          <h3 class="card-title">Designing</h3>
-          <p class="card-text">
-            We design wide range of creative & fantastic embroidery patterns and
-            keep a set of these designs for our customers to pick from.
-          </p>
-        </div>
-      </div>
     </div>
-  </div>
-  <!-- end of services section -->
-
-  <!-- services section -->
-  <div class="container mt-5">
-    <h2 class="text-center mb-5">Services</h2>
-    <div class="card-group">
-      <div class="card me-sm-3 col-12">
-        <div class="services-photo">
-          <img
-            class="card-img-top"
-            src="assets/images/sewing-machine-sew-craft-needle.jpg"
-            alt="Card image cap"
-          />
-        </div>
-        <div class="card-body text-center">
-          <h3 class="card-title">Altering</h3>
-          <p class="card-text">
-            The perfect cut for your outfit is something we believe in. We offer
-            the best altering options helping you look more classy.
-          </p>
-        </div>
-      </div>
-      <div class="card me-sm-3 mt-4 mt-md-0">
-        <div class="services-photo">
-          <img
-            class="card-img-top"
-            src="assets/images/Dress-Suits-for-Men-Measure.jpeg"
-            alt="Card image cap"
-          />
-        </div>
-        <div class="card-body text-center">
-          <h3 class="card-title">Custom Fitting</h3>
-          <p class="card-text">
-            We are engaged in providing custom tailoring so that you can choose
-            all details you want, from buttons to pockets and lapels.
-          </p>
-        </div>
-      </div>
-      <div class="card mt-4 mt-md-0">
-        <div class="services-photo">
-          <img
-            class="card-img-top"
-            src="assets/images/pexels-anna-shvets-5830641.jpg"
-            alt="Card image cap"
-          />
-        </div>
-        <div class="card-body text-center">
-          <h3 class="card-title">Designing</h3>
-          <p class="card-text">
-            We design wide range of creative & fantastic embroidery patterns and
-            keep a set of these designs for our customers to pick from.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end of services section -->
+  </section>
 </div>
