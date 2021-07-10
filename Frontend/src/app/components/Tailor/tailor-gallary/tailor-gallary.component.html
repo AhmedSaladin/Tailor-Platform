@@ -2,67 +2,35 @@
 <div class="card col-12 mx-auto">
   <div class="card-body">
     <h5 class="card-title my-gallery-head d-inline">My Gallery</h5>
-    <button
-      class="d-inline float-end btn btn-primary btn-sm"
-      data-bs-toggle="modal"
-      data-bs-target="#gallary"
-    >
+    <button class="d-inline float-end btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#gallary">
       Edit
     </button>
     <!-- Start Gallary pop-up -->
-    <div
-      class="modal fade"
-      id="gallary"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
-    >
+    <div class="modal fade" id="gallary" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="staticBackdropLabel">Edit Gallery</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
             <div class="row scroll">
-              <div
-                class="col-12 col-md-6 col-lg-4"
-                *ngFor="let image of gallery"
-              >
-                <img
-                  src="{{ image }}"
-                  class="border border-3 m-2 mb-2 model-img"
-                />
+              <div class="col-12 col-md-6 col-lg-4 delete-img text-center" *ngFor="let image of gallery">
+                <img src="{{ image }}" class="m-2 mb-2 model-img img-fluid" />
+                <div class="icon text-center">
+                  <i class="fas fa-trash"></i>
+                </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
               Close
             </button>
-            <ngx-uploadcare-widget
-              public-key="d2eaba00baf97d93aeb1"
-              (on-upload-complete)="on_upload_complete($event)"
-              upll
-              crop="free"
-              class="d-flex justify-content-end"
-              [images-only]="true"
-              input-accept-types="image/*"
-              tabs="file gphotos instagram facebook"
-              [multiple]="true"
-              #upload_component
-            >
+            <ngx-uploadcare-widget public-key="d2eaba00baf97d93aeb1" (on-upload-complete)="on_upload_complete($event)"
+              upll crop="free" class="d-flex justify-content-end" [images-only]="true" input-accept-types="image/*"
+              tabs="file gphotos instagram facebook" [multiple]="true" #upload_component>
             </ngx-uploadcare-widget>
           </div>
         </div>
@@ -70,39 +38,18 @@
     </div>
     <!-- End Gallary pop-up -->
     <!-- Start Carousel -->
-    <div
-      id="carouselExampleFade"
-      class="carousel slide carousel-fade my-gallery-body"
-      data-bs-ride="carousel"
-    >
+    <div id="carouselExampleFade" class="carousel slide carousel-fade my-gallery-body" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div
-          class="carousel-item border border-5"
-          *ngFor="let image of gallery; let i = index"
-          [ngClass]="{ active: i == 0 }"
-        >
-          <img
-            src="{{ image }}"
-            class="d-block w-100"
-            style="height: 500px !important"
-          />
+        <div class="carousel-item border border-5" *ngFor="let image of gallery; let i = index"
+          [ngClass]="{ active: i == 0 }">
+          <img src="{{ image }}" class="d-block w-100" style="height: 500px !important" />
         </div>
       </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleFade"
-        data-bs-slide="prev"
-      >
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleFade"
-        data-bs-slide="next"
-      >
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>

@@ -27,6 +27,6 @@ export class TailorRateComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy(): void {
-    this.eve.subscribe();
+    this.eve.unsubscribe();
   }
 }

@@ -18,12 +18,9 @@ module.exports = mongoose.model("users", {
     required: true,
     unique: true,
   },
-  sizes: {
-    type: Object,
-  },
   isTailor: {
     type: Boolean,
-    default: false,
+    default: true,
     required: true,
   },
   avatar: {
@@ -36,5 +33,20 @@ module.exports = mongoose.model("users", {
   gender: {
     type: String,
     enum: ["male", "female"],
+  },
+  designFor: {
+    type: String,
+    enum: ["male", "female"],
+    required: true,
+  },
+  gallary: {
+    type: Array,
+  },
+  comments: {
+    type: Array,
+  },
+  about: {
+    type: String,
+    default: "Hi I'm new Tailor here",
   },
 });

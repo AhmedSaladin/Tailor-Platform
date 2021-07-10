@@ -39,3 +39,21 @@
   height: 200px;
   border-radius: 50%;
 }
+
+/* change border color to red when invalid */
+
+input.ng-invalid.ng-touched {
+  border: 1.5px solid red;
+}
+
+/* change border color to green when invalid */
+
+input.ng-valid.ng-touched {
+  border: 1.5px solid green;
+}
+
+/* remove default input border shadow */
+
+.no-box-shadow {
+  box-shadow: none;
+}

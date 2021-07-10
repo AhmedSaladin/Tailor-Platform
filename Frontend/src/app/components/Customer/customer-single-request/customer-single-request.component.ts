@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CommentService } from 'src/app/services/comment.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { TailorService } from 'src/app/services/tailor.service';
 
@@ -15,7 +17,9 @@ export class CustomerSingleRequestComponent implements OnInit {
   imags: any;
   count: any = 0;
   current_image: any;
-  constructor(private customer_api: CustomerService,private tailor_api:TailorService) {
+  CommentForm:any;
+  orderRate:any;
+  constructor(private commentApi: CommentService,private customer_api: CustomerService,private tailor_api:TailorService) {
   }
 
   ngOnInit(): void {
@@ -23,6 +27,7 @@ export class CustomerSingleRequestComponent implements OnInit {
     this.get_customer_details(this.order.customer_id);
     this.imags = this.order.design;
     this.current_image = this.imags[0];
+    this.formValidation()
   }
   get_tailor_details(id:any){
     this.eve = this.tailor_api.get_tailor_info(id).subscribe(
@@ -56,6 +61,44 @@ export class CustomerSingleRequestComponent implements OnInit {
     else this.count--;
     this.current_image = this.imags[this.count];
   }
+  ////////////////new comment /////////////////////////
+  formValidation(){
+    this.CommentForm=new FormGroup({
+      comment:new FormControl('',[
+        Validators.maxLength(1000),
+      ]),
+      rate:new FormControl()
+    })
+  }
+  get rate() {
+    return this.CommentForm.get('rate');
+  }
+  get comment() {
+    return this.CommentForm.get('comment');
+  }
+      ///Submit comment///
+  onSubmit(){
+    if(this.CommentForm.valid){
+      // console.log(this.comment?.value)
+      let newComment={
+        body:this.comment?.value,
+        rate:this.orderRate,
+        tailor_id:this.order.tailor_id,
+        customer_id:this.order.customer_id,
+        order_id:this.order.id
+      }
+      this.commentApi.CreateCommenr(newComment).subscribe();
+    }
+  }
+
+  // average = 0;
+  // coun = 0;
+  // currentRate = 6;
+
+  // avg() {
+  //   this.average = (this.average*this.coun + this.currentRate) / (this.coun + 1);
+  //   this.coun += 1;
+  // }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();  }
 }

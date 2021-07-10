@@ -24,7 +24,7 @@
         aria-hidden="true"
       >
         <div class="modal-dialog modal-dialog-centered modal-lg">
-          <div class="modal-content" *ngIf="user; else dd">
+          <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="bookingModalLabel">Booking</h5>
               <button
@@ -40,18 +40,6 @@
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                   <button
                     class="nav-link active"
-                    id="your-sizes-tab"
-                    data-bs-toggle="tab"
-                    data-bs-target="#your-sizes"
-                    type="button"
-                    role="tab"
-                    aria-controls="your-sizes"
-                    aria-selected="true"
-                  >
-                    Your Sizes (cm)
-                  </button>
-                  <button
-                    class="nav-link"
                     id="edit-size-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#edit-size"
@@ -79,60 +67,23 @@
               <div class="tab-content" id="nav-tabContent">
                 <div
                   class="tab-pane fade show active"
-                  id="your-sizes"
-                  role="tabpanel"
-                  aria-labelledby="your-sizes-tab"
-                >
-                  <!-- Start Sizes Table  -->
-
-                  <table class="table table-sm table-bordered w-100 mt-3">
-                    <tbody class="tableBody">
-                      <tr>
-                        <td>Chest</td>
-                        <td colspan="2">{{ user.chest }}</td>
-                      </tr>
-                      <tr>
-                        <td>Shoulder</td>
-                        <td colspan="2">{{ user.shoulder }}</td>
-                      </tr>
-                      <tr>
-                        <td>Inseam</td>
-                        <td colspan="2">{{ user.inseam }}</td>
-                      </tr>
-                      <tr>
-                        <td>Waist</td>
-                        <td colspan="2">{{ user.waist }}</td>
-                      </tr>
-                      <tr>
-                        <td>Height</td>
-                        <td colspan="2">{{ user.hight }}</td>
-                      </tr>
-                      <tr>
-                        <td>Arm Length</td>
-                        <td colspan="2">{{ user.armLength }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <!-- End  Sizes Table  -->
-                </div>
-
-                <div
-                  class="tab-pane fade"
                   id="edit-size"
                   role="tabpanel"
                   aria-labelledby="edit-size-tab"
                 >
                   <!-- Start Editable Sizes Table  -->
-                  <table class="table table-sm table-bordered w-100 mt-3">
+                  <table
+                    class="table table-sm table-bordered w-100 mt-3"
+                    [formGroup]="sizesValidation"
+                  >
                     <tbody class="tableBody">
                       <tr>
                         <td>Chest</td>
                         <td colspan="2">
                           <input
+                            formControlName="chest"
                             type="number"
                             class="form-control"
-                            value="{{ user.chest }}"
-                            #chest
                           />
                         </td>
                       </tr>
@@ -140,10 +91,9 @@
                         <td>Shoulder</td>
                         <td colspan="2">
                           <input
+                            formControlName="shoulder"
                             type="number"
                             class="form-control"
-                            value="{{ user.shoulder }}"
-                            #shoulder
                           />
                         </td>
                       </tr>
@@ -151,10 +101,9 @@
                         <td>Inseam</td>
                         <td colspan="2">
                           <input
+                            formControlName="inseam"
                             type="number"
                             class="form-control"
-                            value="{{ user.inseam }}"
-                            #inseam
                           />
                         </td>
                       </tr>
@@ -162,10 +111,9 @@
                         <td>Waist</td>
                         <td colspan="2">
                           <input
+                            formControlName="waist"
                             type="number"
                             class="form-control"
-                            value="{{ user.waist }}"
-                            #waist
                           />
                         </td>
                       </tr>
@@ -173,10 +121,9 @@
                         <td>Height</td>
                         <td colspan="2">
                           <input
+                            formControlName="height"
                             type="number"
                             class="form-control"
-                            value="{{ user.hight }}"
-                            #height
                           />
                         </td>
                       </tr>
@@ -184,11 +131,29 @@
                         <td>Arm Length</td>
                         <td colspan="2">
                           <input
+                            formControlName="armLength"
                             type="number"
                             class="form-control"
-                            name="armLength"
-                            [ngModel]="user.armLength"
-                            #arm
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Collar</td>
+                        <td colspan="2">
+                          <input
+                            formControlName="collar"
+                            type="number"
+                            class="form-control"
+                          />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Sleeve</td>
+                        <td colspan="2">
+                          <input
+                            formControlName="sleeve"
+                            type="number"
+                            class="form-control"
                           />
                         </td>
                       </tr>
@@ -208,13 +173,16 @@
                       You haven't upload designs yet.
                     </p>
                     <div
-                      class="col-12 col-md-6 col-lg-3"
+                      class="col-12 col-md-6 col-lg-3 delete-img text-center"
                       *ngFor="let image of images"
                     >
                       <img
                         src="{{ image }}"
-                        class="border border-3 m-2 mb-2 model-img"
+                        class="m-2 mb-2 model-img img-fluid"
                       />
+                      <div class="icon text-center">
+                        <i class="fas fa-trash"></i>
+                      </div>
                     </div>
                   </div>
                   <ngx-uploadcare-widget
@@ -246,16 +214,8 @@
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                (click)="
-                  submitD({
-                    chest: chest.value,
-                    height: height.value,
-                    armLength: arm.value,
-                    waist: waist.value,
-                    inseam: inseam.value,
-                    shoulder: shoulder.value
-                  })
-                "
+                (click)="submitD(sizesValidation)"
+                [disabled]="images.length == 0"
               >
                 Order
               </button>
