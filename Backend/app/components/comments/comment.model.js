@@ -4,7 +4,7 @@ module.exports = mongoose.model("comments", {
   tailor_id: { type: ObjectId, required: true },
   body: {
     type: String,
-    required: true,
   },
   rate: { type: number, required: true },
+  date: { type: Date, default: Date.now },
 });

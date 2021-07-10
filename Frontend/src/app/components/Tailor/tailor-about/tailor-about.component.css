@@ -1,7 +1,6 @@
 .card {
   margin-bottom: 1em;
   border-radius: 15px;
-  
 }
 .about-me-head {
   text-align: left;
@@ -13,5 +12,21 @@
 .about-me-body {
   margin-left: 2em;
   padding-bottom: 2em;
-  
+}
+/* change border color to red when invalid */
+
+textarea.ng-invalid.ng-touched {
+  border: 1.5px solid red;
+}
+
+/* change border color to green when invalid */
+
+textarea.ng-valid.ng-touched {
+  border: 1.5px solid green;
+}
+
+/* remove default input border shadow */
+
+.no-box-shadow {
+  box-shadow: none;
 }

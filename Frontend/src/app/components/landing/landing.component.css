@@ -1,77 +1,48 @@
 /* start genral styles*/
-
-.row {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
 section {
-  padding: 20px 0;
+  padding: 60px 0;
 }
-
-.box {
-  padding: 1%;
+.colored-section {
+  background-color: #3498c2;
 }
-
 section {
-  color: #555;
   font-family: "Lato", "Arial", sans-serif;
-  font-size: 20px;
-  font-weight: 300;
+  font-size: 22px;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
-
 h1,
 h2,
 h3 {
-  font-weight: bold;
   letter-spacing: 1px;
 }
-
 h1 {
   margin-top: 0;
   margin-bottom: 20px;
   color: #fff;
-  /* font-size: 240%; */
-  word-spacing: 3px;
 }
-
 h2 {
-  /* font-size: 180%; */
-  word-spacing: 2px;
+  font-size: 1.8em;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
-
 h3 {
-  /* font-size: 110%; */
+  font-size: 1.4em;
   margin-bottom: 15px;
 }
-
-
 h2:after {
   display: block;
   height: 2px;
   background-color: #2e86ab;
-  content: " ";
+  content: "";
   width: 100px;
   margin: 0 auto;
-  margin-top: 30px;
+  margin-top: 10px;
 }
-
-.long-copy {
-  font-weight: bold;
-}
-
-
-
 /* End genral styles*/
 
 /* start Header styles */
-
 header {
-  /* background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(../../../assets/images/header.jpeg); */
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2)),
     url(../../../assets/images/header.jpeg);
   background-size: cover;
@@ -80,89 +51,61 @@ header {
   background-attachment: fixed;
   border-radius: 0;
 }
-
 .header .btn {
   background-color: #2e86ab;
   color: #fdfffc;
 }
-
 .header .btn:hover {
   background-color: #96cce2;
   color: #0d1f2d;
 }
-
 /*End Header Styles*/
 
 /*Start search styles */
-
 .search-bar {
   position: absolute;
-  width: 750px;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
 .input-group {
-  width: 100%;
   height: 50px;
 }
-
-/* .form-select {
-  border-radius: 15px;
-} */
-
+.form-select,
 .input-group button {
-  border-radius: 15px;
+  border-radius: 10px;
 }
-
+.search-bar .input-group {
+  width: 75%;
+}
+@media screen and (min-width: 1024px) {
+  .search-bar .input-group {
+    width: 50%;
+  }
+}
 /*End search styles */
 
-/*Start about us*/
-
-
-.section-features {
-  background-color: #f4f4f4;
-}
-.section-features .long-copy {
-  margin-bottom: 30px;
-}
-
-.section-features h2, p,
-.about-us h3 ,h2 {
-  color: black;
-}
-
-/*End about us*/
-
 /*Start Services Section Styles*/
-
-
-
+.card-group {
+  margin-top: 60px;
+}
 .card {
   border-bottom-right-radius: 15px !important;
   border-bottom-left-radius: 15px !important;
 }
-
 .card .services-photo {
   position: relative;
   bottom: 18px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
-
-.card-title {
-  font-weight: bold;
-}
-
 .services-photo {
   width: 100%;
   margin: 0;
   overflow: hidden;
   background-color: #000;
 }
-
 .services-photo img {
   opacity: 0.7;
   width: 100%;
@@ -176,12 +119,32 @@ header {
   transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
   /* zoom in and out slowly */
 }
-
 .services-photo img:hover {
   opacity: 1;
   -webkit-transform: scale(1.03);
   transform: scale(1.03);
-  /*zoom out when hover to original */
 }
-
+.services h3 {
+  margin-top: -5px;
+}
 /*End Services Section Styles*/
+
+/*Start about us*/
+.features-section .long-copy {
+  margin-bottom: 30px;
+}
+.about-us p {
+  text-align: justify;
+}
+/*End about us*/
+
+/* Start Features Section */
+.features-section h2,
+.features-section h3,
+.features-section p {
+  color: #f6f7f8 !important;
+}
+.features-section h2::after {
+  background-color: #f6f7f8;
+}
+/* End Features Section */

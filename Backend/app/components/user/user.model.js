@@ -7,6 +7,7 @@ module.exports = mongoose.model("users", {
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
@@ -15,6 +16,7 @@ module.exports = mongoose.model("users", {
   phone: {
     type: Number,
     required: true,
+    unique: true,
   },
   sizes: {
     type: Object,
