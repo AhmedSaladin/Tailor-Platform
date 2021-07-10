@@ -293,6 +293,26 @@
         "sleeve": 10
       },
       "id": 9
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "pending",
+      "design": [
+        "https://ucarecdn.com/6d1a62d2-7696-4934-8809-f0d4db571aca~1/nth/0/"
+      ],
+      "customer_sizes": {
+        "chest": 12,
+        "shoulder": 44,
+        "inseam": 66,
+        "waist": 77,
+        "height": 88,
+        "armLength": 44,
+        "collar": 22,
+        "sleeve": 11
+      },
+      "id": 10
     }
   ],
   "comments": [
