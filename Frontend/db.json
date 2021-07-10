@@ -184,7 +184,7 @@
       "customer_name": "Ali user",
       "tailor_id": "5",
       "customer_sizes": {
-        "chest": 127,
+        "chest": 2,
         "waist": 99,
         "collar": 20,
         "armLength": 73.5,
@@ -232,12 +232,14 @@
         "https://ucarecdn.com/f9c3384a-8054-4f03-a7a0-6bc25a9d1e5a~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": "127",
-        "height": "180",
-        "armLength": "73.5",
-        "waist": "99",
-        "inseam": "85",
-        "shoulder": "51"
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 6
     },
