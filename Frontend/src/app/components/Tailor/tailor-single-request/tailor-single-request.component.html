@@ -77,6 +77,7 @@
               <h3 class="card-title mt-2 col-12">
                 Customer Name: {{ user.name }}
               </h3>
+              <h3 class="card-title mt-2 col-12">Status: {{ order.status }}</h3>
 
               <!-- Start Customer Sizes Table  -->
 
@@ -111,7 +112,7 @@
                   </tr>
                   <tr>
                     <td>Height</td>
-                    <td colspan="2">{{ order.customer_sizes.hight }}</td>
+                    <td colspan="2">{{ order.customer_sizes.height }}</td>
                     <!-- <td>CM</td> -->
                   </tr>
                   <tr>
@@ -141,15 +142,40 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          *ngIf="order.status !== 'pending'"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="change_status('rejected')"
+          *ngIf="order.status === 'pending'"
+        >
           Decline
         </button>
         <button
           type="button"
           class="btn btn-primary form"
           data-bs-dismiss="modal"
+          (click)="change_status('accepted')"
+          *ngIf="order.status === 'pending'"
         >
           Accept
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary form"
+          data-bs-dismiss="modal"
+          (click)="change_status('finished')"
+          *ngIf="order.status === 'accepted'"
+        >
+          Finished
         </button>
       </div>
     </div>

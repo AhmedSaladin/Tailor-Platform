@@ -113,27 +113,23 @@
                 ></button>
               </div>
               <div class="modal-body">
-                <form #form="ngForm">
-                  <div class="mb-3" [formGroup]="formValidation">
+                <form [formGroup]="formValidation">
+                  <div class="mb-3">
                     <label for="name" class="col-form-label">Name:</label>
                     <input
-                      formControlName="tName"
+                      formControlName="name"
                       type="text"
                       class="form-control no-box-shadow"
-                      id="name"
-                      name="name"
-                      [ngModel]="user_info.name"
+                      #Name
                     />
                     <div
                       class="text-danger"
-                      *ngIf="
-                        getControl.tName.touched && getControl.tName.invalid
-                      "
+                      *ngIf="getControl.name.touched && getControl.name.invalid"
                     >
-                      <div *ngIf="getControl.tName.errors.required">
-                        About can't be empty
+                      <div *ngIf="getControl.name.errors.required">
+                        Name can't be empty
                       </div>
-                      <div *ngIf="getControl.tName.errors?.minlength">
+                      <div *ngIf="getControl.name.errors?.minlength">
                         Minimum Length is 3 Characters
                       </div>
                     </div>
@@ -143,14 +139,12 @@
                       >Designing For:</label
                     >
                     <select
+                      formControlName="design"
                       id="inputState"
                       class="form-select"
-                      name="design"
-                      [ngModel]="user_info.designFor"
                     >
                       <option>Male</option>
                       <option>Female</option>
-                      <option>All</option>
                     </select>
                   </div>
                 </form>
@@ -160,13 +154,14 @@
                   type="button"
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
+                  (click)="Name.value = user_info.name"
                 >
                   Discard
                 </button>
                 <button
                   type="button"
                   class="btn btn-primary form"
-                  (click)="update_tailor_info(form)"
+                  (click)="update_tailor_info(formValidation)"
                   data-bs-dismiss="modal"
                   [disabled]="formValidation.invalid"
                 >
