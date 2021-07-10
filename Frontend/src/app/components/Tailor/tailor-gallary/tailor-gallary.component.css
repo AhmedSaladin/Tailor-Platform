@@ -45,3 +45,31 @@
 
 
 
+/* delete image */
+
+.delete-img{
+  position: relative;
+  display: flex;
+}
+.icon{
+  width: 15em;
+  height: 15em;
+  margin: 7px;
+  position: absolute;
+  color: white;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  display: flex;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+}
+.icon i{
+  font-weight: bold;
+  font-size: 40px;
+  cursor: pointer;
+}
+.delete-img:hover .icon{
+  opacity: 1;
+  transition: .8s ease;
+}
