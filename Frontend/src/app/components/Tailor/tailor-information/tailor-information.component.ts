@@ -1,15 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {
-  NgForm,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validator,
-  Validators,
-} from '@angular/forms';
+import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { TailorService } from 'src/app/services/tailor.service';
-// form need validation
 @Component({
   selector: 'app-tailor-information',
   templateUrl: './tailor-information.component.html',

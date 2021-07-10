@@ -15,7 +15,7 @@
       "shoulder": 51,
       "inseam": 85,
       "sleeve": 80,
-      "hight": 180,
+      "height": 180,
       "avatar": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0d7e6d7d-7f87-47b1-8403-8198d739273e/dda454v-63143eee-d4d6-49ed-983d-b34c9819aeb2.jpg/v1/fill/w_1024,h_912,q_75,strp/gambol_by_dhia334_dda454v-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9OTEyIiwicGF0aCI6IlwvZlwvMGQ3ZTZkN2QtN2Y4Ny00N2IxLTg0MDMtODE5OGQ3MzkyNzNlXC9kZGE0NTR2LTYzMTQzZWVlLWQ0ZDYtNDllZC05ODNkLWIzNGM5ODE5YWViMi5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.ZHy5yMDkM3kxItaFXUKpdJrdGMYbM9n4N7LIUbqUWmI"
     },
     {
@@ -175,7 +175,7 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "status": "done",
+      "status": "pending",
       "rate": 1
     },
     {
@@ -199,33 +199,8 @@
         "assets/images/suit/s3.jpg",
         "assets/images/suit/s4.jpg"
       ],
-      "status": "rejected",
+      "status": "finished",
       "rate": 1
-    },
-    {
-      "customer_id": "1",
-      "customer_name": "Ali user",
-      "tailor_id": "2",
-      "status": "pending",
-      "design": [
-        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/0/",
-        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/1/",
-        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/2/",
-        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/3/",
-        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/4/",
-        "https://ucarecdn.com/59af2ee3-1011-4331-8ab0-474875f43ad5~6/nth/5/"
-      ],
-      "customer_sizes": {
-        "chest": 127,
-        "waist": 99,
-        "collar": 20,
-        "armLength": 73.5,
-        "shoulder": 50,
-        "inseam": 85,
-        "sleeve": 80,
-        "height": 180
-      },
-      "id": 4
     },
     {
       "customer_id": "1",
@@ -244,6 +219,80 @@
         "shoulder": "51"
       },
       "id": 5
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "rejected",
+      "design": [
+        "https://ucarecdn.com/f9c3384a-8054-4f03-a7a0-6bc25a9d1e5a~1/nth/0/"
+      ],
+      "customer_sizes": {
+        "chest": "127",
+        "height": "180",
+        "armLength": "73.5",
+        "waist": "99",
+        "inseam": "85",
+        "shoulder": "51"
+      },
+      "id": 6
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "finished",
+      "design": [
+        "https://ucarecdn.com/ace8ded4-e866-4c0e-a3f7-4ab8d23a9a73~1/nth/0/"
+      ],
+      "customer_sizes": {
+        "chest": "127",
+        "height": "180",
+        "armLength": "73.5",
+        "waist": "99",
+        "inseam": "85",
+        "shoulder": "51"
+      },
+      "id": 7
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "accepted",
+      "design": [
+        "https://ucarecdn.com/992ee319-04ed-4279-986d-adf292b632ac~1/nth/0/"
+      ],
+      "customer_sizes": {
+        "chest": "127",
+        "height": "180",
+        "armLength": "73.5",
+        "waist": "99",
+        "inseam": "85",
+        "shoulder": "51"
+      },
+      "id": 8
+    },
+    {
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "tailor_id": "2",
+      "status": "rejected",
+      "design": [
+        "https://ucarecdn.com/06dd5a9a-09a9-47bd-88a1-56f6662fbb1a~1/nth/0/"
+      ],
+      "customer_sizes": {
+        "chest": 15,
+        "shoulder": 36,
+        "inseam": 78,
+        "waist": 22,
+        "height": 11,
+        "armLength": 99,
+        "collar": 12,
+        "sleeve": 10
+      },
+      "id": 9
     }
   ],
   "comments": [
