@@ -27,5 +27,6 @@ export class TailorRequestsComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy(): void {
-    if (this.eve != undefined) this.eve.unsubscribe();  }
+    if (this.eve != undefined) this.eve.unsubscribe();  
+  }
 }
