@@ -1,6 +1,7 @@
 import { OnDestroy, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { TailorService } from 'src/app/services/tailor.service';
   styleUrls: ['./edit-tailor-profile.component.css'],
 })
 export class EditTailorProfileComponent implements OnInit, OnDestroy {
-  eve: any;
+  eve!: Subscription;
   constructor(private api: TailorService, private url: ActivatedRoute) {
     this.information(url.snapshot.params.id);
   }

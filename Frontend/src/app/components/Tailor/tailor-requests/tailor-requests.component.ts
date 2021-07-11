@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { CustomerService } from 'src/app/services/customer.service';
+import { Subscription } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class TailorRequestsComponent implements OnInit, OnDestroy {
   @Input() user_id: any;
   requests: any;
-  eve: any;
+  eve!: Subscription;
   constructor(private request_api: OrderService) {}
 
   ngOnInit(): void {
@@ -27,5 +27,6 @@ export class TailorRequestsComponent implements OnInit, OnDestroy {
     );
   }
   ngOnDestroy(): void {
-    if (this.eve != undefined) this.eve.unsubscribe();  }
+    if (this.eve != undefined) this.eve.unsubscribe();  
+  }
 }

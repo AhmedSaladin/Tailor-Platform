@@ -1,15 +1,8 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import {
-  NgForm,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validator,
-  Validators,
-} from '@angular/forms';
+import { NgForm, FormBuilder, Validators } from '@angular/forms';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
+import { Subscription } from 'rxjs';
 import { TailorService } from 'src/app/services/tailor.service';
-// form need validation
 @Component({
   selector: 'app-tailor-information',
   templateUrl: './tailor-information.component.html',
@@ -19,7 +12,7 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   @ViewChild('upload_component') upload_component!: UcWidgetComponent;
   @Input() user_info: any;
   @Input() img: any;
-  eve: any;
+  eve!: Subscription;
   formValidation: any;
   constructor(private api: TailorService, public formBulider: FormBuilder) {}
 
