@@ -28,6 +28,7 @@ import { EditCustomerProfileComponent } from './components/Customer/edit-custome
 import { BookingComponent } from './components/Tailor/booking/booking.component';
 import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EditCustomerProfileComponent,
     BookingComponent,
     TailorCommentsComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
