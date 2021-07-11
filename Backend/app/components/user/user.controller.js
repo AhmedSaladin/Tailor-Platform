@@ -26,30 +26,27 @@ module.exports = {
   },
 
   sign_up: async (req, res, next) => {
-    const user = req.body;
-    const email = user.email;
+    const {name, email, phone, password} = req.body;
     try {
-      const password = await hashing(user.password);
-      const new_user = new User({
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        password,
-      });
-      const [, error] = await promise_handler(new_user.save());
+      const hashed_password = await hashing(password);
+      const [, error] = await promise_handler(User.create({
+        name,
+        email,
+        phone,
+        password: hashed_password,
+      }));
       is_no_error(error, BAD_REQUEST);
-      res.status(CREATED).json();
+      res.status(CREATED).json(user);
     } catch (err) {
       next(err);
     }
   },
 
   login: async (req, res, next) => {
+    const { email, password } = req.body;
     try {
-      const { email } = req.body;
-      const { password } = req.body;
       const found = await User.findOne({ email });
-      if (!found) throw { status: 404, message: "Wrong email or password." };
+      if (!found) throw { status: 400, message: "Wrong email or password." };
       const valid_password = await check_password(password, found.password);
       if (!valid_password)
         throw { status: 404, message: "Wrong email or password." };

@@ -43,9 +43,6 @@ const tailorSchema = new mongoose.Schema({
   gallary: {
     type: Array,
   },
-  comments: {
-    type: Array,
-  },
   about: {
     type: String,
     default: "Hi I'm new Tailor here",
