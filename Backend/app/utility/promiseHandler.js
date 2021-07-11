@@ -1,7 +1,9 @@
 /**
- * 
- * @param {*} promise 
- * @returns [data,error]
+ *
+ * @param {*} promise
+ *  @ if (data) error = null
+ *  @ if (error) data= null
+ * @returns [data, error]
  */
 module.exports = async (promise) => {
   try {
