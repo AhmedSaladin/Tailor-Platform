@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit {
         [
           Validators.required,
           Validators.pattern(
-            '^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$'
+            '^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()?_ \'\"\-+=]).*$'
           ),
         ],
       ],
