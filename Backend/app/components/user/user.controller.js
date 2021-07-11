@@ -27,23 +27,24 @@ module.exports = {
   },
 
   sign_up: async (req, res, next) => {
-    const { name, email, phone, password } = req.body;
+    const { email } = req.body;
     try {
       const doesExist = await User.findOne({ email });
       if (doesExist)
         throw { status: BAD_REQUEST, message: "Email already registered." };
-      const [, error] = await promise_handler(
+      const [result, error] = await promise_handler(
         userSchema.validateAsync(req.body)
       );
+      console.log(result)
       is_no_error(error, BAD_REQUEST);
-      const hashed_password = await hashing(password);
+      const hashed_password = await hashing(result.password);
       await User.create({
-        name,
-        email,
-        phone,
+        name: result.name,
+        email: result.email,
+        phone: result.phone,
         password: hashed_password,
       });
-      res.status(CREATED).json(user);
+      res.status(CREATED).json();
     } catch (err) {
       next(err);
     }
