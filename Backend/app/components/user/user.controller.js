@@ -11,18 +11,6 @@ const UNAUTHORIZED = 401;
 const NOT_FOUND = 404;
 const INTERNAL_SERVER_ERROR = 500;
 
-
-// catching mongoose errors
-// const handleErrors = (err) => {
-//   console.log(err);
-//   let errors = { status: 403 };
-//   if (err.message.includes('user validation failed')) {
-//     Object.values(err.errors).forEach(({ properties }) => {
-//       errors[properties.path] = properties.message;
-//     });
-//   }
-//   return errors;
-// }
 module.exports = {
   get_user: async (req, res, next) => {
     try {
@@ -38,22 +26,19 @@ module.exports = {
   },
 
   sign_up: async (req, res, next) => {
-    const user = req.body;
-    const email = user.email;
+    const {name, email, phone, password} = req.body;
     try {
-      const password = await hashing(user.password);
-      const new_user = new User({
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        password,
-      });
-      const [, error] = await promise_handler(new_user.save());
+      const hashed_password = await hashing(password);
+      const [, error] = await promise_handler(User.create({
+        name,
+        email,
+        phone,
+        password: hashed_password,
+      }));
       is_no_error(error, BAD_REQUEST);
-      res.status(CREATED).json();
+      res.status(CREATED).json(user);
     } catch (err) {
-      const errors = handleErrors(err)
-      next(errors);
+      next(err);
     }
   },
 
