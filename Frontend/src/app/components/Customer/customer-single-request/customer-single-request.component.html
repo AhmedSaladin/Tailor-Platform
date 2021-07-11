@@ -1,10 +1,10 @@
 <span *ngIf="user && tailor">{{ tailor.name }} </span>
 <!-- ===================== review button =================== -->
-<button *ngIf="order.status=='Done'" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#review">
+<button *ngIf="order.status=='finished'&& !hasComment" class="btn btn-primary btn-sm" data-bs-toggle="modal" attr.data-bs-target="#review{{ order.id }}Model">
   Review
 </button>
 <!-- =============================== REview popup =============================== -->
-<div class="modal fade" id="review" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="review{{ order.id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
@@ -16,20 +16,15 @@
           action=""
           [formGroup]="CommentForm"
           >
-          <!-- (ngSubmit)="onSubmit()" -->
           <div class="modal-body">
             <span id="rateMe2" class="empty-stars"></span>
             <div class="container">
 
-                <!-- <input type="number" formControlName="rate"> -->
                 <ngb-rating [max]=5 [(rate)]="orderRate">
                   <ng-template let-fill="fill" let-index="index">
                     <span class="star" [class.filled]="fill === 100">&#9733;</span>
                   </ng-template>
                 </ngb-rating>
-                <!-- <span>{{ orderRate }} </span> -->
-                <!-- <ngb-rating [max]=5 [(rate)]="orderRate" [readonly]="false"></ngb-rating> -->
-                <span>{{ orderRate }} </span>
 
 
                 <div class="
@@ -39,11 +34,6 @@
                 justify-content-center
                 flex-row-reverse
                 ">
-                <!-- <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                  <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                  <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                  <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                  <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label> -->
                 </div>
               </div>
 
