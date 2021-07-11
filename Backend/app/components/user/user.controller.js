@@ -1,44 +1,56 @@
 const User = require("./user.model");
-const mongoID = require("mongoose");
-const { check_password, hashing } = require("../../utility/password");
-const INTERNAL_SERVER_ERROR = 500;
+const mongo = require("mongoose");
 const promise_handler = require("../../utility/promiseHandler");
+const { check_password, hashing } = require("../../utility/password");
+
+const OK = 200;
+const CREATED = 201;
+const NO_CONTENT = 204;
+const BAD_REQUEST = 400;
+const UNAUTHORIZED = 401;
+const NOT_FOUND = 404;
+const INTERNAL_SERVER_ERROR = 500;
 
 
 // catching mongoose errors
-const handleErrors = (err) => {
-  console.log(err);
-  let errors = { status: 403 };
-  if (err.message.includes('user validation failed')) {
-    Object.values(err.errors).forEach(({ properties }) => {
-      errors[properties.path] = properties.message;
-    });
-  }
-  return errors;
-}
+// const handleErrors = (err) => {
+//   console.log(err);
+//   let errors = { status: 403 };
+//   if (err.message.includes('user validation failed')) {
+//     Object.values(err.errors).forEach(({ properties }) => {
+//       errors[properties.path] = properties.message;
+//     });
+//   }
+//   return errors;
+// }
 module.exports = {
   get_user: async (req, res, next) => {
-    const id = req.params.id;
-    if (!mongoID.isValidObjectId(id))
-      next({ status: 400, message: "Not valid ID" });
-    const [user, err] = await promise_handler(User.findById(id));
-    if (user) return res.status(200).json(user);
-    next({ status: 400, message: err.toString() });
+    try {
+      const id = req.params.id;
+      is_valid_id(id);
+      const [user, err] = await promise_handler(User.findById(id));
+      is_not_founded(user);
+      is_no_error(err, INTERNAL_SERVER_ERROR);
+      res.status(OK).json(user);
+    } catch (err) {
+      next(err);
+    }
   },
 
   sign_up: async (req, res, next) => {
-    const { name, email, phone, password } = req.body;
+    const user = req.body;
+    const email = user.email;
     try {
-      const found = await User.findOne({ email });
-      if (found) throw { status: 400, message: "Email already exists." };
-      const hashed_password = await hashing(password);
-      const user = await User.create({
-        name,
-        email,
-        phone,
-        password: hashed_password,
+      const password = await hashing(user.password);
+      const new_user = new User({
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        password,
       });
-      res.status(201).json(user);
+      const [, error] = await promise_handler(new_user.save());
+      is_no_error(error, BAD_REQUEST);
+      res.status(CREATED).json();
     } catch (err) {
       const errors = handleErrors(err)
       next(errors);
@@ -52,10 +64,27 @@ module.exports = {
       if (!found) throw { status: 400, message: "Wrong email or password." };
       const valid_password = await check_password(password, found.password);
       if (!valid_password)
-        throw { status: 400, message: "Wrong email or password." };
+        throw { status: 404, message: "Wrong email or password." };
       res.status(200).json();
     } catch (err) {
       next(err);
     }
   },
 };
+
+function is_valid_id(id) {
+  if (!mongo.isValidObjectId(id))
+    throw { status: BAD_REQUEST, message: "ID NOT VALID" };
+}
+
+function is_no_error(error, status) {
+  if (error) throw { status: status, message: error.toString() };
+}
+
+function is_not_founded(data) {
+  if (!data) throw { status: NOT_FOUND, message: "NOT FOUND" };
+}
+
+function is_founded(data) {
+  if (data) throw { status: BAD_REQUEST, message: "EMAIL ALEARDY EXIST" };
+}

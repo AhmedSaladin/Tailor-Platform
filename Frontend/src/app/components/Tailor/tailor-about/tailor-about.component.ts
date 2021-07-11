@@ -1,12 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { TailorService } from 'src/app/services/tailor.service';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-// form need validation
+import { FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tailor-about',
@@ -15,7 +10,7 @@ import {
 })
 export class TailorAboutComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
-  eve: any;
+  eve!: Subscription;
   formValidation: any;
   constructor(private api: TailorService, public formBulider: FormBuilder) {}
 

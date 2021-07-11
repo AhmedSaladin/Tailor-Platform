@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: Number,
     required: [true, "Phone cannot be empty."],
+    unique: true,
   },
   sizes: {
     type: Object,
