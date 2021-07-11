@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-module.exports = mongoose.model("users", {
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -8,15 +8,16 @@ module.exports = mongoose.model("users", {
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
   password: {
     type: String,
     required: true,
+    minLength: 8,
   },
   phone: {
     type: Number,
     required: true,
-    unique: true,
   },
   sizes: {
     type: Object,
@@ -38,3 +39,4 @@ module.exports = mongoose.model("users", {
     enum: ["male", "female"],
   },
 });
+module.exports = mongoose.model("user", userSchema);
