@@ -1,5 +1,6 @@
 const User = require("./user.model");
 const mongo = require("mongoose");
+const { userSchema } = require("../../utility/validationSchema");
 const promise_handler = require("../../utility/promiseHandler");
 const { check_password, hashing } = require("../../utility/password");
 
@@ -26,16 +27,22 @@ module.exports = {
   },
 
   sign_up: async (req, res, next) => {
-    const {name, email, phone, password} = req.body;
+    const { name, email, phone, password } = req.body;
     try {
+      const doesExist = await User.findOne({ email });
+      if (doesExist)
+        throw { status: BAD_REQUEST, message: "Email already registered." };
+      const [, error] = await promise_handler(
+        userSchema.validateAsync(req.body)
+      );
+      is_no_error(error, BAD_REQUEST);
       const hashed_password = await hashing(password);
-      const [, error] = await promise_handler(User.create({
+      await User.create({
         name,
         email,
         phone,
         password: hashed_password,
-      }));
-      is_no_error(error, BAD_REQUEST);
+      });
       res.status(CREATED).json(user);
     } catch (err) {
       next(err);
