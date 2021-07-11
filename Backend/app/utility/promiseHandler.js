@@ -1,3 +1,8 @@
+/**
+ * 
+ * @param {*} promise 
+ * @returns [data,error]
+ */
 module.exports = async (promise) => {
   try {
     const data = await promise;
