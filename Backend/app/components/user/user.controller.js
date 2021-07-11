@@ -4,6 +4,18 @@ const { check_password, hashing } = require("../../utility/password");
 const INTERNAL_SERVER_ERROR = 500;
 const promise_handler = require("../../utility/promiseHandler");
 
+
+// catching mongoose errors
+const handleErrors = (err) => {
+  console.log(err);
+  let errors = { status: 403 };
+  if (err.message.includes('user validation failed')) {
+    Object.values(err.errors).forEach(({ properties }) => {
+      errors[properties.path] = properties.message;
+    });
+  }
+  return errors;
+}
 module.exports = {
   get_user: async (req, res, next) => {
     const id = req.params.id;
@@ -18,7 +30,7 @@ module.exports = {
     const { name, email, phone, password } = req.body;
     try {
       const found = await User.findOne({ email });
-      if (found) throw { status: 403, message: "Email already exists." };
+      if (found) throw { status: 400, message: "Email already exists." };
       const hashed_password = await hashing(password);
       const user = await User.create({
         name,
@@ -28,7 +40,8 @@ module.exports = {
       });
       res.status(201).json(user);
     } catch (err) {
-      next(err);
+      const errors = handleErrors(err)
+      next(errors);
     }
   },
 
@@ -36,10 +49,10 @@ module.exports = {
     const { email, password } = req.body;
     try {
       const found = await User.findOne({ email });
-      if (!found) throw { status: 403, message: "Wrong email or password." };
+      if (!found) throw { status: 400, message: "Wrong email or password." };
       const valid_password = await check_password(password, found.password);
       if (!valid_password)
-        throw { status: 403, message: "Wrong email or password." };
+        throw { status: 400, message: "Wrong email or password." };
       res.status(200).json();
     } catch (err) {
       next(err);

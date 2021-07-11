@@ -1,23 +1,30 @@
 const mongoose = require("mongoose");
+const { isEmail } = require("validator");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true,
+    required: [true, "Name cannot be empty."],
   },
   email: {
     type: String,
-    required: true,
+    required: [true, "Email cannot be empty."],
     unique: true,
     lowercase: true,
+    validate: [isEmail, "Invalid email format."],
   },
   password: {
     type: String,
-    required: true,
-    minLength: 8,
+    required: [true, "Password cannot be empty."],
+    validate: {
+      validator: function(val) {
+        return /^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()?_ \'\"\-+=]).*$/.test(val);
+      },
+      message: `Password should have at least 8 characters including one uppercase, lowercase character and a special character.`
+    },
   },
   phone: {
     type: Number,
-    required: true,
+    required: [true, "Phone cannot be empty."],
   },
   sizes: {
     type: Object,
@@ -36,7 +43,10 @@ const userSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    enum: ["male", "female"],
+    enum: {
+      values: ["male", "female"],
+      message: "{VALUE} is not supported."
+    }
   },
 });
 module.exports = mongoose.model("user", userSchema);

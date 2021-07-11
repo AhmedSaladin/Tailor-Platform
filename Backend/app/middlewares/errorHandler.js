@@ -1,7 +1,7 @@
-module.exports = (err, req, res, next) => {
+module.exports = (error, req, res, next) => {
   if (res.headersSent) {
-    return next(err)
+    return next(error)
   }
-  const status = err.status || 500;
-  res.status(status).json({ message: err.message });
+  const status = error.status || 500;
+  res.status(status).json({ error });
 };
