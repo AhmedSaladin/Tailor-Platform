@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-module.exports = mongoose.model("users", {
+const tailorSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -8,15 +8,16 @@ module.exports = mongoose.model("users", {
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
   password: {
     type: String,
     required: true,
+    minLength: 8,
   },
   phone: {
     type: Number,
     required: true,
-    unique: true,
   },
   isTailor: {
     type: Boolean,
@@ -42,11 +43,9 @@ module.exports = mongoose.model("users", {
   gallary: {
     type: Array,
   },
-  comments: {
-    type: Array,
-  },
   about: {
     type: String,
     default: "Hi I'm new Tailor here",
   },
 });
+module.exports = mongoose.model("user", tailorSchema);

@@ -184,7 +184,7 @@
       "customer_name": "Ali user",
       "tailor_id": "5",
       "customer_sizes": {
-        "chest": 127,
+        "chest": 2,
         "waist": 99,
         "collar": 20,
         "armLength": 73.5,
@@ -211,12 +211,14 @@
         "https://ucarecdn.com/137add5d-67fb-406a-9a44-3ed4d57551cc~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": "127",
-        "height": "180",
-        "armLength": "73.5",
-        "waist": "99",
-        "inseam": "85",
-        "shoulder": "51"
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 5
     },
@@ -229,12 +231,14 @@
         "https://ucarecdn.com/f9c3384a-8054-4f03-a7a0-6bc25a9d1e5a~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": "127",
-        "height": "180",
-        "armLength": "73.5",
-        "waist": "99",
-        "inseam": "85",
-        "shoulder": "51"
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 6
     },
@@ -247,12 +251,14 @@
         "https://ucarecdn.com/ace8ded4-e866-4c0e-a3f7-4ab8d23a9a73~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": "127",
-        "height": "180",
-        "armLength": "73.5",
-        "waist": "99",
-        "inseam": "85",
-        "shoulder": "51"
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 7
     },
@@ -265,12 +271,14 @@
         "https://ucarecdn.com/992ee319-04ed-4279-986d-adf292b632ac~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": "127",
-        "height": "180",
-        "armLength": "73.5",
-        "waist": "99",
-        "inseam": "85",
-        "shoulder": "51"
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 8
     },
@@ -283,14 +291,14 @@
         "https://ucarecdn.com/06dd5a9a-09a9-47bd-88a1-56f6662fbb1a~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": 15,
-        "shoulder": 36,
-        "inseam": 78,
-        "waist": 22,
-        "height": 11,
-        "armLength": 99,
-        "collar": 12,
-        "sleeve": 10
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 9
     },
@@ -303,14 +311,14 @@
         "https://ucarecdn.com/6d1a62d2-7696-4934-8809-f0d4db571aca~1/nth/0/"
       ],
       "customer_sizes": {
-        "chest": 12,
-        "shoulder": 44,
-        "inseam": 66,
-        "waist": 77,
-        "height": 88,
-        "armLength": 44,
-        "collar": 22,
-        "sleeve": 11
+        "chest": 127,
+        "waist": 99,
+        "collar": 20,
+        "armLength": 73.5,
+        "shoulder": 50,
+        "inseam": 85,
+        "sleeve": 80,
+        "height": 180
       },
       "id": 10
     }
@@ -366,6 +374,15 @@
       "customer_id": "1",
       "order_id": 1,
       "id": 6
+    },
+    {
+      "body": "one comment for each order",
+      "rate": 4,
+      "tailor_id": "2",
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "order_id": 5,
+      "id": 7
     }
   ]
 }

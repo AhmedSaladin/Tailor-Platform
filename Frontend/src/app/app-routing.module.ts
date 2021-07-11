@@ -6,7 +6,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
-
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
@@ -14,10 +14,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cust/edit/:id', component: EditCustomerProfileComponent },
   { path: '', component: LandingComponent, pathMatch: 'full' },
+  { path: 'dashboard' , component: DashboardComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+exports: [RouterModule],
 })
 export class AppRoutingModule {}

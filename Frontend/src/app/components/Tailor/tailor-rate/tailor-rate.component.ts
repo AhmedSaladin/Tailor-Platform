@@ -1,5 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class TailorRateComponent implements OnInit, OnDestroy {
   @Input() comments: any;
-  eve: any;
+  eve!: Subscription;
   constructor(private api: CommentService, private url: ActivatedRoute) {
     let id = url.snapshot.params.id;
     this.get_tailor_comments(id);
