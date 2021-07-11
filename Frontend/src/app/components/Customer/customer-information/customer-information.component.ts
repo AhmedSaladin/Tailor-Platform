@@ -68,7 +68,7 @@ export class CustomerInformationComponent implements OnInit {
        this.user_info.chest = this.chest?.value;
        this.user_info.armLength = this.armLength?.value;
        this.user_info.waist = this.waist?.value;
-       this.user_info.hight = this.hight?.value;
+       this.user_info.height = this.height?.value;
        this.user_info.inseam = this.inseam?.value;
        this.user_info.shoulder = this.shoulder?.value;
        this.user_info.sleeve = this.sleeve?.value;
@@ -114,7 +114,7 @@ export class CustomerInformationComponent implements OnInit {
         Validators.required,
         Validators.min(1),
       ]),
-      hight:new FormControl(this.user_info.hight,
+      hight:new FormControl(this.user_info.height,
       [
         Validators.required,
         Validators.min(1),
@@ -167,8 +167,8 @@ export class CustomerInformationComponent implements OnInit {
   get waist() {
     return this.editForm.get('waist');
   }
-  get hight() {
-    return this.editForm.get('hight');
+  get height() {
+    return this.editForm.get('height');
   }
   get inseam() {
     return this.editForm.get('inseam');
