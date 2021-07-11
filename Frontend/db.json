@@ -203,7 +203,6 @@
       "rate": 1
     },
     {
-
       "customer_id": "1",
       "customer_name": "Ali user",
       "tailor_id": "2",
@@ -375,6 +374,15 @@
       "customer_id": "1",
       "order_id": 1,
       "id": 6
+    },
+    {
+      "body": "one comment for each order",
+      "rate": 4,
+      "tailor_id": "2",
+      "customer_id": "1",
+      "customer_name": "Ali user",
+      "order_id": 5,
+      "id": 7
     }
   ]
 }
