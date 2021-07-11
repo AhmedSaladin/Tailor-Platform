@@ -29,6 +29,17 @@ import { BookingComponent } from './components/Tailor/booking/booking.component'
 import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoadingComponent } from './components/loading/loading.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SidenavComponent } from './components/dashboard/sidebar/sidebar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatIconModule} from '@angular/material/icon';
+import { MatDividerModule} from '@angular/material/divider';
+import { MatListModule} from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -56,6 +67,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     BookingComponent,
     TailorCommentsComponent,
     LoadingComponent,
+    DashboardComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +78,13 @@ import { LoadingComponent } from './components/loading/loading.component';
     ReactiveFormsModule,
     UcWidgetModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
