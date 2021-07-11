@@ -2,28 +2,13 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
+import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
+import { Order } from '../../models';
 // form need validation about designs not to be empty
 // add delete to uploaded images from UI and DB
 
-interface Order {
-  customer_id: string;
-  customer_name: string;
-  tailor_id: string;
-  status: string;
-  design: Array<string>;
-  customer_sizes: {
-    chest: number;
-    armLength: number;
-    waist: number;
-    hight: number;
-    inseam: number;
-    shoulder: number;
-    collar: number;
-    sleeve: number;
-  };
-}
 @Component({
   selector: 'app-booking',
   templateUrl: './booking.component.html',
@@ -31,7 +16,7 @@ interface Order {
 })
 export class BookingComponent implements OnInit, OnDestroy {
   user: any;
-  eve: any;
+  eve!: Subscription;
   order!: Order;
   images: Array<string>;
   sizesValidation: any;
@@ -88,7 +73,6 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   submitD(customer_sizes: NgForm) {
-    console.log(customer_sizes);
     this.order = {
       customer_id: `${this.user.id}`,
       customer_name: this.user.name,

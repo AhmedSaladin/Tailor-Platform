@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
 
@@ -10,7 +11,7 @@ import { OrderService } from 'src/app/services/order.service';
 export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   @Input() order: any;
   user: any;
-  eve: any;
+  eve!: Subscription;
   imags: any;
   count: any = 0;
   current_image: any;
