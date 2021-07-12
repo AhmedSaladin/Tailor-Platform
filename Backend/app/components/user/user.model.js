@@ -16,10 +16,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Password cannot be empty."],
     validate: {
-      validator: function(val) {
-        return /^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()?_ \'\"\-+=]).*$/.test(val);
+      validator: function (val) {
+        return /^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()?_ \'\"\-+=]).*$/.test(
+          val
+        );
       },
-      message: `Password should have at least 8 characters including one uppercase, lowercase character and a special character.`
+      message: `Password should have at least 8 characters including one uppercase, lowercase character and a special character.`,
     },
   },
   phone: {
@@ -28,7 +30,16 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   sizes: {
-    type: Object,
+    type: {
+      armLength: Number,
+      height: Number,
+      waist: Number,
+      collar: Number,
+      thigh: Number,
+      chest: Number,
+      shoulder: Number,
+      inseam: Number,
+    },
   },
   isTailor: {
     type: Boolean,
@@ -46,8 +57,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: {
       values: ["male", "female"],
-      message: "{VALUE} is not supported."
-    }
+      message: "{VALUE} is not supported.",
+    },
   },
 });
 module.exports = mongoose.model("user", userSchema);
