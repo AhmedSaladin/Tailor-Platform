@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { isEmail } = require("validator");
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,7 +19,16 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   sizes: {
-    type: Object,
+    type: {
+      armLength: Number,
+      height: Number,
+      waist: Number,
+      collar: Number,
+      thigh: Number,
+      chest: Number,
+      shoulder: Number,
+      inseam: Number,
+    },
   },
   isTailor: {
     type: Boolean,
