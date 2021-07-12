@@ -97,7 +97,7 @@ export class CustomerSingleRequestComponent implements OnInit {
 
 /////////////has comment//////////////////
   getComment(id:any){
-    this.commentApi.get_comments_by_tailor_id(id).subscribe(
+    this.commentApi.get_comments_by_order_id(id).subscribe(
       (res)=>{
         let currentComment:any=res.body;
         if(currentComment.length>0){
