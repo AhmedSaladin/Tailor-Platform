@@ -17,8 +17,8 @@ const {
 } = require("../../utility/statusCodes");
 
 const TOKEN_AGE = 7 * 24 * 60 * 60;
-const createToken = (id) => {
-  return jwt.sign({ id }, "secretitivezeetacloneproject", {
+const createToken = (user) => {
+  return jwt.sign(user, "secretitivezeetacloneproject", {
     expiresIn: TOKEN_AGE,
   });
 };
@@ -37,19 +37,23 @@ module.exports = {
       phone: user.phone,
       password: hashed_password,
     });
-    const token = createToken(user._id);
-    res.cookie("jwt", token, { httpOnly: true, maxAge: TOKEN_AGE * 1000 });
+    // const token = createToken(user._id, user.isTailor);
     res.status(CREATED).json();
   },
 
   login: async (req, res) => {
     const { email, password } = req.body;
-    const found = await User.findOne({ email });
-    if (!found) throw { status: 400, message: "Wrong email or password." };
-    const valid_password = await check_password(password, found.password);
-    if (!valid_password)
-      throw { status: 404, message: "Wrong email or password." };
-    res.status(200).json();
+    const user = await User.findOne({ email });
+    if (!user) {
+      throw { status: BAD_REQUEST, message: "Wrong email or password" };
+    }
+    const valid = await check_password(password, user.password);
+    if (!valid) {
+      throw { status: BAD_REQUEST, message: "Wrong email or password" };
+    }
+    const authUser = { id: user._id, isTailor: user.isTailor };
+    const accessToken = createToken(authUser);
+    res.status(OK).json({ accessToken });
   },
 
   get_all_users: async (req, res) => {
