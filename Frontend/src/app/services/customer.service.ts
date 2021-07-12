@@ -10,6 +10,7 @@ export class CustomerService {
 
   private BaseUrl = "http://localhost:3000/users";
 
+  
   AddNewCustomer(customer:any){
     return this.MyCustomer.post(this.BaseUrl,customer)
   }
@@ -33,4 +34,11 @@ export class CustomerService {
   update_customer_info(id: any, body: any) {
     return this.MyCustomer.put(`${this.BaseUrl}/${id}`, body, { observe: 'response' });
   }
+
+
+
+  deleteCustomer(id:any){
+    return this.MyCustomer.delete(`${this.BaseUrl}/${id}`,{observe:'response'})
+  }
+
 }
