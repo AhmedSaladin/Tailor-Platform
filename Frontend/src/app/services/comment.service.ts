@@ -17,7 +17,11 @@ export class CommentService {
       observe: 'response',
     });
   }
-  
+  get_comments_by_order_id(id: string) {
+    return this.http.get(`${this.url}?order_id=${id}`, {
+      observe: 'response',
+    });
+  }
   CreateCommenr(comment: any) {
     return this.http.post(this.url,comment, {observe: 'response'});
   }
