@@ -4,16 +4,11 @@
     <ul class="list-group list-group-flush">
       <li class="list-group-item" *ngFor="let request of requests">
         <span>{{ request.customer_name }} </span>
-        <button
-          class="btn btn-primary float-end btn-sm"
-          data-bs-toggle="modal"
-          attr.data-bs-target="#order{{ request.id }}Model"
-        >
+        <button class="btn btn-primary float-end btn-sm" data-bs-toggle="modal"
+          attr.data-bs-target="#order{{ request.id }}Model">
           View
         </button>
-        <app-tailor-single-request
-          [order]="request"
-        ></app-tailor-single-request>
+        <app-tailor-single-request [order]="request"></app-tailor-single-request>
       </li>
     </ul>
     <div class="card-footer">
