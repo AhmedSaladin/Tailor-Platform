@@ -1,5 +1,6 @@
 const User = require("./user.model");
 const mongo = require("mongoose");
+const jwt = require("jsonwebtoken");
 const { userSchema } = require("../../utility/validationSchema");
 const promise_handler = require("../../utility/promiseHandler");
 const { check_password, hashing } = require("../../utility/password");
@@ -11,6 +12,13 @@ const BAD_REQUEST = 400;
 const UNAUTHORIZED = 401;
 const NOT_FOUND = 404;
 const INTERNAL_SERVER_ERROR = 500;
+
+const TOKEN_AGE = 7 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, "secretitivezeetacloneproject", {
+    expiresIn: TOKEN_AGE,
+  });
+};
 
 module.exports = {
   get_user: async (req, res, next) => {
@@ -32,18 +40,19 @@ module.exports = {
       const doesExist = await User.findOne({ email });
       if (doesExist)
         throw { status: BAD_REQUEST, message: "Email already registered." };
-      const [result, error] = await promise_handler(
+      const [user, error] = await promise_handler(
         userSchema.validateAsync(req.body)
       );
-      console.log(result)
       is_no_error(error, BAD_REQUEST);
-      const hashed_password = await hashing(result.password);
+      const hashed_password = await hashing(user.password);
       await User.create({
-        name: result.name,
-        email: result.email,
-        phone: result.phone,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
         password: hashed_password,
       });
+      const token = createToken(user._id);
+      res.cookie("jwt", token, { httpOnly: true, maxAge: TOKEN_AGE * 1000 });
       res.status(CREATED).json();
     } catch (err) {
       next(err);
