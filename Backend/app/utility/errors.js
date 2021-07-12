@@ -14,4 +14,8 @@ module.exports = {
   is_not_found: (data) => {
     if (!data) throw { status: NOT_FOUND, message: "NOT FOUND" };
   },
+  is_exists: (data) => {
+    if (data)
+        throw { status: BAD_REQUEST, message: "Email already registered." };
+  }
 };
