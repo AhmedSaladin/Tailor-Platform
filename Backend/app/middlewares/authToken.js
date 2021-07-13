@@ -4,13 +4,19 @@ const authToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   // getting token from -> Bearer TOKEN
   const token = authHeader && authHeader.split(" ")[1];
-  if (!token) res.sendStatus(401);
+  if (!token) return res.sendStatus(401);
 
   jwt.verify(token, "secretitivezeetacloneproject", (err, decodedToken) => {
-    if (err) res.sendStatus(403);
+    if (err) return res.sendStatus(403);
     req.user = decodedToken;
     next();
   });
 };
 
-module.exports = { authToken };
+const createToken = (user) => {
+  return jwt.sign(user, "secretitivezeetacloneproject", {
+    expiresIn: "7d",
+  });
+};
+
+module.exports = { authToken, createToken };

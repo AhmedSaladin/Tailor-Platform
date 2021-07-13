@@ -1,8 +1,8 @@
 const User = require("./user.model");
-const jwt = require("jsonwebtoken");
 const { userSchema } = require("../../utility/validationSchema");
 const promise_handler = require("../../utility/promiseHandler");
 const { check_password, hashing } = require("../../utility/password");
+const { createToken } = require("../../middlewares/authToken");
 const {
   is_not_found,
   if_error,
@@ -15,13 +15,6 @@ const {
   BAD_REQUEST,
   INTERNAL_SERVER_ERROR,
 } = require("../../utility/statusCodes");
-
-const TOKEN_AGE = 7 * 24 * 60 * 60;
-const createToken = (user) => {
-  return jwt.sign(user, "secretitivezeetacloneproject", {
-    expiresIn: TOKEN_AGE,
-  });
-};
 
 module.exports = {
   sign_up: async (req, res) => {
@@ -37,23 +30,21 @@ module.exports = {
       phone: user.phone,
       password: hashed_password,
     });
-    // const token = createToken(user._id, user.isTailor);
     res.status(CREATED).json();
   },
 
   login: async (req, res) => {
     const { email, password } = req.body;
-    const user = await User.findOne({ email });
-    if (!user) {
-      throw { status: BAD_REQUEST, message: "Wrong email or password" };
-    }
+    const [user, err] = await promise_handler(User.findOne({ email }));
+    if_error(err, INTERNAL_SERVER_ERROR);
+    is_not_found(user);
     const valid = await check_password(password, user.password);
-    if (!valid) {
-      throw { status: BAD_REQUEST, message: "Wrong email or password" };
-    }
+    is_not_found(valid);
     const authUser = { id: user._id, isTailor: user.isTailor };
     const accessToken = createToken(authUser);
-    res.status(OK).json({ accessToken });
+    res
+      .status(OK)
+      .json({ token: accessToken, id: user._id, isTailor: user.isTailor });
   },
 
   get_all_users: async (req, res) => {
