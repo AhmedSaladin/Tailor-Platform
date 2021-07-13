@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model("comments", {
   customer_id: { 
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
+    ref: 'user',
     required: true 
   },
   order_id: { 
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Order',
+    ref: 'orders',
     required: true 
   },
   tailor_id: {  
     type:  mongoose.Schema.Types.ObjectId,
-    ref: 'Tailor',
+    ref: 'user',
     required: true 
   },
   body: {
