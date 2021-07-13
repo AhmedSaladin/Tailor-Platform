@@ -12,6 +12,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class RegistrationComponent implements OnInit, OnDestroy {
   formValidation!: FormGroup;
   eve!: Subscription;
+  isLoading: Boolean = false;
+  error!: string;
   constructor(
     private myCustomer: CustomerService,
     private router: Router,
@@ -68,18 +70,26 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   AddCustomer(form: FormGroup) {
+    // stop function from calling backend;
+    if (!form.valid) {
+      this.error = 'Something went wrong';
+      return;
+    }
     const customer = {
       name: form.value.fname + ' ' + form.value.lname,
       email: form.value.email,
       password: form.value.password,
       phone: form.value.phone,
     };
+    this.isLoading = true;
     // adding validation to check status from server if data sumbited well
+    //
     this.eve = this.myCustomer.AddNewCustomer(customer).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
+      (res) => (this.isLoading = false),
+      (err) => (this.error = err)
     );
-    this.router.navigateByUrl('login');
+    form.reset();
+    if (!this.isLoading) this.router.navigateByUrl('login');
   }
   ngOnDestroy(): void {
     this.eve.unsubscribe();

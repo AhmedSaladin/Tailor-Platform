@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,9 +13,16 @@ export class CustomerService {
   private URL = 'https://tailor-s.herokuapp.com/api/users/signup';
 
   AddNewCustomer(customer: any) {
-    return this.api.post(this.URL, customer, {
-      observe: 'response',
-    });
+    return this.api
+      .post(this.URL, customer, {
+        observe: 'response',
+      })
+      .pipe(
+        catchError((err) => {
+          if (!err.error.message) return throwError('Somthing went wrong.');
+          return throwError(err.error.message);
+        })
+      );
   }
 
   getCustomerInfo() {

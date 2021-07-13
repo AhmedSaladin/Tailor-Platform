@@ -6,6 +6,9 @@
           <div class="card-body">
             <h3 class="card-title mb-5"><b>Sign Up</b></h3>
             <form class="signUpForm" [formGroup]="formValidation" novalidate>
+              <div class="text-danger form-row mb-3" *ngIf="error">
+                <div>{{ error }}</div>
+              </div>
               <div class="form-row">
                 <div class="mb-3">
                   <input
