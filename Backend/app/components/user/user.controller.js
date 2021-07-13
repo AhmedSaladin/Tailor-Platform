@@ -1,5 +1,6 @@
 const User = require("./user.model");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const { userSchema } = require("../../utility/validationSchema");
 const promise_handler = require("../../utility/promiseHandler");
 const { check_password, hashing } = require("../../utility/password");
@@ -18,7 +19,7 @@ const {
 
 const TOKEN_AGE = 7 * 24 * 60 * 60;
 const createToken = (user) => {
-  return jwt.sign(user, "secretitivezeetacloneproject", {
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: TOKEN_AGE,
   });
 };
