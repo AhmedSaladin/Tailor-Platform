@@ -7,21 +7,24 @@ import { TailorService } from 'src/app/services/tailor.service';
 @Component({
   selector: 'app-customer-single-request',
   templateUrl: './customer-single-request.component.html',
-  styleUrls: ['./customer-single-request.component.css']
+  styleUrls: ['./customer-single-request.component.css'],
 })
 export class CustomerSingleRequestComponent implements OnInit {
-  @Input() order:any;
+  @Input() order: any;
   user: any;
   tailor: any;
   eve: any;
   imags: any;
   count: any = 0;
   current_image: any;
-  CommentForm:any;
-  orderRate:any;
-  hasComment:any=false;
-  constructor(private commentApi: CommentService,private customer_api: CustomerService,private tailor_api:TailorService) {
-  }
+  CommentForm: any;
+  orderRate: any;
+  hasComment: any = false;
+  constructor(
+    private commentApi: CommentService,
+    private customer_api: CustomerService,
+    private tailor_api: TailorService
+  ) {}
 
   ngOnInit(): void {
     this.get_tailor_details(this.order.tailor_id);
@@ -31,11 +34,11 @@ export class CustomerSingleRequestComponent implements OnInit {
     this.formValidation();
     this.getComment(this.order.id);
   }
-  get_tailor_details(id:any){
+  get_tailor_details(id: any) {
     this.eve = this.tailor_api.get_tailor_info(id).subscribe(
       (response: any) => {
         this.tailor = response.body;
-        console.log(this.tailor)
+        console.log(this.tailor);
       },
       (err) => {
         console.error(err);
@@ -43,7 +46,7 @@ export class CustomerSingleRequestComponent implements OnInit {
     );
   }
   get_customer_details(id: any) {
-    console.log(this.order)
+    console.log(this.order);
     this.eve = this.customer_api.getCustomerInfoByID(id).subscribe(
       (response: any) => {
         this.user = response;
@@ -64,13 +67,11 @@ export class CustomerSingleRequestComponent implements OnInit {
     this.current_image = this.imags[this.count];
   }
   ////////////////new comment /////////////////////////
-  formValidation(){
-    this.CommentForm=new FormGroup({
-      comment:new FormControl('',[
-        Validators.maxLength(1000),
-      ]),
-      rate:new FormControl()
-    })
+  formValidation() {
+    this.CommentForm = new FormGroup({
+      comment: new FormControl('', [Validators.maxLength(1000)]),
+      rate: new FormControl(),
+    });
   }
   get rate() {
     return this.CommentForm.get('rate');
@@ -78,19 +79,19 @@ export class CustomerSingleRequestComponent implements OnInit {
   get comment() {
     return this.CommentForm.get('comment');
   }
-      ///Submit comment///
-  onSubmit(){
-    if(this.CommentForm.valid){
-      let newComment={
-        body:this.comment?.value,
-        rate:this.orderRate,
-        tailor_id:this.order.tailor_id,
-        customer_id:this.order.customer_id,
-        customer_name:this.user.name,
-        order_id:this.order.id
-      }
+  ///Submit comment///
+  onSubmit() {
+    if (this.CommentForm.valid) {
+      let newComment = {
+        body: this.comment?.value,
+        rate: this.orderRate,
+        tailor_id: this.order.tailor_id,
+        customer_id: this.order.customer_id,
+        customer_name: this.user.name,
+        order_id: this.order.id,
+      };
       this.commentApi.CreateCommenr(newComment).subscribe();
-      this.hasComment=true
+      this.hasComment = true;
     }
   }
 
@@ -105,14 +106,15 @@ export class CustomerSingleRequestComponent implements OnInit {
          // this.comment.value=this.currentComment[0].body;
           //this.orderRate=this.currentComment[0].rate;
           //console.log(id+" id "+this.order.hasComment+" after "+this.currentComment.length )
-        }else{
-          this.hasComment=false;
+        } else {
+          this.hasComment = false;
+        }
+      },
+      (err) => {
+        console.log(err);
       }
-    },
-    (err)=>{console.log(err)}
-    )
-}
-
+    );
+  }
 
   // average = 0;
   // coun = 0;
@@ -123,6 +125,6 @@ export class CustomerSingleRequestComponent implements OnInit {
   //   this.coun += 1;
   // }
   ngOnDestroy(): void {
-    if (this.eve != undefined) this.eve.unsubscribe();  }
+    if (this.eve != undefined) this.eve.unsubscribe();
+  }
 }
-

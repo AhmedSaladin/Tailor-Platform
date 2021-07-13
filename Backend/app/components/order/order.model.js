@@ -24,3 +24,4 @@ module.exports = mongoose.model("orders", {
     enum: ["pending", "rejected", "accepted", "finished"],
   },
 });
+
