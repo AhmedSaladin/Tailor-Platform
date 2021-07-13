@@ -1,4 +1,6 @@
-
+.main{
+    overflow-x: hidden;
+}
 
 i{
     font-size: 25px;
@@ -38,3 +40,7 @@ input.ng-invalid.ng-touched {
   .no-box-shadow{
     box-shadow: none;
   }
+
+
+
+

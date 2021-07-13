@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="card m-auto col-lg-5 col-md-10 col-11 pt-2 px-3 shadow mt-5">
+  <div class="card m-auto mb-5 col-lg-5 col-md-10 col-11 pt-1 px-1 shadow mt-5">
     <div class="row-registration">
       <div class="row g-0">
         <!-- <div class="col-md-4 d-none d-sm-block">
@@ -7,24 +7,14 @@
         </div> -->
         <div class="col-md-10 m-auto p-2">
           <div class="card-body">
-            <h3 class="card-title mb-5"><b>Sign Up</b></h3>
+            <h3 class="card-title mb-3"><b>Sign Up</b></h3>
             <form class="signUpForm" [formGroup]="formValidation" novalidate>
               <div class="form-row">
                 <div class="mb-3">
                   <!-- <label for="fname" class="form-label">First Name</label> -->
-                  <input
-                    formControlName="fname"
-                    #fname
-                    id="fname"
-                    name="fname"
-                    type="text"
-                    placeholder="First Name"
-                    class="form-control no-box-shadow"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.fname.touched && getControl.fname.invalid"
-                  >
+                  <input formControlName="fname" #fname id="fname" name="fname" type="text" placeholder="First Name"
+                    class="form-control no-box-shadow" />
+                  <div class="text-danger" *ngIf="getControl.fname.touched && getControl.fname.invalid">
                     <div *ngIf="getControl.fname.errors.required">
                       Name is Required
                     </div>
@@ -37,19 +27,9 @@
               <div class="form-row">
                 <div class="mb-3">
                   <!-- <label for="lname" class="form-label">Last Name</label> -->
-                  <input
-                    formControlName="lname"
-                    #lname
-                    id="lname"
-                    name="lname"
-                    type="text"
-                    placeholder="Last Name"
-                    class="form-control no-box-shadow"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.lname.touched && getControl.lname.invalid"
-                  >
+                  <input formControlName="lname" #lname id="lname" name="lname" type="text" placeholder="Last Name"
+                    class="form-control no-box-shadow" />
+                  <div class="text-danger" *ngIf="getControl.lname.touched && getControl.lname.invalid">
                     <div *ngIf="getControl.lname.errors.required">
                       Name is Required
                     </div>
@@ -59,22 +39,15 @@
                   </div>
                 </div>
               </div>
+
+            
+
               <div class="mb-3">
                 <!-- <label for="exampleInputEmail1" class="form-label">Email address</label
               > -->
-                <input
-                  formControlName="email"
-                  #email
-                  type="email"
-                  class="form-control no-box-shadow"
-                  placeholder="Email address"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-                <div
-                  class="text-danger"
-                  *ngIf="getControl.email.touched && getControl.email.invalid"
-                >
+                <input formControlName="email" #email type="email" class="form-control no-box-shadow"
+                  placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
                   Email like 'example@any.com'
                 </div>
               </div>
@@ -82,20 +55,11 @@
                 <!-- <label for="exampleInputPassword1" class="form-label"
                 >Password</label
               > -->
-                <input
-                  formControlName="password"
-                  #password
-                  type="password"
-                  class="form-control no-box-shadow"
-                  placeholder="Password"
-                  id="exampleInputPassword1"
-                />
-                <div
-                  class="text-danger"
-                  *ngIf="
+                <input formControlName="password" #password type="password" class="form-control no-box-shadow"
+                  placeholder="Password" id="exampleInputPassword1" />
+                <div class="text-danger" *ngIf="
                     getControl.password.touched && getControl.password.invalid
-                  "
-                >
+                  ">
                   At least 8 characters ,Lowercase ,Uppercase letters,Numbers
                   Special characters
                 </div>
@@ -110,12 +74,8 @@
                 >Check me out</label
               >
             </div> -->
-              <button
-                type="submit"
-                class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
-                (click)="AddCustomer(formValidation)"
-                [disabled]="formValidation.invalid"
-              >
+              <button type="submit" class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
+                (click)="AddCustomer(formValidation)" [disabled]="formValidation.invalid">
                 Sign Up
               </button>
             </form>

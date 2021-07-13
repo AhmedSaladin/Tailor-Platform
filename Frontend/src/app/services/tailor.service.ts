@@ -41,4 +41,17 @@ export class TailorService {
       );
     }
   }
+
+
+  AddNewTailor(tailor:any){
+    return this.http.post(this.url,tailor)
+  }
+
+  deleteTailor(id:any){
+    return this.http.delete(`${this.url}/${id}`,{observe:'response'})
+  }
+  getTailorsInfo() {
+    return this.http.get(this.url);
+  }
+ 
 }
