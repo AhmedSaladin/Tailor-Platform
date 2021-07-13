@@ -3,31 +3,45 @@ const Comment = require('./comment.model');
 const get_comment=(req,res)=>{
     if(req.query.tailor_id){console.log(req.query)
         Comment.find({tailor_id:req.query.tailor_id})
-        .then((result)=>{
-            res.status(200).json(result)
-            console.log(result)
-        })
-        .catch((err)=>{
-            res.status(500).json(err)
+        .populate('customer_id','name')
+        .exec((err, result) =>{
+            if(err){
+               console.log(err)
+            }else{
+             res.status(200).json(result)
+                console.log(result)
+            }
         })  
     }
     else if(req.query.order_id){console.log(req.query)
         Comment.find({order_id:req.query.order_id})
-        .then((result)=>{
-            res.status(200).json(result)
-            console.log(result)
+        .populate('customer_id','name')
+        .exec((err, result) =>{
+            if(err){
+               console.log(err)
+            }else{
+             res.status(200).json(result)
+                console.log(result)
+            }
         })
-        .catch((err)=>{
-            res.status(500).json(err)
-        })  
     }else{
         Comment.find({})
-        .then((result)=>{
-            res.status(200).json(result)
+        .populate('customer_id','name')
+       // .populate('tailor_id')
+        .exec((err, result) =>{
+            if(err){
+               console.log(err)
+            }else{
+             res.status(200).json(result)
+                console.log(result)
+            }
         })
-        .catch((err)=>{
-            res.status(500).json(err)
-        })
+        // .then((result)=>{
+        //     res.status(200).json(result)
+        // })
+        // .catch((err)=>{
+        //     res.status(500).json(err)
+        // })
     }
 }
 
