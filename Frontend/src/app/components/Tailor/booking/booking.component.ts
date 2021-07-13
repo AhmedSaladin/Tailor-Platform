@@ -5,7 +5,7 @@ import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
-import { Order } from '../../models';
+import { Order } from '../../shared/models';
 // form need validation about designs not to be empty
 // add delete to uploaded images from UI and DB
 
