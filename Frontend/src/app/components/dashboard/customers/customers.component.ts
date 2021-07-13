@@ -19,9 +19,7 @@ export class CustomersComponent implements OnInit {
   constructor(
     private customerServive: CustomerService,
     private formBuilder: FormBuilder
-  ) {
-    // this.id.params.id;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.customerServive.getCustomerInfo().subscribe(
@@ -54,9 +52,7 @@ export class CustomersComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.maxLength(11),
-          Validators.minLength(11),
-          Validators.pattern('^(([0-9]*)|(([0-9]*).([0-9]*)))$'),
+          Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
         ],
       ],
       email: [
@@ -84,12 +80,12 @@ export class CustomersComponent implements OnInit {
   }
 
   AddCustomer(form: NgForm) {
-    let customer = {
+    console.log(form);
+    const customer = {
       name: form.value.fname + ' ' + form.value.lname,
       phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      IsTailor: false,
     };
     this.customerServive.signUp(customer).subscribe();
     form.reset();
@@ -110,3 +106,6 @@ export class CustomersComponent implements OnInit {
     );
   }
 }
+//  need some cleanup & unsubscrip to improve performanc
+//  adding auth and authGurd make it work only with admin
+//  link it with production api
