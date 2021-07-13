@@ -31,6 +31,7 @@
                 </li>
                 <li class="nav-item">
                   <a
+                    *ngIf="isAuthenticated"
                     class="nav-link"
                     routerLinkActive="active"
                     routerLink="profile/edit/2"
@@ -40,6 +41,7 @@
                 </li>
                 <li class="nav-item">
                   <a
+                    *ngIf="!isAuthenticated"
                     class="nav-link"
                     routerLinkActive="active"
                     routerLink="login"
@@ -48,10 +50,20 @@
                 </li>
                 <li class="nav-item">
                   <a
+                    *ngIf="isAuthenticated && isAdmin"
                     class="nav-link"
                     routerLinkActive="active"
                     routerLink="dashboard"
                     >Dashboard</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    *ngIf="isAuthenticated"
+                    class="nav-link"
+                    routerLinkActive="active"
+                    routerLink="#"
+                    >Logout</a
                   >
                 </li>
               </ul>
