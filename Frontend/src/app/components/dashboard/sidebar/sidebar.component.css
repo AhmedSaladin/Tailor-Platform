@@ -13,8 +13,8 @@
 }
 .logo h2{
     font-size: 15px;
-    margin-top: 5px;
-    color: rgb(192, 189, 189);
+    margin-top: 10px;
+    color: #2c3344;
     font-weight: bold;
 }
 .mat-divider {
@@ -23,10 +23,11 @@
     margin: 15px;
 }
 .mat-list-item {
-    color: #94a3b8 !important;
+    color: #718cb1 !important;
     font-size: 0.8rem;
     height: 44px !important;
     margin-bottom: 4px;
+    font-weight: bold;
 }
 .mat-list-item:hover {
     color: #f2f5f7 !important;

@@ -1,0 +1,19 @@
+i{
+    font-size: 25px;
+}
+.fa-eye{
+    color: #185ADB;
+}
+.fa-user-edit{
+    color: #FFC107;
+}
+.fa-user-times{
+    color: #CF0000;
+}
+td{
+    font-weight: bold;
+}
+th{
+    font-size: 20px;
+    font-weight: bold;
+}

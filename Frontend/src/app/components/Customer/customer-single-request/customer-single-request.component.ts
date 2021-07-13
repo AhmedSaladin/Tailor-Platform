@@ -95,14 +95,15 @@ export class CustomerSingleRequestComponent implements OnInit {
     }
   }
 
-  /////////////has comment//////////////////
-  getComment(id: any) {
-    this.commentApi.get_comments_by_tailor_id(id).subscribe(
-      (res) => {
-        let currentComment: any = res.body;
-        if (currentComment.length > 0) {
-          this.hasComment = true;
-          // this.comment.value=this.currentComment[0].body;
+
+/////////////has comment//////////////////
+  getComment(id:any){
+    this.commentApi.get_comments_by_order_id(id).subscribe(
+      (res)=>{
+        let currentComment:any=res.body;
+        if(currentComment.length>0){
+          this.hasComment=true;
+         // this.comment.value=this.currentComment[0].body;
           //this.orderRate=this.currentComment[0].rate;
           //console.log(id+" id "+this.order.hasComment+" after "+this.currentComment.length )
         } else {

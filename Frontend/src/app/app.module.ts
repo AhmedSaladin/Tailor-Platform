@@ -39,6 +39,7 @@ import { MatMenuModule} from '@angular/material/menu';
 import { MatIconModule} from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
+import { CustomersComponent } from './components/dashboard/customers/customers.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { MatListModule} from '@angular/material/list';
     LoadingComponent,
     DashboardComponent,
     SidenavComponent,
+    CustomersComponent,
   ],
   imports: [
     BrowserModule,
