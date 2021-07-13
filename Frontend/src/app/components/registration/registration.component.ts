@@ -84,7 +84,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     // adding validation to check status from server if data sumbited well
     //
-    this.eve = this.myCustomer.AddNewCustomer(customer).subscribe(
+    this.eve = this.myCustomer.signUp(customer).subscribe(
       (res) => (this.isLoading = false),
       (err) => (this.error = err)
     );
@@ -92,6 +92,6 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     if (!this.isLoading) this.router.navigateByUrl('login');
   }
   ngOnDestroy(): void {
-    this.eve.unsubscribe();
+    if (this.eve) this.eve.unsubscribe();
   }
 }
