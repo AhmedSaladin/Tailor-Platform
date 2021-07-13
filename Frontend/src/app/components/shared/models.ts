@@ -16,6 +16,17 @@ export interface Order {
   };
 }
 
+export interface Customer {
+  email: String;
+  phone: String;
+  name: String;
+  password: String;
+}
+
+export interface UserSchema {
+  email: String;
+  password: String;
+}
+
 export interface Tailor {}
-export interface Customer {}
 export interface Comment {}

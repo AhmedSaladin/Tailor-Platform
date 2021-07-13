@@ -34,14 +34,13 @@ import { SidenavComponent } from './components/dashboard/sidebar/sidebar.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule} from '@angular/material/menu';
-import { MatIconModule} from '@angular/material/icon';
-import { MatDividerModule} from '@angular/material/divider';
-import { MatListModule} from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +70,7 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     DashboardComponent,
     SidenavComponent,
     CustomersComponent,
+    TailorsDashboardComponant
   ],
   imports: [
     BrowserModule,
@@ -91,4 +91,4 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

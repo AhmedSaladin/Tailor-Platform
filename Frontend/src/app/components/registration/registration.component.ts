@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   constructor(
     private myCustomer: CustomerService,
     private router: Router,
-    public formBulider: FormBuilder
+    private formBulider: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -77,21 +77,23 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     }
     const customer = {
       name: form.value.fname + ' ' + form.value.lname,
+      phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      phone: form.value.phone,
     };
     this.isLoading = true;
     // adding validation to check status from server if data sumbited well
     //
-    this.eve = this.myCustomer.AddNewCustomer(customer).subscribe(
-      (res) => (this.isLoading = false),
+    this.eve = this.myCustomer.signUp(customer).subscribe(
+      () => {
+        this.isLoading = false;
+        this.router.navigateByUrl('login');
+      },
       (err) => (this.error = err)
     );
     form.reset();
-    if (!this.isLoading) this.router.navigateByUrl('login');
   }
   ngOnDestroy(): void {
-    this.eve.unsubscribe();
+    if (this.eve) this.eve.unsubscribe();
   }
 }
