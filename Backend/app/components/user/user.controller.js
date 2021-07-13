@@ -17,10 +17,9 @@ const {
   INTERNAL_SERVER_ERROR,
 } = require("../../utility/statusCodes");
 
-const TOKEN_AGE = 7 * 24 * 60 * 60;
 const createToken = (user) => {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: TOKEN_AGE,
+    expiresIn: "7d",
   });
 };
 
@@ -38,7 +37,6 @@ module.exports = {
       phone: user.phone,
       password: hashed_password,
     });
-    // const token = createToken(user._id, user.isTailor);
     res.status(CREATED).json();
   },
 
