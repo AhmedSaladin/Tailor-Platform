@@ -1,8 +1,4 @@
-const express = require('express');
-
 const mongoose = require("mongoose");
-
-
 
 module.exports = mongoose.model("orders", {
   customerID: {
@@ -28,3 +24,4 @@ module.exports = mongoose.model("orders", {
     enum: ["pending", "rejected", "accepted", "finished"],
   },
 });
+
