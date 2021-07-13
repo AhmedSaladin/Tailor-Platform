@@ -77,9 +77,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     }
     const customer = {
       name: form.value.fname + ' ' + form.value.lname,
+      phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      phone: form.value.phone,
     };
     this.isLoading = true;
     // adding validation to check status from server if data sumbited well

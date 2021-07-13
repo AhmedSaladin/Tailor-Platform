@@ -94,9 +94,7 @@ export class CustomersComponent implements OnInit {
     this.customerServive.signUp(customer).subscribe();
     form.reset();
   }
-  // filterArray(isTailor:boolean){
-  //   this.filteredUsers =  this.users.filter(user => user === isTailor);
-  // }
+
   getCustomer(id: any) {
     console.log(id);
     return this.customerServive.get_customer_info_id(id).subscribe(
