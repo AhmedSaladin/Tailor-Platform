@@ -2,20 +2,14 @@
   <div class="card m-auto col-lg-5 col-md-10 col-11 pt-2 px-3 shadow mt-5">
     <div class="row-registration">
       <div class="row g-0">
-        <!-- <div class="col-md-4 d-none d-sm-block">
-          <img class="img1" src="assets/images/tailor1.jpg" alt="Tailor" />
-        </div> -->
         <div class="col-md-10 m-auto p-2">
           <div class="card-body">
             <h3 class="card-title mb-5"><b>Sign Up</b></h3>
             <form class="signUpForm" [formGroup]="formValidation" novalidate>
               <div class="form-row">
                 <div class="mb-3">
-                  <!-- <label for="fname" class="form-label">First Name</label> -->
                   <input
                     formControlName="fname"
-                    #fname
-                    id="fname"
                     name="fname"
                     type="text"
                     placeholder="First Name"
@@ -25,8 +19,8 @@
                     class="text-danger"
                     *ngIf="getControl.fname.touched && getControl.fname.invalid"
                   >
-                    <div *ngIf="getControl.fname.errors.required">
-                      Name is Required
+                    <div *ngIf="getControl.fname.errors?.required">
+                      First Name is Required
                     </div>
                     <div *ngIf="getControl.fname.errors?.minlength">
                       Minimum Length is 3 Characters
@@ -36,11 +30,8 @@
               </div>
               <div class="form-row">
                 <div class="mb-3">
-                  <!-- <label for="lname" class="form-label">Last Name</label> -->
                   <input
                     formControlName="lname"
-                    #lname
-                    id="lname"
                     name="lname"
                     type="text"
                     placeholder="Last Name"
@@ -50,8 +41,8 @@
                     class="text-danger"
                     *ngIf="getControl.lname.touched && getControl.lname.invalid"
                   >
-                    <div *ngIf="getControl.lname.errors.required">
-                      Name is Required
+                    <div *ngIf="getControl.lname.errors?.required">
+                      Last Name is Required
                     </div>
                     <div *ngIf="getControl.lname.errors?.minlength">
                       Minimum Length is 3 Characters
@@ -60,15 +51,11 @@
                 </div>
               </div>
               <div class="mb-3">
-                <!-- <label for="exampleInputEmail1" class="form-label">Email address</label
-              > -->
                 <input
                   formControlName="email"
-                  #email
                   type="email"
                   class="form-control no-box-shadow"
                   placeholder="Email address"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                 />
                 <div
@@ -79,16 +66,11 @@
                 </div>
               </div>
               <div class="mb-3">
-                <!-- <label for="exampleInputPassword1" class="form-label"
-                >Password</label
-              > -->
                 <input
                   formControlName="password"
-                  #password
                   type="password"
                   class="form-control no-box-shadow"
                   placeholder="Password"
-                  id="exampleInputPassword1"
                 />
                 <div
                   class="text-danger"
@@ -100,16 +82,20 @@
                   Special characters
                 </div>
               </div>
-              <!-- <div class="mb-3 form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />
-              <label class="form-check-label" for="exampleCheck1"
-                >Check me out</label
-              >
-            </div> -->
+              <div class="mb-3">
+                <input
+                  formControlName="phone"
+                  type="string"
+                  class="form-control no-box-shadow"
+                  placeholder="Phone"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.phone.touched && getControl.phone.invalid"
+                >
+                  Enter a valid phone number
+                </div>
+              </div>
               <button
                 type="submit"
                 class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
@@ -129,56 +115,3 @@
     </div>
   </div>
 </div>
-<!-- <section class="form my-4 mx-5">
-  <div class="container">
-    <div class="sec row no-gutters">
-      <div class="col-lg-5">
-        <img
-          src="photos/tailor-SignUP.jpg"
-          class="img-fluid"
-          alt="Tailor"
-        />
-      </div>
-      <div class="col-lg-7 px-5 pt-5">
-        <h1 class="font-weight-bold py-3">Sign Up</h1>
-        <form>
-          <div class="form-row">
-            <div class="col-lg-7">
-              <label for="fname">First Name</label>
-                            <input id="fname" name="fname" type="text" placeholder="First Name" class="form-control my-2 p-3" />
-                        </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-lg-7">
-                        <label for="fname">Last Name</label>
-                        <input id="lname" name="lname" type="text" placeholder="Last Name" class="form-control my-2 p-3" />
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-lg-7">
-                        <label for="email">Email</label>
-                        <input id="email" name="email" type="email" placeholder="Email-Address" class="form-control my-2 p-3" />
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-lg-7">
-                        <label for="password">password</label>
-                        <input id="password" name="password" placeholder="***********" class="form-control my-2 p-3" type="password" />
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-lg-7">
-                        <button type="button" class="btn1 btn btn-primary mt-2 mb-3">
-                Sign Up
-              </button>
-                    </div>
-                </div>
-                <p>
-                    Already have an account?
-                    <a href="#"> <strong>Log In</strong></a>
-                </p>
-                </form>
-            </div>
-        </div>
-    </div>
-    </section> -->
