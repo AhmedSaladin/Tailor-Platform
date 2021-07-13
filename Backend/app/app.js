@@ -5,6 +5,9 @@ const User = require("./components/user/user.route");
 const err = require("./middlewares/errorHandler");
 const commentRouters = require("./components/comments/comment.router");
 const order = require('./components/order/order.router')
+const errorHandler = require("./middlewares/errorHandler");
+const notFound = require("./middlewares/notFound");
+const commentRouters = require("./components/comments/comment.router");
 
 module.exports = (app) => {
   app.use(morgan("dev"));
@@ -14,4 +17,6 @@ module.exports = (app) => {
   app.use(err);
   // order routes
   app.use(order);
+  app.use(errorHandler);
+  app.use("*", notFound);
 };

@@ -20,6 +20,7 @@ module.exports = {
   sign_up: async (req, res) => {
     const { email } = req.body;
     let [user, error] = await promise_handler(User.findOne({ email }));
+    if_error(error, INTERNAL_SERVER_ERROR);
     is_exists(user);
     [user, error] = await promise_handler(userSchema.validateAsync(req.body));
     if_error(error, BAD_REQUEST);
