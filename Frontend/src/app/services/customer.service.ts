@@ -1,44 +1,57 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
+  constructor(private api: HttpClient) {}
 
-  constructor(private MyCustomer:HttpClient) { }
+  private BaseUrl = 'http://localhost:3000/users';
+  private URL = 'https://tailor-s.herokuapp.com/api/users/signup';
 
-  private BaseUrl = "http://localhost:3000/users";
-
-  
-  AddNewCustomer(customer:any){
-    return this.MyCustomer.post(this.BaseUrl,customer)
+  AddNewCustomer(customer: any) {
+    return this.api
+      .post(this.URL, customer, {
+        observe: 'response',
+      })
+      .pipe(
+        catchError((err) => {
+          if (!err.error.message) return throwError('Somthing went wrong.');
+          return throwError(err.error.message);
+        })
+      );
   }
 
-  getCustomerInfo(){
-    return this.MyCustomer.get(this.BaseUrl);
+  getCustomerInfo() {
+    return this.api.get(this.BaseUrl);
   }
 
-  getCustomerInfoByID(id:number){
-    return this.MyCustomer.get(`${this.BaseUrl}/${id}`);
+  getCustomerInfoByID(id: number) {
+    return this.api.get(`${this.BaseUrl}/${id}`);
   }
 
-  updateCustomerInfo(id:number,customer:any){
-    return this.MyCustomer.put(`${this.BaseUrl}/${id}`,customer)
+  updateCustomerInfo(id: number, customer: any) {
+    return this.api.put(`${this.BaseUrl}/${id}`, customer);
   }
 
   get_customer_info_id(id: any) {
-    return this.MyCustomer.get(`${this.BaseUrl}/${id}`, { observe: 'response' });
+    return this.api.get(`${this.BaseUrl}/${id}`, {
+      observe: 'response',
+    });
   }
 
   update_customer_info(id: any, body: any) {
-    return this.MyCustomer.put(`${this.BaseUrl}/${id}`, body, { observe: 'response' });
+    return this.api.put(`${this.BaseUrl}/${id}`, body, {
+      observe: 'response',
+    });
   }
 
-
-
-  deleteCustomer(id:any){
-    return this.MyCustomer.delete(`${this.BaseUrl}/${id}`,{observe:'response'})
+  deleteCustomer(id: any) {
+    return this.api.delete(`${this.BaseUrl}/${id}`, {
+      observe: 'response',
+    });
   }
-
 }
