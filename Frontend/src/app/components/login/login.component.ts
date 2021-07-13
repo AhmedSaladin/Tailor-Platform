@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     this.eve = this.user.login(form.value).subscribe(
-      (res) => {
+      () => {
         this.isLoading = false;
-        console.log(res);
+        this.router.navigate(['home']);
       },
       (err) => (this.error = err)
     );

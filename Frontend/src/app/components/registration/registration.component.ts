@@ -85,11 +85,13 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     // adding validation to check status from server if data sumbited well
     //
     this.eve = this.myCustomer.signUp(customer).subscribe(
-      (res) => (this.isLoading = false),
+      () => {
+        this.isLoading = false;
+        this.router.navigateByUrl('login');
+      },
       (err) => (this.error = err)
     );
     form.reset();
-    if (!this.isLoading) this.router.navigateByUrl('login');
   }
   ngOnDestroy(): void {
     if (this.eve) this.eve.unsubscribe();

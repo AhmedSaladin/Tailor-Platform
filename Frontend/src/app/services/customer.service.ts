@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { Customer, User } from '../components/shared/models';
+import { Subject, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { Customer, UserSchema } from '../components/shared/models';
+import { User } from './user.model';
 
 interface Login {
   token: String;
@@ -14,7 +15,7 @@ interface Login {
 })
 export class CustomerService {
   constructor(private http: HttpClient) {}
-
+  user = new Subject<User>();
   private BaseUrl = 'http://localhost:3000/users';
   private URL = 'https://tailor-s.herokuapp.com/api/users';
 
@@ -23,24 +24,23 @@ export class CustomerService {
       .post(`${this.URL}/signup`, user, {
         observe: 'response',
       })
-      .pipe(
-        catchError((err) => {
-          if (!err.error.message) return throwError('Somthing went wrong.');
-          return throwError(err.error.message);
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
-  login(user: User) {
+  login(user: UserSchema) {
     return this.http
       .post<Login>(`${this.URL}/login`, user, {
         observe: 'response',
       })
       .pipe(
-        catchError((err) => {
-          if (err.error.message == 'NOT FOUND')
-            return throwError('Email or Password wrong.');
-          return throwError('Somthing went wrong.');
+        catchError(this.handleError),
+        tap((res) => {
+          const user = new User(
+            res.body!.id,
+            res.body!.isTailor,
+            res.body!.token
+          );
+          this.user.next(user);
         })
       );
   }
@@ -73,5 +73,13 @@ export class CustomerService {
     return this.http.delete(`${this.BaseUrl}/${id}`, {
       observe: 'response',
     });
+  }
+
+  
+  private handleError(err: HttpErrorResponse) {
+    if (err.error.message == 'NOT FOUND')
+      return throwError('Email or Password wrong.');
+    if (!err.error.message) return throwError('Somthing went wrong.');
+    return throwError(err.error.message);
   }
 }

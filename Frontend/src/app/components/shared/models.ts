@@ -23,7 +23,7 @@ export interface Customer {
   password: String;
 }
 
-export interface User {
+export interface UserSchema {
   email: String;
   password: String;
 }
