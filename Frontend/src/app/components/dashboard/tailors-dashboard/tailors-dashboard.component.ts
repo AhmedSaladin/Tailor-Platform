@@ -1,37 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from 'src/app/services/customer.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
-  selector: 'app-customers',
-  templateUrl: './customers.component.html',
-  styleUrls: ['./customers.component.css'],
+  selector: 'app-tailors-dashboard',
+  templateUrl: './tailors-dashboard.component.html',
+  styleUrls: ['./tailors-dashboard.component.css']
 })
-export class CustomersComponent implements OnInit {
-  customer: any;
-  users: any;
-  isTailor = false;
-  filteredUsers: any;
+export class TailorsDashboardComponant implements OnInit {
+  tailor: any;
+  tailors: any;
+  isTailor = true;
   id: any;
   formValidation: any;
-
-  constructor(
-    private customerServive: CustomerService,
-    private formBuilder: FormBuilder
-  ) {
+  
+  constructor(private tailorServive: TailorService , private formBuilder: FormBuilder) {
     // this.id.params.id;
   }
 
   ngOnInit(): void {
-    this.customerServive.getCustomerInfo().subscribe(
-      (res) => {
-        this.users = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.tailorServive.getTailorsInfo().subscribe(
+      (res) => { this.tailors = res },
+      (err) => { console.log(err) }
+    )
 
     this.formValidation = this.formBuilder.group({
       fname: [
@@ -50,13 +42,13 @@ export class CustomersComponent implements OnInit {
           Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
         ],
       ],
-      phone: [
+      phone:[
         '',
         [
           Validators.required,
           Validators.maxLength(11),
           Validators.minLength(11),
-          Validators.pattern('^(([0-9]*)|(([0-9]*).([0-9]*)))$'),
+          Validators.pattern('^(([0-9]*)|(([0-9]*)\.([0-9]*)))$'),
         ],
       ],
       email: [
@@ -83,32 +75,34 @@ export class CustomersComponent implements OnInit {
     return this.formValidation.controls;
   }
 
-  AddCustomer(form: NgForm) {
-    let customer = {
+
+  AddTailor(form: NgForm) {
+    let tailor = {
       name: form.value.fname + ' ' + form.value.lname,
       phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      IsTailor: false,
+      IsTailor: true,
     };
-    this.customerServive.signUp(customer).subscribe();
+    this.tailorServive.AddNewTailor(tailor).subscribe();
     form.reset();
   }
   // filterArray(isTailor:boolean){
   //   this.filteredUsers =  this.users.filter(user => user === isTailor);
   // }
-  getCustomer(id: any) {
-    console.log(id);
-    return this.customerServive.get_customer_info_id(id).subscribe(
-      (res) => (this.customer = res.body),
-      (err) => console.log(err)
+  getTailor(id: any) {
+    console.log(id)
+    return this.tailorServive.get_tailor_info(id).subscribe(
+      (res => this.tailor = res.body),
+      (err => console.log(err))
     );
   }
 
-  deleteCustomer(id: any) {
-    return this.customerServive.deleteCustomer(id).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
-    );
+  deleteTailor(id: any) {
+    return this.tailorServive.deleteTailor(id).subscribe(
+      (res => console.log(res)),
+      (err => console.log(err))
+    )
   }
 }
+

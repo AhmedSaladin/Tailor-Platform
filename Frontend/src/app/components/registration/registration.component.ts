@@ -17,7 +17,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   constructor(
     private myCustomer: CustomerService,
     private router: Router,
-    public formBulider: FormBuilder
+    private formBulider: FormBuilder
   ) {}
 
   ngOnInit(): void {

@@ -59,14 +59,14 @@
       "name": "Muhammad SabahAllah",
       "email": "musabahallah@gmail.com",
       "password": "asD123!eee",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 3
     },
     {
       "name": "Omar Salama",
       "email": "omar_salma@gmail.com",
       "password": "aaA12!aaaa",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 4
     },
     {
@@ -96,14 +96,14 @@
       "name": "ahmed zaki",
       "email": "ahmed@zaki.com",
       "password": "@hmedSalah123456789",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 7
     },
     {
       "name": "ahmed nasser",
       "email": "ahmed@nasser.com",
       "password": "@hmedNasser123456789",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 8
     }
   ],
