@@ -15,8 +15,7 @@ module.exports = (app) => {
   app.use("/api/users", User);
   app.use("/api/comments", commentRouters);
   app.use(err);
-  // order routes
-  app.use(order);
+  app.use('/api/orders',order);
   app.use(errorHandler);
   app.use("*", notFound);
 };
