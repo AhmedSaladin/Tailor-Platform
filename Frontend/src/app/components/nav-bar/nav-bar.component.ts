@@ -24,6 +24,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
       if (user) this.isAuthenticated = true;
     });
   }
+  onLogout() {
+    this.customer.logout();
+    this.isAuthenticated = false;
+  }
+
   ngOnDestroy(): void {
     if (this.eve) this.eve.unsubscribe();
   }

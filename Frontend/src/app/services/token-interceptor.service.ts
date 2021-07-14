@@ -23,7 +23,7 @@ export class TokenIntercetorService implements HttpInterceptor {
       exhaustMap((user) => {
         if (!user) return next.handle(req);
         const newRequst = req.clone({
-          headers: new HttpHeaders().set('authorization', `${user.Token}`),
+          headers: req.headers.set('Authorization', `Bearer ${user.Token}`),
         });
         return next.handle(newRequst);
       })

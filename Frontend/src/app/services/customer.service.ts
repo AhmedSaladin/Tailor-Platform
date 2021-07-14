@@ -1,5 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Customer, UserSchema } from '../components/shared/models';
@@ -14,12 +15,13 @@ interface Login {
   providedIn: 'root',
 })
 export class CustomerService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
   user = new BehaviorSubject<User | null>(null);
   private BaseUrl = 'http://localhost:3000/users';
   private URL = 'https://tailor-s.herokuapp.com/api/users';
+  private test = 'http://localhost:3000/api/users';
 
   signUp(user: Customer) {
     return this.http
@@ -47,6 +49,11 @@ export class CustomerService {
       );
   }
 
+  logout() {
+    this.user.next(null);
+    this.router.navigate(['/']);
+  }
+
   getCustomerInfo() {
     return this.http.get(this.BaseUrl);
   }
@@ -60,7 +67,7 @@ export class CustomerService {
   }
 
   get_customer_info_id(id: any) {
-    return this.http.get(`${this.URL}/${id}`, {
+    return this.http.get(`${this.test}/${id}`, {
       observe: 'response',
     });
   }
