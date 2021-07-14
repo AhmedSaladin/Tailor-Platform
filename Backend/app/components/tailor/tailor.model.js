@@ -16,8 +16,9 @@ const tailorSchema = new mongoose.Schema({
     minLength: 8,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
+    unique: true,
   },
   isTailor: {
     type: Boolean,
@@ -48,4 +49,4 @@ const tailorSchema = new mongoose.Schema({
     default: "Hi I'm new Tailor here",
   },
 });
-module.exports = mongoose.model("user", tailorSchema);
+module.exports = mongoose.model("tailor", tailorSchema);
