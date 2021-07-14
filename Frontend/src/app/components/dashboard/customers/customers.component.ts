@@ -109,6 +109,6 @@ export class CustomersComponent implements OnInit {
     );
   }
 }
-//  need some cleanup & unsubscrip to improve performanc
+//  need some cleanup & unsubscripe to improve performanc
 //  adding auth and authGurd make it work only with admin
 //  link it with production api

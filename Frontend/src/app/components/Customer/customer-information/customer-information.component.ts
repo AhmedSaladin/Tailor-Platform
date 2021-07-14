@@ -9,7 +9,6 @@ import {
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
-import { User } from 'src/app/services/user.model';
 
 @Component({
   selector: 'app-customer-information',
@@ -22,7 +21,10 @@ export class CustomerInformationComponent implements OnInit {
   @ViewChild('upload_component') upload_component!: UcWidgetComponent;
   eve!: Subscription;
   editForm!: FormGroup;
-  constructor(private api: CustomerService, private formBulider: FormBuilder) {}
+  currentUserId?
+  constructor(private api: CustomerService, private formBulider: FormBuilder) {
+    this.currentUserId = this.api.user.value?.Id;
+  }
 
   ngOnInit(): void {
     this.formValidation();
@@ -101,9 +103,9 @@ export class CustomerInformationComponent implements OnInit {
     console.log(this.img);
     console.log(this.user_info.avatar);
     this.user_info.avatar = this.img;
-    console.log(this.user_info.id);
+    console.log(this.user_info._id);
     this.eve = this.api
-      .update_customer_info(this.user_info.id, this.user_info)
+      .update_customer_info(this.user_info._id, this.user_info)
       .subscribe();
     this.upload_component.clearUploads();
   }

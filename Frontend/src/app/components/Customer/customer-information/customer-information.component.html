@@ -15,6 +15,7 @@
           />
           <!-- start image popup -->
           <div
+            *ngIf="user_info._id === currentUserId"
             class="modal fade"
             id="staticBackdrop"
             data-bs-backdrop="static"
@@ -81,6 +82,29 @@
             </div>
           </div>
           <!-- end image popup -->
+          <!-- second popup -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-keyboard="true"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content image-view">
+                <button
+                  type="button"
+                  class="btn-close cls btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <img src="{{ img }}" style="width: 100%; border-radius: 0%" />
+                <!-- upload button needed and third-party-api -->
+              </div>
+            </div>
+          </div>
+          <!-- end of second popup -->
         </div>
       </div>
       <!-- End Photo -->
@@ -257,6 +281,7 @@
       <!-- Button edit about and size -->
       <div class="col-md-2 text-end">
         <input
+          *ngIf="user_info._id === currentUserId"
           type="submit"
           class="btn btn-primary btn-sm"
           name="btnAddMore"
