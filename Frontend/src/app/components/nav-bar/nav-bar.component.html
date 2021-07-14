@@ -29,12 +29,11 @@
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
-                  <a
-                    *ngIf="isAuthenticated"
+                <li class="nav-item" *ngIf="isAuthenticated">
+                  <a *ngIf="!isTailor"
                     class="nav-link"
                     routerLinkActive="active"
-                    routerLink="profile/edit/2"
+                    routerLink="customer/{{ id }}"
                     [routerLinkActiveOptions]="{ exact: true }"
                     >My Profile</a
                   >
@@ -48,21 +47,16 @@
                     >Login</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated && isAdmin">
                   <a
-                    *ngIf="isAuthenticated && isAdmin"
                     class="nav-link"
                     routerLinkActive="active"
                     routerLink="dashboard/customers"
                     >Dashboard</a
                   >
                 </li>
-                <li class="nav-item">
-                  <a
-                    *ngIf="isAuthenticated"
-                    class="nav-link"
-                    routerLinkActive="active"
-                    routerLink="#"
+                <li class="nav-item" *ngIf="isAuthenticated">
+                  <a class="nav-link" routerLinkActive="active" routerLink="#"
                     >Logout</a
                   >
                 </li>

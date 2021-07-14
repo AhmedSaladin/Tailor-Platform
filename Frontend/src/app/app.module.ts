@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
@@ -41,6 +41,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
+import { TokenIntercetorService } from './services/token-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,7 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     DashboardComponent,
     SidenavComponent,
     CustomersComponent,
-    TailorsDashboardComponant
+    TailorsDashboardComponant,
   ],
   imports: [
     BrowserModule,
@@ -86,9 +87,15 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenIntercetorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

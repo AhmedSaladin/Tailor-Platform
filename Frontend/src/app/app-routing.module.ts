@@ -13,22 +13,23 @@ import { TailorsDashboardComponant } from './components/dashboard/tailors-dashbo
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile/edit/:id', component: EditTailorProfileComponent },
+  { path: 'tailor/:id', component: EditTailorProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cust/edit/:id', component: EditCustomerProfileComponent },
-  { path: 'dashboard' , component: DashboardComponent, 
-  children:[
-    {path: 'customers' , component: CustomersComponent},
-    {path: 'tailors' , component: TailorsDashboardComponant}
-  ]
-},
-  
+  { path: 'customer/:id', component: EditCustomerProfileComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'customers', component: CustomersComponent },
+      { path: 'tailors', component: TailorsDashboardComponant },
+    ],
+  },
 
-  { path: '', component: LandingComponent, pathMatch: 'full' }
+  { path: '', component: LandingComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
