@@ -59,6 +59,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         '',
         [
           Validators.required,
+          Validators.maxLength(11),
+          Validators.minLength(11),
           Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
         ],
       ],

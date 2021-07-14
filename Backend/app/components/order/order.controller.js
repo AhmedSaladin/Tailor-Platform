@@ -1,11 +1,12 @@
 const  mongoose  = require('mongoose');
+const { findById } = require('../user/user.model');
 const orderModel = require('./order.model');
 
 
 
 const create_order = (req , res , next )=>{
     const order = new orderModel({
-        _id: mongoose.Types.ObjectId(),
+        // _id: mongoose.Types.ObjectId(),
         customerID: req.body.customerID,
         tailorID: req.body.tailorID,
         designs: req.body.designs,
@@ -13,49 +14,55 @@ const create_order = (req , res , next )=>{
     });
     order.save().then(result =>{
         console.log(result);
-        res.status(201).json({
-            message: 'order stored',
-            createdOrder: {
-                _id: result._id,
-                 customerID: result.customerID,
-                 tailorID: result.tailorID,
-                 designs:  result.designs,
-                 sizes:    result.sizes,
-            },
-            request: {
-                    type: 'GET',
-                    url: 'http://localhost:3000/orders/' + result._id
-                }
-        });
+        res.status(201).json();
     }).catch(err=>{
         console.log(err);
-        res.status(500).json({
-            error: err
-        })
+        res.status(500).json({message: err.toString()})
     });
 };
 
 
 const view_order = (req , res , next )=>{
+    // id ? tailor :cutomer
+    // get order by customer id find({customerID:customer_id})
+    // get order by tailor id find({tailorID:tailor_id})
+    // get order by id findById
     orderModel.find()
-              .select('customerID tailorID _id designs sizes')
-              .exec()
               .then(docs =>{
-                        res.status(200).json({
-                            order: docs.map(doc =>{
-                                return{
-                                    _id: doc._id,
-                                    customerID: doc.customerID,
-                                    tailorID: doc.tailorID,
-                                    designs: doc.designs,
-                                    sizes: doc.sizes,
-                                    request: {
-                                        type: 'GET',
-                                        url: 'http://localhost:3000/orders/' + doc._id
-                                    }
-                                }
+                         res.status(200).json(docs);
                             })
-                        });
+                .catch(err =>{
+                        res.status(500).json({
+                            error: err
+                        })
+                });
+};
+const view_orderByTailor = (req , res , next )=>{
+    orderModel.find({tailorID:tailor_id})
+              .then(docs =>{
+                         res.status(200).json(docs);
+                            })
+                .catch(err =>{
+                        res.status(500).json({
+                            error: err
+                        })
+                });
+};
+const view_orderByCustomer = (req , res , next )=>{
+    orderModel.find({customerID:customer_id})
+              .then(docs =>{
+                         res.status(200).json(docs);
+                            })
+                .catch(err =>{
+                        res.status(500).json({
+                            error: err
+                        })
+                });
+};
+const view_orderByOrder = (req , res , next )=>{
+    orderModel.findById({_id})
+              .then(docs =>{
+                         res.status(200).json(docs);
                             })
                 .catch(err =>{
                         res.status(500).json({
@@ -67,4 +74,7 @@ const view_order = (req , res , next )=>{
 module.exports={
     create_order,
     view_order,
+    view_orderByTailor,
+    view_orderByCustomer,
+    view_orderByOrder,
 }
