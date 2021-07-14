@@ -17,7 +17,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.eve = this.customer.user.subscribe((user) => {
-      console.log(user);
       if (!user) return;
       this.id = user.Id;
       this.isTailor = user.IsTailor;

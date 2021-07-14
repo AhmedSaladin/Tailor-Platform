@@ -18,16 +18,15 @@ export class TokenIntercetorService implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // exhaustMap  map to inner observable, ignore other values until that observable completes.
-    this.customer.user.pipe(
+    return this.customer.user.pipe(
       take(1),
       exhaustMap((user) => {
         if (!user) return next.handle(req);
-        const newRequst = req.clone({
-          headers: req.headers.set('Authorization', `Bearer ${user.Token}`),
+        const newReq = req.clone({
+          headers: req.headers.append('authorization', `Bearer ${user.Token}`),
         });
-        return next.handle(newRequst);
+        return next.handle(newReq);
       })
     );
-    return next.handle(req);
   }
 }

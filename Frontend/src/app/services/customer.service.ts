@@ -45,14 +45,27 @@ export class CustomerService {
             res.body!.token
           );
           this.user.next(user);
+          localStorage.setItem('user', JSON.stringify(user));
         })
       );
   }
 
+  autoLogin() {
+    const userData = JSON.parse(localStorage.getItem('user') || 'null');
+    // if user not found in local storage return
+    if (userData === null) return;
+    // if exist emiting him into app memory
+    const loadedUser = new User(userData.id, userData.isTailor, userData.token);
+    if (loadedUser.Token) this.user.next(loadedUser);
+  }
+
   logout() {
     this.user.next(null);
-    this.router.navigate(['/']);
+    localStorage.removeItem('user');
+    this.router.navigate(['login']);
   }
+
+  // remember to add autoLogout before token expire or request new token
 
   getCustomerInfo() {
     return this.http.get(this.BaseUrl);
@@ -67,9 +80,11 @@ export class CustomerService {
   }
 
   get_customer_info_id(id: any) {
-    return this.http.get(`${this.test}/${id}`, {
-      observe: 'response',
-    });
+    return this.http
+      .get(`${this.URL}/${id}`, {
+        observe: 'response',
+      })
+      .pipe(catchError(this.handleError));
   }
 
   update_customer_info(id: any, body: any) {
@@ -85,6 +100,7 @@ export class CustomerService {
   }
 
   private handleError(err: HttpErrorResponse) {
+    console.log(err);
     if (err.error.message == 'NOT FOUND')
       return throwError('Email or Password wrong.');
     if (!err.error.message) return throwError('Somthing went wrong.');

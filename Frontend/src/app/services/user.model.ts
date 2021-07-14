@@ -20,5 +20,4 @@ export class User {
     return this.isTailor;
   }
 }
-//  save user data In-memory storage
-//  next step save user data In-wab storage
+

@@ -28,6 +28,8 @@ export class EditCustomerProfileComponent implements OnInit {
         console.log(this.custId)
       },
       (err) => {
+        
+        console.log("ssss")
         console.log(err);
       }
     );
