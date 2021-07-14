@@ -83,7 +83,7 @@ export class CustomersComponent implements OnInit {
       phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      IsTailor: false,
+      isTailor: false,
     };
     this.customerServive.AddNewCustomer(customer).subscribe();
     form.reset();
@@ -92,7 +92,7 @@ export class CustomersComponent implements OnInit {
   //   this.filteredUsers =  this.users.filter(user => user === isTailor);
   // }
   getCustomer(id: any) {
-    console.log(id)
+    // console.log(id)
     return this.customerServive.get_customer_info_id(id).subscribe(
       (res => this.customer = res.body),
       (err => console.log(err))

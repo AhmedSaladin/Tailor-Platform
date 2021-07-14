@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class OrderService {
   private url = 'http://localhost:3000/orders';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   get_tailor_requests(id: any) {
     return this.http.get(`${this.url}?tailor_id=${id}`, {
       observe: 'response',
@@ -33,5 +33,13 @@ export class OrderService {
       { status: state },
       { observe: 'response' }
     );
+  }
+
+  getOrder() {
+    return this.http.get(this.url)
+  }
+
+  deleteOrder(id:any){
+    return this.http.delete(`${this.url}/${id}`,{observe:'response'})
   }
 }

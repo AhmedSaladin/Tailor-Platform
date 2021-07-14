@@ -41,6 +41,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
+import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     DashboardComponent,
     SidenavComponent,
     CustomersComponent,
-    TailorsDashboardComponant
+    TailorsDashboardComponant,
+    OrdersDashboardComponent
   ],
   imports: [
     BrowserModule,

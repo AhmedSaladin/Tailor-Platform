@@ -1,0 +1,17 @@
+i{
+    font-size: 25px;
+    cursor: pointer;
+}
+.fa-eye{
+    color: #185ADB;
+}
+.fa-trash-alt{
+    color: #CF0000;
+}
+td{
+    font-weight: bold;
+}
+th{
+    font-size: 20px;
+    font-weight: bold;
+}
