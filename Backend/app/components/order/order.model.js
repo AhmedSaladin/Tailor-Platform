@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 module.exports = mongoose.model("orders", {
   customerID: {
-    type: ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
   tailorID: {
-    type: ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
   designs: {

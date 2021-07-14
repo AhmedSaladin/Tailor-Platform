@@ -1,65 +1,309 @@
-<table class="table text-center">
+<div class="main">
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-success m-3"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
+    <i class="fas fa-user-plus me-1"></i> Add Customer
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <!-- start form -->
+          <form class="signUpForm" [formGroup]="formValidation" novalidate>
+            <div class="form-row">
+              <div class="mb-3">
+                <input
+                  formControlName="fname"
+                  #fname
+                  id="fname"
+                  name="fname"
+                  type="text"
+                  placeholder="First Name"
+                  class="form-control no-box-shadow"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.fname.touched && getControl.fname.invalid"
+                >
+                  <div *ngIf="getControl.fname.errors.required">
+                    Name is Required
+                  </div>
+                  <div *ngIf="getControl.fname.errors?.minlength">
+                    Minimum Length is 3 Characters
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="mb-3">
+                <input
+                  formControlName="lname"
+                  #lname
+                  id="lname"
+                  name="lname"
+                  type="text"
+                  placeholder="Last Name"
+                  class="form-control no-box-shadow"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.lname.touched && getControl.lname.invalid"
+                >
+                  <div *ngIf="getControl.lname.errors.required">
+                    Name is Required
+                  </div>
+                  <div *ngIf="getControl.lname.errors?.minlength">
+                    Minimum Length is 3 Characters
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="mb-3">
+                <input
+                  formControlName="phone"
+                  #phone
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  placeholder="Phone"
+                  class="form-control no-box-shadow"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.phone.touched && getControl.phone.invalid"
+                >
+                  <div *ngIf="getControl.phone.errors.required">
+                    Phone is Required
+                  </div>
+                  <div *ngIf="getControl.phone.errors?.maxlength">
+                    Maximum Length is 11
+                  </div>
+                  <div *ngIf="getControl.phone.errors?.minlength">
+                    Minimum Length is 11
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <input
+                formControlName="email"
+                #email
+                type="email"
+                class="form-control no-box-shadow"
+                placeholder="Email address"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div
+                class="text-danger"
+                *ngIf="getControl.email.touched && getControl.email.invalid"
+              >
+                Email like 'example@any.com'
+              </div>
+            </div>
+            <div class="mb-3">
+              <input
+                formControlName="password"
+                #password
+                type="password"
+                class="form-control no-box-shadow"
+                placeholder="Password"
+                id="exampleInputPassword1"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  getControl.password.touched && getControl.password.invalid
+                "
+              >
+                At least 8 characters ,Lowercase ,Uppercase letters,Numbers
+                Special characters
+              </div>
+            </div>
+          </form>
+          <!-- end form -->
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="AddCustomer(formValidation)"
+            [disabled]="formValidation.invalid"
+          >
+            Save changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end add customer -->
+
+  <!-- start data -->
+  <table class="table text-center">
     <thead>
-        <tr>
-            <th scope="col">Customer Name</th>
-            <th scope="col">View Customer</th>
-            <th scope="col">Delete Customer</th>
+      <tr>
+        <th scope="col">Customer Name</th>
+        <th scope="col">View Customer</th>
+        <th scope="col">Delete Customer</th>
+      </tr>
     </thead>
+
     <tbody>
-        <tr *ngFor='let user of users '>
-            <ng-container *ngIf='user.isTailor !== true'>
-                <td>{{user.name}}</td>
-                <td>
-                    <!-- Button trigger modal -->
-                    <button style="border: none; background-color: white;" data-bs-toggle="modal"
-                        data-bs-target="#viewCustomer" (click)="getCustomer(user.id)">
-                        <i class="fas fa-eye"></i>
+      <tr *ngFor="let user of users">
+        <ng-container *ngIf="user.isTailor !== true">
+          <td>{{ user.name }}</td>
+          <td>
+            <!-- Button trigger modal -->
+            <button
+              style="border: none"
+              class="bg-light"
+              data-bs-toggle="modal"
+              data-bs-target="#viewCustomer"
+              (click)="getCustomer(user.id)"
+            >
+              <i class="fas fa-eye"></i>
+            </button>
+
+            <!-- Modal -->
+            <div
+              class="modal fade"
+              id="viewCustomer"
+              tabindex="-1"
+              aria-labelledby="viewCustomerLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="viewCustomerLabel">
+                      Customer Information
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body" *ngIf="customer; else dd">
+                    <!-- start table -->
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Phone</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{ customer.id }}</td>
+                          <td>{{ customer.name }}</td>
+                          <td>{{ customer.email }}</td>
+                          <td>{{ customer.phone }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered w-100 mt-3">
+                      <thead>
+                        <tr>
+                          <th class="px-3 py-3 text-center" colspan="6">
+                            Customer Sizes (CM)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody class="tableBody">
+                        <tr>
+                          <td>Chest</td>
+                          <td colspan="2">{{ customer.chest }}</td>
+                        </tr>
+                        <tr>
+                          <td>Shoulder</td>
+                          <td colspan="2">{{ customer.shoulder }}</td>
+                        </tr>
+                        <tr>
+                          <td>Inseam</td>
+                          <td colspan="2">{{ customer.inseam }}</td>
+                        </tr>
+                        <tr>
+                          <td>Waist</td>
+                          <td colspan="2">{{ customer.waist }}</td>
+                        </tr>
+                        <tr>
+                          <td>Height</td>
+                          <td colspan="2">{{ customer.height }}</td>
+                        </tr>
+                        <tr>
+                          <td>Arm Length</td>
+                          <td colspan="2">{{ customer.armLength }}</td>
+                        </tr>
+                        <tr>
+                          <td>Collar</td>
+                          <td colspan="2">{{ customer.collar }}</td>
+                        </tr>
+                        <tr>
+                          <td>Sleeve</td>
+                          <td colspan="2">{{ customer.sleeve }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <!-- end table -->
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Close
                     </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="viewCustomer" tabindex="-1" aria-labelledby="viewCustomerLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="viewCustomerLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-
-                                    <!-- start table -->
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">id</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Phone</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngIf="customer else dd">
-                                                <td>{{customer.id}}</td>
-                                                <td>{{customer.name}}</td>
-                                                <td>{{customer.email}}</td>
-                                                <td>{{customer.phone}}</td>
-                                            </tr>
-                                            <ng-template #dd>wating</ng-template>
-                                        </tbody>
-                                    </table>
-                                    <!-- end table -->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td><i class="fas fa-user-times" style="cursor: pointer;" (click)="deleteCustomer(user.id)"></i></td>
-            </ng-container>
-        </tr>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            <i
+              class="fas fa-user-times"
+              style="cursor: pointer"
+              (click)="deleteCustomer(user.id)"
+            ></i>
+          </td>
+        </ng-container>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>
+<ng-template #dd>wating</ng-template>

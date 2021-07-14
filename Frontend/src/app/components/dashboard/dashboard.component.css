@@ -1,6 +1,7 @@
 .main{
     overflow-x: hidden;
+    overflow-y: hidden;
 }
-.sidbar{
+/* .sidbar{
     background: rgb(224, 222, 222) !important;
-}
+} */

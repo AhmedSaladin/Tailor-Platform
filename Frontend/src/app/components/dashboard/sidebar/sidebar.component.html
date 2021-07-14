@@ -1,18 +1,18 @@
 <mat-nav-list>
-    <div class="logo">
-      <img src="../../../../assets/images/logo.jpg" alt="Company Logo" />
-      <h2>Tailor-Shop Dashboard</h2>
-    </div>
-    <mat-divider></mat-divider>
-    <h2 matSubheader class="mt-2" style="color: #2c3344; font-weight: bold;">Admin</h2>
-  
-    <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
-      <mat-icon>home</mat-icon> Home
-    </a>
-    <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
-      <mat-icon>dashboard</mat-icon> Dashboard
-    </a> -->
-    <a mat-list-item> <mat-icon>edit</mat-icon> Tailors </a>
-    <a mat-list-item> <mat-icon>edit</mat-icon> Customers </a>
-    <a mat-list-item> <mat-icon>edit</mat-icon> Orders </a>
+  <div class="logo">
+    <img src="../../../../assets/images/logo.jpg" alt="Company Logo" />
+    <h2>Tailor-Shop Dashboard</h2>
+  </div>
+  <mat-divider></mat-divider>
+  <h2 matSubheader class="mt-2" style="color: #2c3344; font-weight: bold;">Admin</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
+    <mat-icon>home</mat-icon> Home
+  </a>
+  <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a> -->
+  <a mat-list-item routerLink='/dashboard/tailors'> <mat-icon>edit</mat-icon> Tailors </a>
+  <a mat-list-item routerLink='/dashboard/customers'> <mat-icon>edit</mat-icon> Customers </a>
+  <a mat-list-item> <mat-icon>edit</mat-icon> Orders </a>
 </mat-nav-list>

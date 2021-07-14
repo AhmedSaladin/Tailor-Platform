@@ -1,62 +1,89 @@
 <span *ngIf="user && tailor">{{ tailor.name }} </span>
 <!-- ===================== review button =================== -->
-<button *ngIf="order.status=='finished'&& !hasComment" class="btn btn-primary btn-sm" data-bs-toggle="modal" attr.data-bs-target="#review{{ order.id }}Model">
+<button
+  *ngIf="order.status == 'finished' && !hasComment"
+  class="btn btn-primary btn-sm"
+  data-bs-toggle="modal"
+  attr.data-bs-target="#review{{ order.id }}Model"
+>
   Review
 </button>
 <!-- =============================== REview popup =============================== -->
-<div class="modal fade" id="review{{ order.id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="review{{ order.id }}Model"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">FeedBack</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form
-          id="form"
-          action=""
-          [formGroup]="CommentForm"
-          >
-          <div class="modal-body">
-            <span id="rateMe2" class="empty-stars"></span>
-            <div class="container">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">FeedBack</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <form id="form" action="" [formGroup]="CommentForm">
+        <div class="modal-body">
+          <span id="rateMe2" class="empty-stars"></span>
+          <div class="container">
+            <ngb-rating [max]="5" [(rate)]="orderRate">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
 
-                <ngb-rating [max]=5 [(rate)]="orderRate">
-                  <ng-template let-fill="fill" let-index="index">
-                    <span class="star" [class.filled]="fill === 100">&#9733;</span>
-                  </ng-template>
-                </ngb-rating>
-
-
-                <div class="
+            <div
+              class="
                 starrating
                 risingstar
                 d-flex
                 justify-content-center
                 flex-row-reverse
-                ">
-                </div>
-              </div>
-
-              <div class="input-group input-group-lg">
-                <textarea formControlName="comment" type="text" rows="4" cols="50" class="form-control" aria-label="Large" placeholder="Give us your honest feedback"></textarea>
-                <div class="text-danger" *ngIf="comment.touched && comment.invalid">
-                  max length 1000
-                </div>
-
-              </div>
+              "
+            ></div>
           </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Close
-              </button>
-              <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">Save</button>
+
+          <div class="input-group input-group-lg">
+            <textarea
+              formControlName="comment"
+              type="text"
+              rows="4"
+              cols="50"
+              class="form-control"
+              aria-label="Large"
+              placeholder="Give us your honest feedback"
+            ></textarea>
+            <div class="text-danger" *ngIf="comment.touched && comment.invalid">
+              max length 1000
+            </div>
           </div>
-        </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="onSubmit()"
+          >
+            Save
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
-
-
 
 <!-- view -->
 
@@ -78,7 +105,9 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content" *ngIf="user && tailor; else dd">
       <div class="modal-header">
-        <h3 class="card-title text-center mt-1">Your Request to {{ tailor.name }}</h3>
+        <h3 class="card-title text-center mt-1">
+          Your Request to {{ tailor.name }}
+        </h3>
         <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button
           type="button"
@@ -91,7 +120,6 @@
         <div class="card mb-3">
           <div class="row g-0">
             <div class="col-md-6">
-
               <!-- Start Carousel  -->
 
               <div

@@ -7,18 +7,29 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CustomersComponent } from './components/dashboard/customers/customers.component';
+import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
+
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile/edit/:id', component: EditTailorProfileComponent },
+  { path: 'tailor/:id', component: EditTailorProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cust/edit/:id', component: EditCustomerProfileComponent },
+  { path: 'customer/:id', component: EditCustomerProfileComponent },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'customers', component: CustomersComponent },
+      { path: 'tailors', component: TailorsDashboardComponant },
+    ],
+  },
+
   { path: '', component: LandingComponent, pathMatch: 'full' },
-  { path: 'dashboard' , component: DashboardComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

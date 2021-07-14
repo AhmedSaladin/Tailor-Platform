@@ -59,14 +59,14 @@
       "name": "Muhammad SabahAllah",
       "email": "musabahallah@gmail.com",
       "password": "asD123!eee",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 3
     },
     {
       "name": "Omar Salama",
       "email": "omar_salma@gmail.com",
       "password": "aaA12!aaaa",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 4
     },
     {
@@ -96,15 +96,55 @@
       "name": "ahmed zaki",
       "email": "ahmed@zaki.com",
       "password": "@hmedSalah123456789",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 7
     },
     {
       "name": "ahmed nasser",
       "email": "ahmed@nasser.com",
       "password": "@hmedNasser123456789",
-      "IsTailor": false,
+      "isTailor": false,
       "id": 8
+    },
+    {
+      "name": "ahmed ali",
+      "phone": "01152535120",
+      "email": "ahmed@ali.com",
+      "password": "@Sd123456789",
+      "IsTailor": true,
+      "id": 9
+    },
+    {
+      "name": "ahmed ahmed",
+      "phone": "01152535111",
+      "email": "a@a.com",
+      "password": "@Sd123456789",
+      "IsTailor": true,
+      "id": 10
+    },
+    {
+      "name": "aaaaaa ssssss",
+      "phone": "01152545320",
+      "email": "a@aaa.com",
+      "password": "@sD123456789",
+      "IsTailor": true,
+      "id": 11
+    },
+    {
+      "name": "aaaaaaaaa sssssssss",
+      "phone": "01234567789",
+      "email": "11@22com",
+      "password": "@sD123456789",
+      "IsTailor": true,
+      "id": 12
+    },
+    {
+      "name": "aaaaaaaa sdddddddd",
+      "phone": "01155669981",
+      "email": "5@5.com",
+      "password": "@@SD123456789s",
+      "IsTailor": true,
+      "id": 13
     }
   ],
   "orders": [

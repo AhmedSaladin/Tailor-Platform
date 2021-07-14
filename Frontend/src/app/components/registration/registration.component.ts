@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  NgForm,
-  Validators,
-} from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -14,13 +9,15 @@ import { CustomerService } from 'src/app/services/customer.service';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css'],
 })
-export class RegistrationComponent implements OnInit {
-  formValidation: any;
-
+export class RegistrationComponent implements OnInit, OnDestroy {
+  formValidation!: FormGroup;
+  eve!: Subscription;
+  isLoading: Boolean = false;
+  error!: string;
   constructor(
     private myCustomer: CustomerService,
     private router: Router,
-    public formBulider: FormBuilder
+    private formBulider: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +55,15 @@ export class RegistrationComponent implements OnInit {
           ),
         ],
       ],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(11),
+          Validators.minLength(11),
+          Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
+        ],
+      ],
     });
   }
 
@@ -65,58 +71,31 @@ export class RegistrationComponent implements OnInit {
     return this.formValidation.controls;
   }
 
-  //Old way Validation
-  //   formValidation = new FormGroup({
-  //     fname: new FormControl('', [
-  //       Validators.required,
-  //       Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
-  //     ]),
-  //     lname: new FormControl('', [
-  //       Validators.required,
-  //       Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
-  //     ]),
-  //     email: new FormControl('', [
-  //       Validators.required,
-  //       Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
-  //     ]),
-  //     password: new FormControl('', [
-  //       Validators.required,
-  //       Validators.pattern(
-  //         '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
-  //       ),
-  //     ]),
-  //   });
-
-  //   get fnameValid() {
-  //     return this.formValidation.controls.fname.valid;
-  //   }
-  //   get lnameValid() {
-  //     return this.formValidation.controls.lname.valid;
-  //   }
-  //   get emailValid() {
-  //     return this.formValidation.controls.email.valid;
-  //   }
-  //   get passwordValid() {
-  //     return this.formValidation.controls.password.valid;
-  //   }
-
-  AddCustomer(form: NgForm) {
-    let customer = {
+  AddCustomer(form: FormGroup) {
+    // stop function from calling backend;
+    if (!form.valid) {
+      this.error = 'Something went wrong';
+      return;
+    }
+    const customer = {
       name: form.value.fname + ' ' + form.value.lname,
+      phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      IsTailor: false,
     };
-    // if (
-    //   this.formValidation.controls.fname.valid &&
-    //   this.formValidation.controls.lname.valid &&
-    //   this.formValidation.controls.email.valid &&
-    //   this.formValidation.controls.password.valid
-    // ) {
-    this.myCustomer.AddNewCustomer(customer).subscribe();
-    this.router.navigateByUrl('login');
-    // } else {
-    //   alert('Enter Valid Data');
-    // }
+    this.isLoading = true;
+    // adding validation to check status from server if data sumbited well
+    //
+    this.eve = this.myCustomer.signUp(customer).subscribe(
+      () => {
+        this.isLoading = false;
+        this.router.navigateByUrl('login');
+      },
+      (err) => (this.error = err)
+    );
+    form.reset();
+  }
+  ngOnDestroy(): void {
+    if (this.eve) this.eve.unsubscribe();
   }
 }
