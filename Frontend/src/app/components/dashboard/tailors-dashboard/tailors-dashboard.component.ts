@@ -82,7 +82,7 @@ export class TailorsDashboardComponant implements OnInit {
       phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      IsTailor: true,
+      isTailor: true,
     };
     this.tailorServive.AddNewTailor(tailor).subscribe();
     form.reset();

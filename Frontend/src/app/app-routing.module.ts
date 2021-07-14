@@ -9,6 +9,7 @@ import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-prof
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
+import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     children: [
       { path: 'customers', component: CustomersComponent },
       { path: 'tailors', component: TailorsDashboardComponant },
+      { path: 'orders', component: OrdersDashboardComponent },
     ],
   },
 

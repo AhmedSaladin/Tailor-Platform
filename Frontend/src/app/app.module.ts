@@ -42,6 +42,7 @@ import { MatListModule } from '@angular/material/list';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { TokenIntercetorService } from './services/token-interceptor.service';
+import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +73,7 @@ import { TokenIntercetorService } from './services/token-interceptor.service';
     SidenavComponent,
     CustomersComponent,
     TailorsDashboardComponant,
+    OrdersDashboardComponent,
   ],
   imports: [
     BrowserModule,

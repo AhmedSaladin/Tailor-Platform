@@ -94,7 +94,6 @@ export class CustomersComponent implements OnInit {
   }
 
   getCustomer(id: any) {
-    console.log(id);
     return this.customerServive.get_customer_info_id(id).subscribe(
       (res) => (this.customer = res.body),
       (err) => console.log(err)

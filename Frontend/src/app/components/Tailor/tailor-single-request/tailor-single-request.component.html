@@ -1,24 +1,12 @@
-<div
-  class="modal fade"
-  id="order{{ order.id }}Model"
-  tabindex="-1"
-  data-bs-backdrop="static"
-  data-bs-keyboard="false"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="order{{ order.id }}Model" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
   <!-- START POPUP -->
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content" *ngIf="user; else dd">
       <div class="modal-header">
         <h3 class="card-title text-center mt-1">{{ user.name }}'s Request</h3>
         <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="card mb-3">
@@ -26,46 +14,22 @@
             <div class="col-md-6">
               <!-- Start Carousel  -->
 
-              <div
-                id="carouselExampleIndicators"
-                class="carousel slide"
-                data-bs-ride="carousel"
-                style="height: 100% !important"
-              >
+              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
+                style="height: 100% !important">
                 <div class="carousel-indicators"></div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img
-                      src="{{ current_image }}"
-                      class="d-block w-100"
-                      style="max-height: 700px"
-                    />
+                    <img src="{{ current_image }}" class="d-block w-100" style="max-height: 700px" />
                   </div>
                 </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="prev"
-                  (click)="last_img()"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev" (click)="last_img()">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="next"
-                  (click)="next_img()"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next" (click)="next_img()">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>
@@ -142,39 +106,19 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-          *ngIf="order.status !== 'pending'"
-        >
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" *ngIf="order.status !== 'pending'">
           Close
         </button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
-          (click)="change_status('rejected')"
-          *ngIf="order.status === 'pending'"
-        >
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="change_status('rejected')"
+          *ngIf="order.status === 'pending'">
           Decline
         </button>
-        <button
-          type="button"
-          class="btn btn-primary form"
-          data-bs-dismiss="modal"
-          (click)="change_status('accepted')"
-          *ngIf="order.status === 'pending'"
-        >
+        <button type="button" class="btn btn-primary form" data-bs-dismiss="modal" (click)="change_status('accepted')"
+          *ngIf="order.status === 'pending'">
           Accept
         </button>
-        <button
-          type="button"
-          class="btn btn-primary form"
-          data-bs-dismiss="modal"
-          (click)="change_status('finished')"
-          *ngIf="order.status === 'accepted'"
-        >
+        <button type="button" class="btn btn-primary form" data-bs-dismiss="modal" (click)="change_status('finished')"
+          *ngIf="order.status === 'accepted'">
           Finished
         </button>
       </div>
