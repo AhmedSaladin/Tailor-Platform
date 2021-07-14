@@ -10,8 +10,8 @@ const {
 route
   .get("/", all_tailors_get)
   .get("/:id", tailor_get)
-//   .post("/", tailor_post)
-//   .put("/:id", tailor_put)
+  .post("/", tailor_post)
+  .put("/:id", tailor_put)
 //   .delete("/:id", tailor_delete);
 
 module.exports = route;
