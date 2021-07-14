@@ -1,65 +1,72 @@
-<section class="form my-4">
-  <div class="container">
-    <div class="row login-row">
-      <div class="col-lg-4 col-md-10 col-10 mx-auto pt-5 px-4 shadow mt-5">
-        <h1 class="mb-5">Login</h1>
-        <form id="form" action="" [formGroup]="LoginForm">
-          <div class="text-danger mb-3 form-row" *ngIf="error">
-            {{ error }}
-          </div>
-          <div class="form-row">
-            <div class="col-lg-12 col-12">
-              <input
-                type="email"
-                formControlName="email"
-                placeholder="Email"
-                class="form-control no-box-shadow my-0 p-2"
-              />
-              <div
-                class="text-danger"
-                *ngIf="getControl.email?.touched && getControl.email?.invalid"
-              >
-                Email is required'
+<div class="container">
+  <div class="card m-auto mb-5 col-lg-5 col-md-10 col-11 pt-1 px-1 shadow mt-5">
+    <div class="row-registration">
+      <div class="row g-0">
+        <div class="col-md-10 m-auto p-2">
+          <div class="card-body">
+            <h1 class="mb-5 card-title">Login</h1>
+            <form id="form" action="" [formGroup]="LoginForm">
+              <div class="text-danger mb-3 form-row" *ngIf="error">
+                {{ error }}
               </div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-lg-12">
-              <input
-                type="password"
-                formControlName="password"
-                placeholder="Password"
-                class="form-control no-box-shadow mt-3 p-2"
-                id="pass"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  getControl.password?.touched && getControl.password?.invalid
-                "
-              >
-                Password is required
+              <div class="form-row">
+                <div class="col-lg-12 col-12">
+                  <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                    class="form-control no-box-shadow my-0 p-2"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      getControl.email?.touched && getControl.email?.invalid
+                    "
+                  >
+                    Email is required'
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <input
+                    type="password"
+                    formControlName="password"
+                    placeholder="Password"
+                    class="form-control no-box-shadow mt-3 p-2"
+                    id="pass"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      getControl.password?.touched &&
+                      getControl.password?.invalid
+                    "
+                  >
+                    Password is required
+                  </div>
+                </div>
+              </div>
 
-          <div class="form-row">
-            <div class="col-lg-12">
-              <button
-                type="submit"
-                class="btn btn-primary mt-4 mb-3 login-button no-box-shadow"
-                (click)="onSubmit(LoginForm)"
-              >
-                login
-              </button>
-            </div>
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <button
+                    type="submit"
+                    class="btn btn-primary mt-4 mb-3 login-button no-box-shadow"
+                    (click)="onSubmit(LoginForm)"
+                  >
+                    login
+                  </button>
+                </div>
+              </div>
+              <a href="#">Forget password</a>
+              <p class="mt-2">
+                Not a member yet? <a routerLink="/signup">Join here</a>
+              </p>
+            </form>
           </div>
-          <a href="#">Forget password</a>
-          <p class="mt-2">
-            Not a member yet? <a routerLink="/signup">Join here</a>
-          </p>
-        </form>
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
