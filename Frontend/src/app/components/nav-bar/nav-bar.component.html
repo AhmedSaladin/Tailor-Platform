@@ -24,17 +24,17 @@
                 <li class="nav-item">
                   <a
                     class="nav-link"
-                    routerLinkActive="active"
-                    routerLink="home"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    routerLink="/home"
                     >Home</a
                   >
                 </li>
                 <li class="nav-item" *ngIf="isAuthenticated">
                   <a
-                    *ngIf="!isTailor"
                     class="nav-link"
-                    routerLinkActive="active"
-                    routerLink="customer/{{ id }}"
+                    routerLinkActive="active-link"
+                    routerLink="{{ link }}/{{ id }}"
                     [routerLinkActiveOptions]="{ exact: true }"
                     >My Profile</a
                   >
@@ -43,7 +43,7 @@
                   <a
                     *ngIf="!isAuthenticated"
                     class="nav-link"
-                    routerLinkActive="active"
+                    routerLinkActive="active-link"
                     routerLink="login"
                     >Login</a
                   >
@@ -51,7 +51,8 @@
                 <li class="nav-item" *ngIf="isAuthenticated">
                   <a
                     class="nav-link"
-                    routerLinkActive="active"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     routerLink="dashboard/customers"
                     >Dashboard</a
                   >
@@ -59,7 +60,7 @@
                 <li class="nav-item" *ngIf="isAuthenticated">
                   <a
                     class="nav-link"
-                    routerLinkActive="active"
+                    routerLinkActive="active-link"
                     style="cursor: pointer"
                     (click)="onLogout()"
                     >Logout</a

@@ -10,13 +10,18 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
   { path: 'tailor/:id', component: EditTailorProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'customer/:id', component: EditCustomerProfileComponent },
+  {
+    path: 'user/:id',
+    canActivate: [AuthGuardService],
+    component: EditCustomerProfileComponent,
+  },
   {
     path: 'dashboard',
     component: DashboardComponent,

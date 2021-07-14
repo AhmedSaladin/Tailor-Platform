@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   isAdmin: Boolean = false;
   id!: String | null;
   isTailor!: Boolean | null;
+  link: String = 'user';
   constructor(private customer: CustomerService) {}
 
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.id = user.Id;
       this.isTailor = user.IsTailor;
       if (user) this.isAuthenticated = true;
+      if (this.isTailor) this.link = 'tailor';
     });
   }
   onLogout() {

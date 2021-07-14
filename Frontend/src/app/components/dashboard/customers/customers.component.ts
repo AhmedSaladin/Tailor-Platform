@@ -22,7 +22,7 @@ export class CustomersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.customerServive.getCustomerInfo().subscribe(
+    this.customerServive.get_all_customers().subscribe(
       (res) => {
         this.users = res;
       },
@@ -95,7 +95,9 @@ export class CustomersComponent implements OnInit {
 
   getCustomer(id: any) {
     return this.customerServive.get_customer_info_id(id).subscribe(
-      (res) => (this.customer = res.body),
+      (res) => {
+        this.customer = res.body;
+      },
       (err) => console.log(err)
     );
   }

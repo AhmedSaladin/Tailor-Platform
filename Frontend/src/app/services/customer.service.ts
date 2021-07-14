@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Customer, UserSchema } from '../components/shared/models';
+import { CustomerSignup, UserLogin } from '../components/shared/models';
 import { User } from './user.model';
 
 interface Login {
@@ -23,7 +23,7 @@ export class CustomerService {
   private URL = 'https://tailor-s.herokuapp.com/api/users';
   private test = 'http://localhost:3000/api/users';
 
-  signUp(user: Customer) {
+  signUp(user: CustomerSignup) {
     return this.http
       .post(`${this.URL}/signup`, user, {
         observe: 'response',
@@ -31,7 +31,7 @@ export class CustomerService {
       .pipe(catchError(this.handleError));
   }
 
-  login(user: UserSchema) {
+  login(user: UserLogin) {
     return this.http
       .post<Login>(`${this.URL}/login`, user, {
         observe: 'response',
@@ -67,8 +67,8 @@ export class CustomerService {
 
   // remember to add autoLogout before token expire or request new token
 
-  getCustomerInfo() {
-    return this.http.get(this.BaseUrl);
+  get_all_customers() {
+    return this.http.get(this.URL);
   }
 
   getCustomerInfoByID(id: number) {
@@ -87,8 +87,8 @@ export class CustomerService {
       .pipe(catchError(this.handleError));
   }
 
-  update_customer_info(id: any, body: any) {
-    return this.http.put(`${this.BaseUrl}/${id}`, body, {
+  update_customer_info(id: string, body: any) {
+    return this.http.put(`${this.URL}/${id}`, body, {
       observe: 'response',
     });
   }
