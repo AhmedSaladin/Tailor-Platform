@@ -1,4 +1,19 @@
+.comment{
+  border: 2px solid rgb(226, 223, 223);
+  border-radius: 15px;
+  
+}
 .fa-star {
     color: #ffb624;
     padding-right: 0.1em;
+    font-size: 18px;
+  }
+  .name{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .parg{
+    /* font-weight: bold; */
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.75);
   }

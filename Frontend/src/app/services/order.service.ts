@@ -11,7 +11,7 @@ export class OrderService {
 
   get_current_user_orders() {
     const userId = this.user.user.value?.Id;
-    return this.http.get(`${this.url}?tailor_id=${userId}`, {
+    return this.http.get(`${this.url}?customer_id=${userId}`, {
       observe: 'response',
     });
   }
