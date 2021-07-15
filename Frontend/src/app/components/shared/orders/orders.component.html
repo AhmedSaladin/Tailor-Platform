@@ -1,0 +1,24 @@
+<div class="side-bar">
+  <div class="card mb-3 mt-4">
+    <div class="card-header text-center">Orders</div>
+    <ul
+      class="list-group list-group-flush"
+      *ngIf="orders.length != 0; else nothingHere"
+    >
+      <li class="list-group-item" *ngFor="let order of orders">
+        <app-customer-single-request
+          *ngIf="!isTailor"
+          [order]="order"
+        ></app-customer-single-request>
+        <app-tailor-single-request
+          *ngIf="isTailor"
+          [order]="order"
+        ></app-tailor-single-request>
+      </li>
+    </ul>
+    <div class="card-footer"></div>
+  </div>
+</div>
+<ng-template #nothingHere>
+  <div>You didn't have orders to display</div>
+</ng-template>

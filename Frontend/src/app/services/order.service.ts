@@ -1,12 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CustomerService } from './customer.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
   private url = 'http://localhost:3000/orders';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private user: CustomerService) {}
+
+  get_current_user_orders() {
+    const userId = this.user.user.value?.Id;
+    return this.http.get(`${this.url}?tailor_id=${userId}`, {
+      observe: 'response',
+    });
+  }
+
   get_tailor_requests(id: any) {
     return this.http.get(`${this.url}?tailor_id=${id}`, {
       observe: 'response',
@@ -36,10 +45,10 @@ export class OrderService {
   }
 
   getOrder() {
-    return this.http.get(this.url)
+    return this.http.get(this.url);
   }
 
-  deleteOrder(id:any){
-    return this.http.delete(`${this.url}/${id}`,{observe:'response'})
+  deleteOrder(id: any) {
+    return this.http.delete(`${this.url}/${id}`, { observe: 'response' });
   }
 }
