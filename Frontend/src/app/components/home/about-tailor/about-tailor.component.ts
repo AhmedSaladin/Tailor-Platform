@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class AboutTailorComponent implements OnInit {
   constructor(private router: Router) {}
   goToTailorProfile(id: any) {
-    this.router.navigateByUrl(`profile/edit/${id}`);
+    this.router.navigateByUrl(`profile/tailor/${id}`);
   }
   ngOnInit(): void {}
   @Input() tailor: any;
