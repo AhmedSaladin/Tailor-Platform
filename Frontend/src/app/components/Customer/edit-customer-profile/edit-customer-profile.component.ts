@@ -12,10 +12,12 @@ export class EditCustomerProfileComponent implements OnInit {
   @Output() cust: any;
   @Output() custImg: any;
   eve!: Subscription;
+  currentUserId: any;
   constructor(
     private custSer: CustomerService,
     private activeRout: ActivatedRoute
   ) {
+    this.currentUserId = this.custSer.user.value?.Id;
     this.getCustomerINfo(activeRout.snapshot.params.id);
   }
 

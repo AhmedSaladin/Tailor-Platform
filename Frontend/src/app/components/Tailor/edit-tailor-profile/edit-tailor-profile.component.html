@@ -7,29 +7,34 @@
         <app-tailor-information
           [user_info]="user"
           [img]="user.avatar"
+          [currentUserId]="currentUserId"
         ></app-tailor-information>
-        <app-tailor-about [user_info]="user"></app-tailor-about>
+        <app-tailor-about
+          [user_info]="user"
+          [currentUserId]="currentUserId"
+        ></app-tailor-about>
         <app-tailor-gallary
+          [currentUserId]="currentUserId"
           [user_info]="user"
           [gallery]="user.gallary"
         ></app-tailor-gallary>
-        <app-tailor-rate [comments]="user.comments"></app-tailor-rate>
+        <app-tailor-rate></app-tailor-rate>
       </div>
       <!--  -->
     </div>
     <!-- end right side -->
     <!-- start left side  -->
-    <div class="col-12 col-lg-4 order-first order-lg-last">
-      <div class="mt-4">
+    <div class="col-12 col-lg-4 order-first order-lg-last mt-4">
+      <div class="mb-3" *ngIf="tailor && tailorId === currentUserId">
         <app-orders></app-orders>
       </div>
-      <app-booking></app-booking>
+      <div *ngIf="!tailor">
+        <app-booking [currentUserId]="currentUserId"></app-booking>
+      </div>
     </div>
   </div>
 </div>
 
 <ng-template #loading>
-  <div class="d-flex justify-content-center">
-    <div class="spinner-border text-info mx-auto mt-5" role="status"></div>
-  </div>
+  <app-loading></app-loading>
 </ng-template>

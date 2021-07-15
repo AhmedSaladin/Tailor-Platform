@@ -12,6 +12,7 @@ export class TailorAboutComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
   eve!: Subscription;
   formValidation: any;
+  @Input() currentUserId: any;
   constructor(private api: TailorService, public formBulider: FormBuilder) {}
 
   ngOnInit(): void {
