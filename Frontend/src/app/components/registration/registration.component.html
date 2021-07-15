@@ -4,24 +4,16 @@
       <div class="row g-0">
         <div class="col-md-10 m-auto p-2">
           <div class="card-body">
-            <h3 class="card-title mb-3"><b>Sign Up</b></h3>
+            <h3 class="card-title mb-4"><b>Sign Up</b></h3>
             <form class="signUpForm" [formGroup]="formValidation" novalidate>
               <div class="text-danger form-row mb-3" *ngIf="error">
                 <div>{{ error }}</div>
               </div>
               <div class="form-row">
                 <div class="mb-3">
-                  <input
-                    formControlName="fname"
-                    name="fname"
-                    type="text"
-                    placeholder="First Name"
-                    class="form-control no-box-shadow"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.fname.touched && getControl.fname.invalid"
-                  >
+                  <input formControlName="fname" name="fname" type="text" placeholder="First Name"
+                    class="form-control no-box-shadow" />
+                  <div class="text-danger" *ngIf="getControl.fname.touched && getControl.fname.invalid">
                     <div *ngIf="getControl.fname.errors?.required">
                       First Name is Required
                     </div>
@@ -33,17 +25,9 @@
               </div>
               <div class="form-row">
                 <div class="mb-3">
-                  <input
-                    formControlName="lname"
-                    name="lname"
-                    type="text"
-                    placeholder="Last Name"
-                    class="form-control no-box-shadow"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.lname.touched && getControl.lname.invalid"
-                  >
+                  <input formControlName="lname" name="lname" type="text" placeholder="Last Name"
+                    class="form-control no-box-shadow" />
+                  <div class="text-danger" *ngIf="getControl.lname.touched && getControl.lname.invalid">
                     <div *ngIf="getControl.lname.errors?.required">
                       Last Name is Required
                     </div>
@@ -53,59 +37,39 @@
                   </div>
                 </div>
               </div>
+              <div class="mb-3">
+                <input formControlName="phone" type="string" class="form-control no-box-shadow" placeholder="Phone" />
+                <div class="text-danger" *ngIf="getControl.phone.touched && getControl.phone.invalid">
+                  Enter a valid phone number
+
+                  <div *ngIf="getControl.phone.errors?.maxlength">
+                    Maximum Length is 11
+                  </div>
+                  <div *ngIf="getControl.phone.errors?.minlength">
+                    Minimum Length is 11
+                  </div>
+                </div>
+              </div>
 
               <div class="mb-3">
-                <input
-                  formControlName="email"
-                  type="email"
-                  class="form-control no-box-shadow"
-                  placeholder="Email address"
-                  aria-describedby="emailHelp"
-                />
-                <div
-                  class="text-danger"
-                  *ngIf="getControl.email.touched && getControl.email.invalid"
-                >
+                <input formControlName="email" type="email" class="form-control no-box-shadow"
+                  placeholder="Email address" aria-describedby="emailHelp" />
+                <div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
                   Email like 'example@any.com'
                 </div>
               </div>
               <div class="mb-3">
-                <input
-                  formControlName="password"
-                  type="password"
-                  class="form-control no-box-shadow"
-                  placeholder="Password"
-                />
-                <div
-                  class="text-danger"
-                  *ngIf="
+                <input formControlName="password" type="password" class="form-control no-box-shadow"
+                  placeholder="Password" />
+                <div class="text-danger" *ngIf="
                     getControl.password.touched && getControl.password.invalid
-                  "
-                >
+                  ">
                   At least 8 characters ,Lowercase ,Uppercase letters,Numbers
                   Special characters
                 </div>
               </div>
-              <div class="mb-3">
-                <input
-                  formControlName="phone"
-                  type="string"
-                  class="form-control no-box-shadow"
-                  placeholder="Phone"
-                />
-                <div
-                  class="text-danger"
-                  *ngIf="getControl.phone.touched && getControl.phone.invalid"
-                >
-                  Enter a valid phone number
-                </div>
-              </div>
-              <button
-                type="submit"
-                class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
-                (click)="AddCustomer(formValidation)"
-                [disabled]="formValidation.invalid"
-              >
+              <button type="submit" class="btnSignUp btn btn-dark no-box-shadow mb-3 mt-3"
+                (click)="AddCustomer(formValidation)" [disabled]="formValidation.invalid">
                 Sign Up
               </button>
             </form>

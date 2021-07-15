@@ -11,14 +11,25 @@ export class NavBarComponent implements OnInit, OnDestroy {
   eve!: Subscription;
   isAuthenticated: Boolean = false;
   isAdmin: Boolean = false;
+  id!: String | null;
+  isTailor!: Boolean | null;
+  link: String = 'user';
   constructor(private customer: CustomerService) {}
 
   ngOnInit(): void {
     this.eve = this.customer.user.subscribe((user) => {
-      console.log(user);
+      if (!user) return;
+      this.id = user.Id;
+      this.isTailor = user.IsTailor;
       if (user) this.isAuthenticated = true;
+      if (this.isTailor) this.link = 'tailor';
     });
   }
+  onLogout() {
+    this.customer.logout();
+    this.isAuthenticated = false;
+  }
+
   ngOnDestroy(): void {
     if (this.eve) this.eve.unsubscribe();
   }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
@@ -17,13 +17,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { TailorRequestsComponent } from './components/Tailor/tailor-requests/tailor-requests.component';
 import { TailorSingleRequestComponent } from './components/Tailor/tailor-single-request/tailor-single-request.component';
 import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { FilterPipe } from './filter.pipe';
 import { CustomerInformationComponent } from './components/Customer/customer-information/customer-information.component';
 import { CustomerSingleRequestComponent } from './components/Customer/customer-single-request/customer-single-request.component';
-import { CustomerRequestsComponent } from './components/Customer/customer-requests/customer-requests.component';
 import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
 import { BookingComponent } from './components/Tailor/booking/booking.component';
 import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
@@ -41,8 +39,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
+import { TokenIntercetorService } from './services/token-interceptor.service';
+import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
+import { OrdersComponent } from './components/shared/orders/orders.component';
 @NgModule({
   declarations: [
+    OrdersComponent,
     AppComponent,
     EditTailorProfileComponent,
     NavBarComponent,
@@ -57,12 +59,10 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     RegistrationComponent,
     LoginComponent,
     LandingComponent,
-    TailorRequestsComponent,
     TailorSingleRequestComponent,
     FilterPipe,
     CustomerInformationComponent,
     CustomerSingleRequestComponent,
-    CustomerRequestsComponent,
     EditCustomerProfileComponent,
     BookingComponent,
     TailorCommentsComponent,
@@ -70,7 +70,8 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     DashboardComponent,
     SidenavComponent,
     CustomersComponent,
-    TailorsDashboardComponant
+    TailorsDashboardComponant,
+    OrdersDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,9 +87,15 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
     MatMenuModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenIntercetorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

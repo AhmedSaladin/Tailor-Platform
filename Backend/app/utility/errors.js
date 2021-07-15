@@ -4,7 +4,7 @@ const mongo = require("mongoose");
 module.exports = {
   is_valid_id: (id) => {
     if (!mongo.isValidObjectId(id))
-      throw { status: BAD_REQUEST, message: "ID NOT VALID" };
+      throw { status: BAD_REQUEST, message: "Invalid ID." };
   },
 
   if_error: (error, status) => {

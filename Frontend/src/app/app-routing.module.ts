@@ -9,26 +9,34 @@ import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-prof
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
+import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'profile/edit/:id', component: EditTailorProfileComponent },
+  { path: 'tailor/:id', component: EditTailorProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cust/edit/:id', component: EditCustomerProfileComponent },
-  { path: 'dashboard' , component: DashboardComponent, 
-  children:[
-    {path: 'customers' , component: CustomersComponent},
-    {path: 'tailors' , component: TailorsDashboardComponant}
-  ]
-},
-  
+  {
+    path: 'user/:id',
+    canActivate: [AuthGuardService],
+    component: EditCustomerProfileComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: 'customers', component: CustomersComponent },
+      { path: 'tailors', component: TailorsDashboardComponant },
+      { path: 'orders', component: OrdersDashboardComponent },
+    ],
+  },
 
-  { path: '', component: LandingComponent, pathMatch: 'full' }
+  { path: '', component: LandingComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-exports: [RouterModule],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

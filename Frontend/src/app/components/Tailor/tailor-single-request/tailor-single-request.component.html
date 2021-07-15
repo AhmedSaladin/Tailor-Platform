@@ -1,3 +1,11 @@
+<span>{{ order.customer_name}}</span>
+<button
+  class="btn btn-primary float-end btn-sm"
+  data-bs-toggle="modal"
+  attr.data-bs-target="#order{{ order.id }}Model"
+>
+  View
+</button>
 <div
   class="modal fade"
   id="order{{ order.id }}Model"

@@ -6,36 +6,75 @@
       <div class="col-md-4">
         <!-- Start Profile Image -->
         <div class="profile-img text-center mb-3 mt-4 me-2">
-          <img src="{{ user_info.avatar }}" class="profile-img img-fluid" data-bs-target="#staticBackdrop"
-            data-bs-toggle="modal" alt="" />
+          <img
+            src="{{ user_info.avatar }}"
+            class="profile-img img-fluid"
+            data-bs-target="#staticBackdrop"
+            data-bs-toggle="modal"
+            alt=""
+          />
           <!-- start image popup -->
-          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div
+            *ngIf="user_info._id === currentUserId"
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="staticBackdropLabel">
                     Profile Picture
                   </h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                    (click)="notSavingCustAvatar()"></button>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    (click)="notSavingCustAvatar()"
+                  ></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="{{ img }}" class="profile-img img-pop" style="width: 100%" />
+                  <img
+                    src="{{ img }}"
+                    class="profile-img img-pop"
+                    style="width: 100%"
+                  />
                 </div>
-                <div class="modal-footer" style="justify-content: flex-start !important">
-                  <button type="button" class="btn btn-secondary justify-content-start" data-bs-dismiss="modal"
-                    (click)="notSavingCustAvatar()">
+                <div
+                  class="modal-footer"
+                  style="justify-content: flex-start !important"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-secondary justify-content-start"
+                    data-bs-dismiss="modal"
+                    (click)="notSavingCustAvatar()"
+                  >
                     Close
                   </button>
-                  <button type="button" class="btn btn-primary d-flex justify-content-start" data-bs-dismiss="modal"
-                    (click)="saveNewTailorAvatar()">
+                  <button
+                    type="button"
+                    class="btn btn-primary d-flex justify-content-start"
+                    data-bs-dismiss="modal"
+                    (click)="saveNewTailorAvatar()"
+                  >
                     Save
                   </button>
-                  <ngx-uploadcare-widget public-key="d2eaba00baf97d93aeb1"
-                    (on-upload-complete)="on_upload_complete($event)" crop="free" class="d-flex justify-content-end"
-                    [images-only]="true" input-accept-types="image/*" tabs="file camera url gphotos instagram facebook"
-                    #upload_component>
+                  <ngx-uploadcare-widget
+                    public-key="d2eaba00baf97d93aeb1"
+                    (on-upload-complete)="on_upload_complete($event)"
+                    crop="free"
+                    class="d-flex justify-content-end"
+                    [images-only]="true"
+                    input-accept-types="image/*"
+                    tabs="file camera url gphotos instagram facebook"
+                    #upload_component
+                  >
                   </ngx-uploadcare-widget>
                   <!-- upload button needed and third-party-api -->
                 </div>
@@ -43,6 +82,29 @@
             </div>
           </div>
           <!-- end image popup -->
+          <!-- second popup -->
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-keyboard="true"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content image-view">
+                <button
+                  type="button"
+                  class="btn-close cls btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+                <img src="{{ img }}" style="width: 100%; border-radius: 0%" />
+                <!-- upload button needed and third-party-api -->
+              </div>
+            </div>
+          </div>
+          <!-- end of second popup -->
         </div>
       </div>
       <!-- End Photo -->
@@ -57,22 +119,43 @@
             <!--Customer About -->
 
             <li class="nav-item" role="presentation">
-              <a class="nav-link active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home"
-                aria-selected="true">About</a>
+              <a
+                class="nav-link active"
+                id="home-tab"
+                data-bs-toggle="tab"
+                href="#home"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+                >About</a
+              >
             </li>
 
             <!--Customer Fitting sizes -->
 
             <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab"
-                aria-controls="profile" aria-selected="false">Fitting sizes <span class="cm">( CM )</span></a>
+              <a
+                class="nav-link"
+                id="profile-tab"
+                data-bs-toggle="tab"
+                href="#profile"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+                >Fitting sizes <span class="cm">( CM )</span></a
+              >
             </li>
           </ul>
         </div>
         <div class="tab-content profile-tab" id="myTabContent">
           <!-- Start About -->
 
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
             <div class="row mt-3">
               <div class="row">
                 <div class="row">
@@ -114,15 +197,20 @@
           <!-- End About -->
 
           <!-- Start Sizes -->
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="row mt-3">
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div class="row mt-3" *ngIf="user_info.sizes; else noSizes">
               <div class="col-5">
                 <div class="row">
                   <div class="col-5 col-lg-4">
                     <label>Chest:</label>
                   </div>
                   <div class="col-7 col-lg-8">
-                    <p>{{ user_info.chest }}</p>
+                    <p>{{ user_info.sizes.chest }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -130,16 +218,15 @@
                     <label>Waist:</label>
                   </div>
                   <div class="col-7 col-lg-8">
-                    <p>{{ user_info.waist }}</p>
+                    <p>{{ user_info.sizes.waist }}</p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-5 col-lg-4">
-                    <!-- error -->
                     <label>Collar:</label>
                   </div>
                   <div class="col-7 col-lg-8">
-                    <p>{{ user_info.collar }}</p>
+                    <p>{{ user_info.sizes.collar }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -147,7 +234,7 @@
                     <label>Arm:</label>
                   </div>
                   <div class="col-7 col-lg-8">
-                    <p>{{ user_info.armLength }}</p>
+                    <p>{{ user_info.sizes.armLength }}</p>
                   </div>
                 </div>
               </div>
@@ -157,7 +244,7 @@
                     <label>Shoulder:</label>
                   </div>
                   <div class="col-6 col-lg-8">
-                    <p>{{ user_info.shoulder }}</p>
+                    <p>{{ user_info.sizes.shoulder }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -165,15 +252,15 @@
                     <label>Inseam:</label>
                   </div>
                   <div class="col-6 col-lg-8">
-                    <p>{{ user_info.inseam }}</p>
+                    <p>{{ user_info.sizes.inseam }}</p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-6 col-lg-4">
-                    <label>Sleeve:</label>
+                    <label>Thigh:</label>
                   </div>
                   <div class="col-6 col-lg-8">
-                    <p>{{ user_info.sleeve }}</p>
+                    <p>{{ user_info.sizes.thigh }}</p>
                   </div>
                 </div>
                 <div class="row">
@@ -181,7 +268,7 @@
                     <label>Height:</label>
                   </div>
                   <div class="col-6 col-lg-8">
-                    <p>{{ user_info.height }}</p>
+                    <p>{{ user_info.sizes.height }}</p>
                   </div>
                 </div>
               </div>
@@ -193,81 +280,174 @@
       </div>
       <!-- Button edit about and size -->
       <div class="col-md-2 text-end">
-        <input type="submit" class="btn btn-primary btn-sm" name="btnAddMore" value="Edit" data-bs-toggle="modal"
-          data-bs-target="#exampleModal" />
+        <input
+          *ngIf="user_info._id === currentUserId"
+          type="submit"
+          class="btn btn-primary btn-sm"
+          name="btnAddMore"
+          value="Edit"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        />
       </div>
 
       <!-- start popup model about and size -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
                 Edit Information
               </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body">
-              <form class="row g-3" [formGroup]="editForm">
+              <form class="row g-3" [formGroup]="editForm" novalidate>
                 <div class="mb-2 col-6">
                   <label for="name" class="col-form-label">Name:</label>
-                  <input type="text" class="form-control" id="name" name="name" formControlName="name" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    formControlName="name"
+                  />
                 </div>
                 <div class="col-6">
                   <label for="email" class="col-form-label">Email:</label>
-                  <input type="email" class="form-control" id="email" name="email" formControlName="email" />
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    formControlName="email"
+                  />
                 </div>
                 <div class="col-md-6">
                   <label for="phone" class="col-form-label">Phone:</label>
-                  <input type="text" class="form-control" id="phone" name="phone" formControlName="phone" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="phone"
+                    formControlName="phone"
+                  />
                 </div>
                 <div class="col-md-6">
-                  <label for="inputState" class="form-label" style="line-height: 1.9">Gender:</label>
-                  <select id="inputState" class="form-select" name="gender" formControlName="gender">
-                    <option>Male</option>
-                    <option>Female</option>
+                  <label
+                    for="inputState"
+                    class="form-label"
+                    style="line-height: 1.9"
+                    >Gender:</label
+                  >
+                  <select
+                    class="form-select"
+                    name="gender"
+                    formControlName="gender"
+                  >
+                    <option>male</option>
+                    <option>female</option>
                   </select>
                 </div>
                 <div class="col-md-3">
                   <label for="chest" class="col-form-label">Chest:</label>
-                  <input type="number" class="form-control" id="chest" name="chest" formControlName="chest" />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="chest"
+                    formControlName="chest"
+                  />
                 </div>
                 <div class="col-md-3">
-                  <label for="armLength" class="col-form-label">ArmLength:</label>
-                  <input type="number" class="form-control" id="armLength" name="armLength"
-                    formControlName="armLength" />
+                  <label for="armLength" class="col-form-label"
+                    >ArmLength:</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="armLength"
+                    formControlName="armLength"
+                  />
                 </div>
                 <div class="col-md-3">
                   <label for="waist" class="col-form-label">Waist:</label>
-                  <input type="number" class="form-control" id="waist" name="waist" formControlName="waist" />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="waist"
+                    formControlName="waist"
+                  />
                 </div>
                 <div class="col-md-3">
-                  <label for="hight" class="col-form-label">Hight:</label>
-                  <input type="number" class="form-control" id="height" name="height" formControlName="height" />
+                  <label for="hight" class="col-form-label">Height:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="height"
+                    formControlName="height"
+                  />
                 </div>
                 <div class="col-md-3">
                   <label for="inseam" class="col-form-label">Inseam:</label>
-                  <input type="number" class="form-control" id="inseam" name="inseam" formControlName="inseam" />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="inseam"
+                    formControlName="inseam"
+                  />
                 </div>
                 <div class="col-md-3">
                   <label for="shoulder" class="col-form-label">Shoulder:</label>
-                  <input type="number" class="form-control" id="shoulder" name="shoulder" formControlName="shoulder" />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="shoulder"
+                    formControlName="shoulder"
+                  />
                 </div>
                 <div class="col-md-3">
                   <label for="shoulder" class="col-form-label">Collar:</label>
-                  <input type="number" class="form-control" id="shoulder" name="shoulder" formControlName="collar" />
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="collar"
+                    formControlName="collar"
+                  />
                 </div>
                 <div class="col-md-3">
-                  <label for="shoulder" class="col-form-label">Sleeve:</label>
-                  <input type="number" class="form-control" id="shoulder" name="shoulder" formControlName="sleeve" />
+                  <label for="shoulder" class="col-form-label">Thigh:</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    name="thigh"
+                    formControlName="thigh"
+                  />
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
                 Discard
               </button>
-              <button type="button" class="btn btn-primary form" (click)="updateCustInfo()" data-bs-dismiss="modal">
+              <button
+                type="button"
+                class="btn btn-primary form"
+                (click)="updateCustInfo(editForm)"
+                [disabled]="editForm.invalid"
+                data-bs-dismiss="modal"
+              >
                 Save changes
               </button>
             </div>
@@ -280,13 +460,11 @@
     </div>
 
     <!--  -->
-
-    <!-- <div class="row">
-      <div class="col-md-4"></div>
-      <div class="col-md-6">
-
-      </div>
-    </div> -->
   </form>
 </div>
 <!-- End Card -->
+
+<!-- need fixing -->
+<ng-template #noSizes>
+  <div>You diden't add sizes yet</div>
+</ng-template>

@@ -23,7 +23,6 @@
 }
 
 .profile-head h5 {
-
   font-size: 1.8rem;
   margin-bottom: 20px;
 }
@@ -47,6 +46,19 @@
   font-weight: bold;
 }
 
-.cm{
+.cm {
   font-size: small;
+}
+
+.image-view {
+  position: relative;
+}
+.image-view .cls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.6;
+  background-color: #A0E7E5;
+  padding: 10px;
+  border-radius: 50%;
 }

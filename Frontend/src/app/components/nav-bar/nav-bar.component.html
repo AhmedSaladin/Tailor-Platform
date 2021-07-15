@@ -24,17 +24,17 @@
                 <li class="nav-item">
                   <a
                     class="nav-link"
-                    routerLinkActive="active"
-                    routerLink="home"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    routerLink="/home"
                     >Home</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated">
                   <a
-                    *ngIf="isAuthenticated"
                     class="nav-link"
-                    routerLinkActive="active"
-                    routerLink="profile/edit/2"
+                    routerLinkActive="active-link"
+                    routerLink="{{ link }}/{{ id }}"
                     [routerLinkActiveOptions]="{ exact: true }"
                     >My Profile</a
                   >
@@ -43,26 +43,26 @@
                   <a
                     *ngIf="!isAuthenticated"
                     class="nav-link"
-                    routerLinkActive="active"
+                    routerLinkActive="active-link"
                     routerLink="login"
                     >Login</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated">
                   <a
-                    *ngIf="isAuthenticated && isAdmin"
                     class="nav-link"
-                    routerLinkActive="active"
+                    routerLinkActive="active-link"
+                    [routerLinkActiveOptions]="{ exact: true }"
                     routerLink="dashboard/customers"
                     >Dashboard</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="isAuthenticated">
                   <a
-                    *ngIf="isAuthenticated"
                     class="nav-link"
-                    routerLinkActive="active"
-                    routerLink="#"
+                    routerLinkActive="active-link"
+                    style="cursor: pointer"
+                    (click)="onLogout()"
                     >Logout</a
                   >
                 </li>

@@ -14,7 +14,7 @@ export class TailorsDashboardComponant implements OnInit {
   isTailor = true;
   id: any;
   formValidation: any;
-  
+
   constructor(private tailorServive: TailorService , private formBuilder: FormBuilder) {
     // this.id.params.id;
   }
@@ -48,7 +48,7 @@ export class TailorsDashboardComponant implements OnInit {
           Validators.required,
           Validators.maxLength(11),
           Validators.minLength(11),
-          Validators.pattern('^(([0-9]*)|(([0-9]*)\.([0-9]*)))$'),
+          Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
         ],
       ],
       email: [
@@ -82,7 +82,7 @@ export class TailorsDashboardComponant implements OnInit {
       phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
-      IsTailor: true,
+      isTailor: true,
     };
     this.tailorServive.AddNewTailor(tailor).subscribe();
     form.reset();

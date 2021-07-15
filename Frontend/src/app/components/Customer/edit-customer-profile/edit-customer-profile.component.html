@@ -3,20 +3,15 @@
     <div class="col-12 col-lg-8">
       <div class="right-side">
         <!-- you send all user data here futuer hint -->
-        <app-customer-information
-          [user_info]="cust"
-          [img]="custImg"
-          >
-      </app-customer-information>
+        <app-customer-information [user_info]="cust" [img]="custImg">
+        </app-customer-information>
       </div>
       <!--  -->
     </div>
     <!-- end right side -->
     <!-- start left side  -->
-    <div class="col-12 col-lg-4 order-first order-lg-last">
-      <app-customer-requests>
-          [custId]="custId"
-      </app-customer-requests>
+    <div class="col-12 col-lg-4 order-last order-lg-last">
+      <app-orders> </app-orders>
     </div>
   </div>
 </div>
@@ -25,4 +20,3 @@
     <div class="spinner-border text-info mx-auto mt-5" role="status"></div>
   </div>
 </ng-template>
-

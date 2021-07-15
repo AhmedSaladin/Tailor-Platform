@@ -8,25 +8,43 @@ export interface Order {
     chest: number;
     armLength: number;
     waist: number;
-    hight: number;
+    height: number;
     inseam: number;
     shoulder: number;
     collar: number;
-    sleeve: number;
+    thigh: number;
   };
 }
 
-export interface Customer {
+export interface CustomerSignup {
   email: String;
   phone: String;
   name: String;
   password: String;
 }
 
-export interface UserSchema {
+export interface UserLogin {
   email: String;
   password: String;
 }
 
 export interface Tailor {}
 export interface Comment {}
+export interface User {
+  avatar: String;
+  name: String;
+  email: String;
+  phone: String;
+  password: String;
+  gender: String;
+  sizes: {
+    chest: number;
+    armLength: number;
+    waist: number;
+    height: number;
+    inseam: number;
+    shoulder: number;
+    collar: number;
+    thigh: number;
+  };
+}

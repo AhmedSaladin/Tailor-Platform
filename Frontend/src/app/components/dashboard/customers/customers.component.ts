@@ -22,7 +22,7 @@ export class CustomersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.customerServive.getCustomerInfo().subscribe(
+    this.customerServive.get_all_customers().subscribe(
       (res) => {
         this.users = res;
       },
@@ -52,6 +52,8 @@ export class CustomersComponent implements OnInit {
         '',
         [
           Validators.required,
+          Validators.maxLength(11),
+          Validators.minLength(11),
           Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
         ],
       ],
@@ -92,9 +94,10 @@ export class CustomersComponent implements OnInit {
   }
 
   getCustomer(id: any) {
-    console.log(id);
     return this.customerServive.get_customer_info_id(id).subscribe(
-      (res) => (this.customer = res.body),
+      (res) => {
+        this.customer = res.body;
+      },
       (err) => console.log(err)
     );
   }
@@ -106,6 +109,6 @@ export class CustomersComponent implements OnInit {
     );
   }
 }
-//  need some cleanup & unsubscrip to improve performanc
+//  need some cleanup & unsubscripe to improve performanc
 //  adding auth and authGurd make it work only with admin
 //  link it with production api
