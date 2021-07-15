@@ -46,29 +46,3 @@ input.ng-valid.ng-touched {
 .no-box-shadow{
   box-shadow: none;
 }
-
-
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: rgb(173, 207, 190);
-}
-
-.row {
-  background-color: white;
-  box-shadow: 10px 10px 20px gray;
-}
-
-.sec {
-  border-radius: 30px !important;
-}
-
-.btn1 {
-  border: none;
-  outline: none;
-  width: 100%;
-} */
