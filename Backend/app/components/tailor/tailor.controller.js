@@ -78,7 +78,7 @@ tailor_delete = async (req, res, next) => {
   const _id = req.params.id;
   try {
     is_valid_id(_id);
-    // TODO Handle image clean-up..
+    // TODO Handle image clean-up, @/dashboard/tailors
     await Tailor.findByIdAndDelete(_id);
     res.status(200).json();
   } catch (err) {
@@ -86,9 +86,10 @@ tailor_delete = async (req, res, next) => {
   }
 };
 
-// TODO Filter/Search endpoints
+// TODO Filter/Search endpoints, @/home view
 
-// TODO Handle deleting single images
+// TODO Handle adding imgs, @/tailors/:id view
+// TODO Handle deleting single images, @/tailors/:id view
 
 module.exports = {
   all_tailors_get,
