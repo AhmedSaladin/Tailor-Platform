@@ -46,7 +46,7 @@ const tailorSchema = new mongoose.Schema({
   },
   about: {
     type: String,
-    default: "Hi I'm new Tailor here",
+    default: "Hello, I'm a new tailor here! I will be editing this soon.",
   },
 });
 module.exports = mongoose.model("tailor", tailorSchema);

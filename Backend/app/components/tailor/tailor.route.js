@@ -12,6 +12,6 @@ route
   .get("/:id", tailor_get)
   .post("/", tailor_post)
   .put("/:id", tailor_put)
-//   .delete("/:id", tailor_delete);
+  .delete("/:id", tailor_delete);
 
 module.exports = route;
