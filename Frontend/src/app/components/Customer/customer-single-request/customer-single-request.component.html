@@ -4,7 +4,7 @@
   </div>
   <div class="col-5 col-md-4" style="display: flex;">
     <div class="col-6">
-      <button *ngIf="order.status == 'finished' && !hasComment" class="float-end btn btn-primary btn-sm me-2"
+      <button *ngIf="order.status == 'finished' && !hasComment" (click)="showModel()" class="float-end btn btn-primary btn-sm me-2"
         data-bs-toggle="modal" attr.data-bs-target="#review{{ order.id }}Model">
         Review
       </button>
@@ -25,7 +25,7 @@
 <!-- ===================== review button =================== -->
 
 <!-- =============================== REview popup =============================== -->
-<div class="modal fade" id="review{{ order.id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div [ngClass]="{'showModal': openModal}" class="modal fade" id="review{{ order.id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

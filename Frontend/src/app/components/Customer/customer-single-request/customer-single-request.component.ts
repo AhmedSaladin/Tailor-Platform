@@ -78,6 +78,13 @@ export class CustomerSingleRequestComponent implements OnInit {
   get comment() {
     return this.CommentForm.get('comment');
   }
+
+
+  ///////
+  openModal=false;
+  showModel(){
+    this.openModal = true;
+  }
   ///Submit comment///
   onSubmit() {
     if (this.CommentForm.valid) {
@@ -91,7 +98,9 @@ export class CustomerSingleRequestComponent implements OnInit {
       };
       this.commentApi.CreateCommenr(newComment).subscribe();
       this.hasComment = true;
+      this.openModal = true;
     }
+    this.openModal = false;
   }
 
 
