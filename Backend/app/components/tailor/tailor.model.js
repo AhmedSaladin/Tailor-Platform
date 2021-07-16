@@ -41,12 +41,16 @@ const tailorSchema = new mongoose.Schema({
     enum: ["male", "female"],
     required: true,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   gallary: {
     type: Array,
   },
   about: {
     type: String,
-    default: "Hi I'm new Tailor here",
+    default: "Hello, I'm a new tailor here! I will be editing this soon.",
   },
 });
 module.exports = mongoose.model("tailor", tailorSchema);

@@ -16,6 +16,6 @@ module.exports = {
   },
   is_exists: (data) => {
     if (data)
-        throw { status: BAD_REQUEST, message: "Email already registered." };
-  }
+      throw { status: BAD_REQUEST, message: "Email already registered." };
+  },
 };

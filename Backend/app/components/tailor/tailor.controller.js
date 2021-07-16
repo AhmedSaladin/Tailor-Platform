@@ -1,5 +1,5 @@
 const Tailor = require("./tailor.model");
-const { tailorSchema } = require("../../utility/validationSchema");
+const { tailorSchema, tailorUpdateAboutSchema, tailorUpdateNameSchema } = require("../../utility/validationSchema");
 const { hashing } = require("../../utility/password");
 const { is_valid_id } = require("../../utility/errors");
 
@@ -55,19 +55,46 @@ tailor_post = async (req, res, next) => {
 
 tailor_put = async (req, res, next) => {
   const _id = req.params.id;
-  const { body } = req.body;
   try {
     is_valid_id(_id);
-    await Tailor.findOneAndUpdate({ _id }, body);
+    if (req.body.about) {
+      tailor = await tailorUpdateAboutSchema.validateAsync(req.body).catch((err) => {
+        throw { status: 400, message: err.message };
+      });
+    }
+    if (req.body.name || req.body.designFor) {
+      tailor = await tailorUpdateNameSchema.validateAsync(req.body).catch((err) => {
+        throw { status: 400, message: err.message };
+      });
+    }
+    await Tailor.findByIdAndUpdate( _id , req.body);
     res.status(200).json();
   } catch (err) {
     next(err);
   }
 };
 
+tailor_delete = async (req, res, next) => {
+  const _id = req.params.id;
+  try {
+    is_valid_id(_id);
+    // TODO Handle image clean-up, @/dashboard/tailors
+    await Tailor.findByIdAndDelete(_id);
+    res.status(200).json();
+  } catch (err) {
+    next(err);
+  }
+};
+
+// TODO Filter/Search endpoints, @/home view
+
+// TODO Handle adding imgs, @/tailors/:id view
+// TODO Handle deleting single images, @/tailors/:id view
+
 module.exports = {
   all_tailors_get,
   tailor_get,
   tailor_post,
   tailor_put,
+  tailor_delete,
 };

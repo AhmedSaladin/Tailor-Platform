@@ -1,31 +1,37 @@
-<span *ngIf="user && tailor">{{ tailor.name }} </span>
+<div class="row">
+  <div class="col-7 col-md-8">
+    <span *ngIf="user && tailor">{{ tailor.name }} </span>
+  </div>
+  <div class="col-5 col-md-4" style="display: flex;">
+    <div class="col-6">
+      <button *ngIf="order.status == 'finished' && !hasComment" class="float-end btn btn-primary btn-sm me-2"
+        data-bs-toggle="modal" attr.data-bs-target="#review{{ order.id }}Model">
+        Review
+      </button>
+    </div>
+
+    <div class="col-6">
+
+      <!-- view -->
+
+      <button class="btn btn-primary float-end btn-sm" data-bs-toggle="modal"
+        attr.data-bs-target="#order{{ order.id }}Model">
+        View
+      </button>
+
+    </div>
+  </div>
+</div>
 <!-- ===================== review button =================== -->
-<button
-  *ngIf="order.status == 'finished' && !hasComment"
-  class="btn btn-primary btn-sm"
-  data-bs-toggle="modal"
-  attr.data-bs-target="#review{{ order.id }}Model"
->
-  Review
-</button>
+
 <!-- =============================== REview popup =============================== -->
-<div
-  class="modal fade"
-  id="review{{ order.id }}Model"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="review{{ order.id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">FeedBack</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form id="form" action="" [formGroup]="CommentForm">
         <div class="modal-body">
@@ -37,46 +43,28 @@
               </ng-template>
             </ngb-rating>
 
-            <div
-              class="
+            <div class="
                 starrating
                 risingstar
                 d-flex
                 justify-content-center
                 flex-row-reverse
-              "
-            ></div>
+              "></div>
           </div>
 
           <div class="input-group input-group-lg">
-            <textarea
-              formControlName="comment"
-              type="text"
-              rows="4"
-              cols="50"
-              class="form-control"
-              aria-label="Large"
-              placeholder="Give us your honest feedback"
-            ></textarea>
+            <textarea formControlName="comment" type="text" rows="4" cols="50" class="form-control" aria-label="Large"
+              placeholder="Give us your honest feedback"></textarea>
             <div class="text-danger" *ngIf="comment.touched && comment.invalid">
               max length 1000
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
-          <button
-            type="submit"
-            class="btn btn-primary"
-            data-bs-dismiss="modal"
-            (click)="onSubmit()"
-          >
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">
             Save
           </button>
         </div>
@@ -85,22 +73,8 @@
   </div>
 </div>
 
-<!-- view -->
-
-<button
-  class="btn btn-primary float-end btn-sm"
-  data-bs-toggle="modal"
-  attr.data-bs-target="#order{{ order.id }}Model"
->
-  View
-</button>
-<div
-  class="modal fade"
-  id="order{{ order.id }}Model"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="order{{ order.id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <!-- START POPUP -->
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content" *ngIf="user && tailor; else dd">
@@ -109,12 +83,7 @@
           Your Request to {{ tailor.name }}
         </h3>
         <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="card mb-3">
@@ -122,46 +91,22 @@
             <div class="col-md-6">
               <!-- Start Carousel  -->
 
-              <div
-                id="carouselExampleIndicators"
-                class="carousel slide"
-                data-bs-ride="carousel"
-                style="height: 100% !important"
-              >
+              <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
+                style="height: 100% !important">
                 <div class="carousel-indicators"></div>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img
-                      src="{{ current_image }}"
-                      class="d-block w-100"
-                      style="min-height: 500px"
-                    />
+                    <img src="{{ current_image }}" class="d-block w-100" style="min-height: 500px" />
                   </div>
                 </div>
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="prev"
-                  (click)="last_img()"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="prev" (click)="last_img()">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#carouselExampleIndicators"
-                  data-bs-slide="next"
-                  (click)="next_img()"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                  data-bs-slide="next" (click)="next_img()">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>
               </div>

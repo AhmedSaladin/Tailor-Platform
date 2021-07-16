@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
@@ -20,6 +20,7 @@ export class BookingComponent implements OnInit, OnDestroy {
   order!: Order;
   images: Array<string>;
   sizesValidation: any;
+  @Input() currentUserId: any;
 
   @ViewChild('order_upload_component')
   order_upload_component!: UcWidgetComponent;
@@ -29,7 +30,6 @@ export class BookingComponent implements OnInit, OnDestroy {
     private http: OrderService,
     public formBulider: FormBuilder
   ) {
-    this.get_customer_data();
     this.images = [];
     // Create user id and get it form local storge when auth done.
     // sizes need to fix when auth done.
@@ -55,6 +55,8 @@ export class BookingComponent implements OnInit, OnDestroy {
       collar: [` `, Validators.required],
       sleeve: [` `, Validators.required],
     });
+    this.get_customer_data();
+
   }
 
   get getControl() {
@@ -62,7 +64,8 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
   get_customer_data() {
     // ID is hard coded it change when auth work.
-    this.eve = this.api.get_customer_info_id(1).subscribe(
+
+    this.eve = this.api.get_customer_info_id(this.currentUserId).subscribe(
       (res) => {
         this.user = res.body;
       },

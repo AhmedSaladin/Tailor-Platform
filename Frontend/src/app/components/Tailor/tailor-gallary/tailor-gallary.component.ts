@@ -11,6 +11,7 @@ import { TailorService } from 'src/app/services/tailor.service';
 export class TailorGallaryComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
   @Input() gallery: any;
+  @Input() currentUserId: any;
   @ViewChild('upload_component')
   upload_component!: UcWidgetComponent;
   eve!: Subscription;
@@ -30,5 +31,6 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
     this.upload_component.clearUploads();
   }
   ngOnDestroy(): void {
-    if (this.eve != undefined) this.eve.unsubscribe();  }
+    if (this.eve != undefined) this.eve.unsubscribe();
+  }
 }

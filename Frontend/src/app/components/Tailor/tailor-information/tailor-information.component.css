@@ -57,3 +57,16 @@ input.ng-valid.ng-touched {
 .no-box-shadow {
   box-shadow: none;
 }
+
+.image-view {
+  position: relative;
+}
+.image-view .cls {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.6;
+  background-color: #A0E7E5;
+  padding: 10px;
+  border-radius: 50%;
+}

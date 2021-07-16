@@ -3,9 +3,20 @@
   <section class="rate">
     <div class="card-body">
       <h5 class="card-title rate-head">Comments</h5>
-      <div class="card-text" *ngFor="let comment of comments">
-        <app-tailor-comments [comment]="comment" *ngIf="comment.body"></app-tailor-comments>
+      <div *ngIf="comments; else nothing">
+        <div class="card-text" *ngFor="let comment of comments">
+          <app-tailor-comments
+            [comment]="comment"
+            *ngIf="comment.body"
+          ></app-tailor-comments>
+        </div>
       </div>
     </div>
   </section>
 </div>
+
+<ng-template #nothing>
+  <div class="text-center mb-2 text-black-50">
+    No one review this tailor yet.
+  </div>
+</ng-template>

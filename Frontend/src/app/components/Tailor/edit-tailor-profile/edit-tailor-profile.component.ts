@@ -2,6 +2,7 @@ import { OnDestroy, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CustomerService } from 'src/app/services/customer.service';
 import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
@@ -11,8 +12,17 @@ import { TailorService } from 'src/app/services/tailor.service';
 })
 export class EditTailorProfileComponent implements OnInit, OnDestroy {
   eve!: Subscription;
-  constructor(private api: TailorService, private url: ActivatedRoute) {
-    this.information(url.snapshot.params.id);
+  @Output() currentUserId: any;
+  tailor: any;
+  tailorId = this.url.snapshot.params.id;
+  constructor(
+    private api: TailorService,
+    private url: ActivatedRoute,
+    private customer: CustomerService
+  ) {
+    this.currentUserId = this.customer.user.value?.Id;
+    this.tailor = this.customer.user.value?.IsTailor;
+    this.information(this.tailorId);
   }
 
   ngOnInit(): void {}

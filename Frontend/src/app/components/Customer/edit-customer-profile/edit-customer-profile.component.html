@@ -1,5 +1,5 @@
 <div class="container main-screen" *ngIf="cust; else loading">
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-12 col-lg-8">
       <div class="right-side">
         <!-- you send all user data here futuer hint -->
@@ -11,12 +11,13 @@
     <!-- end right side -->
     <!-- start left side  -->
     <div class="col-12 col-lg-4 order-last order-lg-last">
-      <app-orders> </app-orders>
+      <div class="mt-5" *ngIf="cust._id === currentUserId">
+        <app-orders> </app-orders>
+      </div>
+
     </div>
   </div>
 </div>
 <ng-template #loading>
-  <div class="d-flex justify-content-center">
-    <div class="spinner-border text-info mx-auto mt-5" role="status"></div>
-  </div>
+  <app-loading></app-loading>
 </ng-template>
