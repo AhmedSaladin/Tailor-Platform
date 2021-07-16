@@ -8,6 +8,7 @@ const {
 } = require("./tailor.controller");
 
 route
+  .get("/?", filter_tailors_get)
   .get("/", all_tailors_get)
   .get("/:id", tailor_get)
   .post("/", tailor_post)

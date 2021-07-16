@@ -3,6 +3,16 @@ const { tailorSchema, tailorUpdateAboutSchema, tailorUpdateNameSchema } = requir
 const { hashing } = require("../../utility/password");
 const { is_valid_id } = require("../../utility/errors");
 
+filter_tailors_get = async (req, res, next) => {
+  const filter = req.query;
+  try {
+    const tailors = await Tailor.find({ isTailor: true, ...filter });
+    res.status(200).json(tailors);
+  } catch (err) {
+    next(err);
+  }
+};
+
 all_tailors_get = async (req, res, next) => {
   try {
     const tailors = await Tailor.find({ isTailor: true });
@@ -13,8 +23,8 @@ all_tailors_get = async (req, res, next) => {
 };
 
 tailor_get = async (req, res, next) => {
+  const _id = req.params.id;
   try {
-    const _id = req.params.id;
     is_valid_id(_id);
     const tailor = await Tailor.findById(_id);
     res.status(200).json(tailor);
@@ -67,6 +77,7 @@ tailor_put = async (req, res, next) => {
         throw { status: 400, message: err.message };
       });
     }
+    // TODO changing avatars
     await Tailor.findByIdAndUpdate( _id , req.body);
     res.status(200).json();
   } catch (err) {
@@ -92,6 +103,7 @@ tailor_delete = async (req, res, next) => {
 // TODO Handle deleting single images, @/tailors/:id view
 
 module.exports = {
+  filter_tailors_get,
   all_tailors_get,
   tailor_get,
   tailor_post,
