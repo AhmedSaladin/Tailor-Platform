@@ -54,6 +54,7 @@ tailor_post = async (req, res, next) => {
       name: tailor.name,
       email: tailor.email,
       phone: tailor.phone,
+      gender: tailor.gender,
       designFor: tailor.designFor,
       password: hashed_password,
     });
