@@ -98,6 +98,11 @@ export class CustomerService {
       observe: 'response',
     });
   }
+  delete_cutomer(id: any) {
+    return this.http.delete(`${this.URL}/${id}`, {
+      observe: 'response',
+    });
+  }
 
   private handleError(err: HttpErrorResponse) {
     console.log(err);
