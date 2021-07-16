@@ -18,7 +18,6 @@ export class CustomerSingleRequestComponent implements OnInit {
   count: any = 0;
   current_image: any;
   CommentForm: any;
-  orderRate: any;
   hasComment: any = false;
   constructor(
     private commentApi: CommentService,
@@ -70,7 +69,7 @@ export class CustomerSingleRequestComponent implements OnInit {
   formValidation() {
     this.CommentForm = new FormGroup({
       comment: new FormControl('', [Validators.maxLength(1000)]),
-      rate: new FormControl(),
+      rate: new FormControl(0,[Validators.required]),
     });
   }
   get rate() {
@@ -84,7 +83,7 @@ export class CustomerSingleRequestComponent implements OnInit {
     if (this.CommentForm.valid) {
       let newComment = {
         body: this.comment?.value,
-        rate: this.orderRate,
+        rate: this.rate?.value,
         tailor_id: this.order.tailor_id,
         customer_id: this.order.customer_id,
         customer_name: this.user.name,
@@ -103,9 +102,6 @@ export class CustomerSingleRequestComponent implements OnInit {
         let currentComment:any=res.body;
         if(currentComment.length>0){
           this.hasComment=true;
-         // this.comment.value=this.currentComment[0].body;
-          //this.orderRate=this.currentComment[0].rate;
-          //console.log(id+" id "+this.order.hasComment+" after "+this.currentComment.length )
         } else {
           this.hasComment = false;
         }
@@ -115,15 +111,6 @@ export class CustomerSingleRequestComponent implements OnInit {
       }
     );
   }
-
-  // average = 0;
-  // coun = 0;
-  // currentRate = 6;
-
-  // avg() {
-  //   this.average = (this.average*this.coun + this.currentRate) / (this.coun + 1);
-  //   this.coun += 1;
-  // }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

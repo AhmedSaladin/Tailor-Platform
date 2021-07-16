@@ -37,12 +37,11 @@
         <div class="modal-body">
           <span id="rateMe2" class="empty-stars"></span>
           <div class="container">
-            <ngb-rating [max]="5" [(rate)]="orderRate">
+            <ngb-rating [max]="5" [(rate)]="rate.value" formControlName="rate">
               <ng-template let-fill="fill" let-index="index">
                 <span class="star" [class.filled]="fill === 100">&#9733;</span>
               </ng-template>
             </ngb-rating>
-
             <div class="
                 starrating
                 risingstar
@@ -55,7 +54,7 @@
           <div class="input-group input-group-lg">
             <textarea formControlName="comment" type="text" rows="4" cols="50" class="form-control" aria-label="Large"
               placeholder="Give us your honest feedback"></textarea>
-            <div class="text-danger" *ngIf="comment.touched && comment.invalid">
+            <div class="text-danger" style="width: 100%;" *ngIf="comment.touched && comment.invalid">
               max length 1000
             </div>
           </div>
