@@ -103,7 +103,7 @@ export class CustomersComponent implements OnInit {
   }
 
   deleteCustomer(id: any) {
-    return this.customerServive.deleteCustomer(id).subscribe(
+    return this.customerServive.delete_cutomer(id).subscribe(
       (res) => console.log(res),
       (err) => console.log(err)
     );

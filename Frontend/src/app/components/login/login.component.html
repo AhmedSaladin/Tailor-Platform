@@ -5,7 +5,12 @@
         <div class="col-md-10 m-auto p-2">
           <div class="card-body">
             <h1 class="mb-5 card-title">Login</h1>
-            <form id="form" action="" [formGroup]="LoginForm">
+            <form
+              id="form"
+              action=""
+              [formGroup]="LoginForm"
+              *ngIf="!isLoading; else loading"
+            >
               <div class="text-danger mb-3 form-row" *ngIf="error">
                 {{ error }}
               </div>
@@ -70,3 +75,8 @@
     </div>
   </div>
 </div>
+<ng-template #loading>
+  <div class=" loading d-flex align-items-center">
+    <app-loading></app-loading>
+  </div>
+</ng-template>
