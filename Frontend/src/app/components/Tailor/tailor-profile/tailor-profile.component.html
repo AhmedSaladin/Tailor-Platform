@@ -1,0 +1,40 @@
+<!--Main Screen  section -->
+<div class="container main-screen" *ngIf="user; else loading">
+  <div class="row">
+    <div class="col-12 col-lg-8 mb-3 mt-4">
+      <div class="right-side">
+        <!-- you send all user data here futuer hint -->
+        <app-tailor-information
+          [user_info]="user"
+          [img]="user.avatar"
+          [currentUserId]="currentUserId"
+        ></app-tailor-information>
+        <app-tailor-about
+          [user_info]="user"
+          [currentUserId]="currentUserId"
+        ></app-tailor-about>
+        <app-tailor-gallary
+          [currentUserId]="currentUserId"
+          [user_info]="user"
+          [gallery]="user.gallary"
+        ></app-tailor-gallary>
+        <app-tailor-rate></app-tailor-rate>
+      </div>
+      <!--  -->
+    </div>
+    <!-- end right side -->
+    <!-- start left side  -->
+    <div class="col-12 col-lg-4 order-first order-lg-last mt-4">
+      <div class="mb-3" *ngIf="tailor && tailorId === currentUserId">
+        <app-orders></app-orders>
+      </div>
+      <div *ngIf="!tailor">
+        <app-booking [currentUserId]="currentUserId"></app-booking>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

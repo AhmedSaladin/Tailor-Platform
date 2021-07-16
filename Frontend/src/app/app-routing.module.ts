@@ -5,7 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
+import { TailorProfileComponent } from './components/Tailor/tailor-profile/tailor-profile.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
@@ -15,7 +15,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'tailor/:id', component: EditTailorProfileComponent },
+  { path: 'tailor/:id', component: TailorProfileComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'user/:id',

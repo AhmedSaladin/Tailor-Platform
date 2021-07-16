@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
+import { TailorProfileComponent } from './components/Tailor/tailor-profile/tailor-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TailorInformationComponent } from './components/Tailor/tailor-information/tailor-information.component';
@@ -46,7 +46,7 @@ import { OrdersComponent } from './components/shared/orders/orders.component';
   declarations: [
     OrdersComponent,
     AppComponent,
-    EditTailorProfileComponent,
+    TailorProfileComponent,
     NavBarComponent,
     FooterComponent,
     TailorInformationComponent,
