@@ -1,5 +1,6 @@
 require("dotenv").config();
 const User = require("./user.model");
+const Tailor = require("../tailor/tailor.model");
 const axios = require("axios");
 const { userSchema } = require("../../utility/validationSchema");
 const promise_handler = require("../../utility/promiseHandler");
@@ -17,12 +18,14 @@ const {
   BAD_REQUEST,
   INTERNAL_SERVER_ERROR,
 } = require("../../utility/statusCodes");
-const { string } = require("joi");
 
 module.exports = {
   sign_up: async (req, res) => {
     const { email } = req.body;
     let [user, error] = await promise_handler(User.findOne({ email }));
+    if_error(error, INTERNAL_SERVER_ERROR);
+    is_exists(user);
+    [user, error] = await promise_handler(Tailor.findOne({ email }));
     if_error(error, INTERNAL_SERVER_ERROR);
     is_exists(user);
     [user, error] = await promise_handler(userSchema.validateAsync(req.body));
@@ -39,7 +42,9 @@ module.exports = {
 
   login: async (req, res) => {
     const { email, password } = req.body;
-    const [user, err] = await promise_handler(User.findOne({ email }));
+    let [user, err] = await promise_handler(User.findOne({ email }));
+    if_error(err, INTERNAL_SERVER_ERROR);
+    if (!user) [user, err] = await promise_handler(Tailor.findOne({ email }));
     if_error(err, INTERNAL_SERVER_ERROR);
     is_not_found(user);
     const valid = await check_password(password, user.password);
@@ -48,7 +53,12 @@ module.exports = {
     const accessToken = createToken(authUser);
     res
       .status(OK)
-      .json({ token: accessToken, id: user._id, isTailor: user.isTailor });
+      .json({
+        token: accessToken,
+        id: user._id,
+        isTailor: user.isTailor,
+        admin: user.admin,
+      });
   },
 
   get_all_users: async (req, res) => {
@@ -87,7 +97,7 @@ module.exports = {
     }
     res.status(OK).json();
   },
-  
+
   delete_user: async (req, res) => {
     const { id } = req.params;
     is_valid_id(id);

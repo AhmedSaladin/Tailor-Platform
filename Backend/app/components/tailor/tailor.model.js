@@ -41,6 +41,10 @@ const tailorSchema = new mongoose.Schema({
     enum: ["male", "female"],
     required: true,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   gallary: {
     type: Array,
   },

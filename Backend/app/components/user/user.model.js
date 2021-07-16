@@ -35,6 +35,10 @@ const userSchema = new mongoose.Schema({
     default: false,
     required: true,
   },
+  admin: {
+    type: Boolean,
+    default: false,
+  },
   avatar: {
     type: String,
     default: "https://image.flaticon.com/icons/png/512/21/21104.png",
