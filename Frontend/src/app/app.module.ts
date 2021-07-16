@@ -42,6 +42,7 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
 import { TokenIntercetorService } from './services/token-interceptor.service';
 import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 import { OrdersComponent } from './components/shared/orders/orders.component';
+import { BindingService } from './services/binding/binding.service';
 @NgModule({
   declarations: [
     OrdersComponent,
@@ -95,6 +96,7 @@ import { OrdersComponent } from './components/shared/orders/orders.component';
       useClass: TokenIntercetorService,
       multi: true,
     },
+    BindingService
   ],
   bootstrap: [AppComponent],
 })

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { CustomerSignup, UserLogin } from '../components/shared/models';
+import { BindingService } from './binding/binding.service';
 import { User } from './user.model';
 
 export interface Login {
@@ -16,7 +17,7 @@ export interface Login {
   providedIn: 'root',
 })
 export class CustomerService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private binding: BindingService) {}
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
   user = new BehaviorSubject<User | null>(null);
@@ -32,6 +33,7 @@ export class CustomerService {
   }
 
   login(user: UserLogin) {
+    this.binding.changeLoading(true);
     return this.http
       .post<Login>(`${this.URL}/login`, user, {
         observe: 'response',
@@ -39,6 +41,7 @@ export class CustomerService {
       .pipe(
         catchError(this.handleError),
         tap((res) => {
+          this.binding.changeLoading(false)
           const user = new User(
             res.body!.id,
             res.body!.isTailor,
@@ -74,15 +77,23 @@ export class CustomerService {
   // remember to add autoLogout before token expire or request new token
 
   get_all_customers() {
-    return this.http.get(this.URL);
+    this.binding.changeLoading(true);
+    return this.http.get(this.URL).pipe(
+      tap(
+        res => this.binding.changeLoading(false)
+      )
+    )
   }
 
   get_customer_info_id(id: any) {
+    this.binding.changeLoading(true);
     return this.http
       .get(`${this.URL}/${id}`, {
         observe: 'response',
       })
-      .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError),      tap(
+        res => this.binding.changeLoading(false)
+      ));
   }
 
   update_customer_info(id: string, body: any) {

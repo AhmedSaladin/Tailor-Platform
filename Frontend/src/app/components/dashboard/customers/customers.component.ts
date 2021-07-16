@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { BindingService } from 'src/app/services/binding/binding.service';
 
 @Component({
   selector: 'app-customers',
@@ -18,7 +19,8 @@ export class CustomersComponent implements OnInit {
 
   constructor(
     private customerServive: CustomerService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private binding: BindingService
   ) {}
 
   ngOnInit(): void {
