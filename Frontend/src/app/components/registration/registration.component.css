@@ -1,6 +1,7 @@
 .row-registration ,.card{
     background-color: white;
     border-radius: 15px;
+    min-height: 450px;
 }
 
 /* .img1 {

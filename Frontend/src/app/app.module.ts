@@ -22,7 +22,7 @@ import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { FilterPipe } from './filter.pipe';
 import { CustomerInformationComponent } from './components/Customer/customer-information/customer-information.component';
 import { CustomerSingleRequestComponent } from './components/Customer/customer-single-request/customer-single-request.component';
-import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
+import { CustomerProfileComponent } from './components/Customer/customer-profile/customer-profile.component';
 import { BookingComponent } from './components/Tailor/booking/booking.component';
 import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -63,7 +63,7 @@ import { OrdersComponent } from './components/shared/orders/orders.component';
     FilterPipe,
     CustomerInformationComponent,
     CustomerSingleRequestComponent,
-    EditCustomerProfileComponent,
+    CustomerProfileComponent,
     BookingComponent,
     TailorCommentsComponent,
     LoadingComponent,

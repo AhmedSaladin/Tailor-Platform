@@ -4,11 +4,11 @@ import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
-  selector: 'app-edit-customer-profile',
-  templateUrl: './edit-customer-profile.component.html',
-  styleUrls: ['./edit-customer-profile.component.css'],
+  selector: 'app-customer-profile',
+  templateUrl: './customer-profile.component.html',
+  styleUrls: ['./customer-profile.component.css'],
 })
-export class EditCustomerProfileComponent implements OnInit {
+export class CustomerProfileComponent implements OnInit {
   @Output() cust: any;
   @Output() custImg: any;
   eve!: Subscription;

@@ -30,17 +30,16 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) {
-      this.error = 'Something went wrong';
+      this.error = 'Please enter your password and email';
       return;
     }
     this.isLoading = true;
     this.eve = this.user.login(form.value).subscribe(
       (res) => {
-        console.log(res);
         this.isLoading = false;
         const tailor = res.body?.isTailor;
         if (tailor) this.router.navigate([`/tailor/${res.body?.id}`]);
-        this.router.navigate(['home']);
+        else this.router.navigate(['home']);
       },
       (err) => {
         this.isLoading = false;
