@@ -6,10 +6,11 @@ import { catchError, tap } from 'rxjs/operators';
 import { CustomerSignup, UserLogin } from '../components/shared/models';
 import { User } from './user.model';
 
-interface Login {
+export interface Login {
   token: String;
   id: String;
   isTailor: Boolean;
+  admin: Boolean;
 }
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,6 @@ export class CustomerService {
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
   user = new BehaviorSubject<User | null>(null);
-  private BaseUrl = 'http://localhost:3000/users';
   private URL = 'https://tailor-s.herokuapp.com/api/users';
   private test = 'http://localhost:3000/api/users';
 
@@ -42,6 +42,7 @@ export class CustomerService {
           const user = new User(
             res.body!.id,
             res.body!.isTailor,
+            res.body!.admin,
             res.body!.token
           );
           this.user.next(user);
@@ -55,7 +56,12 @@ export class CustomerService {
     // if user not found in local storage return
     if (userData === null) return;
     // if exist emiting him into app memory
-    const loadedUser = new User(userData.id, userData.isTailor, userData.token);
+    const loadedUser = new User(
+      userData.id,
+      userData.isTailor,
+      userData.admin,
+      userData.token
+    );
     if (loadedUser.Token) this.user.next(loadedUser);
   }
 
@@ -69,14 +75,6 @@ export class CustomerService {
 
   get_all_customers() {
     return this.http.get(this.URL);
-  }
-
-  getCustomerInfoByID(id: number) {
-    return this.http.get(`${this.BaseUrl}/${id}`);
-  }
-
-  updateCustomerInfo(id: number, customer: any) {
-    return this.http.put(`${this.BaseUrl}/${id}`, customer);
   }
 
   get_customer_info_id(id: any) {
@@ -93,11 +91,6 @@ export class CustomerService {
     });
   }
 
-  deleteCustomer(id: any) {
-    return this.http.delete(`${this.BaseUrl}/${id}`, {
-      observe: 'response',
-    });
-  }
   delete_cutomer(id: any) {
     return this.http.delete(`${this.URL}/${id}`, {
       observe: 'response',
@@ -110,5 +103,22 @@ export class CustomerService {
       return throwError('Email or Password wrong.');
     if (!err.error.message) return throwError('Somthing went wrong.');
     return throwError(err.error.message);
+  }
+
+  //  clean up later
+  private BaseUrl = 'http://localhost:3000/users';
+
+  getCustomerInfoByID(id: number) {
+    return this.http.get(`${this.BaseUrl}/${id}`);
+  }
+
+  updateCustomerInfo(id: number, customer: any) {
+    return this.http.put(`${this.BaseUrl}/${id}`, customer);
+  }
+
+  deleteCustomer(id: any) {
+    return this.http.delete(`${this.BaseUrl}/${id}`, {
+      observe: 'response',
+    });
   }
 }

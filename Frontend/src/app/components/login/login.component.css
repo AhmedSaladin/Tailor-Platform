@@ -1,15 +1,15 @@
-.row-registration ,.card{
+.row-registration,
+.card {
   background-color: white;
   border-radius: 15px;
 }
 
-.login-row .col-lg-4{
+.login-row .col-lg-4 {
   background: white;
   border-radius: 15px;
 }
 
-
-.login-button{
+.login-button {
   border: none;
   outline: none;
   height: 50px;
@@ -19,7 +19,7 @@
   border-radius: 8px;
   font-weight: bold;
 }
-.login-button:hover{
+.login-button:hover {
   background-color: white;
   color: black;
   border: 2px solid;
@@ -39,6 +39,10 @@
 
 /* remove default input border shadow */
 
-.no-box-shadow{
+.no-box-shadow {
   box-shadow: none;
+}
+
+.loading {
+  min-height: 260px;
 }

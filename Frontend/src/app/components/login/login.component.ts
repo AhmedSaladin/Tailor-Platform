@@ -1,9 +1,8 @@
-import { error } from '@angular/compiler/src/util';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerService, Login } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-login',
@@ -36,11 +35,17 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.isLoading = true;
     this.eve = this.user.login(form.value).subscribe(
-      () => {
+      (res) => {
+        console.log(res);
         this.isLoading = false;
+        const tailor = res.body?.isTailor;
+        if (tailor) this.router.navigate([`/tailor/${res.body?.id}`]);
         this.router.navigate(['home']);
       },
-      (err) => (this.error = err)
+      (err) => {
+        this.isLoading = false;
+        this.error = err;
+      }
     );
     form.reset();
   }
