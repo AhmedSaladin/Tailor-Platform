@@ -1,12 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { BindingService } from './binding/binding.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TailorService {
   private url = 'http://localhost:3000/users';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private binding: BindingService) {}
   get_tailors_info() {
     return this.http.get(`${this.url}?isTailor=true`, { observe: 'response' });
   }
@@ -51,7 +53,16 @@ export class TailorService {
     return this.http.delete(`${this.url}/${id}`,{observe:'response'})
   }
   getTailorsInfo() {
-    return this.http.get(this.url);
-  }
+    this.binding.changeLoading(true);
+    return this.http.get(this.url).pipe(
+      
+        tap(
+          res => this.binding.changeLoading(false)
+        )
+    )
+      
+    
+  
+}
  
 }

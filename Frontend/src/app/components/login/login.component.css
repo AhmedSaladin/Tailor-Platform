@@ -14,15 +14,15 @@
   outline: none;
   height: 50px;
   width: 100%;
-  background-color: black;
+  background-color: #2e86ab;
   color: white;
   border-radius: 8px;
   font-weight: bold;
 }
 .login-button:hover{
   background-color: white;
-  color: black;
-  border: 2px solid;
+  color: #2e86ab;
+  border: 2px solid #2e86ab;
 }
 
 /* change email input  border color to red when invalid */
