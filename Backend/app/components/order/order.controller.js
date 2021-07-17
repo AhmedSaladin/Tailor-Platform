@@ -27,9 +27,8 @@ const mailCustomer = ()=>{
 
 const create_order = (req , res , next )=>{
     const order = new orderModel({
-        // _id: mongoose.Types.ObjectId(),
-        customerID: req.body.customerID,
-        tailorID: req.body.tailorID,
+        customer_id: req.body.customer_id,
+        tailor_id: req.body.tailor_id,
         designs: req.body.designs,
         sizes: req.body.sizes, 
     });
@@ -61,7 +60,7 @@ const view_order = (req , res , next )=>{
                 });
 };
 const view_orderByTailor = (req , res , next )=>{
-    orderModel.find({tailorID:tailor_id})
+    orderModel.find({tailor_id:tailor_id})
               .then(docs =>{
                          res.status(200).json(docs);
                             })
@@ -72,7 +71,7 @@ const view_orderByTailor = (req , res , next )=>{
                 });
 };
 const view_orderByCustomer = (req , res , next )=>{
-    orderModel.find({customerID:customer_id})
+    orderModel.find({customer_id:customer_id})
               .then(docs =>{
                          res.status(200).json(docs);
                             })
