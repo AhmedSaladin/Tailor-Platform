@@ -1,9 +1,8 @@
-import { error } from '@angular/compiler/src/util';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { CustomerService } from 'src/app/services/customer.service';
+import { CustomerService, Login } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-login',
@@ -31,16 +30,21 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSubmit(form: FormGroup) {
     if (!form.valid) {
-      this.error = 'Something went wrong';
+      this.error = 'Please enter your password and email';
       return;
     }
     this.isLoading = true;
     this.eve = this.user.login(form.value).subscribe(
-      () => {
+      (res) => {
         this.isLoading = false;
-        this.router.navigate(['home']);
+        const tailor = res.body?.isTailor;
+        if (tailor) this.router.navigate([`/tailor/${res.body?.id}`]);
+        else this.router.navigate(['home']);
       },
-      (err) => (this.error = err)
+      (err) => {
+        this.isLoading = false;
+        this.error = err;
+      }
     );
     form.reset();
   }

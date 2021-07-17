@@ -54,11 +54,6 @@ const creat_comment=(req,res)=>{
 
 const get_comments_by_id=(req,res)=>{
     Comment.findById(req.params.id)
-    // .then((result)=>{
-    //     /*********add customer name******** */
-    //     res.status(200).json(result)
-    // })
-    // .catch((err)=>{console.log(err)})
     .populate('customer_id','name')
        // .populate('tailor_id')
         .exec((err, result) =>{

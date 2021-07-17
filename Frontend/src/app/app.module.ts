@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EditTailorProfileComponent } from './components/Tailor/edit-tailor-profile/edit-tailor-profile.component';
+import { TailorProfileComponent } from './components/Tailor/tailor-profile/tailor-profile.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TailorInformationComponent } from './components/Tailor/tailor-information/tailor-information.component';
@@ -22,7 +22,7 @@ import { UcWidgetModule } from 'ngx-uploadcare-widget';
 import { FilterPipe } from './filter.pipe';
 import { CustomerInformationComponent } from './components/Customer/customer-information/customer-information.component';
 import { CustomerSingleRequestComponent } from './components/Customer/customer-single-request/customer-single-request.component';
-import { EditCustomerProfileComponent } from './components/Customer/edit-customer-profile/edit-customer-profile.component';
+import { CustomerProfileComponent } from './components/Customer/customer-profile/customer-profile.component';
 import { BookingComponent } from './components/Tailor/booking/booking.component';
 import { TailorCommentsComponent } from './components/Tailor/tailor-comments/tailor-comments.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -42,11 +42,12 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
 import { TokenIntercetorService } from './services/token-interceptor.service';
 import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 import { OrdersComponent } from './components/shared/orders/orders.component';
+import { BindingService } from './services/binding/binding.service';
 @NgModule({
   declarations: [
     OrdersComponent,
     AppComponent,
-    EditTailorProfileComponent,
+    TailorProfileComponent,
     NavBarComponent,
     FooterComponent,
     TailorInformationComponent,
@@ -63,7 +64,7 @@ import { OrdersComponent } from './components/shared/orders/orders.component';
     FilterPipe,
     CustomerInformationComponent,
     CustomerSingleRequestComponent,
-    EditCustomerProfileComponent,
+    CustomerProfileComponent,
     BookingComponent,
     TailorCommentsComponent,
     LoadingComponent,
@@ -95,6 +96,7 @@ import { OrdersComponent } from './components/shared/orders/orders.component';
       useClass: TokenIntercetorService,
       multi: true,
     },
+    BindingService,
   ],
   bootstrap: [AppComponent],
 })
