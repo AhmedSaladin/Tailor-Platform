@@ -19,12 +19,22 @@
     color: gold !important;
 }
 
-.accordion-item .accBtn {
+/* .accordion-item .accBtn {
     color: rgb(12, 99, 228);
 }
 .accordion-item .accBtn:hover {
     background-color: rgb(231, 241, 255);
+} */
+
+.accBtn{
+    background-color: #2e86ab;
+    color: white !important;
+    font-weight: bold;
 }
-
-
+.accBtn:hover{
+    background-color: white;
+    color: #2e86ab !important;
+    border: 2px solid #2e86ab;
+    font-weight: bold;
+}
 /* end Side Bar */

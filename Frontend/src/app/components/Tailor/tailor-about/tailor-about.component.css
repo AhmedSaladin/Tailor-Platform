@@ -1,6 +1,7 @@
 .card {
   margin-bottom: 1em;
   border-radius: 15px;
+  min-height: 150px;
 }
 .about-me-head {
   text-align: left;
