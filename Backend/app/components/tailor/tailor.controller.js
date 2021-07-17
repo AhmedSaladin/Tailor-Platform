@@ -1,4 +1,5 @@
 const Tailor = require("./tailor.model");
+const User = require("../user/user.model");
 const {
   tailorSchema,
   tailorUpdateAboutSchema,
@@ -44,6 +45,9 @@ tailor_post = async (req, res, next) => {
     tailor = await Tailor.findOne({ email });
     if (tailor) throw { status: 400, message: "Email already registered." };
 
+    user = await User.findOne({ email });
+    if (user) throw { status: 400, message: "Email already registered." };
+
     tailor = await Tailor.findOne({ phone });
     if (tailor && tailor.phone === req.body.phone)
       throw {
@@ -79,8 +83,7 @@ tailor_patch = async (req, res, next) => {
         .catch((err) => {
           throw { status: 400, message: err.message };
         });
-    }
-    if (req.body.name || req.body.designFor) {
+    } else if (req.body.name || req.body.designFor) {
       tailor = await tailorUpdateNameSchema
         .validateAsync(req.body)
         .catch((err) => {
