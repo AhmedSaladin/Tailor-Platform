@@ -5,10 +5,7 @@
       <h5 class="card-title rate-head">Comments</h5>
       <div *ngIf="comments; else nothing">
         <div class="card-text" *ngFor="let comment of comments">
-          <app-tailor-comments
-            [comment]="comment"
-            *ngIf="comment.body"
-          ></app-tailor-comments>
+          <app-tailor-comments [comment]="comment" *ngIf="comment.body"></app-tailor-comments>
         </div>
       </div>
     </div>

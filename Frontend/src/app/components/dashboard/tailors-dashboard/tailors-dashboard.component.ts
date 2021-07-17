@@ -51,6 +51,12 @@ export class TailorsDashboardComponant implements OnInit {
           Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
         ],
       ],
+      gender:[
+        Validators.required
+      ],
+      designFor:[
+        Validators.required
+      ],
       email: [
         '',
         [
@@ -80,6 +86,8 @@ export class TailorsDashboardComponant implements OnInit {
     let tailor = {
       name: form.value.fname + ' ' + form.value.lname,
       phone: form.value.phone,
+      gender: form.value.gender,
+      designFor: form.value.designFor,
       email: form.value.email,
       password: form.value.password,
       isTailor: true,
