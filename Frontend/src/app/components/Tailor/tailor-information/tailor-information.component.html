@@ -2,70 +2,35 @@
   <div class="card-body row">
     <!-- start image section -->
     <div class="col-md-4 mb-2 text-center">
-      <img
-        src="{{ user_info.avatar }}"
-        class="profile-img img-fluid"
-        data-bs-target="#staticBackdrop"
-        data-bs-toggle="modal"
-      />
+      <img src="{{ user_info.avatar }}" class="profile-img img-fluid" data-bs-target="#staticBackdrop"
+        data-bs-toggle="modal" />
       <!-- start image popup -->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-backdrop="static"
-        data-bs-keyboard="false"
-        tabindex="-1"
-        *ngIf="user_info._id === currentUserId"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        *ngIf="user_info._id === currentUserId" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">
                 Profile Picture
               </h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                (click)="not_saving_tailor_avatar()"
-              ></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                (click)="not_saving_tailor_avatar()"></button>
             </div>
             <div class="modal-body text-center">
               <img src="{{ img }}" class="profile-img img-pop" />
             </div>
-            <div
-              class="modal-footer"
-              style="justify-content: flex-start !important"
-            >
-              <button
-                type="button"
-                class="btn btn-secondary justify-content-start"
-                data-bs-dismiss="modal"
-                (click)="not_saving_tailor_avatar()"
-              >
+            <div class="modal-footer" style="justify-content: flex-start !important">
+              <button type="button" class="btn btn-secondary justify-content-start" data-bs-dismiss="modal"
+                (click)="not_saving_tailor_avatar()">
                 Close
               </button>
-              <button
-                type="button"
-                class="btn btn-primary d-flex justify-content-start"
-                data-bs-dismiss="modal"
-                (click)="save_new_tailor_avatar()"
-              >
+              <button type="button" class="btn btn-primary d-flex justify-content-start" data-bs-dismiss="modal"
+                (click)="save_new_tailor_avatar()">
                 Save
               </button>
-              <ngx-uploadcare-widget
-                public-key="d2eaba00baf97d93aeb1"
-                (on-upload-complete)="on_upload_complete($event)"
-                crop="free"
-                class="d-flex justify-content-end"
-                [images-only]="true"
-                input-accept-types="image/*"
-                tabs="file camera url gphotos instagram facebook"
-                #upload_component
-              >
+              <ngx-uploadcare-widget public-key="d2eaba00baf97d93aeb1" (on-upload-complete)="on_upload_complete($event)"
+                crop="free" class="d-flex justify-content-end" [images-only]="true" input-accept-types="image/*"
+                tabs="file camera url gphotos instagram facebook" #upload_component>
               </ngx-uploadcare-widget>
               <!-- upload button needed and third-party-api -->
             </div>
@@ -75,26 +40,13 @@
       <!-- end image popup -->
 
       <!-- second popup -->
-      <div
-        class="modal fade"
-        id="staticBackdrop"
-        data-bs-keyboard="true"
-        tabindex="-1"
-        aria-labelledby="staticBackdropLabel"
-        aria-hidden="true"
-      >
+      <div class="modal fade" id="staticBackdrop" data-bs-keyboard="true" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content image-view">
-            <button
-              type="button"
-              class="btn-close cls btn-close-white"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-            <img
-              src="{{ user_info.avatar }}"
-              style="width: 100%; border-radius: 0%"
-            />
+            <button type="button" class="btn-close cls btn-close-white" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+            <img src="{{ user_info.avatar }}" style="width: 100%; border-radius: 0%" />
             <!-- upload button needed and third-party-api -->
           </div>
         </div>
@@ -108,53 +60,27 @@
       <!-- start Edit pop-up -->
       <div class="d-inline-block float-end">
         <!-- edit button -->
-        <button
-          *ngIf="user_info._id === currentUserId"
-          style="margin-top: 7px"
-          type="button"
-          class="btn btn-primary btn-sm"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-        >
+        <button *ngIf="user_info._id === currentUserId" style="margin-top: 7px" type="button"
+          class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Edit
         </button>
         <!-- end -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-          data-bs-backdrop="static"
-          data-bs-keyboard="false"
-        >
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+          data-bs-backdrop="static" data-bs-keyboard="false">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
                   Edit Information
                 </h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 <form [formGroup]="formValidation">
                   <div class="mb-3">
                     <label for="name" class="col-form-label">Name:</label>
-                    <input
-                      formControlName="name"
-                      type="text"
-                      class="form-control no-box-shadow"
-                      #Name
-                    />
-                    <div
-                      class="text-danger"
-                      *ngIf="getControl.name.touched && getControl.name.invalid"
-                    >
+                    <input formControlName="name" type="text" class="form-control no-box-shadow" #Name />
+                    <div class="text-danger" *ngIf="getControl.name.touched && getControl.name.invalid">
                       <div *ngIf="getControl.name.errors.required">
                         Name can't be empty
                       </div>
@@ -164,14 +90,8 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="inputState" class="form-label"
-                      >Designing For:</label
-                    >
-                    <select
-                      formControlName="design"
-                      id="inputState"
-                      class="form-select"
-                    >
+                    <label for="inputState" class="form-label">Designing For:</label>
+                    <select formControlName="design" id="inputState" class="form-select">
                       <option>Male</option>
                       <option>Female</option>
                     </select>
@@ -179,21 +99,12 @@
                 </form>
               </div>
               <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  (click)="Name.value = user_info.name"
-                >
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                  (click)="Name.value = user_info.name">
                   Discard
                 </button>
-                <button
-                  type="button"
-                  class="btn btn-primary form"
-                  (click)="update_tailor_info(formValidation)"
-                  data-bs-dismiss="modal"
-                  [disabled]="formValidation.invalid"
-                >
+                <button type="button" class="btn btn-primary form" (click)="update_tailor_info(formValidation)"
+                  data-bs-dismiss="modal" [disabled]="formValidation.invalid">
                   Save changes
                 </button>
               </div>
@@ -209,12 +120,11 @@
         <!--  nancy will give api response all these data -->
         <span>
           <!-- needs to handle with function from back end -->
-          <i class="fas fa-star"></i><i class="fas fa-star"></i
-          ><i class="fas fa-star"></i><i class="fas fa-star"></i
-          ><i class="fas fa-star"></i>
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i>
         </span>
         <br />
-        <span *ngIf="!user_info.comments"> No one review this tailor yet </span>
+        <p *ngIf="!user_info.comments" class="span"> No one review this tailor yet </p>
       </div>
     </div>
     <!-- end info section -->

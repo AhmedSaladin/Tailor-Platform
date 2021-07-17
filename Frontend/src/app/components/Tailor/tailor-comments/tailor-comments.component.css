@@ -1,8 +1,11 @@
 .comment{
   border: 2px solid rgb(226, 223, 223);
   border-radius: 15px;
-  
+  min-height: 150px;
 }
+/* .card-body{
+  height: 200px;
+} */
 .fa-star {
     color: #ffb624;
     padding-right: 0.1em;
