@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs/operators';
+import { BindingService } from './binding/binding.service';
 import { CustomerService } from './customer.service';
 
 @Injectable({
@@ -7,7 +9,11 @@ import { CustomerService } from './customer.service';
 })
 export class OrderService {
   private url = 'http://localhost:3000/orders';
-  constructor(private http: HttpClient, private user: CustomerService) {}
+  constructor(
+    private http: HttpClient,
+    private user: CustomerService,
+    private binding: BindingService
+  ) {}
 
   get_current_user_orders() {
     const userId = this.user.user.value?.Id;
@@ -45,7 +51,10 @@ export class OrderService {
   }
 
   getOrder() {
-    return this.http.get(this.url);
+    this.binding.changeLoading(true);
+    return this.http
+      .get(this.url)
+      .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
   deleteOrder(id: any) {

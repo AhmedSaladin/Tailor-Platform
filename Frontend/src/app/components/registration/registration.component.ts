@@ -72,9 +72,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   AddCustomer(form: FormGroup) {
-    // stop function from calling backend;
     if (!form.valid) {
-      this.error = 'Something went wrong';
+      this.error = 'Enter a valid data.';
       return;
     }
     const customer = {
@@ -84,14 +83,17 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       password: form.value.password,
     };
     this.isLoading = true;
-    // adding validation to check status from server if data sumbited well
-    //
     this.eve = this.myCustomer.signUp(customer).subscribe(
       () => {
         this.isLoading = false;
         this.router.navigateByUrl('login');
       },
-      (err) => (this.error = err)
+      (err) => {
+        this.isLoading = false;
+        if (err.includes('E11000 '))
+          this.error = 'Phone number is already used.';
+        else this.error = err;
+      }
     );
     form.reset();
   }

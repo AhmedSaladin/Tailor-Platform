@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BindingService } from 'src/app/services/binding/binding.service';
 
 @Component({
   selector: 'app-loading',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loading.component.css']
 })
 export class LoadingComponent implements OnInit {
+  isLoading: Boolean = true;
 
-  constructor() { }
+  constructor(private binding: BindingService) { }
 
   ngOnInit(): void {
+    this.binding.isLoading.subscribe(res => this.isLoading = res);
   }
 
 }

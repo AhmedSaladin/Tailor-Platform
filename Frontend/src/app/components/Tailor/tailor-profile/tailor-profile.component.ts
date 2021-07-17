@@ -6,11 +6,11 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
-  selector: 'app-edit-tailor-profile',
-  templateUrl: './edit-tailor-profile.component.html',
-  styleUrls: ['./edit-tailor-profile.component.css'],
+  selector: 'app-tailor-profile',
+  templateUrl: './tailor-profile.component.html',
+  styleUrls: ['./tailor-profile.component.css'],
 })
-export class EditTailorProfileComponent implements OnInit, OnDestroy {
+export class TailorProfileComponent implements OnInit, OnDestroy {
   eve!: Subscription;
   @Output() currentUserId: any;
   tailor: any;
