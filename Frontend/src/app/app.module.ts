@@ -96,7 +96,7 @@ import { BindingService } from './services/binding/binding.service';
       useClass: TokenIntercetorService,
       multi: true,
     },
-    BindingService
+    BindingService,
   ],
   bootstrap: [AppComponent],
 })

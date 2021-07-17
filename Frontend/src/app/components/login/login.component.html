@@ -9,7 +9,6 @@
               id="form"
               action=""
               [formGroup]="LoginForm"
-              *ngIf="!isLoading; else loading"
             >
               <div class="text-danger mb-3 form-row" *ngIf="error">
                 {{ error }}
@@ -75,8 +74,8 @@
     </div>
   </div>
 </div>
-<ng-template #loading>
+<!-- <ng-template #loading>
   <div class=" loading d-flex align-items-center">
     <app-loading></app-loading>
   </div>
-</ng-template>
+</ng-template> -->

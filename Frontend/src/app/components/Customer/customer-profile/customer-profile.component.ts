@@ -15,7 +15,7 @@ export class CustomerProfileComponent implements OnInit {
   currentUserId: any;
   constructor(
     private custSer: CustomerService,
-    private activeRout: ActivatedRoute
+    private activeRout: ActivatedRoute,
   ) {
     this.currentUserId = this.custSer.user.value?.Id;
     this.getCustomerINfo(activeRout.snapshot.params.id);

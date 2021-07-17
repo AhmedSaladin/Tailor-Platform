@@ -17,7 +17,11 @@ export interface Login {
   providedIn: 'root',
 })
 export class CustomerService {
-  constructor(private http: HttpClient, private router: Router, private binding: BindingService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private binding: BindingService
+  ) {}
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
   user = new BehaviorSubject<User | null>(null);
@@ -41,7 +45,7 @@ export class CustomerService {
       .pipe(
         catchError(this.handleError),
         tap((res) => {
-          this.binding.changeLoading(false)
+          this.binding.changeLoading(false);
           const user = new User(
             res.body!.id,
             res.body!.isTailor,
@@ -72,17 +76,16 @@ export class CustomerService {
     this.user.next(null);
     localStorage.removeItem('user');
     this.router.navigate(['login']);
+    this.binding.changeLoading(false);
   }
 
   // remember to add autoLogout before token expire or request new token
 
   get_all_customers() {
     this.binding.changeLoading(true);
-    return this.http.get(this.URL).pipe(
-      tap(
-        res => this.binding.changeLoading(false)
-      )
-    )
+    return this.http
+      .get(this.URL)
+      .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
   get_customer_info_id(id: any) {
@@ -91,27 +94,42 @@ export class CustomerService {
       .get(`${this.URL}/${id}`, {
         observe: 'response',
       })
-      .pipe(catchError(this.handleError),      tap(
-        res => this.binding.changeLoading(false)
-      ));
+      .pipe(
+        catchError(this.handleError),
+        tap((res) => this.binding.changeLoading(false))
+      );
   }
 
   update_customer_info(id: string, body: any) {
-    return this.http.put(`${this.URL}/${id}`, body, {
-      observe: 'response',
-    });
+    this.binding.changeLoading(true);
+    return this.http
+      .put(`${this.URL}/${id}`, body, {
+        observe: 'response',
+      })
+      .pipe(
+        catchError(this.handleError),
+        tap((res) => this.binding.changeLoading(false))
+      );
   }
 
   delete_cutomer(id: any) {
-    return this.http.delete(`${this.URL}/${id}`, {
-      observe: 'response',
-    });
+    this.binding.changeLoading(true);
+    return this.http
+      .delete(`${this.URL}/${id}`, {
+        observe: 'response',
+      })
+      .pipe(
+        catchError(this.handleError),
+        tap((res) => this.binding.changeLoading(false))
+      );
   }
 
   private handleError(err: HttpErrorResponse) {
     console.log(err);
+    this.binding.changeLoading(false);
     if (err.error.message == 'NOT FOUND')
       return throwError('Email or Password wrong.');
+
     if (!err.error.message) return throwError('Somthing went wrong.');
     return throwError(err.error.message);
   }
