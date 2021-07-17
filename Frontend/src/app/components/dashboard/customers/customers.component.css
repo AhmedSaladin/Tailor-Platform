@@ -1,4 +1,8 @@
-
+table{
+    overflow-x: scroll;
+    overflow-y: scroll;
+    min-width: auto;
+}
 
 i{
     font-size: 25px;

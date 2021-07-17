@@ -3,7 +3,7 @@
   border-radius: 15px;
 }
 .tailor-name {
-  color: #d7263d;
+  color: #284E78;
   font-weight: bold;
   font-size: 25px;
 }
@@ -15,6 +15,15 @@
 .info-tailor .star .fa-star {
   color: #ffc93c;
   font-size: 20px;
+}
+.btn{
+  background-color: #2e86ab;
+  border: 1px solid white;
+}
+.btn:hover{
+  background-color: white;
+  color: #2e86ab;
+  border: 1px solid #2e86ab;
 }
 @media screen and (min-width: 768px) {
   .info-tailor img {
