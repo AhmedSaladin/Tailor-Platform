@@ -5,6 +5,7 @@ const {
   tailorUpdateNameSchema,
 } = require("../../utility/validationSchema");
 const { hashing } = require("../../utility/password");
+const { get_uuid, images_clean_up } = require("../../utility/imageHandling");
 const { is_valid_id } = require("../../utility/errors");
 
 filter_tailors_get = async (req, res, next) => {
@@ -109,23 +110,6 @@ tailor_delete = async (req, res, next) => {
     next(err);
   }
 };
-
-function get_uuid(url) {
-  const result = url.split("/");
-  return result[3];
-}
-
-async function images_clean_up(oldImg) {
-  await axios
-    .delete(`https://api.uploadcare.com/files/${oldImg}/`, {
-      headers: {
-        Authorization: process.env.UPLOAD_CARE_HEADER,
-        Accept: "application/vnd.uploadcare-v0.5+json",
-        Date: new Date().toUTCString(),
-      },
-    })
-    .catch((err) => console.log(err.toString()));
-}
 
 module.exports = {
   filter_tailors_get,
