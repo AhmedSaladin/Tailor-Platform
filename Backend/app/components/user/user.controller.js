@@ -1,10 +1,10 @@
 require("dotenv").config();
 const User = require("./user.model");
 const Tailor = require("../tailor/tailor.model");
-const axios = require("axios");
 const { userSchema } = require("../../utility/validationSchema");
 const promise_handler = require("../../utility/promiseHandler");
 const { check_password, hashing } = require("../../utility/password");
+const { get_uuid, images_clean_up } = require("../../utility/imageHandling");
 const { createToken } = require("../../middlewares/authToken");
 const {
   is_not_found,
@@ -110,20 +110,3 @@ module.exports = {
     res.status(OK).json();
   },
 };
-
-function get_uuid(url) {
-  const result = url.split("/");
-  return result[3];
-}
-
-async function images_clean_up(oldImg) {
-  await axios
-    .delete(`https://api.uploadcare.com/files/${oldImg}/`, {
-      headers: {
-        Authorization: process.env.UPLOAD_CARE_HEADER,
-        Accept: "application/vnd.uploadcare-v0.5+json",
-        Date: new Date().toUTCString(),
-      },
-    })
-    .catch((err) => console.log(err.toString()));
-}
