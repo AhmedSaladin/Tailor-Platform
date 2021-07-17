@@ -64,7 +64,7 @@ tailor_post = async (req, res, next) => {
   }
 };
 
-tailor_put = async (req, res, next) => {
+tailor_patch = async (req, res, next) => {
   const _id = req.params.id;
   try {
     is_valid_id(_id);
@@ -100,7 +100,6 @@ tailor_delete = async (req, res, next) => {
 
 // TODO Filter/Search endpoints, @/home view
 
-// TODO Handle adding imgs, @/tailors/:id view
 // TODO Handle deleting single images, @/tailors/:id view
 
 module.exports = {
@@ -108,6 +107,6 @@ module.exports = {
   all_tailors_get,
   tailor_get,
   tailor_post,
-  tailor_put,
+  tailor_patch,
   tailor_delete,
 };

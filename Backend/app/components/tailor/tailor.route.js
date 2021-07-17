@@ -12,7 +12,7 @@ route
   .get("/", all_tailors_get)
   .get("/:id", tailor_get)
   .post("/", tailor_post)
-  .put("/:id", tailor_put)
+  .put("/:id", tailor_patch)
   .delete("/:id", tailor_delete);
 
 module.exports = route;
