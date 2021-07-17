@@ -1,5 +1,9 @@
 const Tailor = require("./tailor.model");
-const { tailorSchema, tailorUpdateAboutSchema, tailorUpdateNameSchema } = require("../../utility/validationSchema");
+const {
+  tailorSchema,
+  tailorUpdateAboutSchema,
+  tailorUpdateNameSchema,
+} = require("../../utility/validationSchema");
 const { hashing } = require("../../utility/password");
 const { is_valid_id } = require("../../utility/errors");
 
@@ -69,17 +73,25 @@ tailor_patch = async (req, res, next) => {
   try {
     is_valid_id(_id);
     if (req.body.about) {
-      tailor = await tailorUpdateAboutSchema.validateAsync(req.body).catch((err) => {
-        throw { status: 400, message: err.message };
-      });
+      tailor = await tailorUpdateAboutSchema
+        .validateAsync(req.body)
+        .catch((err) => {
+          throw { status: 400, message: err.message };
+        });
     }
     if (req.body.name || req.body.designFor) {
-      tailor = await tailorUpdateNameSchema.validateAsync(req.body).catch((err) => {
-        throw { status: 400, message: err.message };
-      });
+      tailor = await tailorUpdateNameSchema
+        .validateAsync(req.body)
+        .catch((err) => {
+          throw { status: 400, message: err.message };
+        });
     }
-    // TODO changing avatars
-    await Tailor.findByIdAndUpdate( _id , req.body);
+    const tailor = await Tailor.findByIdAndUpdate(_id, req.body);
+    if (req.body.avatar) {
+      const oldImg = get_uuid(tailor.avatar);
+      const newImg = get_uuid(req.body.avatar);
+      if (oldImg !== newImg) await images_clean_up(oldImg);
+    }
     res.status(200).json();
   } catch (err) {
     next(err);
@@ -90,17 +102,30 @@ tailor_delete = async (req, res, next) => {
   const _id = req.params.id;
   try {
     is_valid_id(_id);
-    // TODO Handle image clean-up, @/dashboard/tailors
-    await Tailor.findByIdAndDelete(_id);
+    const tailor = await Tailor.findByIdAndDelete(_id);
+    await images_clean_up(tailor.avatar);
     res.status(200).json();
   } catch (err) {
     next(err);
   }
 };
 
-// TODO Filter/Search endpoints, @/home view
+function get_uuid(url) {
+  const result = url.split("/");
+  return result[3];
+}
 
-// TODO Handle deleting single images, @/tailors/:id view
+async function images_clean_up(oldImg) {
+  await axios
+    .delete(`https://api.uploadcare.com/files/${oldImg}/`, {
+      headers: {
+        Authorization: process.env.UPLOAD_CARE_HEADER,
+        Accept: "application/vnd.uploadcare-v0.5+json",
+        Date: new Date().toUTCString(),
+      },
+    })
+    .catch((err) => console.log(err.toString()));
+}
 
 module.exports = {
   filter_tailors_get,
