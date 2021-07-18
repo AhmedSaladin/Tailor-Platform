@@ -11,7 +11,7 @@
   width: 65%;
   height: 100%;
   border-radius: 50%;
-  
+
 }
 
 .profile-info {
@@ -76,6 +76,7 @@ input.ng-valid.ng-touched {
 .span{
   padding-top: 5px;
 }
+<<<<<<< HEAD
 
 .btn-primary{
   background-color: #2e86ab;
@@ -86,3 +87,56 @@ input.ng-valid.ng-touched {
   color: #2e86ab;
   border: 1px solid #2e86ab;
 }
+=======
+/**/
+.halfstar1 {
+  position: absolute;
+  top: -6px;
+  right: 15px;
+  width: 34px;
+  font-size: 40px;
+  color: #666;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.halfstar2 {
+    position: absolute;
+    top: -6px;
+    right: 32px;
+    width: 17px;
+    font-size: 40px;
+    color: rgb(252, 173, 3);
+    overflow: hidden;
+    z-index:2;
+}
+/**rate */
+
+ .stars-outer {
+  position: relative;
+  display: inline-block;
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-outer::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #ccc;
+}
+
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #f8ce0b;
+}
+>>>>>>> 8b854fbaa7f8ee5c3ccac28cc5c1e54d04235ec3
