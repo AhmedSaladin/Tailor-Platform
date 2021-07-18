@@ -5,12 +5,7 @@
         <div class="col-md-10 m-auto p-2">
           <div class="card-body">
             <h3 class="card-title mb-4"><b>Sign Up</b></h3>
-            <form
-              class="signUpForm"
-              [formGroup]="formValidation"
-              novalidate
-              *ngIf="!isLoading; else loading"
-            >
+            <form class="signUpForm" [formGroup]="formValidation" novalidate>
               <div class="text-danger form-row mb-3" *ngIf="error">
                 <div>{{ error }}</div>
               </div>
@@ -118,7 +113,8 @@
                 (click)="AddCustomer(formValidation)"
                 [disabled]="formValidation.invalid"
               >
-                Sign Up
+                <span *ngIf="!isLoading"> Sign Up </span>
+                <span *ngIf="isLoading">Please Wait ...</span>
               </button>
               <p class="card-text">
                 Already have an account?
@@ -131,9 +127,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #loading>
-  <div class="loading d-flex align-items-center">
-    <app-loading></app-loading>
-  </div>
-</ng-template>

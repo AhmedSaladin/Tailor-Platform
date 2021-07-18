@@ -51,10 +51,10 @@ export class TailorsDashboardComponant implements OnInit {
           Validators.pattern('^(010|011|012|015)[0-9]{8}$'),
         ],
       ],
-      gender:[
+      gender:['',
         Validators.required
       ],
-      designFor:[
+      designFor:[ '',
         Validators.required
       ],
       email: [
@@ -83,6 +83,7 @@ export class TailorsDashboardComponant implements OnInit {
 
 
   AddTailor(form: NgForm) {
+    console.log(form)
     let tailor = {
       name: form.value.fname + ' ' + form.value.lname,
       phone: form.value.phone,
@@ -93,6 +94,7 @@ export class TailorsDashboardComponant implements OnInit {
     };
     this.tailorServive.AddNewTailor(tailor).subscribe();
     form.reset();
+  
   }
   getTailor(id: any) {
     console.log(id)
