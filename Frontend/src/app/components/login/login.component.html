@@ -57,9 +57,11 @@
                   <button
                     type="submit"
                     class="btn btn-primary mt-4 mb-3 login-button no-box-shadow"
+                    [disabled]="isLoading"
                     (click)="onSubmit(LoginForm)"
                   >
-                    login
+                    <span *ngIf="!isLoading">login</span>
+                    <span *ngIf="isLoading">Please Wait ...</span>                  
                   </button>
                 </div>
               </div>
