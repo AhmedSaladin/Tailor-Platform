@@ -1,4 +1,5 @@
 const Comment = require('./comment.model');
+const mongoose = require("mongoose");
 
 const get_comment=(req,res)=>{
     if(req.query.tailor_id){console.log(req.query)
@@ -66,30 +67,60 @@ const get_comments_by_id=(req,res)=>{
         })
 }
 
-const get_rate=(req,res)=>{
-   
-    Comment.aggregate([{
+const get_all_rate=(req,res)=>{
+        Comment.aggregate([{
+            $group: {
+                _id:{tailor_id:"$tailor_id"},
+                count:{ $sum:1},
+                rate:{ $avg:"$rate" }
+            }
+        }
+        ],function (error, data) {
+            if(error){
+                console.log(error)
+            }
+            console.log(data.todos)
+            return res.json(data);
+        //handle error case also
+    })
+    
+}
+
+const get_tailor_rate=(req,res)=>{
+    var id = parseInt(req.params.tailor_id);
+    //var mongoose = require('mongoose');
+    /* 
+    var id = mongoose.Types.ObjectId(req.params.tailor_id);
+     */
+    //var id = mongoose.mongo.BSONPure.ObjectID.fromHexString("60ee254be6c01113657a6812");
+    //console.log(id)
+    Comment.aggregate([
+        {
+            $match: {tailor_id:id}
+          },
+        {
         $group: {
             _id:{tailor_id:"$tailor_id"},
             count:{ $sum:1},
             rate:{ $avg:"$rate" }
         }
     }
+    
     ],function (error, data) {
         if(error){
             console.log(error)
         }
-        console.log(data.todos)
+        console.log(data)
         return res.json(data);
     //handle error case also
 })
 
 }
 
-
 module.exports={
     get_comment,
     creat_comment,
     get_comments_by_id,
-    get_rate
+    get_all_rate,
+    get_tailor_rate
 }

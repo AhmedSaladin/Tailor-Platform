@@ -1,214 +1,326 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    <i class="fas fa-user-plus me-1"></i> Add Tailor
+<button
+  type="button"
+  class="btn btn-success m-3"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  <i class="fas fa-user-plus me-1"></i> Add Tailor
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Tailor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Tailor</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- start form -->
+        <form class="signUpForm" [formGroup]="formValidation" novalidate>
+          <div class="form-row">
+            <div class="mb-3">
+              <input
+                formControlName="fname"
+                #fname
+                id="fname"
+                name="fname"
+                type="text"
+                placeholder="First Name"
+                class="form-control no-box-shadow"
+              />
+              <div
+                class="text-danger"
+                *ngIf="getControl.fname.touched && getControl.fname.invalid"
+              >
+                <div *ngIf="getControl.fname.errors.required">
+                  Name is Required
+                </div>
+                <div *ngIf="getControl.fname.errors?.minlength">
+                  Minimum Length is 3 Characters
+                </div>
+              </div>
             </div>
-            <div class="modal-body">
-
-                <!-- start form -->
-                <form class="signUpForm" [formGroup]="formValidation" novalidate>
-                    <div class="form-row">
-                        <div class="mb-3">
-                            <input formControlName="fname" #fname id="fname" name="fname" type="text"
-                                placeholder="First Name" class="form-control no-box-shadow" />
-                            <div class="text-danger" *ngIf="getControl.fname.touched && getControl.fname.invalid">
-                                <div *ngIf="getControl.fname.errors.required">
-                                    Name is Required
-                                </div>
-                                <div *ngIf="getControl.fname.errors?.minlength">
-                                    Minimum Length is 3 Characters
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="mb-3">
-                            <input formControlName="lname" #lname id="lname" name="lname" type="text"
-                                placeholder="Last Name" class="form-control no-box-shadow" />
-                            <div class="text-danger" *ngIf="getControl.lname.touched && getControl.lname.invalid">
-                                <div *ngIf="getControl.lname.errors.required">
-                                    Name is Required
-                                </div>
-                                <div *ngIf="getControl.lname.errors?.minlength">
-                                    Minimum Length is 3 Characters
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="mb-3">
-                            <input formControlName="phone" #phone id="phone" name="phone" type="text"
-                                placeholder="Phone" class="form-control no-box-shadow" />
-                            <div class="text-danger" *ngIf="getControl.phone.touched && getControl.phone.invalid">
-                                <div *ngIf="getControl.phone.errors.required">
-                                    Phone is Required
-                                </div>
-                                <div *ngIf="getControl.phone.errors?.maxlength">
-                                    Maximum Length is 11
-                                </div>
-                                <div *ngIf="getControl.phone.errors?.minlength">
-                                    Minimum Length is 11
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-row">
-                        <div class="mb-3">
-                            <!-- <label for="inputState" class="form-label no-box-shadow">Gender:</label>
-                            <select class="form-select no-box-shadow" name="gender" formControlName="gender">
-                                <option [selected]="true">Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select> -->
-                            <label style="margin-right: 39px;">Gender :</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio1" value="male">
-                                <label class="form-check-label" for="inlineRadio1">Male</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"  name="gender" formControlName="gender" id="inlineRadio2" value="female">
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
-                              </div>
-
-                           
-                              
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="mb-3">
-                            <!-- <label for="inputState" class="form-label no-box-shadow">Design For:</label>
-                            <select class="form-select no-box-shadow" name="desingFor" formControlName="desingFor">
-                                <option [selected]='true'>Works For</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select> -->
-                            <label class="me-3">Design For :</label>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input"  type="radio" formControlName="designFor" name="desingFor" id="inlineRadio1" value="male">
-                                <label class="form-check-label" for="inlineRadio1">Male</label>
-                              </div>
-                              <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"  formControlName="designFor" name="desingFor" id="inlineRadio2" value="female">
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
-                              </div>
-                            
-                              
-                           
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-
-                        <input formControlName="email" #email type="email" class="form-control no-box-shadow"
-                            placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                        <div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
-                            Email like 'example@any.com'
-                        </div>
-                    </div>
-                    <div class="mb-3">
-
-                        <input formControlName="password" #password type="password" class="form-control no-box-shadow"
-                            placeholder="Password" id="exampleInputPassword1" />
-                        <div class="text-danger" *ngIf="
-                              getControl.password.touched && getControl.password.invalid
-                            ">
-                            At least 8 characters ,Lowercase ,Uppercase letters,Numbers
-                            Special characters
-                        </div>
-                    </div>
-
-
-                </form>
-                <!-- end form -->
-
+          </div>
+          <div class="form-row">
+            <div class="mb-3">
+              <input
+                formControlName="lname"
+                #lname
+                id="lname"
+                name="lname"
+                type="text"
+                placeholder="Last Name"
+                class="form-control no-box-shadow"
+              />
+              <div
+                class="text-danger"
+                *ngIf="getControl.lname.touched && getControl.lname.invalid"
+              >
+                <div *ngIf="getControl.lname.errors.required">
+                  Name is Required
+                </div>
+                <div *ngIf="getControl.lname.errors?.minlength">
+                  Minimum Length is 3 Characters
+                </div>
+              </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="AddTailor(formValidation)"
-                    [disabled]="formValidation.invalid">Save changes</button>
+          </div>
+
+          <div class="form-row">
+            <div class="mb-3">
+              <input
+                formControlName="phone"
+                id="phone"
+                type="text"
+                placeholder="Phone"
+                class="form-control no-box-shadow"
+              />
+              <div
+                class="text-danger"
+                *ngIf="getControl.phone.touched && getControl.phone.invalid"
+              >
+                <div *ngIf="getControl.phone.errors.required">
+                  Phone is Required
+                </div>
+                <div *ngIf="getControl.phone.errors?.maxlength">
+                  Maximum Length is 11
+                </div>
+                <div *ngIf="getControl.phone.errors?.minlength">
+                  Minimum Length is 11
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
+
+          <div class="form-row">
+            <div class="mb-3">
+              <label style="margin-right: 39px">Gender :</label>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="gender"
+                  name="gender"
+                  id="inlineRadio1"
+                  value="male"
+                />
+                <label class="form-check-label" for="inlineRadio1">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="gender"
+                  id="inlineRadio2"
+                  value="female"
+                />
+                <label class="form-check-label me-4" for="inlineRadio2"
+                  >Female</label
+                >
+                <span class="text-danger" *ngIf="getControl.gender.value == ''">
+                  <span> Gender is Required </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="mb-3">
+              <label class="me-3">Design For :</label>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="designFor"
+                  name="designFor"
+                  id="inlineRadio1"
+                  value="Men"
+                />
+                <label class="form-check-label" for="inlineRadio1">Men</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  formControlName="designFor"
+                  name="designFor"
+                  id="inlineRadio2"
+                  value="Women"
+                />
+                <label class="form-check-label me-4" for="inlineRadio2"
+                  >Women</label
+                >
+                <span
+                  class="text-danger"
+                  *ngIf="getControl.designFor.value == ''"
+                >
+                  <span> Design For is Required </span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <input
+              formControlName="email"
+              #email
+              type="email"
+              class="form-control no-box-shadow"
+              placeholder="Email address"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div
+              class="text-danger"
+              *ngIf="getControl.email.touched && getControl.email.invalid"
+            >
+              Email like 'example@any.com'
+            </div>
+          </div>
+          <div class="mb-3">
+            <input
+              formControlName="password"
+              #password
+              type="password"
+              class="form-control no-box-shadow"
+              placeholder="Password"
+              id="exampleInputPassword1"
+            />
+            <div
+              class="text-danger"
+              *ngIf="getControl.password.touched && getControl.password.invalid"
+            >
+              At least 8 characters ,Lowercase ,Uppercase letters,Numbers
+              Special characters
+            </div>
+          </div>
+        </form>
+        <!-- end form -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="AddTailor(formValidation)"
+          [disabled]="formValidation.invalid"
+        >
+          Save changes
+        </button>
+      </div>
     </div>
+  </div>
 </div>
 <!-- end add customer -->
 
 <!-- start data -->
 <table class="table text-center">
-    <thead>
-        <tr>
-            <th scope="col">Tailor Name</th>
-            <th scope="col">View Tailor</th>
-            <th scope="col">Delete Tailor</th>
-    </thead>
-    <tbody>
-        <tr *ngFor='let t of tailors '>
-            <ng-container *ngIf='t.isTailor === true'>
-                <td>{{t.name}}</td>
-                <td>
-                    <!-- Button trigger modal -->
-                    <button style="border: none;" class="bg-light" data-bs-toggle="modal" data-bs-target="#viewTailor"
-                        (click)="getTailor(t.id)">
-                        <i class="fas fa-eye"></i>
-                    </button>
+  <thead>
+    <tr>
+      <th scope="col">Tailor Name</th>
+      <th scope="col">View Tailor</th>
+      <th scope="col">Delete Tailor</th>
+    </tr>
+  </thead>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="viewTailor" tabindex="-1" aria-labelledby="viewTailorLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="viewTailorLabel">Tailor Information</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
+  <tbody>
+    <tr *ngFor="let t of tailors">
+      <ng-container *ngIf="t.isTailor === true">
+        <td>{{ t.name }}</td>
+        <td>
+          <!-- Button trigger modal -->
+          <button
+            style="border: none"
+            class="bg-light"
+            data-bs-toggle="modal"
+            data-bs-target="#viewTailor"
+            (click)="getTailor(t._id)"
+          >
+            <i class="fas fa-eye"></i>
+          </button>
 
-                                    <!-- start table -->
-                                    <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col">id</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Email</th>
-                                                <th scope="col">Phone</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngIf="tailor else ff ">
-                                                <td>{{tailor.id}}</td>
-                                                <td>{{tailor.name}}</td>
-                                                <td>{{tailor.email}}</td>
-                                                <td>{{tailor.phone}}</td>
-                                            </tr>
-                                            <ng-template #ff>wating</ng-template>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                    <!-- end table -->
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td><i class="fas fa-user-times" style="cursor: pointer;" (click)="deleteTailor(t.id)"></i></td>
-            </ng-container>
-        </tr>
-    </tbody>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="viewTailor"
+            tabindex="-1"
+            aria-labelledby="viewTailorLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="viewTailorLabel">
+                    Tailor Information
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <!-- start table -->
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">id</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Phone</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngIf="tailor; else ff">
+                          <td>{{ tailor._id }}</td>
+                          <td>{{ tailor.name }}</td>
+                          <td>{{ tailor.email }}</td>
+                          <td>{{ tailor.phone }}</td>
+                        </tr>
+                        <ng-template #ff>wating</ng-template>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- end table -->
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td>
+          <i
+            class="fas fa-user-times"
+            style="cursor: pointer"
+            (click)="deleteTailor(t._id)"
+          ></i>
+        </td>
+      </ng-container>
+    </tr>
+  </tbody>
 </table>

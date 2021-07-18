@@ -26,10 +26,10 @@ export class HomeComponent implements OnInit {
   // ============================================
 
   filterForm = new FormGroup({
-    'designFor=Male': new FormControl(''),
-    'designFor=Female': new FormControl(''),
-    'gender=Male': new FormControl(''),
-    'gender=Female': new FormControl(''),
+    'designFor=Men': new FormControl(''),
+    'designFor=Women': new FormControl(''),
+    'gender=male': new FormControl(''),
+    'gender=female': new FormControl(''),
   });
   // filtering based on sidebar selection
   filterTailors(formValue: any) {
@@ -67,39 +67,4 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
-  // filterTailors(e: any) {
-  //   if (e.target.checked) {
-  //     let filter = e.target.value;
-  //     const def = { designFor: 'All', gender: 'Male', rate: '5' };
-  //     this.tailorInfo.get_tailors_info_filter(`designFor=${filter}`).subscribe(
-  //       (res) => {
-  //         this.tailors = res.body;
-  //       },
-  //       (err) => {
-  //         console.log(err);
-  //       }
-  //     );
-  //   }
-  // }
-
-  // filteredTailors: string[] = new Array();
-  // tempFilter: any;
-  // selectedItems: string[] = new Array();
-
-  // if (e.target.checked) {
-  //   this.tempFilter = this.tailors.filter(
-  //     (tailor: any) => tailor.designFor === e.target.value
-  //   );
-  //   this.filteredTailors.push(...this.tempFilter);
-  //   this.selectedItems.push(e.target.id);
-  // } else {
-  //   this.selectedItems = this.selectedItems.filter(
-  //     (elm) => elm != e.target.id
-  //   );
-
-  //   this.filteredTailors = this.filteredTailors.filter(
-  //     (elm: any) => elm.designFor != e.target.value
-  //   );
-  // }
 }
