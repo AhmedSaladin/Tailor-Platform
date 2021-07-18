@@ -7,13 +7,14 @@ import { BindingService } from './binding/binding.service';
   providedIn: 'root',
 })
 export class TailorService {
-  private url = 'http://localhost:3000/users';
+  private url = 'http://localhost:3000/api/tailors/';
   constructor(private http: HttpClient,private binding: BindingService) {}
   get_tailors_info() {
-    return this.http.get(`${this.url}?isTailor=true`, { observe: 'response' });
+    return this.http.get(this.url, { observe: 'response' });
   }
   get_tailors_info_filter(filter: any) {
-    return this.http.get(`${this.url}?isTailor=true&${filter}`, { observe: 'response' });
+    console.log(`${this.url}?${filter}`)
+    return this.http.get(`${this.url}?${filter}`, { observe: 'response' });
   }
   get_tailor_info(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
