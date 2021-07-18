@@ -59,6 +59,15 @@ export class OrderService {
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
+  getOrderById(id:string){
+    this.binding.changeLoading(true);
+    return this.http.get(`${this.url}/${id}`,{observe:'response'}).pipe(
+      tap(
+        (res) => this.binding.changeLoading(false)
+      )
+    );
+  }
+
   deleteOrder(id: any) {
     return this.http.delete(`${this.url}/${id}`, { observe: 'response' });
   }

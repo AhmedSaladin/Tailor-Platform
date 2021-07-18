@@ -39,7 +39,7 @@ const tailorSchema = new mongoose.Schema({
   },
   designFor: {
     type: String,
-    enum: ["male", "female"],
+    enum: ["Men", "Women"],
     required: true,
   },
   admin: {

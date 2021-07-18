@@ -6,7 +6,7 @@
       class="d-inline float-end btn btn-primary btn-sm"
       data-bs-toggle="modal"
       data-bs-target="#gallary"
-      >
+    >
       <!-- *ngIf="user_info._id === currentUserId" -->
       Edit
     </button>
@@ -31,7 +31,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" *ngIf="gallery; else empty">
             <div class="row scroll">
               <div
                 class="col-12 col-md-6 col-lg-4 delete-img text-center"
@@ -113,5 +113,13 @@
   <!-- End Carousel -->
 </div>
 <ng-template #nothing>
-  <div class="text-center mt-2 mb-2 text-black-50">Tailor didn't add his gallery yet.</div>
+  <div class="text-center mt-2 mb-2 text-black-50">
+    Tailor didn't add his gallery yet.
+  </div>
+</ng-template>
+
+<ng-template #empty>
+  <div class="text-center mt-2 mb-2 text-black-50">
+    You didn't upload images yet.
+  </div>
 </ng-template>

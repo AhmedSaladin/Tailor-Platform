@@ -90,10 +90,10 @@
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="inputState" class="form-label">Designing For:</label>
+                    <label for="inputState" class="form-label">Specialization</label>
                     <select formControlName="design" id="inputState" class="form-select">
-                      <option>Male</option>
-                      <option>Female</option>
+                      <option>Men</option>
+                      <option>Women</option>
                     </select>
                   </div>
                 </form>
@@ -114,17 +114,32 @@
       </div>
       <!-- end of popup model -->
       <div class="profile-info-name d-inline">{{ user_info.name }}</div>
-      <div class="profile-info-i">Designing for: {{ user_info.designFor }}</div>
-      <div class="profile-info-rate">
+      <div class="profile-info-i">Specialization: {{ user_info.designFor }}</div>
+      <div class="profile-info-rate" *ngIf="review">
         <span>Rate: </span>
         <!--  nancy will give api response all these data -->
         <span>
+
           <!-- needs to handle with function from back end -->
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-            class="fas fa-star"></i>
+          <!-- <i class="fas fa-star"></i><i class="fas fa-star"></i
+          ><i class="fas fa-star"></i><i class="fas fa-star"></i
+          ><i class="fas fa-star"></i> -->
+
+
+          <div class="stars-outer">
+            <div class="stars-inner" [ngStyle]="myStyle"></div>
+          </div>
+          <!-- <span class="number-rating"></span> -->
+
         </span>
-        <br />
-        <p *ngIf="!user_info.comments" class="span"> No one review this tailor yet </p>
+        <p class="card-text">
+          <small class="text-muted" *ngIf="review&&review.count!=0;else New">Rating of {{review.count}} people</small>
+          <ng-template #New>
+          <small class="text-muted">Joined Recently</small>
+          </ng-template>
+        </p>
+        <!-- <br />
+        <span *ngIf="!user_info.comments"> No one review this tailor yet </span> -->
       </div>
     </div>
     <!-- end info section -->

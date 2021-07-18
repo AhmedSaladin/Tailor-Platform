@@ -31,3 +31,13 @@ textarea.ng-valid.ng-touched {
 .no-box-shadow {
   box-shadow: none;
 }
+
+.btn-primary{
+  background-color: #2e86ab;
+  border: 1px solid white;
+}
+.btn-primary:hover{
+  background-color: white;
+  color: #2e86ab;
+  border: 1px solid #2e86ab;
+}

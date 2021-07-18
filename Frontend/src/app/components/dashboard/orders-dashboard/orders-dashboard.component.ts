@@ -33,7 +33,7 @@ export class OrdersDashboardComponent implements OnInit {
   }
 
   getInfo(id: any) {
-    return this.orderService.get_tailor_request(id).subscribe(
+    return this.orderService.getOrderById(id).subscribe(
       (res => {
         console.log(this.cstOrder)
         this.cstOrder = res.body
