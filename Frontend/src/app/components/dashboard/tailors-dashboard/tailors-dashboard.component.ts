@@ -70,7 +70,7 @@ export class TailorsDashboardComponant implements OnInit {
         [
           Validators.required,
           Validators.pattern(
-            '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$'
+            '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*()-_]).{8,}$'
           ),
         ],
       ],
@@ -91,15 +91,11 @@ export class TailorsDashboardComponant implements OnInit {
       designFor: form.value.designFor,
       email: form.value.email,
       password: form.value.password,
-      isTailor: true,
     };
     this.tailorServive.AddNewTailor(tailor).subscribe();
     form.reset();
   
   }
-  // filterArray(isTailor:boolean){
-  //   this.filteredUsers =  this.users.filter(user => user === isTailor);
-  // }
   getTailor(id: any) {
     console.log(id)
     return this.tailorServive.get_tailor_info(id).subscribe(

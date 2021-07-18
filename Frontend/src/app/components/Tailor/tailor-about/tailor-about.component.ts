@@ -31,7 +31,7 @@ export class TailorAboutComponent implements OnInit, OnDestroy {
   update_tailor_about_section(about: string) {
     this.user_info.about = about;
     this.eve = this.api
-      .update_tailor_info(this.user_info.id, this.user_info)
+      .update_tailor_info(this.user_info._id, { about })
       .subscribe();
   }
 
