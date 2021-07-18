@@ -11,21 +11,21 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 
 // send email
-const mailCustomer = ()=>{
-    userModel.findOne({email: email})
-              .then(transporter.sendMail({
+/*const mailCustomer = (email)=>{
+    transporter.sendMail({
                     to: email ,
                     from: 'Tailor@Tailor_shop.com',
                     subject: "Don't replay to this",
                     html: '<h1>Thank you for choosing us , your order is made</h1>'
-                }));
-};
+                });
+};*/
 
 
 
 
 
 const create_order = (req , res , next )=>{
+    console.log(req.body);
     const order = new orderModel({
         customer_id: req.body.customer_id,
         tailor_id: req.body.tailor_id,
@@ -35,7 +35,8 @@ const create_order = (req , res , next )=>{
     order.save().then(result =>{
         console.log(result);
         res.status(201).json();
-        mailCustomer();
+        customer_mail= userModel.findById(result.customer_id);
+        mailCustomer()
 
     }).catch(err=>{
         console.log(err);
@@ -81,8 +82,8 @@ const view_orderByCustomer = (req , res , next )=>{
                         })
                 });
 };
-const view_orderByOrder = (req , res , next )=>{
-    orderModel.findById(_id)
+const view_orderByOrderId = (req , res , next )=>{
+    orderModel.findById(req.params.order_id)
               .then(docs =>{
                          res.status(200).json(docs);
                             })
@@ -98,5 +99,5 @@ module.exports={
     view_order,
     view_orderByTailor,
     view_orderByCustomer,
-    view_orderByOrder,
+    view_orderByOrderId,
 }
