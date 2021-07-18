@@ -26,7 +26,7 @@ tailorUpdateAboutSchema = Joi.object({
 
 tailorUpdateNameSchema = Joi.object({
   name: Joi.string().min(7).max(30).required(),
-  designFor: Joi.string().valid("male", "female").required(),
+  designFor: Joi.string().valid("Men", "Women").required(),
 });
 
 module.exports = {
