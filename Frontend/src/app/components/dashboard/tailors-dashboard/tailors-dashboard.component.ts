@@ -90,7 +90,6 @@ export class TailorsDashboardComponant implements OnInit {
       designFor: form.value.designFor,
       email: form.value.email,
       password: form.value.password,
-      isTailor: true,
     };
     this.tailorServive.AddNewTailor(tailor).subscribe();
     form.reset();
