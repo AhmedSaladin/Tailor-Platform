@@ -90,8 +90,9 @@ tailor_patch = async (req, res, next) => {
           throw { status: 400, message: err.message };
         });
     }
-    const tailor = await Tailor.findByIdAndUpdate(_id, req.body);
+    await Tailor.findByIdAndUpdate(_id, req.body);
     if (req.body.avatar) {
+      const tailor = await Tailor.findById(_id);
       const oldImg = get_uuid(tailor.avatar);
       const newImg = get_uuid(req.body.avatar);
       if (oldImg !== newImg) await images_clean_up(oldImg);
