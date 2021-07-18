@@ -19,12 +19,19 @@
 
 .profile-head .nav-tabs .nav-link.active {
   border: none;
-  border-bottom: 2px solid #0062cc;
+  border-bottom: 2px solid #2e86ab;
 }
 
 .profile-head h5 {
   font-size: 1.8rem;
   margin-bottom: 20px;
+}
+
+.nav-item .nav-link.active{
+  color: #2e86ab !important;
+}
+.nav-item .nav-link{
+  color: rgb(22, 22, 22);
 }
 
 .profile-tab label {
@@ -33,7 +40,7 @@
 
 .profile-tab p {
   font-weight: 600;
-  color: #0062cc;
+  color: #2e86ab;
 }
 
 .profile-img img {
@@ -81,4 +88,14 @@ select.ng-touched {
 
 .no-box-shadow{
   box-shadow: none;
+}
+.btn-primary{
+  background-color: #2e86ab;
+    color: white !important;
+    border: 1px solid white;
+}
+.btn-primary:hover{
+  background-color: white;
+    color: #2e86ab !important;
+    border: 2px solid #2e86ab;
 }
