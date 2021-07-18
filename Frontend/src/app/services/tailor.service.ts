@@ -13,14 +13,13 @@ export class TailorService {
     return this.http.get(this.url, { observe: 'response' });
   }
   get_tailors_info_filter(filter: any) {
-    console.log(`${this.url}?${filter}`);
     return this.http.get(`${this.url}?${filter}`, { observe: 'response' });
   }
   get_tailor_info(id: any) {
     return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }
   update_tailor_info(id: any, body: any) {
-    return this.http.put(`${this.url}/${id}`, body, { observe: 'response' });
+    return this.http.patch(`${this.url}/${id}`, body, { observe: 'response' });
   }
   AddNewTailor(tailor: any) {
     return this.http.post(this.url, tailor);
