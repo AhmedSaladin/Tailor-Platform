@@ -16,7 +16,7 @@ userSchema = Joi.object().keys({
     ),
 });
 tailorSchema = userSchema.keys({
-  designFor: Joi.string().valid("male", "female").required(),
+  designFor: Joi.string().valid("Men", "Women").required(),
   gender: Joi.string().valid("male", "female").required(),
 });
 
