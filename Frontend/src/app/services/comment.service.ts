@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CommentService {
+  private BaseUrl = 'http://localhost:3001/api/comments';
   private url = 'http://localhost:3000/comments';
 
   constructor(private http: HttpClient) {}
@@ -24,5 +25,8 @@ export class CommentService {
   }
   CreateCommenr(comment: any) {
     return this.http.post(this.url,comment, {observe: 'response'});
+  }
+  getTailorRate(tailor_id:any){
+    return this.http.get(`${this.url}/rate/${tailor_id}`,{observe: 'response'})
   }
 }
