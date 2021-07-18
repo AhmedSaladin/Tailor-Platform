@@ -76,3 +76,13 @@ input.ng-valid.ng-touched {
 .span{
   padding-top: 5px;
 }
+
+.btn-primary{
+  background-color: #2e86ab;
+  border: 1px solid white;
+}
+.btn-primary:hover{
+  background-color: white;
+  color: #2e86ab;
+  border: 1px solid #2e86ab;
+}

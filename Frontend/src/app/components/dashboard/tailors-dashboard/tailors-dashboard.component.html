@@ -46,7 +46,7 @@
 
                     <div class="form-row">
                         <div class="mb-3">
-                            <input formControlName="phone" #phone id="phone" name="phone" type="text"
+                            <input formControlName="phone" id="phone" type="text"
                                 placeholder="Phone" class="form-control no-box-shadow" />
                             <div class="text-danger" *ngIf="getControl.phone.touched && getControl.phone.invalid">
                                 <div *ngIf="getControl.phone.errors.required">
@@ -65,35 +65,25 @@
 
                     <div class="form-row">
                         <div class="mb-3">
-                            <!-- <label for="inputState" class="form-label no-box-shadow">Gender:</label>
-                            <select class="form-select no-box-shadow" name="gender" formControlName="gender">
-                                <option [selected]="true">Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select> -->
                             <label style="margin-right: 39px;">Gender :</label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" formControlName="gender" name="gender" id="inlineRadio1" value="male">
                                 <label class="form-check-label" for="inlineRadio1">Male</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"  name="gender" formControlName="gender" id="inlineRadio2" value="female">
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
-                              </div>
-
-                           
-                              
+                                <input class="form-check-input" type="radio" formControlName="gender" id="inlineRadio2" value="female">
+                                <label class="form-check-label me-4" for="inlineRadio2">Female</label>
+                                <span class="text-danger" *ngIf="getControl.gender.value == ''">
+                                    <span>
+                                        Gender is Required
+                                    </span>
+                                </span>
+                              </div>   
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="mb-3">
-                            <!-- <label for="inputState" class="form-label no-box-shadow">Design For:</label>
-                            <select class="form-select no-box-shadow" name="desingFor" formControlName="desingFor">
-                                <option [selected]='true'>Works For</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                            </select> -->
                             <label class="me-3">Design For :</label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input"  type="radio" formControlName="designFor" name="desingFor" id="inlineRadio1" value="male">
@@ -101,12 +91,15 @@
                               </div>
                               <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio"  formControlName="designFor" name="desingFor" id="inlineRadio2" value="female">
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                                <label class="form-check-label me-4" for="inlineRadio2">Female</label>
+                                <span class="text-danger" *ngIf="getControl.designFor.value == ''">
+                                    <span>
+                                        Design For is Required
+                                    </span>
+                                </span>
                               </div>
-                            
-                              
-                           
                         </div>
+
                     </div>
 
                     <div class="mb-3">

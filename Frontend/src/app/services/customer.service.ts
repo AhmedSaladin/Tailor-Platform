@@ -37,15 +37,15 @@ export class CustomerService {
   }
 
   login(user: UserLogin) {
-    this.binding.changeLoading(true);
+    // this.binding.changeLoading(true);
     return this.http
       .post<Login>(`${this.URL}/login`, user, {
         observe: 'response',
       })
       .pipe(
         catchError(this.handleError),
-        tap((res) => {
-          this.binding.changeLoading(false);
+        tap(
+          (res) => {//this.binding.changeLoading(false);
           const user = new User(
             res.body!.id,
             res.body!.isTailor,
@@ -126,7 +126,7 @@ export class CustomerService {
 
   private handleError(err: HttpErrorResponse) {
     console.log(err);
-    this.binding.changeLoading(false);
+    // this.binding.changeLoading(false);
     if (err.error.message == 'NOT FOUND')
       return throwError('Email or Password wrong.');
 
