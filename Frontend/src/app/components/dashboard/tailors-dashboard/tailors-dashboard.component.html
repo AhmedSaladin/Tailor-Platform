@@ -96,12 +96,12 @@
                             </select> -->
                             <label class="me-3">Design For :</label>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input"  type="radio" formControlName="designFor" name="desingFor" id="inlineRadio1" value="male">
-                                <label class="form-check-label" for="inlineRadio1">Male</label>
+                                <input class="form-check-input"  type="radio" formControlName="designFor" name="designFor" id="inlineRadio1" value="Men">
+                                <label class="form-check-label" for="inlineRadio1">Men</label>
                               </div>
                               <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio"  formControlName="designFor" name="desingFor" id="inlineRadio2" value="female">
-                                <label class="form-check-label" for="inlineRadio2">Female</label>
+                                <input class="form-check-input" type="radio"  formControlName="designFor" name="designFor" id="inlineRadio2" value="Women">
+                                <label class="form-check-label" for="inlineRadio2">Women</label>
                               </div>
                             
                               
@@ -159,7 +159,7 @@
                 <td>
                     <!-- Button trigger modal -->
                     <button style="border: none;" class="bg-light" data-bs-toggle="modal" data-bs-target="#viewTailor"
-                        (click)="getTailor(t.id)">
+                        (click)="getTailor(t._id)">
                         <i class="fas fa-eye"></i>
                     </button>
 
@@ -188,7 +188,7 @@
                                         </thead>
                                         <tbody>
                                             <tr *ngIf="tailor else ff ">
-                                                <td>{{tailor.id}}</td>
+                                                <td>{{tailor._id}}</td>
                                                 <td>{{tailor.name}}</td>
                                                 <td>{{tailor.email}}</td>
                                                 <td>{{tailor.phone}}</td>
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </td>
-                <td><i class="fas fa-user-times" style="cursor: pointer;" (click)="deleteTailor(t.id)"></i></td>
+                <td><i class="fas fa-user-times" style="cursor: pointer;" (click)="deleteTailor(t._id)"></i></td>
             </ng-container>
         </tr>
     </tbody>
