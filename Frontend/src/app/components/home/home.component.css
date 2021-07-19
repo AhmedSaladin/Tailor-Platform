@@ -8,33 +8,76 @@
     font-size: 22px;
 }
 
-.accordion-item {
-    font-size: 15px;
-}
-
-
 /* Rating Styles */
+
+.accordion-body::before {
+    display: block;
+    height: 2px;
+    background-color: #2e86ab;
+    content: " ";
+    width: 20px;
+    margin-bottom: 10px;
+    
+}
 
 .list-group .fa-star {
     color: gold !important;
 }
 
-/* .accordion-item .accBtn {
-    color: rgb(12, 99, 228);
+.list-group-item{
+    border: none;
+    font-size: small;
+    font-weight: bold;
 }
-.accordion-item .accBtn:hover {
-    background-color: rgb(231, 241, 255);
-} */
+
+/* Start Filter Item*/
+
+.accordion-first-item{
+    background-color: #2e86ab;
+    color:white !important;
+    box-shadow: none;
+}
+
+.accordion-first-item::after{
+    background-image: none !important;
+}
+
+/* End Filter Item*/
+
+.accBtn {
+    background-color: white;
+}
 
 .accordion-button{
-    background-color: #2e86ab;
-    color: white !important;
-    font-weight: bold;
+    color: #11658a;
+    box-shadow: none;
+    font-size: 17px;
 }
-.accordion-button:hover{
-    background-color: white;
-    color: #2e86ab !important;
-    border: 2px solid #2e86ab;
-    font-weight: bold;
+/* .accordion-button:hover{
+    border: 1px solid #2e86ab;
+    box-shadow: none;
+} */
+
+.accordion-button::after{
+    background-image: url("../../../assets/images/arrowUp.svg");
 }
+
+.fa-filter {
+    color: white;
+}
+
+.accordion-last-item::after {
+    background-image: none;
+}
+.accordion-last-item:hover {
+    border: 1px solid #2e86ab;
+    box-shadow: none;
+}
+
+.form-check-input {
+    box-shadow: none;
+}
+
+
+
 /* end Side Bar */
