@@ -51,14 +51,13 @@ module.exports = {
     is_not_found(valid);
     const authUser = { id: user._id, isTailor: user.isTailor };
     const accessToken = createToken(authUser);
-    res
-      .status(OK)
-      .json({
-        token: accessToken,
-        id: user._id,
-        isTailor: user.isTailor,
-        admin: user.admin,
-      });
+    res.status(OK).json({
+      id: user._id,
+      name: user.name,
+      token: accessToken,
+      isTailor: user.isTailor,
+      admin: user.admin,
+    });
   },
 
   get_all_users: async (req, res) => {

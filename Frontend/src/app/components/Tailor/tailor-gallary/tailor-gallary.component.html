@@ -31,7 +31,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body" *ngIf="gallery; else empty">
+          <div class="modal-body" *ngIf="gallery.length !== 0; else empty">
             <div class="row scroll">
               <div
                 class="col-12 col-md-6 col-lg-4 delete-img text-center"
@@ -72,7 +72,7 @@
     <!-- End Gallary pop-up -->
     <!-- Start Carousel -->
     <div
-      *ngIf="gallery; else nothing"
+      *ngIf="gallery.length !== 0; else nothing"
       id="carouselExampleFade"
       class="carousel slide carousel-fade my-gallery-body"
       data-bs-ride="carousel"
@@ -113,7 +113,7 @@
   <!-- End Carousel -->
 </div>
 <ng-template #nothing>
-  <div class="text-center mt-2 mb-2 text-black-50">
+  <div class="text-center mt-3 mb-2 text-black-50">
     Tailor didn't add his gallery yet.
   </div>
 </ng-template>

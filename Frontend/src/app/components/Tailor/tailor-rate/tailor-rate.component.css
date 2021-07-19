@@ -4,15 +4,6 @@
 min-height: 150px;
 }
 
-.fa-star {
-  color: #ffb624;
-  padding-right: 0.1em;
-}
-
-.rate {
-  text-align: center;
-}
-
 .rate-head {
   text-align: left;
   font-size: 1.4rem;

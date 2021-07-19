@@ -13,6 +13,7 @@ import { TailorService } from 'src/app/services/tailor.service';
 export class TailorProfileComponent implements OnInit, OnDestroy {
   eve!: Subscription;
   @Output() currentUserId: any;
+  @Output() user: any;
   tailor: any;
   tailorId = this.url.snapshot.params.id;
   constructor(
@@ -26,11 +27,11 @@ export class TailorProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {}
-  @Output() user: any;
 
   information(id: string) {
     this.eve = this.api.get_tailor_info(id).subscribe(
       (res) => {
+        console.log(res.body);
         this.user = res.body;
       },
       (err) => {
