@@ -12,5 +12,7 @@ export class TailorCommentsComponent implements OnInit {
   // looking for better solutions to handle stars.
   ngOnInit(): void {
     this.rate = new Array(this.comment.rate).fill(0);
+    this.comment.customer_name=this.comment.customer_id.name;
+    //console.log(this.comment)
   }
 }

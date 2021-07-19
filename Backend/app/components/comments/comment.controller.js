@@ -1,4 +1,5 @@
 const Comment = require("./comment.model");
+const mongoose=require("mongoose")
 const { is_valid_id, is_not_found } = require("../../utility/errors");
 const { OK } = require("../../utility/statusCodes");
 
@@ -94,8 +95,9 @@ const get_all_rate = (req, res) => {
 };
 
 const get_tailor_rate = async (req, res) => {
-  const id = req.params.tailor_id;
-  is_valid_id(id);
+  const params_id = req.params.tailor_id;
+  is_valid_id(params_id);
+  const id = mongoose.Types.ObjectId(req.params.tailor_id);
   const rate = await Comment.aggregate([
     {
       $match: { tailor_id: id },
