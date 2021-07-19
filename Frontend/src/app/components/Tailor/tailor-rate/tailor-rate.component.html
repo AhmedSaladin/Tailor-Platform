@@ -2,7 +2,7 @@
   <div class="card-body">
     <h5 class="card-title rate-head d-inline">Comments</h5>
     <div *ngIf="comments.length !== 0; else nothing">
-      <div class="card-text" *ngFor="let comment of comments">
+      <div class="card-text mt-3" *ngFor="let comment of comments">
         <app-tailor-comments
           [comment]="comment"
           *ngIf="comment.body"
