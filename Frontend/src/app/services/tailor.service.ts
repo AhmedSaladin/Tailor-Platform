@@ -16,7 +16,10 @@ export class TailorService {
     return this.http.get(`${this.url}?${filter}`, { observe: 'response' });
   }
   get_tailor_info(id: any) {
-    return this.http.get(`${this.url}/${id}`, { observe: 'response' });
+    this.binding.changeLoading(true);
+    return this.http
+      .get(`${this.url}/${id}`, { observe: 'response' })
+      .pipe(tap((res) => this.binding.changeLoading(false)));
   }
   update_tailor_info(id: any, body: any) {
     return this.http.patch(`${this.url}/${id}`, body, { observe: 'response' });

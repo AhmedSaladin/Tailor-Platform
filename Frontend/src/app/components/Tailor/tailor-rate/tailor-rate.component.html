@@ -1,15 +1,15 @@
 <div class="card col-12">
-  <!-- Rate -->
-  <section class="rate">
-    <div class="card-body">
-      <h5 class="card-title rate-head">Comments</h5>
-      <div *ngIf="comments; else nothing">
-        <div class="card-text" *ngFor="let comment of comments">
-          <app-tailor-comments [comment]="comment" *ngIf="comment.body"></app-tailor-comments>
-        </div>
+  <div class="card-body">
+    <h5 class="card-title rate-head d-inline">Comments</h5>
+    <div *ngIf="comments.length !== 0; else nothing">
+      <div class="card-text" *ngFor="let comment of comments">
+        <app-tailor-comments
+          [comment]="comment"
+          *ngIf="comment.rate"
+        ></app-tailor-comments>
       </div>
     </div>
-  </section>
+  </div>
 </div>
 
 <ng-template #nothing>

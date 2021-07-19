@@ -17,7 +17,9 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
   eve!: Subscription;
   constructor(private api: TailorService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.gallery.length === 0);
+  }
   on_upload_complete(event: any) {
     let url = event.cdnUrl;
     let length = event.count;

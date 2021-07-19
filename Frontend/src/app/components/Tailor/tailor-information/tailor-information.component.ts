@@ -67,8 +67,9 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   review: any;
   get_tailor_rate() {
     this.eve = this.apiComment
-      .getTailorRate(this.user_info.id)
+      .getTailorRate(this.user_info._id)
       .subscribe((res) => {
+        console.log(res.body)
         this.review = res.body;
         if (this.review.length == 0) {
           this.review[0] = {
