@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 module.exports = mongoose.model("orders", {
-  customerID: {
+  customer_id: {
     type: mongoose.Schema.Types.ObjectId,
+    ref:'user',
     required: true,
   },
-  tailorID: {
+  tailor_id: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
   },
@@ -13,9 +14,17 @@ module.exports = mongoose.model("orders", {
     type: Array,
     required: true,
   },
-  sizes: {
-    type: Object,
-    required: true,
+  customer_sizes: {
+    type: {
+      armLength: Number,
+      height: Number,
+      waist: Number,
+      collar: Number,
+      thigh: Number,
+      chest: Number,
+      shoulder: Number,
+      inseam: Number,
+    },
   },
   status: {
     type: String,

@@ -56,7 +56,6 @@ export class BookingComponent implements OnInit, OnDestroy {
       sleeve: [` `, Validators.required],
     });
     this.get_customer_data();
-
   }
 
   get getControl() {
@@ -65,20 +64,12 @@ export class BookingComponent implements OnInit, OnDestroy {
   get_customer_data() {
     // ID is hard coded it change when auth work.
 
-    this.eve = this.api.get_customer_info_id(this.currentUserId).subscribe(
-      (res) => {
-        this.user = res.body;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.user = this.api.user.value?.Id;
   }
 
   submitD(customer_sizes: NgForm) {
     this.order = {
-      customer_id: `${this.user.id}`,
-      customer_name: this.user.name,
+      customer_id: `${this.user}`,
       tailor_id: this.url.snapshot.params.id,
       status: 'pending',
       design: this.images,

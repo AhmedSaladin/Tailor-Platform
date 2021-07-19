@@ -26,6 +26,7 @@ export class OrdersComponent implements OnInit {
   get_all_orders() {
     this.request_api.get_current_user_orders().subscribe(
       (res) => {
+        console.log(res.body);
         this.orders = res.body;
       },
       (err) => {

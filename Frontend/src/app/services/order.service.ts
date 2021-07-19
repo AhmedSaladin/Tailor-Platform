@@ -9,6 +9,8 @@ import { CustomerService } from './customer.service';
 })
 export class OrderService {
   private url = 'http://localhost:3000/orders';
+  private urlBack = 'http://localhost:3010/api/orders';
+
   constructor(
     private http: HttpClient,
     private user: CustomerService,
@@ -17,7 +19,7 @@ export class OrderService {
 
   get_current_user_orders() {
     const userId = this.user.user.value?.Id;
-    return this.http.get(`${this.url}?customer_id=${userId}`, {
+    return this.http.get(`${this.urlBack}/customer-orders/${userId}`, {
       observe: 'response',
     });
   }
@@ -39,7 +41,7 @@ export class OrderService {
   }
 
   create_new_order(order: any) {
-    return this.http.post(this.url, order, { observe: 'response' });
+    return this.http.post(this.urlBack, order, { observe: 'response' });
   }
 
   update_status(state: string, id: string) {
@@ -57,13 +59,11 @@ export class OrderService {
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
-  getOrderById(id:string){
+  getOrderById(id: string) {
     this.binding.changeLoading(true);
-    return this.http.get(`${this.url}/${id}`,{observe:'response'}).pipe(
-      tap(
-        (res) => this.binding.changeLoading(false)
-      )
-    );
+    return this.http
+      .get(`${this.url}/${id}`, { observe: 'response' })
+      .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
   deleteOrder(id: any) {

@@ -11,57 +11,106 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 
 // send email
-const mailCustomer = ()=>{
-    userModel.findOne({email: email})
-              .then(transporter.sendMail({
+/*const mailCustomer = (email)=>{
+    transporter.sendMail({
                     to: email ,
                     from: 'Tailor@Tailor_shop.com',
                     subject: "Don't replay to this",
                     html: '<h1>Thank you for choosing us , your order is made</h1>'
-                }));
-};
+                });
+};*/
 
 
 
 
 
 const create_order = (req , res , next )=>{
+    console.log(req.body);
     const order = new orderModel({
-        // _id: mongoose.Types.ObjectId(),
-        customerID: req.body.customerID,
-        tailorID: req.body.tailorID,
+        customer_id: req.body.customer_id,
+        tailor_id: req.body.tailor_id,
         designs: req.body.designs,
         sizes: req.body.sizes, 
     });
     order.save().then(result =>{
         console.log(result);
         res.status(201).json();
-        mailCustomer();
+        // customer_mail= userModel.findById(result.customer_id);
+        // mailCustomer()
 
     }).catch(err=>{
-        console.log(err);
+        console.log(err.toString());
         res.status(500).json({message: err.toString()})
     });
 };
 
 
+// const view_order = (req , res , next )=>{
+//     // get customer name & tailor name in every doc.
+//     // orderModel.find()
+//     //           .then(docs =>{
+//     //                      res.status(200).json(docs);
+//     //                         })
+//     //             .catch(err =>{
+//     //                     res.status(500).json({
+//     //                         error: err
+//     //                     })
+//     //             });
+
+// };
 const view_order = (req , res , next )=>{
     // id ? tailor :cutomer
-    // get order by customer id find({customerID:customer_id})
     // get order by tailor id find({tailorID:tailor_id})
-    // get order by id findById
-    orderModel.find()
-              .then(docs =>{
-                         res.status(200).json(docs);
-                            })
-                .catch(err =>{
-                        res.status(500).json({
-                            error: err
-                        })
-                });
+    if(req.query.tailor_id){
+        orderModel.find({tailor_id:req.query.tailor_id})
+        .then(docs =>{
+            res.status(200).json(docs);
+        })
+        .catch(err =>{
+            res.status(500).json({
+                error: err
+            })
+        });    
+    }
+    // get order by customer id find({customerID:customer_id})
+    else if(req.query.customer_id){
+        orderModel.find({customer_id:req.query.customer_id})
+            //   .then(docs =>{
+            //              res.status(200).json(docs);
+            //                 })
+            //     .catch(err =>{
+            //             res.status(500).json({
+            //                 error: err
+            //             })
+            //     });
+
+            .populate('_id','name')
+        .exec((err, result) =>{
+            if(err){
+               console.log(err)
+            }else{
+             res.status(200).json(result)
+                console.log(result)
+            }
+        })  
+        }
+ 
+    else{
+        orderModel.find()
+        .then(docs =>{
+            res.status(200).json(docs);
+        })
+        .catch(err =>{
+            res.status(500).json({
+                error: err
+            })
+        });
+    }    
 };
 const view_orderByTailor = (req , res , next )=>{
-    orderModel.find({tailorID:tailor_id})
+    // get customer name by aggregation and nest t in every result
+    const id = req.params.id
+    orderModel.find({tailor_id:id})
               .then(docs =>{
                          res.status(200).json(docs);
                             })
@@ -72,7 +121,9 @@ const view_orderByTailor = (req , res , next )=>{
                 });
 };
 const view_orderByCustomer = (req , res , next )=>{
-    orderModel.find({customerID:customer_id})
+    // get tailor name by aggregation and nest it in every result
+    const id = req.params.id
+    orderModel.find({customer_id:id})
               .then(docs =>{
                          res.status(200).json(docs);
                             })
@@ -82,8 +133,8 @@ const view_orderByCustomer = (req , res , next )=>{
                         })
                 });
 };
-const view_orderByOrder = (req , res , next )=>{
-    orderModel.findById(_id)
+const view_orderByOrderId = (req , res , next )=>{
+    orderModel.findById(req.params.id)
               .then(docs =>{
                          res.status(200).json(docs);
                             })
@@ -99,5 +150,5 @@ module.exports={
     view_order,
     view_orderByTailor,
     view_orderByCustomer,
-    view_orderByOrder,
+    view_orderByOrderId,
 }
