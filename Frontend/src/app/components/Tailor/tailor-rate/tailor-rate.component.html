@@ -5,7 +5,7 @@
       <div class="card-text" *ngFor="let comment of comments">
         <app-tailor-comments
           [comment]="comment"
-          *ngIf="comment.body"
+          *ngIf="comment.rate"
         ></app-tailor-comments>
       </div>
     </div>
