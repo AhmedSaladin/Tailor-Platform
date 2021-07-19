@@ -14,15 +14,25 @@
       >
         <div class="accordion" id="accordionPanelsStayOpenExample">
           <div class="accordion-item">
+              <button
+                class="accordion-button accordion-first-item"
+              >
+              <i class="fas fa-filter me-3"></i>
+                Filter
+              </button>
+
+          </div>
+          <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
               <button
-                class="accordion-button"
+                class="accordion-button accBtn"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseOne"
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne"
               >
+              <i class="fas fa-users me-3"></i>
                 Specialization
               </button>
             </h2>
@@ -59,13 +69,14 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button accBtn collapsed"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseTwo"
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwo"
               >
+              <i class="fas fa-venus-mars me-3"></i>
                 Gender
               </button>
             </h2>
@@ -99,13 +110,14 @@
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingThree">
               <button
-                class="accordion-button collapsed"
+                class="accordion-button accBtn collapsed"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target="#panelsStayOpen-collapseThree"
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree"
               >
+              <i class="fas fa-star me-3"></i>
                 Rate
               </button>
             </h2>
@@ -118,7 +130,7 @@
                 <div class="list-group">
                   <label class="list-group-item">
                     <input
-                      class="form-check-input me-1"
+                      class="form-check-input me-2"
                       type="checkbox"
                       value=""
                     />
@@ -126,7 +138,7 @@
                   </label>
                   <label class="list-group-item">
                     <input
-                      class="form-check-input me-1"
+                      class="form-check-input me-2"
                       type="checkbox"
                       value=""
                     />
@@ -135,7 +147,7 @@
                   </label>
                   <label class="list-group-item">
                     <input
-                      class="form-check-input me-1"
+                      class="form-check-input me-2"
                       type="checkbox"
                       value=""
                     />
@@ -145,7 +157,7 @@
                   </label>
                   <label class="list-group-item">
                     <input
-                      class="form-check-input me-1"
+                      class="form-check-input me-2"
                       type="checkbox"
                       value=""
                     />
@@ -156,7 +168,7 @@
                   </label>
                   <label class="list-group-item rateFive">
                     <input
-                      class="form-check-input me-1"
+                      class="form-check-input me-2"
                       type="checkbox"
                       value=""
                     />
@@ -171,11 +183,14 @@
             </div>
           </div>
           <div class="accordion-item">
-            <input
-              class="accBtn accordion-button collapsed"
+            <button
+              class="accordion-button accordion-last-item collapsed"
               type="submit"
               value="Get Tailors"
-            />
+            >
+            <i class="fas fa-search me-3"></i>
+            Get tailors
+            </button>
           </div>
         </div>
       </form>
