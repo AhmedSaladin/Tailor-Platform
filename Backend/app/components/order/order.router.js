@@ -5,10 +5,10 @@ const orderController = require('./order.controller')
 
 
 router.post('/',orderController.create_order);
-router.get('/orders',orderController.view_order);
-router.get('/customer-order',orderController.view_orderByCustomer);
-router.get('/:orderId',orderController.view_orderByOrderId);
-router.get('/tailor-order',orderController.view_orderByTailor);
+router.get('',orderController.view_order);
+router.get('/customer-orders/:id',orderController.view_orderByCustomer);
+router.get('/:id',orderController.view_orderByOrderId);
+router.get('/tailor-orders/:id',orderController.view_orderByTailor);
 
 
 

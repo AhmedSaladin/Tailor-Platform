@@ -1,6 +1,5 @@
 export interface Order {
   customer_id: string;
-  customer_name: string;
   tailor_id: string;
   status: string;
   design: Array<string>;

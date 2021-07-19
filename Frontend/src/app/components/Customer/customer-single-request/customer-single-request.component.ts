@@ -26,12 +26,12 @@ export class CustomerSingleRequestComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.get_tailor_details(this.order.tailor_id);
-    this.get_customer_details(this.order.customer_id);
+    // this.get_tailor_details(this.order.tailor_id);
+    // this.get_customer_details(this.order.customer_id);
     this.imags = this.order.design;
     this.current_image = this.imags[0];
     this.formValidation();
-    this.getComment(this.order.id);
+    // this.getComment(this.order.id);
   }
   get_tailor_details(id: any) {
     this.eve = this.tailor_api.get_tailor_info(id).subscribe(
@@ -69,7 +69,7 @@ export class CustomerSingleRequestComponent implements OnInit {
   formValidation() {
     this.CommentForm = new FormGroup({
       comment: new FormControl('', [Validators.maxLength(1000)]),
-      rate: new FormControl(0,[Validators.required]),
+      rate: new FormControl(0, [Validators.required]),
     });
   }
   get rate() {
@@ -79,10 +79,9 @@ export class CustomerSingleRequestComponent implements OnInit {
     return this.CommentForm.get('comment');
   }
 
-
   ///////
-  openModal=false;
-  showModel(){
+  openModal = false;
+  showModel() {
     this.openModal = true;
   }
   ///Submit comment///
@@ -103,14 +102,13 @@ export class CustomerSingleRequestComponent implements OnInit {
     this.openModal = false;
   }
 
-
-/////////////has comment//////////////////
-  getComment(id:any){
+  /////////////has comment//////////////////
+  getComment(id: any) {
     this.commentApi.get_comments_by_order_id(id).subscribe(
-      (res)=>{
-        let currentComment:any=res.body;
-        if(currentComment.length>0){
-          this.hasComment=true;
+      (res) => {
+        let currentComment: any = res.body;
+        if (currentComment.length > 0) {
+          this.hasComment = true;
         } else {
           this.hasComment = false;
         }

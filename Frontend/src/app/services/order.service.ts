@@ -19,7 +19,7 @@ export class OrderService {
 
   get_current_user_orders() {
     const userId = this.user.user.value?.Id;
-    return this.http.get(`${this.url}?customer_id=${userId}`, {
+    return this.http.get(`${this.urlBack}/customer-orders/${userId}`, {
       observe: 'response',
     });
   }
@@ -59,13 +59,11 @@ export class OrderService {
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
-  getOrderById(id:string){
+  getOrderById(id: string) {
     this.binding.changeLoading(true);
-    return this.http.get(`${this.url}/${id}`,{observe:'response'}).pipe(
-      tap(
-        (res) => this.binding.changeLoading(false)
-      )
-    );
+    return this.http
+      .get(`${this.url}/${id}`, { observe: 'response' })
+      .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
   deleteOrder(id: any) {
