@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model("orders", {
   customer_id: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:'user',
+  //  ref:'user',
     required: true,
   },
   tailor_id: {
