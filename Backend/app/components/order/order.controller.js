@@ -1,5 +1,6 @@
 const  mongoose  = require('mongoose');
 const userModel = require('../user/user.model');
+const tailorModel = require('../tailor/tailor.model');
 const orderModel = require('./order.model');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
@@ -62,28 +63,22 @@ const view_order = (req , res , next )=>{
     // id ? tailor :cutomer
     // get order by tailor id find({tailorID:tailor_id})
     if(req.query.tailor_id){
-        orderModel.find({tailor_id:req.query.tailor_id})
-        .then(docs =>{
-            res.status(200).json(docs);
-        })
-        .catch(err =>{
-            res.status(500).json({
-                error: err
-            })
-        });    
-    }
-    // get order by customer id find({customerID:customer_id})
-    else if(req.query.customer_id){
-            console.log(userModel.collection.name)
-  const id = mongoose.Types.ObjectId(req.query.customer_id);
-  
+        // orderModel.find({tailor_id:req.query.tailor_id})
+        // .then(docs =>{
+        //     res.status(200).json(docs);
+        // })
+        // .catch(err =>{
+        //     res.status(500).json({
+        //         error: err
+        //     })
+        // });
+        
+        const id = mongoose.Types.ObjectId(req.query.tailor_id);        
         orderModel.aggregate([
-            { $match: {customer_id:id} },
+            { $match: {tailor_id:id} },
               {
                  $lookup: {
                     from: userModel.collection.name,
-                    // localField: 'customer_id',
-                    // foreignField: '_id',
                     let: { order_item: "$customer_id" },
                     pipeline: [
                         { $match:
@@ -95,10 +90,8 @@ const view_order = (req , res , next )=>{
                                 }
                             }
                         },
-                        //{ $project: { orders: 0, _id: 0,isTailor: 0, password: 0,gender: 0, avatar: 0, sizes: 0 } }
-                        { $project: { name: 1, _id: 0 } }
+                        { $project: { name: 1, _id:0} }
                     ],
-          
                     as: 'customer'
                  }
               },
@@ -114,6 +107,51 @@ const view_order = (req , res , next )=>{
                 console.log(error);
               });
 
+
+
+    }
+    // get order by customer id find({customerID:customer_id})
+    else if(req.query.customer_id){
+            // console.log(userModel.collection.name)
+            const id = mongoose.Types.ObjectId(req.query.customer_id);
+            orderModel.aggregate([
+                { $match: {customer_id:id} },
+                  {
+                     $lookup: {
+                        from: tailorModel.collection.name,
+                        // localField: 'customer_id',
+                        // foreignField: '_id',
+                        let: { order_item: "$tailor_id" },
+                        pipeline: [
+                            { $match:
+                                { $expr:
+                                    { $and:
+                                    [
+                                        { $eq: [ "$_id",  "$$order_item" ] }
+                                    ]
+                                    }
+                                }
+                            },
+                            //{ $project: { orders: 0, _id: 0,isTailor: 0, password: 0,gender: 0, avatar: 0, sizes: 0 } }
+                            { $project: { name: 1, } }
+                        ],
+              
+                        as: 'tailor'
+                     }
+                  },
+                  {
+                    $unwind: "$tailor",
+                  },
+                  ])
+                  .then((result) => {
+                    console.log(result);
+                    res.status(200).json(result);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+    
+        
         }
  
     else{
