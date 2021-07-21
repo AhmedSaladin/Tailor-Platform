@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import { TailorService } from 'src/app/services/tailor.service';
 import { Tailor } from '../../shared/models';
 
@@ -89,8 +88,15 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
       password: form.value.password,
     };
     this.tailorServive.AddNewTailor(tailor).subscribe(
-      () => this.tostr.success('Tailor added successfully'),
-      (err) => this.tostr.error(err)
+      () => {
+        this.tostr.success('Tailor added successfully', 'Success', {
+          positionClass: 'toast-top-center',
+        });
+        this.get_tailors();
+      },
+      (err) => {
+        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+      }
     );
     form.reset();
   }
@@ -98,18 +104,26 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
   getTailor(id: any) {
     this.tailorServive.get_tailor_info(id).subscribe(
       (res) => (this.tailor = res.body),
-      (err) => this.tostr.error(err)
+      (err) => {
+        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+      }
     );
   }
 
   deleteTailor(id: any) {
-    this.tailorServive.deleteTailor(id).subscribe(
-      () => {
-        this.tostr.success('Tailor deleted successfully');
-        this.tailors = this.tailors.filter((tailor) => tailor._id != id);
-      },
-      (err) => this.tostr.error(err)
-    );
+    const yes = confirm('Do you want delete this tailor');
+    if (yes) {
+      this.tailorServive.deleteTailor(id).subscribe(
+        () => {
+          this.tostr.success('Tailor deleted successfully', 'Success', {
+            positionClass: 'toast-top-center',
+          });
+          this.get_tailors();
+        },
+        (err) =>
+          this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' })
+      );
+    }
   }
 
   get_tailors() {
@@ -119,7 +133,7 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
         else this.tailors = res.body;
       },
       (err) => {
-        this.tostr.error(err);
+        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
       }
     );
   }

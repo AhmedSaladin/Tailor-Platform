@@ -1,7 +1,7 @@
 <!--Main Screen  section -->
-<div class="container main-screen" *ngIf="user">
+<div class="container main-screen mt-4" *ngIf="user">
   <div class="row">
-    <div class="col-12 col-lg-8 mb-3 mt-4">
+    <div class="col-12 col-lg-8 mb-3">
       <div class="right-side">
         <!-- you send all user data here futuer hint -->
         <app-tailor-information
@@ -24,7 +24,7 @@
     </div>
     <!-- end right side -->
     <!-- start left side  -->
-    <div class="col-12 col-lg-4 order-first order-lg-last mt-4">
+    <div class="col-12 col-lg-4 order-first order-lg-last">
       <div class="mb-3" *ngIf="tailor && tailorId === currentUserId">
         <app-orders></app-orders>
       </div>

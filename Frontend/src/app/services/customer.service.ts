@@ -43,8 +43,7 @@ export class CustomerService {
       })
       .pipe(
         catchError(this.handleError),
-        tap(
-          (res) => {
+        tap((res) => {
           const user = new User(
             res.body!.id,
             res.body!.isTailor,
