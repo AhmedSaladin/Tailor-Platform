@@ -44,6 +44,7 @@ import { OrdersDashboardComponent } from './components/dashboard/orders-dashboar
 import { OrdersComponent } from './components/shared/orders/orders.component';
 import { BindingService } from './services/binding/binding.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     OrdersComponent,
@@ -91,6 +92,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MatIconModule,
     MatDividerModule,
     MatListModule,
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
     {

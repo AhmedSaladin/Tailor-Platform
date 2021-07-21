@@ -1,6 +1,7 @@
 import { OnDestroy, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { TailorService } from 'src/app/services/tailor.service';
@@ -19,7 +20,9 @@ export class TailorProfileComponent implements OnInit, OnDestroy {
   constructor(
     private api: TailorService,
     private url: ActivatedRoute,
-    private customer: CustomerService
+    private customer: CustomerService,
+    private tostr: ToastrService,
+    private rotuter: Router
   ) {
     this.currentUserId = this.customer.user.value?.Id;
     this.tailor = this.customer.user.value?.IsTailor;
@@ -31,11 +34,11 @@ export class TailorProfileComponent implements OnInit, OnDestroy {
   information(id: string) {
     this.eve = this.api.get_tailor_info(id).subscribe(
       (res) => {
-        console.log(res.body);
         this.user = res.body;
       },
       (err) => {
-        console.log(err);
+        this.tostr.error(err);
+        this.rotuter.navigate(['notfound']);
       }
     );
   }

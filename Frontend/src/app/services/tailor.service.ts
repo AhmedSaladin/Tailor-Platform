@@ -1,13 +1,14 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 import { BindingService } from './binding/binding.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TailorService {
-  private url = 'http://localhost:3000/api/tailors/';
+  private url = 'http://localhost:3000/api/tailors';
   constructor(private http: HttpClient, private binding: BindingService) {}
   get_tailors_info() {
     return this.http.get(this.url, { observe: 'response' });
@@ -17,9 +18,10 @@ export class TailorService {
   }
   get_tailor_info(id: any) {
     this.binding.changeLoading(true);
-    return this.http
-      .get(`${this.url}/${id}`, { observe: 'response' })
-      .pipe(tap((res) => this.binding.changeLoading(false)));
+    return this.http.get(`${this.url}/${id}`, { observe: 'response' }).pipe(
+      catchError(this.handleError),
+      tap((res) => this.binding.changeLoading(false))
+    );
   }
   update_tailor_info(id: any, body: any) {
     return this.http.patch(`${this.url}/${id}`, body, { observe: 'response' });
@@ -35,5 +37,14 @@ export class TailorService {
     return this.http
       .get(this.url)
       .pipe(tap((res) => this.binding.changeLoading(false)));
+  }
+  private handleError(err: HttpErrorResponse) {
+    if (err.error.message == 'Invalid ID.')
+      return throwError('Tailor not found');
+    // if (err.error.message == 'NOT FOUND')
+    //   return throwError('Email or Password wrong.');
+
+    // if (!err.error.message) return throwError('Somthing went wrong.');
+    return throwError(err.error.message);
   }
 }

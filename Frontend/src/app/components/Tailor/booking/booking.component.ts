@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -29,7 +30,8 @@ export class BookingComponent implements OnInit, OnDestroy {
     private url: ActivatedRoute,
     private http: OrderService,
     private formBulider: FormBuilder,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.images = [];
     // sizes need to fix when auth done.
@@ -66,7 +68,10 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   submitD(customer_sizes: NgForm) {
-    if (this.user == undefined) this.router.navigate(['login']);
+    if (this.user == undefined) {
+      this.router.navigate(['login']);
+      this.toastr.warning('Please sign in first.');
+    }
     this.order = {
       customer_id: `${this.user}`,
       tailor_id: this.url.snapshot.params.id,
@@ -75,8 +80,8 @@ export class BookingComponent implements OnInit, OnDestroy {
       customer_sizes: customer_sizes.value,
     };
     this.http.create_new_order(this.order).subscribe(
-      (res) => {
-        console.log(res);
+      () => {
+        this.toastr.success('Order have been created successfully ');
       },
       (err) => console.log(err)
     );
