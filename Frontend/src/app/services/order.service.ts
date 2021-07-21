@@ -70,7 +70,9 @@ export class OrderService {
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
-  deleteOrder(id: any) {
-    return this.http.delete(`${this.url}/${id}`, { observe: 'response' });
+  deleteOrder(orderId: any) {
+    return this.http.delete(`${this.urlBack}/${orderId}`, {
+      observe: 'response',
+    });
   }
 }
