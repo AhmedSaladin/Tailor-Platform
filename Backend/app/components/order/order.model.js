@@ -25,6 +25,7 @@ module.exports = mongoose.model("orders", {
       shoulder: Number,
       inseam: Number,
     },
+  //  required:true,
   },
   status: {
     type: String,

@@ -30,8 +30,8 @@ const create_order = (req , res , next )=>{
     const order = new orderModel({
         customer_id: req.body.customer_id,
         tailor_id: req.body.tailor_id,
-        designs: req.body.designs,
-        sizes: req.body.sizes, 
+        designs: req.body.design,
+        customer_sizes: req.body. customer_sizes, 
     });
     order.save().then(result =>{
         console.log(result);
@@ -181,16 +181,69 @@ const view_orderByTailor = (req , res , next )=>{
 };
 const view_orderByCustomer = (req , res , next )=>{
     // get tailor name by aggregation and nest it in every result
-    const id = req.params.id
-    orderModel.find({customer_id:id})
-              .then(docs =>{
-                         res.status(200).json(docs);
-                            })
-                .catch(err =>{
-                        res.status(500).json({
-                            error: err
-                        })
-                });
+    // const id = req.params.id
+    // orderModel.find({customer_id:id})
+    //           .then(docs =>{
+    //                      res.status(200).json(docs);
+    //                         })
+    //             .catch(err =>{
+    //                     res.status(500).json({
+    //                         error: err
+    //                     })
+    //             });
+
+
+
+    
+    const id = mongoose.Types.ObjectId(req.params.id);
+    orderModel.aggregate([
+        { $match: {customer_id:id} },
+        {
+            $lookup: {
+               from: userModel.collection.name,
+               localField: 'customer_id',
+               foreignField: '_id',
+               as: 'customer'
+     
+            }
+         },
+         {
+           $unwind: "$customer",
+         },
+         {
+            $lookup: {
+               from: tailorModel.collection.name,
+               localField: 'tailor_id',
+               foreignField: '_id',
+               as: 'tailor'
+     
+            }
+         },
+         {
+           $unwind: "$tailor",
+         },
+         
+        {   
+            $project:{
+                designs:1,
+                status:1,
+                customer_sizes : 1,
+                customer_id:1,
+                customer_name : "$customer.name",
+                tailor_name : "$tailor.name",
+            } 
+        }
+          ])
+          .then((result) => {
+            console.log(result);
+            res.status(200).json(result);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+
+
 };
 const view_orderByOrderId = (req , res , next )=>{
     orderModel.findById(req.params.id)
