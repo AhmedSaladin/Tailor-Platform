@@ -84,7 +84,7 @@ export class CustomerService {
     this.binding.changeLoading(true);
     return this.http
       .get(this.URL)
-      .pipe(tap((res) => this.binding.changeLoading(false)));
+      .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
   get_customer_info_id(id: any) {
@@ -95,7 +95,7 @@ export class CustomerService {
       })
       .pipe(
         catchError(this.handleError),
-        tap((res) => this.binding.changeLoading(false))
+        tap(() => this.binding.changeLoading(false))
       );
   }
 
@@ -107,7 +107,7 @@ export class CustomerService {
       })
       .pipe(
         catchError(this.handleError),
-        tap((res) => this.binding.changeLoading(false))
+        tap(() => this.binding.changeLoading(false))
       );
   }
 
@@ -119,7 +119,7 @@ export class CustomerService {
       })
       .pipe(
         catchError(this.handleError),
-        tap((res) => this.binding.changeLoading(false))
+        tap(() => this.binding.changeLoading(false))
       );
   }
 

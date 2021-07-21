@@ -1,8 +1,8 @@
 import { OnDestroy, Output } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { BindingService } from 'src/app/services/binding/binding.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { TailorService } from 'src/app/services/tailor.service';
 
@@ -21,8 +21,8 @@ export class TailorProfileComponent implements OnInit, OnDestroy {
     private api: TailorService,
     private url: ActivatedRoute,
     private customer: CustomerService,
-    private tostr: ToastrService,
-    private rotuter: Router
+    private rotuter: Router,
+    private binding: BindingService
   ) {
     this.currentUserId = this.customer.user.value?.Id;
     this.tailor = this.customer.user.value?.IsTailor;
@@ -37,7 +37,7 @@ export class TailorProfileComponent implements OnInit, OnDestroy {
         this.user = res.body;
       },
       (err) => {
-        this.tostr.error(err);
+        this.binding.changeLoading(false);
         this.rotuter.navigate(['notfound']);
       }
     );

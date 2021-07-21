@@ -20,7 +20,7 @@ export class TailorService {
     this.binding.changeLoading(true);
     return this.http.get(`${this.url}/${id}`, { observe: 'response' }).pipe(
       catchError(this.handleError),
-      tap((res) => this.binding.changeLoading(false))
+      tap(() => this.binding.changeLoading(false))
     );
   }
   update_tailor_info(id: any, body: any) {
