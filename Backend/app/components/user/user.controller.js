@@ -6,6 +6,9 @@ const promise_handler = require("../../utility/promiseHandler");
 const { check_password, hashing } = require("../../utility/password");
 const { get_uuid, images_clean_up } = require("../../utility/imageHandling");
 const { createToken } = require("../../middlewares/authToken");
+const { cleaner } = require("../../utility/relationCleaner");
+
+
 const {
   is_not_found,
   if_error,
@@ -106,6 +109,8 @@ module.exports = {
     if_error(err, INTERNAL_SERVER_ERROR);
     is_not_found(user);
     await images_clean_up(user.avatar);
+    await cleaner("customer", id, "comment");
+    await cleaner("customer", id, "order");
     res.status(OK).json();
   },
 };

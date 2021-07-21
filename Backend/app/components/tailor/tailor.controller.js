@@ -8,6 +8,7 @@ const {
 const { hashing } = require("../../utility/password");
 const { get_uuid, images_clean_up } = require("../../utility/imageHandling");
 const { is_valid_id } = require("../../utility/errors");
+const { cleaner } = require("../../utility/relationCleaner");
 
 filter_tailors_get = async (req, res, next) => {
   const filter = req.query;
@@ -109,6 +110,8 @@ tailor_delete = async (req, res, next) => {
     is_valid_id(_id);
     const tailor = await Tailor.findByIdAndDelete(_id);
     await images_clean_up(tailor.avatar);
+    await cleaner("tailor", id, "comment");
+    await cleaner("tailor", id, "order");
     res.status(200).json();
   } catch (err) {
     next(err);
