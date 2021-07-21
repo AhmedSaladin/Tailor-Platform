@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { TailorService } from 'src/app/services/tailor.service';
 import { Tailor } from '../../shared/models';
 
@@ -79,7 +80,6 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
   }
 
   AddTailor(form: NgForm) {
-    console.log(form.value);
     let tailor = {
       name: form.value.fname + ' ' + form.value.lname,
       phone: form.value.phone,

@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
-import { catchError, take, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Tailor } from '../components/shared/models';
 import { BindingService } from './binding/binding.service';
 
@@ -27,8 +27,7 @@ export class TailorService {
     this.binding.changeLoading(true);
     return this.http.get(`${this.url}/${id}`, { observe: 'response' }).pipe(
       catchError(this.handleError),
-      tap(() => this.binding.changeLoading(false)),
-      take(1)
+      tap(() => this.binding.changeLoading(false))
     );
   }
 
@@ -43,15 +42,13 @@ export class TailorService {
   }
 
   AddNewTailor(tailor: any) {
-    return this.http
-      .post(this.url, tailor)
-      .pipe(catchError(this.handleError), take(1));
+    return this.http.post(this.url, tailor).pipe(catchError(this.handleError));
   }
 
   deleteTailor(id: any) {
     return this.http
       .delete(`${this.url}/${id}`, { observe: 'response' })
-      .pipe(catchError(this.handleError), take(1));
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(err: HttpErrorResponse) {
