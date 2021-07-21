@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -28,10 +28,10 @@ export class BookingComponent implements OnInit, OnDestroy {
     private api: CustomerService,
     private url: ActivatedRoute,
     private http: OrderService,
-    public formBulider: FormBuilder
+    private formBulider: FormBuilder,
+    private router: Router
   ) {
     this.images = [];
-    // Create user id and get it form local storge when auth done.
     // sizes need to fix when auth done.
   }
   ngOnInit(): void {
@@ -62,12 +62,11 @@ export class BookingComponent implements OnInit, OnDestroy {
     return this.sizesValidation.controls;
   }
   get_customer_data() {
-    // ID is hard coded it change when auth work.
-
     this.user = this.api.user.value?.Id;
   }
 
   submitD(customer_sizes: NgForm) {
+    if (this.user == undefined) this.router.navigate(['login']);
     this.order = {
       customer_id: `${this.user}`,
       tailor_id: this.url.snapshot.params.id,
@@ -97,6 +96,6 @@ export class BookingComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.eve.unsubscribe();
+    if (this.eve != undefined) this.eve.unsubscribe();
   }
 }
