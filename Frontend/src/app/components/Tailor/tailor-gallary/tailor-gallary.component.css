@@ -3,7 +3,9 @@
   border-radius: 15px;
   min-height: 150px;
 }
-
+.modal-body{
+  min-height: 500px;
+}
 .my-gallery-head {
   text-align: left;
   font-size: 1.4rem;
@@ -43,8 +45,6 @@
   border-radius: 20px;
 
 }
-
-
 
 /* delete image */
 

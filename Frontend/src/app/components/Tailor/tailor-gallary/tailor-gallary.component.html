@@ -31,8 +31,8 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body" *ngIf="gallery.length !== 0; else empty">
-            <div class="row scroll">
+          <div class="modal-body">
+            <div class="row scroll" *ngIf="gallery.length !== 0; else empty">
               <div
                 class="col-12 col-md-6 col-lg-4 delete-img text-center"
                 *ngFor="let image of gallery"
@@ -119,7 +119,7 @@
 </ng-template>
 
 <ng-template #empty>
-  <div class="text-center mt-2 mb-2 text-black-50">
+  <div class="mt-2  text-black-50 justify-content-center d-flex">
     You didn't upload images yet.
   </div>
 </ng-template>
