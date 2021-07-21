@@ -43,6 +43,7 @@ import { TokenIntercetorService } from './services/token-interceptor.service';
 import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 import { OrdersComponent } from './components/shared/orders/orders.component';
 import { BindingService } from './services/binding/binding.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 @NgModule({
   declarations: [
     OrdersComponent,
@@ -73,6 +74,7 @@ import { BindingService } from './services/binding/binding.service';
     CustomersComponent,
     TailorsDashboardComponant,
     OrdersDashboardComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

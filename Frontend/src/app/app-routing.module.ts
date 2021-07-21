@@ -11,6 +11,7 @@ import { CustomersComponent } from './components/dashboard/customers/customers.c
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   },
 
   { path: '', component: LandingComponent, pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
