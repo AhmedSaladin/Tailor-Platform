@@ -28,8 +28,12 @@ export class CustomerSingleRequestComponent implements OnInit {
   ngOnInit(): void {
     // this.get_tailor_details(this.order.tailor_id);
     // this.get_customer_details(this.order.customer_id);
-    this.imags = this.order.design;
+    this.imags = this.order.designs;
     this.current_image = this.imags[0];
+    // this.current_image = this.imags[0];
+    console.log(this.order)
+    console.log(this.order.designs)
+    console.log(this.current_image)
     this.formValidation();
     // this.getComment(this.order.id);
   }
