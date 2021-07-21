@@ -9,6 +9,8 @@ router.get('',orderController.view_order);
 router.get('/customer-orders/:id',orderController.view_orderByCustomer);
 router.get('/:id',orderController.view_orderByOrderId);
 router.get('/tailor-orders/:id',orderController.view_orderByTailor);
+router.get('/:orderId',orderController.delete_order);
+
 
 
 
