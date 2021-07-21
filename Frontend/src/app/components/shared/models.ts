@@ -27,7 +27,21 @@ export interface UserLogin {
   password: String;
 }
 
-export interface Tailor {}
+export interface Tailor {
+  _id: String;
+  avatar: String;
+  name: String;
+  email: String;
+  phone: String;
+  password: String;
+  gender: String;
+  designFor: string;
+  isTailor: boolean;
+  orders: Array<String>;
+  admin: boolean;
+  about: String;
+  gallary: String;
+}
 export interface Comment {}
 export interface User {
   avatar: String;

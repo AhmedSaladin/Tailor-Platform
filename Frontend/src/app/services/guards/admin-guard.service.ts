@@ -25,7 +25,6 @@ export class AdminGuardService {
     return this.customer.user.pipe(
       take(1),
       map((user) => {
-        console.log(user);
         const admin = user?.Admin;
         if (!admin) return this.router.createUrlTree(['notfound']);
         return true;
