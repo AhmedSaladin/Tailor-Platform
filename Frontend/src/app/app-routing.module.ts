@@ -10,8 +10,9 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CustomersComponent } from './components/dashboard/customers/customers.component';
 import { TailorsDashboardComponant } from './components/dashboard/tailors-dashboard/tailors-dashboard.component';
 import { OrdersDashboardComponent } from './components/dashboard/orders-dashboard/orders-dashboard.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardService } from './services/guards/auth-guard.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AdminGuardService } from './services/guards/admin-guard.service';
 
 const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AdminGuardService],
     children: [
       { path: 'customers', component: CustomersComponent },
       { path: 'tailors', component: TailorsDashboardComponant },

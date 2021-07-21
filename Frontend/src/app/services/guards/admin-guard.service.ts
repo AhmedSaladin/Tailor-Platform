@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
   Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import { CustomerService } from './customer.service';
+import { take, map } from 'rxjs/operators';
+import { CustomerService } from '../customer.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuardService implements CanActivate {
+export class AdminGuardService {
   constructor(private customer: CustomerService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -26,8 +25,9 @@ export class AuthGuardService implements CanActivate {
     return this.customer.user.pipe(
       take(1),
       map((user) => {
-        const isAuth = user;
-        if (!isAuth) return this.router.createUrlTree(['/login']);
+        console.log(user);
+        const admin = user?.Admin;
+        if (!admin) return this.router.createUrlTree(['notfound']);
         return true;
       })
     );
