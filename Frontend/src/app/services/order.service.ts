@@ -9,7 +9,7 @@ import { CustomerService } from './customer.service';
 })
 export class OrderService {
   private url = 'http://localhost:3000/orders';
-  private urlBack = 'http://localhost:3010/api/orders';
+  private urlBack = 'http://localhost:3000/api/orders';
 
   constructor(
     private http: HttpClient,
