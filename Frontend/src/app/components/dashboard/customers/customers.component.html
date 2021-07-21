@@ -1,25 +1,53 @@
 <div class="main">
   <!-- Button trigger modal -->
-  <button type="button" class="btn btn-success m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <button
+    type="button"
+    class="btn btn-success m-3"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+  >
     <i class="fas fa-user-plus me-1"></i> Add Customer
   </button>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Add Customer</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
           <!-- start form -->
           <form class="signUpForm" [formGroup]="formValidation" novalidate>
             <div class="form-row">
               <div class="mb-3">
-                <input formControlName="fname" #fname id="fname" name="fname" type="text" placeholder="First Name"
-                  class="form-control no-box-shadow" />
-                <div class="text-danger" *ngIf="getControl.fname.touched && getControl.fname.invalid">
+                <input
+                  formControlName="fname"
+                  #fname
+                  id="fname"
+                  name="fname"
+                  type="text"
+                  placeholder="First Name"
+                  class="form-control no-box-shadow"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.fname.touched && getControl.fname.invalid"
+                >
                   <div *ngIf="getControl.fname.errors.required">
                     Name is Required
                   </div>
@@ -31,9 +59,19 @@
             </div>
             <div class="form-row">
               <div class="mb-3">
-                <input formControlName="lname" #lname id="lname" name="lname" type="text" placeholder="Last Name"
-                  class="form-control no-box-shadow" />
-                <div class="text-danger" *ngIf="getControl.lname.touched && getControl.lname.invalid">
+                <input
+                  formControlName="lname"
+                  #lname
+                  id="lname"
+                  name="lname"
+                  type="text"
+                  placeholder="Last Name"
+                  class="form-control no-box-shadow"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.lname.touched && getControl.lname.invalid"
+                >
                   <div *ngIf="getControl.lname.errors.required">
                     Name is Required
                   </div>
@@ -46,9 +84,19 @@
 
             <div class="form-row">
               <div class="mb-3">
-                <input formControlName="phone" #phone id="phone" name="phone" type="text" placeholder="Phone"
-                  class="form-control no-box-shadow" />
-                <div class="text-danger" *ngIf="getControl.phone.touched && getControl.phone.invalid">
+                <input
+                  formControlName="phone"
+                  #phone
+                  id="phone"
+                  name="phone"
+                  type="text"
+                  placeholder="Phone"
+                  class="form-control no-box-shadow"
+                />
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.phone.touched && getControl.phone.invalid"
+                >
                   <div *ngIf="getControl.phone.errors.required">
                     Phone is Required
                   </div>
@@ -63,18 +111,37 @@
             </div>
 
             <div class="mb-3">
-              <input formControlName="email" #email type="email" class="form-control no-box-shadow"
-                placeholder="Email address" id="exampleInputEmail1" aria-describedby="emailHelp" />
-              <div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
+              <input
+                formControlName="email"
+                #email
+                type="email"
+                class="form-control no-box-shadow"
+                placeholder="Email address"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div
+                class="text-danger"
+                *ngIf="getControl.email.touched && getControl.email.invalid"
+              >
                 Email like 'example@any.com'
               </div>
             </div>
             <div class="mb-3">
-              <input formControlName="password" #password type="password" class="form-control no-box-shadow"
-                placeholder="Password" id="exampleInputPassword1" />
-              <div class="text-danger" *ngIf="
+              <input
+                formControlName="password"
+                #password
+                type="password"
+                class="form-control no-box-shadow"
+                placeholder="Password"
+                id="exampleInputPassword1"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
                   getControl.password.touched && getControl.password.invalid
-                ">
+                "
+              >
                 At least 8 characters ,Lowercase ,Uppercase letters,Numbers
                 Special characters
               </div>
@@ -83,11 +150,19 @@
           <!-- end form -->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
             Close
           </button>
-          <button type="button" class="btn btn-primary" (click)="AddCustomer(formValidation)"
-            [disabled]="formValidation.invalid">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="AddCustomer(formValidation)"
+            [disabled]="formValidation.invalid"
+          >
             Save changes
           </button>
         </div>
@@ -112,21 +187,36 @@
           <td>{{ user.name }}</td>
           <td>
             <!-- Button trigger modal -->
-            <button style="border: none" class="bg-light" data-bs-toggle="modal" data-bs-target="#viewCustomer"
-              (click)="getCustomer(user._id)">
+            <button
+              style="border: none"
+              class="bg-light"
+              data-bs-toggle="modal"
+              data-bs-target="#viewCustomer"
+              (click)="getCustomer(user._id)"
+            >
               <i class="fas fa-eye"></i>
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="viewCustomer" tabindex="-1" aria-labelledby="viewCustomerLabel"
-              aria-hidden="true">
+            <div
+              class="modal fade"
+              id="viewCustomer"
+              tabindex="-1"
+              aria-labelledby="viewCustomerLabel"
+              aria-hidden="true"
+            >
               <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="viewCustomerLabel">
                       Customer Information
                     </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
                   </div>
                   <div class="modal-body" *ngIf="customer; else dd">
                     <!-- start table -->
@@ -150,7 +240,10 @@
                         </tbody>
                       </table>
                     </div>
-                    <table class="table table-sm table-bordered w-100 mt-3" *ngIf="customer.sizes">
+                    <table
+                      class="table table-sm table-bordered w-100 mt-3"
+                      *ngIf="customer.sizes"
+                    >
                       <thead>
                         <tr>
                           <th class="px-3 py-3 text-center" colspan="6">
@@ -196,7 +289,11 @@
                     <!-- end table -->
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
                       Close
                     </button>
                   </div>
@@ -205,7 +302,11 @@
             </div>
           </td>
           <td>
-            <i class="fas fa-user-times" style="cursor: pointer" (click)="deleteCustomer(user._id)"></i>
+            <i
+              class="fas fa-user-times"
+              style="cursor: pointer"
+              (click)="deleteCustomer(user._id)"
+            ></i>
           </td>
         </ng-container>
       </tr>

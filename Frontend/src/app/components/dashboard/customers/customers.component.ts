@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
-import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { BindingService } from 'src/app/services/binding/binding.service';
 
 @Component({
@@ -9,30 +10,21 @@ import { BindingService } from 'src/app/services/binding/binding.service';
   templateUrl: './customers.component.html',
   styleUrls: ['./customers.component.css'],
 })
-export class CustomersComponent implements OnInit {
+export class CustomersComponent implements OnInit, OnDestroy {
   customer: any;
   users: any;
-  isTailor = false;
-  filteredUsers: any;
   id: any;
   formValidation: any;
+  eve!: Subscription;
 
   constructor(
     private customerServive: CustomerService,
     private formBuilder: FormBuilder,
+    private tostr: ToastrService,
     private binding: BindingService
   ) {}
 
   ngOnInit(): void {
-    this.customerServive.get_all_customers().subscribe(
-      (res) => {
-        this.users = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-
     this.formValidation = this.formBuilder.group({
       fname: [
         '',
@@ -77,6 +69,7 @@ export class CustomersComponent implements OnInit {
         ],
       ],
     });
+    this.get_customers();
   }
 
   get getControl() {
@@ -84,33 +77,70 @@ export class CustomersComponent implements OnInit {
   }
 
   AddCustomer(form: NgForm) {
-    console.log(form);
     const customer = {
       name: form.value.fname + ' ' + form.value.lname,
       phone: form.value.phone,
       email: form.value.email,
       password: form.value.password,
     };
-    this.customerServive.signUp(customer).subscribe();
+    this.customerServive.signUp(customer).subscribe(
+      () => {
+        this.tostr.success('Customer added successfully', 'Success', {
+          positionClass: 'toast-top-center',
+        });
+        this.get_customers();
+      },
+      (err) => {
+        this.if_error(err);
+      }
+    );
     form.reset();
   }
 
   getCustomer(id: any) {
-    return this.customerServive.get_customer_info_id(id).subscribe(
+    this.customerServive.get_customer_info_id(id).subscribe(
       (res) => {
         this.customer = res.body;
       },
-      (err) => console.log(err)
+      (err) => {
+        this.if_error(err);
+      }
     );
   }
 
   deleteCustomer(id: any) {
-    return this.customerServive.delete_cutomer(id).subscribe(
-      (res) => console.log(res),
-      (err) => console.log(err)
+    const yes = confirm('Do you want delete this Customer');
+    if (yes) {
+      this.customerServive.delete_cutomer(id).subscribe(
+        () => {
+          this.tostr.success('Customer deleted successfully', 'Success', {
+            positionClass: 'toast-top-center',
+          });
+          this.get_customers();
+        },
+        (err) => {
+          this.if_error(err);
+        }
+      );
+    }
+  }
+
+  get_customers() {
+    this.eve = this.customerServive.get_all_customers().subscribe(
+      (res) => {
+        this.users = res;
+      },
+      (err) => {
+        this.if_error(err);
+      }
     );
   }
+
+  if_error(err: any) {
+    this.binding.changeLoading(false);
+    this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+  }
+  ngOnDestroy(): void {
+    if (this.eve != undefined) this.eve.unsubscribe();
+  }
 }
-//  need some cleanup & unsubscripe to improve performanc
-//  adding auth and authGurd make it work only with admin
-//  link it with production api
