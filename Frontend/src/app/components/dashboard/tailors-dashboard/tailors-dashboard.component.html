@@ -114,20 +114,20 @@
                   type="radio"
                   formControlName="gender"
                   name="gender"
-                  id="inlineRadio1"
+                  id="genderMale"
                   value="male"
                 />
-                <label class="form-check-label" for="inlineRadio1">Male</label>
+                <label class="form-check-label" for="genderMale">Male</label>
               </div>
               <div class="form-check form-check-inline">
                 <input
                   class="form-check-input"
                   type="radio"
                   formControlName="gender"
-                  id="inlineRadio2"
+                  id="genderFemale"
                   value="female"
                 />
-                <label class="form-check-label me-4" for="inlineRadio2"
+                <label class="form-check-label me-4" for="genderFemale"
                   >Female</label
                 >
                 <span class="text-danger" *ngIf="getControl.gender.value == ''">
@@ -146,10 +146,10 @@
                   type="radio"
                   formControlName="designFor"
                   name="designFor"
-                  id="inlineRadio1"
+                  id="designForMen"
                   value="Men"
                 />
-                <label class="form-check-label" for="inlineRadio1">Men</label>
+                <label class="form-check-label" for="designForMen">Men</label>
               </div>
               <div class="form-check form-check-inline">
                 <input
@@ -157,10 +157,10 @@
                   type="radio"
                   formControlName="designFor"
                   name="designFor"
-                  id="inlineRadio2"
+                  id="designForWomen"
                   value="Women"
                 />
-                <label class="form-check-label me-4" for="inlineRadio2"
+                <label class="form-check-label me-4" for="designForWomen"
                   >Women</label
                 >
                 <span
