@@ -153,24 +153,6 @@ const view_orderByTailor = (req , res , next )=>{
                 });
 };
 const view_orderByCustomer = (req , res , next )=>{
-<<<<<<< HEAD
-=======
-    // get tailor name by aggregation and nest it in every result
-    // const id = req.params.id
-    // orderModel.find({customer_id:id})
-    //           .then(docs =>{
-    //                      res.status(200).json(docs);
-    //                         })
-    //             .catch(err =>{
-    //                     res.status(500).json({
-    //                         error: err
-    //                     })
-    //             });
-
-
-
-    
->>>>>>> 4607d4de612f4e271d9b279ac9239697e8317ca2
     const id = mongoose.Types.ObjectId(req.params.id);
     orderModel.aggregate([
         { $match: {customer_id:id} },
