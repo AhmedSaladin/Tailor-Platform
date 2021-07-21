@@ -43,8 +43,7 @@ export class CustomerService {
       })
       .pipe(
         catchError(this.handleError),
-        tap(
-          (res) => {
+        tap((res) => {
           const user = new User(
             res.body!.id,
             res.body!.isTailor,
@@ -126,8 +125,9 @@ export class CustomerService {
   private handleError(err: HttpErrorResponse) {
     if (err.error.message == 'NOT FOUND')
       return throwError('Email or Password wrong.');
-
-    if (!err.error.message) return throwError('Somthing went wrong.');
+    else if (err.error.message.includes('phone'))
+      return throwError('Phone number is linked to an existing account');
+    else if (!err.error.message) return throwError('Somthing went wrong.');
     return throwError(err.error.message);
   }
 

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Tailor } from '../components/shared/models';
 import { BindingService } from './binding/binding.service';
@@ -15,7 +15,9 @@ export class TailorService {
     this.binding.changeLoading(true);
     return this.http.get<Array<Tailor>>(this.url, { observe: 'response' }).pipe(
       catchError(this.handleError),
-      tap(() => this.binding.changeLoading(false))
+      tap((res) => {
+        this.binding.changeLoading(false);
+      })
     );
   }
 
