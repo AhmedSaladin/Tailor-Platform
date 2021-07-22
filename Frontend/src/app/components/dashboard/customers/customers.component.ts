@@ -100,7 +100,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
   getCustomer(id: any) {
     this.customerServive.get_customer_info_id(id).subscribe(
       (res) => {
-        this.customer = res.body;
+        this.customer = res;
       },
       (err) => {
         this.if_error(err);

@@ -27,7 +27,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   }
 
   get_customer_details(id: any) {
-    this.eve = this.customer_api.getCustomerInfoByID(id).subscribe(
+    this.eve = this.customer_api.get_customer_info_id(id).subscribe(
       (response: any) => {
         this.user = response;
       },
@@ -59,7 +59,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
       }
     );
   }
-  
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

@@ -43,8 +43,12 @@ export interface Tailor {
   gallary: String;
 }
 export interface Comment {}
+
 export interface User {
+  _id: String;
   avatar: String;
+  isTailor: Boolean;
+  admin: Boolean;
   name: String;
   email: String;
   phone: String;
