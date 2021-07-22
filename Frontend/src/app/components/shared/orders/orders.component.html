@@ -1,6 +1,8 @@
 <div class="side-bar">
   <div class="card ">
-    <div class="card-header text-center">Orders</div>
+    <div class="card-header text-center">Orders
+      <i class="fas fa-shopping-cart"></i>
+    </div>
     <ul
       class="list-group list-group-flush"
       *ngIf="orders.length != 0; else nothingHere"
@@ -16,7 +18,9 @@
         ></app-tailor-single-request>
       </li>
     </ul>
-    <!-- <div class="card-footer"></div> -->
+    <div class="card-footer">
+      <div class="mb-4"></div>
+    </div>
   </div>
 </div>
 <ng-template #nothingHere >
