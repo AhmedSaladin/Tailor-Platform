@@ -22,7 +22,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.get_customer_details(this.order.customer_id);
-    this.imags = this.order.design;
+    this.imags = this.order.designs;
     this.current_image = this.imags[0];
   }
 
