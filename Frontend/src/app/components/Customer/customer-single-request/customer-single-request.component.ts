@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { CommentService } from 'src/app/services/comment.service';
-import { CustomerService } from 'src/app/services/customer.service';
-import { TailorService } from 'src/app/services/tailor.service';
 
 @Component({
   selector: 'app-customer-single-request',
@@ -21,43 +20,14 @@ export class CustomerSingleRequestComponent implements OnInit {
   hasComment: any = false;
   constructor(
     private commentApi: CommentService,
-    private customer_api: CustomerService,
-    private tailor_api: TailorService
+    private toastr: ToastrService
   ) {}
 
-  ngOnInit(): void {
-    // this.get_tailor_details(this.order.tailor_id);
-    // this.get_customer_details(this.order.customer_id);
-    this.imags = this.order.designs;
+  ngOnInit(): void {this.imags = this.order.designs;
+    //get tailor & customer data  from ordeer
     this.current_image = this.imags[0];
-    // this.current_image = this.imags[0];
-    console.log(this.order);
-    console.log(this.order.designs);
-    console.log(this.current_image);
     this.formValidation();
-    // this.getComment(this.order.id);
-  }
-  get_tailor_details(id: any) {
-    this.eve = this.tailor_api.get_tailor_info(id).subscribe(
-      (response: any) => {
-        this.tailor = response.body;
-        console.log(this.tailor);
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
-  }
-  get_customer_details(id: any) {
-    console.log(this.order);
-    this.eve = this.customer_api.get_customer_info_id(id).subscribe(
-      (response: any) => {
-        this.user = response;
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
+    this.getComment(this.order._id);
   }
   next_img() {
     if (this.imags.length - 1 > this.count) this.count++;
@@ -83,11 +53,6 @@ export class CustomerSingleRequestComponent implements OnInit {
     return this.CommentForm.get('comment');
   }
 
-  ///////
-  openModal = false;
-  showModel() {
-    this.openModal = true;
-  }
   ///Submit comment///
   onSubmit() {
     if (this.CommentForm.valid) {
@@ -96,14 +61,19 @@ export class CustomerSingleRequestComponent implements OnInit {
         rate: this.rate?.value,
         tailor_id: this.order.tailor_id,
         customer_id: this.order.customer_id,
-        customer_name: this.user.name,
-        order_id: this.order.id,
+        //name in join
+        order_id: this.order._id,
       };
-      this.commentApi.CreateCommenr(newComment).subscribe();
-      this.hasComment = true;
-      this.openModal = true;
+    this.commentApi.CreateCommenr(newComment).subscribe(
+      res=>{
+        this.hasComment = true;
+        this.toastr.success('thanks ^-^');//create comment done
+      },
+      err=>{
+        this.toastr.error("error !-_-");
+      }
+    );
     }
-    this.openModal = false;
   }
 
   /////////////has comment//////////////////

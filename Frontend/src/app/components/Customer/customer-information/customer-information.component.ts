@@ -6,6 +6,7 @@ import {
   NgForm,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -22,7 +23,7 @@ export class CustomerInformationComponent implements OnInit {
   eve!: Subscription;
   editForm!: FormGroup;
   currentUserId?
-  constructor(private api: CustomerService, private formBulider: FormBuilder) {
+  constructor(private api: CustomerService, private formBulider: FormBuilder, private toastr: ToastrService) {
     this.currentUserId = this.api.user.value?.Id;
   }
 
@@ -100,10 +101,7 @@ export class CustomerInformationComponent implements OnInit {
   }
 
   saveNewTailorAvatar() {
-    console.log(this.img);
-    console.log(this.user_info.avatar);
     this.user_info.avatar = this.img;
-    console.log(this.user_info._id);
     this.eve = this.api
       .update_customer_info(this.user_info._id, this.user_info)
       .subscribe();
@@ -131,7 +129,12 @@ export class CustomerInformationComponent implements OnInit {
 
     this.eve = this.api
       .update_customer_info(this.user_info._id, user)
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => {///edit customer  profile
+        this.toastr.success('Done');
+      },
+      (err)=>{
+        this.toastr.error("error ");
+      });
   }
 
   ngOnDestroy(): void {

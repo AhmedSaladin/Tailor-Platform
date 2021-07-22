@@ -10,7 +10,7 @@ router.get('/customer-orders/:id',orderController.view_orderByCustomer);
 router.get('/:id',orderController.view_orderByOrderId);
 router.get('/tailor-orders/:id',orderController.view_orderByTailor);
 router.delete('/:id',orderController.delete_order);
-router.put('/updated/:id',orderController.updateStatus);
+router.patch('/:id',orderController.updateStatus);
 
 
 

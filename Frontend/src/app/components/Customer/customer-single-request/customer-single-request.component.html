@@ -4,7 +4,7 @@
   </div>
   <div class="col-5 col-md-4" style="display: flex;">
     <div class="col-6">
-      <button *ngIf="order.status == 'finished' && !hasComment" (click)="showModel()" class="float-end btn btn-primary btn-sm me-2"
+      <button *ngIf="order.status == 'finished' && !hasComment" class="float-end btn btn-primary btn-sm me-2"
         data-bs-toggle="modal" attr.data-bs-target="#review{{ order._id }}Model">
         Review
       </button>
@@ -54,7 +54,7 @@
           <div class="input-group input-group-lg">
             <textarea formControlName="comment" type="text" rows="4" cols="50" class="form-control" aria-label="Large"
               placeholder="Give us your honest feedback"></textarea>
-            <div class="text-danger" style="width: 100%;" *ngIf="comment.touched && comment.invalid">
+            <div class="text-danger" style="width: 100%;" *ngIf="comment.invalid">
               max length 1000
             </div>
           </div>
@@ -63,7 +63,8 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
-          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">
+          <button
+          [disabled]="CommentForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="onSubmit()">
             Save
           </button>
         </div>
