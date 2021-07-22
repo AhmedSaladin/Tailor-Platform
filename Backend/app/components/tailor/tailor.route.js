@@ -3,8 +3,9 @@ const {
   all_tailors_get,
   tailor_get,
   tailor_post,
-  tailor_put,
+  tailor_patch,
   tailor_delete,
+  img_delete,
 } = require("./tailor.controller");
 
 route
@@ -13,6 +14,7 @@ route
   .get("/:id", tailor_get)
   .post("/", tailor_post)
   .patch("/:id", tailor_patch)
-  .delete("/:id", tailor_delete);
+  .delete("/:id", tailor_delete)
+  .delete("/?", img_delete);
 
 module.exports = route;

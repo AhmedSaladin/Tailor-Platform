@@ -118,6 +118,16 @@ tailor_delete = async (req, res, next) => {
   }
 };
 
+img_delete = async (req, res, next) => {
+  const imgURL = req.query.img;
+  try {
+    await images_clean_up(get_uuid(imgURL));
+    res.status(200).json();
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   filter_tailors_get,
   all_tailors_get,
@@ -125,4 +135,5 @@ module.exports = {
   tailor_post,
   tailor_patch,
   tailor_delete,
+  img_delete,
 };

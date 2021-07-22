@@ -53,6 +53,12 @@ export class TailorService {
       .pipe(catchError(this.handleError));
   }
 
+  deleteSingleImg(imgURL: any) {
+    return this.http
+      .delete(`${this.url}/?img=${imgURL}`, { observe: 'response' })
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(err: HttpErrorResponse) {
     if (err.error.message == 'Invalid ID.')
       return throwError('Tailor not found');

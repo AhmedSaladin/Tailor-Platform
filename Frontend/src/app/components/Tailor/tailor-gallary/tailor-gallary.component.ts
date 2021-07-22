@@ -33,6 +33,9 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
       .subscribe();
     this.upload_component.clearUploads();
   }
+  DeleteFromGallery(imgURL: any) {
+    this.api.deleteSingleImg(imgURL).subscribe();
+  }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
