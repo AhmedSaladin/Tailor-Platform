@@ -50,7 +50,7 @@ export class OrderService {
 
   update_status(state: string, id: string) {
     return this.http.patch(
-      `${this.url}/${id}`,
+      `${this.urlBack }/${id}`,
       { status: state },
       { observe: 'response' }
     );

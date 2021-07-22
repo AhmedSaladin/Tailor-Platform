@@ -50,7 +50,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   }
 
   change_status(state: string) {
-    this.order_api.update_status(state, this.order.id).subscribe(
+    this.order_api.update_status(state, this.order._id).subscribe(
       (res) => {
         console.log(res);
       },

@@ -272,8 +272,9 @@ const delete_order = (req , res , next )=>{
 };
 
 const updateStatus = (req, res) => {  
+    // console.log(req.params.id)
     orderModel.findOneAndUpdate(
-        { _id: req.body.id},
+        { _id: req.params.id},
         { status: req.body.status } ,
         { new: true },
         (err, order) => {
