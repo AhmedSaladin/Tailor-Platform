@@ -17,4 +17,4 @@ async function images_clean_up(oldImg) {
     .catch((err) => console.log(err.toString()));
 }
 
-module.exports = {get_uuid, images_clean_up}
+module.exports = { get_uuid, images_clean_up };

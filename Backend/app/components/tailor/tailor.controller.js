@@ -110,8 +110,18 @@ tailor_delete = async (req, res, next) => {
     is_valid_id(_id);
     const tailor = await Tailor.findByIdAndDelete(_id);
     await images_clean_up(tailor.avatar);
-    await cleaner("tailor", id, "comment");
-    await cleaner("tailor", id, "order");
+    await cleaner("tailor", _id, "comment");
+    await cleaner("tailor", _id, "order");
+    res.status(200).json();
+  } catch (err) {
+    next(err);
+  }
+};
+
+img_delete = async (req, res, next) => {
+  const imgURL = req.query.img;
+  try {
+    await images_clean_up(get_uuid(imgURL));
     res.status(200).json();
   } catch (err) {
     next(err);
@@ -125,4 +135,5 @@ module.exports = {
   tailor_post,
   tailor_patch,
   tailor_delete,
+  img_delete,
 };
