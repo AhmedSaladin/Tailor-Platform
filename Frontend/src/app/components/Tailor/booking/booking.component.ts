@@ -34,6 +34,7 @@ export class BookingComponent implements OnInit, OnDestroy {
   order!: Order;
   images: Array<string>;
   sizesValidation: any;
+  isUploading: Boolean = true;
   @Input() currentUserId: any;
 
   @ViewChild('order_upload_component')
@@ -93,6 +94,7 @@ export class BookingComponent implements OnInit, OnDestroy {
     for (let i = 0; i < length; i++) {
       this.images.push(`${url}nth/${i}/`);
     }
+    this.isUploading = false;
     this.order_upload_component.clearUploads();
   }
 
