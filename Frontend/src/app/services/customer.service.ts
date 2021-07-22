@@ -5,7 +5,8 @@ import { BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { CustomerSignup, UserLogin } from '../components/shared/models';
 import { BindingService } from './binding/binding.service';
-import { User } from './user.model';
+import { User as loginUser } from './user.model';
+import { User } from '../components/shared/models';
 
 export interface Login {
   token: String;
@@ -24,36 +25,30 @@ export class CustomerService {
   ) {}
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
-  user = new BehaviorSubject<User | null>(null);
+  user = new BehaviorSubject<loginUser | null>(null);
   private URL = 'https://tailor-s.herokuapp.com/api/users';
   private test = 'http://localhost:3000/api/users';
 
   signUp(user: CustomerSignup) {
     return this.http
-      .post(`${this.URL}/signup`, user, {
-        observe: 'response',
-      })
+      .post(`${this.URL}/signup`, user)
       .pipe(catchError(this.handleError));
   }
 
   login(user: UserLogin) {
-    return this.http
-      .post<Login>(`${this.URL}/login`, user, {
-        observe: 'response',
+    return this.http.post<Login>(`${this.URL}/login`, user).pipe(
+      catchError(this.handleError),
+      tap((res) => {
+        const user = new loginUser(
+          res.id!,
+          res.isTailor!,
+          res.admin!,
+          res.token!
+        );
+        this.user.next(user);
+        localStorage.setItem('user', JSON.stringify(user));
       })
-      .pipe(
-        catchError(this.handleError),
-        tap((res) => {
-          const user = new User(
-            res.body!.id,
-            res.body!.isTailor,
-            res.body!.admin,
-            res.body!.token
-          );
-          this.user.next(user);
-          localStorage.setItem('user', JSON.stringify(user));
-        })
-      );
+    );
   }
 
   autoLogin() {
@@ -61,7 +56,7 @@ export class CustomerService {
     // if user not found in local storage return
     if (userData === null) return;
     // if exist emiting him into app memory
-    const loadedUser = new User(
+    const loadedUser = new loginUser(
       userData.id,
       userData.isTailor,
       userData.admin,
@@ -82,20 +77,16 @@ export class CustomerService {
   get_all_customers() {
     this.binding.changeLoading(true);
     return this.http
-      .get(this.URL)
+      .get<Array<User>>(this.URL)
       .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
   get_customer_info_id(id: any) {
     this.binding.changeLoading(true);
-    return this.http
-      .get(`${this.URL}/${id}`, {
-        observe: 'response',
-      })
-      .pipe(
-        catchError(this.handleError),
-        tap(() => this.binding.changeLoading(false))
-      );
+    return this.http.get<User>(`${this.URL}/${id}`).pipe(
+      catchError(this.handleError),
+      tap(() => this.binding.changeLoading(false))
+    );
   }
 
   update_customer_info(id: string, body: any) {
@@ -112,14 +103,10 @@ export class CustomerService {
 
   delete_cutomer(id: any) {
     this.binding.changeLoading(true);
-    return this.http
-      .delete(`${this.URL}/${id}`, {
-        observe: 'response',
-      })
-      .pipe(
-        catchError(this.handleError),
-        tap(() => this.binding.changeLoading(false))
-      );
+    return this.http.delete(`${this.URL}/${id}`).pipe(
+      catchError(this.handleError),
+      tap(() => this.binding.changeLoading(false))
+    );
   }
 
   private handleError(err: HttpErrorResponse) {
@@ -131,20 +118,4 @@ export class CustomerService {
     return throwError(err.error.message);
   }
 
-  //  clean up later
-  private BaseUrl = 'http://localhost:3000/users';
-
-  getCustomerInfoByID(id: number) {
-    return this.http.get(`${this.BaseUrl}/${id}`);
-  }
-
-  updateCustomerInfo(id: number, customer: any) {
-    return this.http.put(`${this.BaseUrl}/${id}`, customer);
-  }
-
-  deleteCustomer(id: any) {
-    return this.http.delete(`${this.BaseUrl}/${id}`, {
-      observe: 'response',
-    });
-  }
 }

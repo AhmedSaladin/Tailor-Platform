@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.eve = this.user.login(form.value).subscribe(
       (res) => {
         this.isLoading = false;
-        const tailor = res.body?.isTailor;
-        if (tailor) this.router.navigate([`/tailor/${res.body?.id}`]);
+        const tailor = res?.isTailor;
+        if (tailor) this.router.navigate([`/tailor/${res?.id}`]);
         else this.router.navigate(['home']);
       },
       (err) => {

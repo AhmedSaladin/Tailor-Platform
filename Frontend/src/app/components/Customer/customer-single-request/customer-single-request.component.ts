@@ -31,9 +31,9 @@ export class CustomerSingleRequestComponent implements OnInit {
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
     // this.current_image = this.imags[0];
-    console.log(this.order)
-    console.log(this.order.designs)
-    console.log(this.current_image)
+    console.log(this.order);
+    console.log(this.order.designs);
+    console.log(this.current_image);
     this.formValidation();
     // this.getComment(this.order.id);
   }
@@ -50,7 +50,7 @@ export class CustomerSingleRequestComponent implements OnInit {
   }
   get_customer_details(id: any) {
     console.log(this.order);
-    this.eve = this.customer_api.getCustomerInfoByID(id).subscribe(
+    this.eve = this.customer_api.get_customer_info_id(id).subscribe(
       (response: any) => {
         this.user = response;
       },
