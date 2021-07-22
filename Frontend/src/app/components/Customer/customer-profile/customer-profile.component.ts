@@ -15,7 +15,7 @@ export class CustomerProfileComponent implements OnInit {
   currentUserId: any;
   constructor(
     private custSer: CustomerService,
-    private activeRout: ActivatedRoute,
+    private activeRout: ActivatedRoute
   ) {
     this.currentUserId = this.custSer.user.value?.Id;
     this.getCustomerINfo(activeRout.snapshot.params.id);
@@ -25,7 +25,7 @@ export class CustomerProfileComponent implements OnInit {
   getCustomerINfo(id: any) {
     this.eve = this.custSer.get_customer_info_id(id).subscribe(
       (res) => {
-        this.cust = res.body;
+        this.cust = res;
         this.custImg = this.cust.avatar;
       },
       (err) => {

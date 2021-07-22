@@ -6,9 +6,21 @@ import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
+import { User } from 'src/app/services/user.model';
 import { Order } from '../../shared/models';
 // form need validation about designs not to be empty
 // add delete to uploaded images from UI and DB
+
+interface sizes {
+  chest: number;
+  armLength: number;
+  waist: number;
+  height: number;
+  inseam: number;
+  shoulder: number;
+  collar: number;
+  thigh: number;
+}
 
 @Component({
   selector: 'app-booking',
@@ -16,11 +28,13 @@ import { Order } from '../../shared/models';
   styleUrls: ['./booking.component.css'],
 })
 export class BookingComponent implements OnInit, OnDestroy {
-  user: any;
+  isLoading: Boolean = false;
+  sizes!: Object;
   eve!: Subscription;
   order!: Order;
   images: Array<string>;
   sizesValidation: any;
+  isUploading: Boolean = true;
   @Input() currentUserId: any;
 
   @ViewChild('order_upload_component')
@@ -34,57 +48,44 @@ export class BookingComponent implements OnInit, OnDestroy {
     private toastr: ToastrService
   ) {
     this.images = [];
-    // sizes need to fix when auth done.
   }
   ngOnInit(): void {
-    // this.sizesValidation = this.formBulider.group({
-    //   chest: [`${this.user.chest}`, Validators.required],
-    //   shoulder: [`${this.user.shoulder}`, Validators.required],
-    //   inseam: [`${this.user.inseam}`, Validators.required],
-    //   waist: [`${this.user.waist}`, Validators.required],
-    //   height: [`${this.user.height}`, Validators.required],
-    //   armLength: [`${this.user.armLength}`, Validators.required],
-    //   collar: [`${this.user.collar}`, Validators.required],
-    //   sleeve: [`${this.user.sleeve}`, Validators.required],
-    // });
     this.sizesValidation = this.formBulider.group({
-      chest: [` `, Validators.required],
-      shoulder: [` `, Validators.required],
-      inseam: [` `, Validators.required],
-      waist: [` `, Validators.required],
-      height: [` `, Validators.required],
-      armLength: [` `, Validators.required],
-      collar: [` `, Validators.required],
-      sleeve: [` `, Validators.required],
+      chest: [` `, [Validators.required, Validators.minLength(2)]],
+      shoulder: [` `, [Validators.required, Validators.minLength(2)]],
+      inseam: [` `, [Validators.required, Validators.minLength(2)]],
+      waist: [` `, [Validators.required, Validators.minLength(2)]],
+      height: [` `, [Validators.required, Validators.minLength(3)]],
+      armLength: [` `, [Validators.required, Validators.minLength(2)]],
+      collar: [` `, [Validators.required, Validators.minLength(2)]],
+      thigh: [` `, [Validators.required, Validators.minLength(2)]],
     });
-    this.get_customer_data();
   }
 
   get getControl() {
     return this.sizesValidation.controls;
   }
-  get_customer_data() {
-    this.user = this.api.user.value?.Id;
-  }
 
   submitD(customer_sizes: NgForm) {
-    if (this.user == undefined) {
-      this.router.navigate(['login']);
-      this.toastr.warning('Please sign in first.');
+    if (this.check_login()) {
+      this.order = {
+        customer_id: `${this.currentUserId}`,
+        tailor_id: this.url.snapshot.params.id,
+        status: 'pending',
+        design: this.images,
+        customer_sizes: customer_sizes.value,
+      };
+      this.http.create_new_order(this.order).subscribe(
+        () => {
+          this.toastr.success('Order have been created successfully ');
+          this.clear_uploads();
+          customer_sizes.resetForm;
+        },
+        (err) => {
+          this.toastr.error(err);
+        }
+      );
     }
-    this.order = {
-      customer_id: `${this.user}`,
-      tailor_id: this.url.snapshot.params.id,
-      status: 'pending',
-      design: this.images,
-      customer_sizes: customer_sizes.value,
-    };
-    this.http.create_new_order(this.order).subscribe(
-      () => {
-        this.toastr.success('Order have been created successfully ');
-      },
-      (err) => console.log(err)
-    );
   }
 
   on_upload_complete(event: any) {
@@ -93,13 +94,56 @@ export class BookingComponent implements OnInit, OnDestroy {
     for (let i = 0; i < length; i++) {
       this.images.push(`${url}nth/${i}/`);
     }
+    this.isUploading = false;
     this.order_upload_component.clearUploads();
   }
 
   clear_uploads() {
     this.images = [];
   }
+  get_user_sizes(customer_sizes: NgForm) {
+    if (this.check_login()) {
+      this.isLoading = true;
+      this.api.get_customer_info_id(this.currentUserId).subscribe(
+        (res) => {
+          this.isLoading = false;
+          if (!res.sizes) {
+            this.toastr.warning(
+              `Your didn't add for your profile `,
+              'warning',
+              {
+                positionClass: 'toast-top-center',
+              }
+            );
+          } else {
+            customer_sizes.controls['chest'].setValue(res.sizes.chest);
+            customer_sizes.controls['shoulder'].setValue(res.sizes.shoulder);
+            customer_sizes.controls['inseam'].setValue(res.sizes.inseam);
+            customer_sizes.controls['waist'].setValue(res.sizes.waist);
+            customer_sizes.controls['height'].setValue(res.sizes.height);
+            customer_sizes.controls['armLength'].setValue(res.sizes.armLength);
+            customer_sizes.controls['collar'].setValue(res.sizes.collar);
+            customer_sizes.controls['thigh'].setValue(res.sizes.thigh);
+            this.toastr.success('Your sizes fetched', 'Success', {
+              positionClass: 'toast-top-center',
+            });
+          }
+        },
+        (err) => {
+          this.toastr.error(err);
+        }
+      );
+    }
+  }
 
+  check_login() {
+    if (this.currentUserId == undefined) {
+      this.router.navigate(['login']);
+      this.toastr.warning('Please sign in first.');
+      return false;
+    }
+    return true;
+  }
   ngOnDestroy() {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
