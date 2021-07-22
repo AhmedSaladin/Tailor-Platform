@@ -110,8 +110,8 @@ tailor_delete = async (req, res, next) => {
     is_valid_id(_id);
     const tailor = await Tailor.findByIdAndDelete(_id);
     await images_clean_up(tailor.avatar);
-    await cleaner("tailor", id, "comment");
-    await cleaner("tailor", id, "order");
+    await cleaner("tailor", _id, "comment");
+    await cleaner("tailor", _id, "order");
     res.status(200).json();
   } catch (err) {
     next(err);
