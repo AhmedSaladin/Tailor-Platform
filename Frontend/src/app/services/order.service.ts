@@ -19,6 +19,10 @@ export class OrderService {
 
   get_current_user_orders() {
     const userId = this.user.user.value?.Id;
+    if (this.user.user.value?.IsTailor)
+      return this.http.get(`${this.urlBack}/tailor-orders/${userId}`, {
+        observe: 'response',
+      });
     return this.http.get(`${this.urlBack}/customer-orders/${userId}`, {
       observe: 'response',
     });
@@ -67,6 +71,8 @@ export class OrderService {
   }
 
   deleteOrder(id: any) {
-    return this.http.delete(`${this.url}/${id}`, { observe: 'response' });
+    return this.http.delete(`${this.urlBack}/${id}`, {
+      observe: 'response',
+    });
   }
 }
