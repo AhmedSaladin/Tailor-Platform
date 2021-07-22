@@ -4,7 +4,6 @@ const tailorModel = require('../tailor/tailor.model');
 const orderModel = require('./order.model');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
-const { remove } = require('../user/user.model');
 const transporter = nodemailer.createTransport(sendgridTransport({
     auth:{
         api_key:'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',
@@ -221,7 +220,7 @@ const view_orderByOrderId = (req , res , next )=>{
 };
 
 const delete_order = (req , res , next )=>{
-    orderModel.remove({_id: req.params.orderId})
+    orderModel.remove({_id: req.params.id})
     .then(result =>{
         console.log(result);
         
@@ -232,6 +231,19 @@ const delete_order = (req , res , next )=>{
         res.status(500).json({message: err.toString()})
     });
 };
+
+const updateStatus = (req, res) => {  
+    orderModel.findOneAndUpdate(
+        { _id: req.body.id},
+        { status: req.body.status } ,
+        { new: true },
+        (err, order) => {
+            if (err) {
+                return res.status(400).json({error: "Cannot update order status"});
+            }
+        res.json(order);
+    });
+};
 module.exports={
     create_order,
     view_order,
@@ -239,4 +251,5 @@ module.exports={
     view_orderByCustomer,
     view_orderByOrderId,
     delete_order,
+    updateStatus
 }
