@@ -37,6 +37,7 @@ export class OrdersDashboardComponent implements OnInit {
       (res => {
         console.log(this.cstOrder)
         this.cstOrder = res.body
+        this.cstOrder = this.cstOrder[0];////res.body return arr of obj not obj
         console.log(this.cstOrder)
 
       }),

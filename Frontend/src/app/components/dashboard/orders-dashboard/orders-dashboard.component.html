@@ -12,15 +12,15 @@
     </thead>
     <tbody>
         <tr *ngFor='let order of orders'>
-            <td>{{order.id}}</td>
+            <td>{{order._id}}</td>
             <td>{{order.customer_name}}</td>
-            <td>{{order.tailor_id}}</td>
+            <td>{{order.tailor_name}}</td>
             <td>
 
 
                 <!-- Button trigger modal -->
                 <button type="button" style="border: none;" class="bg-light" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" (click)="getInfo(order.id)">
+                    data-bs-target="#exampleModal" (click)="getInfo(order._id)">
                     <i class="fas fa-eye"></i>
                 </button>
 
@@ -52,7 +52,7 @@
                                                 data-bs-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="carousel-item border border-5"
-                                                        *ngFor="let image of cstOrder.design; let i = index"
+                                                        *ngFor="let image of cstOrder.designs; let i = index"
                                                         [ngClass]="{ active: i == 0 }">
                                                         <img src="{{ image }}" class="d-block w-100"
                                                             style="height: 700px !important" />
@@ -118,8 +118,11 @@
                                                         <!-- <td>CM</td> -->
                                                     </tr>
                                                     <tr>
-                                                        <td>Sleeve</td>
-                                                        <td colspan="2">{{ cstOrder.customer_sizes.sleeve }}</td>
+                                                      <td>Thigh</td>
+                                                      <td colspan="2">{{ order.customer_sizes.thigh }}</td>
+
+                                                        <!-- <td>Sleeve</td>
+                                                        <td colspan="2">{{ cstOrder.customer_sizes.sleeve }}</td> -->
                                                         <!-- <td>CM</td> -->
                                                     </tr>
                                                 </tbody>
@@ -137,7 +140,7 @@
 
             </td>
             <td>{{order.status}}</td>
-            <td><i class="fas fa-trash-alt" (click)='deleteOrder(order.id)'></i></td>
+            <td><i class="fas fa-trash-alt" (click)='deleteOrder(order._id)'></i></td>
         </tr>
 
 

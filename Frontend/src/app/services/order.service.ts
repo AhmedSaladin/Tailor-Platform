@@ -59,14 +59,14 @@ export class OrderService {
   getOrder() {
     this.binding.changeLoading(true);
     return this.http
-      .get(this.url)
+      .get(this.urlBack)
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
   getOrderById(id: string) {
     this.binding.changeLoading(true);
     return this.http
-      .get(`${this.url}/${id}`, { observe: 'response' })
+      .get(`${this.urlBack}/${id}`, { observe: 'response' })
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 
