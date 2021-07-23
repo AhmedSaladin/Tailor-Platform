@@ -5,7 +5,7 @@
       <!-- start image section -->
       <div class="col-md-4">
         <!-- Start Profile Image -->
-        <div class="profile-img text-center mb-3 mt-4 me-2">
+        <div class="text-center mb-3 mt-4 me-2">
           <img src="{{ user_info.avatar }}" class="profile-img img-fluid" data-bs-target="#staticBackdrop"
             data-bs-toggle="modal" alt="" />
           <!-- start image popup -->
@@ -21,7 +21,7 @@
                     (click)="notSavingCustAvatar()"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="{{ img }}" class="profile-img img-pop" style="width: 100%" />
+                  <img src="{{ img }}" class="img-pop" />
                 </div>
                 <div class="modal-footer" style="justify-content: flex-start !important">
                   <button type="button" class="btn btn-secondary justify-content-start" data-bs-dismiss="modal"

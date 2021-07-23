@@ -1,15 +1,11 @@
 .card{
-  /* border-radius: 15px; */
-  min-height:170px;
+border-radius: 15px;
+  /* min-height:170px; */
 }
 .card-header{
-  font-weight: bolder;
-  font-size: 20px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-}
-.card-footer {
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-}
+  font-weight: bolder;
+  font-size: 20px;
 
+}

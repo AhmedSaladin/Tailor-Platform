@@ -1,8 +1,8 @@
 <div class="side-bar">
   <div class="card ">
-    <div class="card-header text-center">Orders
-      <i class="fas fa-shopping-cart"></i>
+    <div class="card-header text-center"> <i class="fas fa-shopping-cart"></i> Orders
     </div>
+    <div class="card-body">
     <ul
       class="list-group list-group-flush"
       *ngIf="orders.length != 0; else nothingHere"
@@ -19,10 +19,8 @@
       </li>
     </ul>
   </div>
-  <div class="card-footer">
-    <div class="mb-4"></div>
   </div>
 </div>
 <ng-template #nothingHere >
-  <div class="text-center" style=" margin-top: 40px; font-size: 15px; font-weight: bold; padding: 5px;">You didn't have orders to display</div>
+  <div class="text-center" style="font-size: 15px; font-weight: bold; padding: 5px;">You didn't have orders to display</div>
 </ng-template>
