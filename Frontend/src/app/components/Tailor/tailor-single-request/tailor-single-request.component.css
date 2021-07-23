@@ -53,28 +53,27 @@ td {
   border: 2px solid #2e86ab;
 }
 
-.nav-link.active{
+.nav-link.active {
   background-color: #2e86ab;
   color: white !important;
 }
 
-.nav-link{
+.nav-link {
   color: #2e86ab;
 }
 
-.chat{
+.chat {
   background-color: whitesmoke;
 }
-.massege{
+.massege {
   border: 2px solid rgb(226, 223, 223);
   border-radius: 15px;
   margin: 10px;
-  
 }
-.chat .card .card-body{
+.chat .card .card-body {
   border-radius: 15px;
 }
 
-.commentArea{
+.commentArea {
   overflow-y: hidden;
 }
