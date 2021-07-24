@@ -1,26 +1,102 @@
 .star {
-    font-size: 3rem;
-    color: #b0c4de;
+  font-size: 3rem;
+  color: #b0c4de;
 }
 
 .filled {
-    color: #ffc93c;
+  color: #ffc93c;
 }
 
 .bad {
-    color: #deb0b0;
+  color: #deb0b0;
 }
 
 .filled.bad {
-    color: #ff1e1e;
+  color: #ff1e1e;
 }
 
-.btn-primary{
+.card {
+  border: none;
+}
+
+.card-body {
+  background-color: snow;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+table,
+td {
+  padding: 5px;
+}
+
+.tableBody td {
+  text-align: center;
+}
+
+.tableBody td:nth-child(1) {
+  width: 50%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 40px;
+  width: 40px;
+  background-size: 45%, 45%;
+}
+
+.carousel-control-next-icon {
+  background-image: url("../../../../assets/images/chevron-right-solid.svg");
+  border-radius: 20px;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("../../../../assets/images/chevron-left-solid.svg");
+  border-radius: 20px;
+}
+
+.btn-primary {
   background-color: #2e86ab;
+  color: white !important;
   border: 1px solid white;
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: white;
+  color: #2e86ab !important;
+  border: 2px solid #2e86ab;
+}
+
+.nav-link.active {
+  background-color: #2e86ab;
+  color: white !important;
+}
+
+.nav-link {
   color: #2e86ab;
-  border: 1px solid #2e86ab;
+}
+
+.chat {
+  background-color: whitesmoke;
+}
+.massege {
+  border: 2px solid rgb(226, 223, 223);
+  border-radius: 15px;
+  margin: 10px;
+}
+.chat .card .card-body {
+  border-radius: 15px;
+}
+
+.commentArea {
+  overflow-y: hidden;
+}
+
+.order-comment-body {
+  font-size: 1.2em;
+}
+.card-subtitle {
+  font-size: 0.75em;
 }

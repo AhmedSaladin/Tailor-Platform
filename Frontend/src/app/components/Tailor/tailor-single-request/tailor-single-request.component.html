@@ -92,7 +92,7 @@
                             <img
                               src="{{ current_image }}"
                               class="d-block w-100"
-                              style="max-height: 700px"
+                              style="max-height: 700px; min-height: 700px"
                             />
                           </div>
                         </div>
@@ -214,43 +214,58 @@
                   <div
                     class="chat"
                     style="max-height: 400px; overflow-y: scroll"
-                    *ngIf="order.comments.length>0;else noMeassge"
+                    *ngIf="order.comments.length > 0; else noMeassge"
                   >
                     <div class="col-12">
-                      <div class="card massege" *ngFor="let message of order.comments">
+                      <div
+                        class="card massege"
+                        *ngFor="let message of order.comments"
+                      >
                         <div
                           class="card-body"
                           style="background-color: white !important"
                         >
-                          <h5 class="card-title" *ngIf="message.send_from ==='tailor'">Me</h5>
-                          <h5 class="card-title" *ngIf="message.send_from ==='customer'">{{order.customer_name}}</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">
-                            {{message.date | date:'yyyy-MM-dd'}}
-                          </h6>
-                          <p class="card-text">
-                           {{message.comment_body}}
+                          <h5
+                            class="card-title"
+                            *ngIf="message.send_from === 'tailor'"
+                          >
+                            Me
+                          </h5>
+                          <h5
+                            class="card-title"
+                            *ngIf="message.send_from === 'customer'"
+                          >
+                            {{ order.customer_name }}
+                          </h5>
+                          <p class="card-text order-comment-body">
+                            {{ message.comment_body }}
+                          </p>
+                          <p class="card-subtitle mb-1 text-muted">
+                            {{ message.date | date: "dd MMM, YYYY" }}
                           </p>
                         </div>
                       </div>
-
                     </div>
                   </div>
-                    <ng-template #noMeassge>
-                      <h5>NO Message</h5>
+                  <ng-template #noMeassge>
+                    <h5>NO Message</h5>
                   </ng-template>
                   <div class="row mt-4">
                     <div class="col-12 col-lg-10">
                       <div class="form-floating">
-                          <textarea
+                        <textarea
                           class="form-control commentArea"
                           placeholder="Leave a comment here"
                           id="floatingTextarea"
-                           #message
-                          ></textarea>
+                          #message
+                        ></textarea>
                       </div>
                     </div>
                     <div class="col-12 col-lg-2 mt-2">
-                      <button class="btn btn-primary align-items-end" (click)="send_commment(message)">
+                      <button
+                        class="btn btn-primary align-items-end"
+                        (click)="send_commment(message)"
+                      >
                         Send
                       </button>
                     </div>
