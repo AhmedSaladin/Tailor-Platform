@@ -139,6 +139,7 @@
                   class="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
+                  (click)="reset_form(formValidation)"
                 ></button>
               </div>
               <div class="modal-body">
@@ -155,11 +156,11 @@
                       class="text-danger"
                       *ngIf="getControl.name.touched && getControl.name.invalid"
                     >
-                      <div *ngIf="getControl.name.errors.required">
+                      <div *ngIf="getControl.name.errors?.required">
                         Name can't be empty
                       </div>
                       <div *ngIf="getControl.name.errors?.minlength">
-                        Minimum Length is 3 Characters
+                        Minimum Length is 7 Characters
                       </div>
                     </div>
                   </div>
@@ -183,7 +184,7 @@
                   type="button"
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
-                  (click)="Name.value = user_info.name"
+                  (click)="reset_form(formValidation)"
                 >
                   Discard
                 </button>

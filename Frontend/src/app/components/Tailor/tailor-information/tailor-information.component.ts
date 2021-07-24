@@ -1,7 +1,9 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
+import { BindingService } from 'src/app/services/binding/binding.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { TailorService } from 'src/app/services/tailor.service';
 @Component({
@@ -14,28 +16,42 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   @Input() user_info: any;
   @Input() img: any;
   eve!: Subscription;
-  formValidation: any;
+  formValidation!: FormGroup;
   @Input() currentUserId: any;
   constructor(
     private api: TailorService,
     public formBulider: FormBuilder,
-    private apiComment: CommentService
+    private apiComment: CommentService,
+    private tostr: ToastrService,
+    private biniding: BindingService
   ) {}
 
-  update_tailor_info(user: NgForm) {
-    this.user_info.name = user.value.name;
-    this.user_info.designFor = user.value.design;
+  update_tailor_info(form: FormGroup) {
+    console.log(form);
+    if (form.pristine) return;
+    this.user_info.name = form.value.name;
+    this.user_info.designFor = form.value.design;
     const { name, designFor } = this.user_info;
     this.eve = this.api
       .update_tailor_info(this.user_info._id, { name, designFor })
-      .subscribe();
+      .subscribe(
+        () => {
+          this.tostr.success(
+            'Your information updated successfully',
+            'Success'
+          );
+        },
+        (err) => {
+          this.error_handler(err);
+          this.reset_form(form);
+        }
+      );
   }
-
   ngOnInit(): void {
     this.formValidation = this.formBulider.group({
       name: [
         `${this.user_info.name}`,
-        [Validators.required, Validators.minLength(3)],
+        [Validators.required, Validators.minLength(7)],
       ],
       design: [`${this.user_info.designFor}`, Validators.required],
     });
@@ -51,11 +67,23 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   }
 
   save_new_tailor_avatar() {
-    this.user_info.avatar = this.img;
-    const { avatar } = this.user_info;
-    this.eve = this.api
-      .update_tailor_info(this.user_info._id, { avatar })
-      .subscribe();
+    if (this.user_info.avatar != this.img) {
+      this.user_info.avatar = this.img;
+      const { avatar } = this.user_info;
+      this.eve = this.api
+        .update_tailor_info(this.user_info._id, { avatar })
+        .subscribe(
+          () => {
+            this.tostr.success(
+              'Your profile image updated successfully',
+              'Success'
+            );
+          },
+          (err) => {
+            this.error_handler(err);
+          }
+        );
+    }
     this.upload_component.clearUploads();
   }
 
@@ -69,7 +97,7 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
     this.eve = this.apiComment
       .getTailorRate(this.user_info._id)
       .subscribe((res) => {
-        console.log(res.body)
+        console.log(res.body);
         this.review = res.body;
         if (this.review.length == 0) {
           this.review[0] = {
@@ -97,6 +125,19 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   }
 
   ////////////////////////////////////
+  
+  reset_form(form: FormGroup) {
+    form.setValue({
+      name: this.user_info.name,
+      design: this.user_info.designFor,
+    });
+  }
+
+  error_handler(err: any) {
+    this.biniding.changeLoading(false);
+    this.tostr.error(err, 'Error');
+  }
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

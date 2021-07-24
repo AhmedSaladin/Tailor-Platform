@@ -8,7 +8,6 @@ const { get_uuid, images_clean_up } = require("../../utility/imageHandling");
 const { createToken } = require("../../middlewares/authToken");
 const { cleaner } = require("../../utility/relationCleaner");
 
-
 const {
   is_not_found,
   if_error,
@@ -64,11 +63,18 @@ module.exports = {
   },
 
   get_all_users: async (req, res) => {
+    const currentPage = parseInt(req.query.page || 1);
+    const limit = parseInt(req.query.limit || 3);
+    const count = await User.find({ isTailor: false }).countDocuments();
+    const totalPages = Math.ceil(count / limit);
     const [users, error] = await promise_handler(
       User.find({ isTailor: false })
+        .skip((currentPage - 1) * limit)
+        .limit(limit)
     );
     if_error(error, BAD_REQUEST);
-    res.status(OK).json(users);
+    console.log(totalPages);
+    res.status(OK).json({ totalPages, users });
   },
 
   get_user: async (req, res) => {

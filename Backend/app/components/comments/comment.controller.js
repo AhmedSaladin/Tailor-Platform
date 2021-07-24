@@ -5,9 +5,11 @@ const { OK } = require("../../utility/statusCodes");
 
 const get_comment = (req, res) => {
   if (req.query.tailor_id) {
-    console.log(req.query);
+    // console.log(req.query);
+    var mysort = { date: -1 };
     Comment.find({ tailor_id: req.query.tailor_id })
       .populate("customer_id", "name")
+      .sort(mysort)
       .exec((err, result) => {
         if (err) {
           console.log(err);
@@ -109,6 +111,7 @@ const get_tailor_rate = async (req, res) => {
         rate: { $avg: "$rate" },
       },
     },
+    //  { $sort : { date : 1 } }
   ]);
   is_not_found(rate);
   res.status(OK).json(rate);

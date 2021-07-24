@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model("orders", {
   customer_id: {
     type: mongoose.Schema.Types.ObjectId,
-  //  ref:'user',
     required: true,
   },
   tailor_id: {
@@ -25,7 +24,6 @@ module.exports = mongoose.model("orders", {
       shoulder: Number,
       inseam: Number,
     },
-  //  required:true,
   },
   status: {
     type: String,
@@ -33,4 +31,6 @@ module.exports = mongoose.model("orders", {
     default: "pending",
     enum: ["pending", "rejected", "accepted", "finished"],
   },
+  comments: Array,
+  price: Number,
 });

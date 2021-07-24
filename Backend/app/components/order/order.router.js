@@ -11,6 +11,7 @@ router.get('/:id',orderController.view_orderByOrderId);
 router.get('/tailor-orders/:id',orderController.view_orderByTailor);
 router.delete('/:id',orderController.delete_order);
 router.patch('/:id',orderController.updateStatus);
+router.patch('/comments/:id',orderController.updateComments);
 
 
 
