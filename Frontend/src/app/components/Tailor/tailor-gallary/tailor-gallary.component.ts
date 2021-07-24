@@ -17,15 +17,14 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
   eve!: Subscription;
   constructor(private api: TailorService) {}
 
-  ngOnInit(): void {
-    console.log(this.gallery.length === 0);
-  }
+  ngOnInit(): void {}
   on_upload_complete(event: any) {
     let url = event.cdnUrl;
     let length = event.count;
     for (let i = 0; i < length; i++) {
       this.gallery.push(`${url}nth/${i}/`);
     }
+    console.log(event);
     this.user_info.gallary = this.gallery;
     const { gallary } = this.user_info;
     this.eve = this.api
@@ -33,6 +32,7 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
       .subscribe();
     this.upload_component.clearUploads();
   }
+
   DeleteFromGallery(imgURL: any) {
     this.api.deleteSingleImg(imgURL).subscribe();
   }
