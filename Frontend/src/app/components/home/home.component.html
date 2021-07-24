@@ -14,13 +14,10 @@
       >
         <div class="accordion" id="accordionPanelsStayOpenExample">
           <div class="accordion-item">
-              <button
-                class="accordion-button accordion-first-item"
-              >
+            <button class="accordion-button accordion-first-item">
               <i class="fas fa-filter me-3"></i>
-                Filter
-              </button>
-
+              Filter
+            </button>
           </div>
           <div class="accordion-item">
             <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -32,7 +29,7 @@
                 aria-expanded="true"
                 aria-controls="panelsStayOpen-collapseOne"
               >
-              <i class="fas fa-users me-3"></i>
+                <i class="fas fa-users me-3"></i>
                 Specialization
               </button>
             </h2>
@@ -76,7 +73,7 @@
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseTwo"
               >
-              <i class="fas fa-venus-mars me-3"></i>
+                <i class="fas fa-venus-mars me-3"></i>
                 Gender
               </button>
             </h2>
@@ -117,7 +114,7 @@
                 aria-expanded="false"
                 aria-controls="panelsStayOpen-collapseThree"
               >
-              <i class="fas fa-star me-3"></i>
+                <i class="fas fa-star me-3"></i>
                 Rate
               </button>
             </h2>
@@ -188,20 +185,29 @@
               type="submit"
               value="Get Tailors"
             >
-            <i class="fas fa-search me-3"></i>
-            Get tailors
+              <i class="fas fa-search me-3"></i>
+              Get tailors
             </button>
           </div>
         </div>
       </form>
     </div>
     <!-- / side bar -->
-
     <div class="col-12 col-lg-9">
-      <app-about-tailor
-        *ngFor="let tailor of tailors"
-        [tailor]="tailor"
-      ></app-about-tailor>
+      <div *ngIf="tailors.length > 0; else noTailor">
+        <app-about-tailor
+          *ngFor="let tailor of tailors"
+          [tailor]="tailor"
+        ></app-about-tailor>
+      </div>
     </div>
+
+    <ng-template #noTailor>
+      <div class="col-12 col-lg-9 mx-auto" style="width: 90%;">
+          <div class="row card mb-5 mt-5" style="border-radius: 11px; color: darkred;">
+            <h3 class="p-5">Oopsie! No tailor goes by that name.</h3>
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
