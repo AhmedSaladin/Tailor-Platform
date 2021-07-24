@@ -6,7 +6,7 @@ i{
     font-size: 25px;
 }
 .fa-eye{
-    color: #185ADB;
+    color: #3396c0;
 }
 .fa-user-edit{
     color: #FFC107;
@@ -28,15 +28,15 @@ th{
 input.ng-invalid.ng-touched {
     border: 1.5px solid red;
   }
-  
+
   /* change border color to green when invalid */
-  
+
   input.ng-valid.ng-touched {
     border: 1.5px solid green;
   }
-  
+
   /* remove default input border shadow */
-  
+
   .no-box-shadow{
     box-shadow: none;
   }
