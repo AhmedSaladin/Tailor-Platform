@@ -345,6 +345,9 @@
                           <p class="card-subtitle mb-1 text-muted">
                             {{ message.date | date: "dd MMM, YYYY" }}
                           </p>
+                          <p class="card-subtitle mb-1 text-muted">
+                            {{ message.date | date: 'h:mm ' }}
+                          </p>
                         </div>
                       </div>
                     </div>
