@@ -377,7 +377,7 @@ const updateComments = (req, res) => {
                 if (err) {
                     return res.comment(400).json({error: "Cannot update order status"});
                 }
-            res.json(order);
+            res.json(order.comments);
         });
         //res.status(200).json(result);
     })

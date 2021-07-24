@@ -118,7 +118,7 @@
   aria-hidden="true"
 >
   <!-- START POPUP -->
-  <div class="modal-dialog modal-dialog-centered modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content" *ngIf="order; else dd">
       <div class="modal-header">
         <h3 class="card-title text-center mt-1">
@@ -133,6 +133,7 @@
         ></button>
       </div>
       <div class="modal-body">
+        <!-- start nav -->
         <div class="row">
           <div class="col-12 col-lg-2 order-first order-lg-last mb-2">
             <div
@@ -330,13 +331,13 @@
                             class="card-title"
                             *ngIf="message.send_from === 'tailor'"
                           >
-                            Me
+                            {{ order.tailor_name }}
                           </h5>
                           <h5
                             class="card-title"
                             *ngIf="message.send_from === 'customer'"
                           >
-                            {{ order.customer_name }}
+                            Me
                           </h5>
                           <p class="card-text order-comment-body">
                             {{ message.comment_body }}
@@ -363,7 +364,10 @@
                       </div>
                     </div>
                     <div class="col-12 col-lg-2 mt-2">
-                      <button class="btn btn-primary align-items-end">
+                      <button
+                        class="btn btn-primary align-items-end"
+                        (click)="send_commment(message)"
+                      >
                         Send
                       </button>
                     </div>
@@ -373,9 +377,15 @@
             </div>
           </div>
         </div>
+        <!-- end nav menu -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          *ngIf="order.status !== 'pending'"
+        >
           Close
         </button>
       </div>

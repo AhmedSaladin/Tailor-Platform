@@ -59,7 +59,7 @@ send_commment(message:any){
     this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
       (res) => {
         // console.log(res.body)
-        this.order=res.body;
+        this.order.comments=res.body;
         this.tostr.success('Message send', 'Success');
       },
       (err) => {
