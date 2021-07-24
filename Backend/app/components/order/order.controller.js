@@ -328,33 +328,12 @@ const view_orderByOrderId = (req , res , next )=>{
             console.log(error);
           });
 
-
-
-
-    // orderModel.findById(req.params.id)
-    //           .then(docs =>{
-    //             if(!docs){
-    //                 return res.status(404).json({
-    //                     message: "Order not found"
-    //                 })
-    //               }
-    //             res.status(200).json(docs);
-    //                         })
-    //             .catch(err =>{
-    //                     res.status(500).json({
-    //                         error: err
-    //                     })
-    //             });
 };
 
 const delete_order = (req , res , next )=>{
-    orderModel.remove({_id: req.params.id})
-    .then(result =>{
-        console.log(result);
-        res.status(201).json({message: 'Order deleted'});
-    })
+    orderModel.findOneAndDelete({_id: req.params.id})
+    .then(res.status(204).json({message: 'Order deleted'}))
     .catch(err=>{
-        console.log(err.toString());
         res.status(500).json({message: err.toString()})
     });
 };
