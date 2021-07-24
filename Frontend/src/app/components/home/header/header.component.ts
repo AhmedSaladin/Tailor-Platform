@@ -1,49 +1,38 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 import { TailorService } from 'src/app/services/tailor.service';
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  url: string = 'http://localhost:3000/users';
-  usersArray: Array<any> = [];
   searchText: any = '';
   tailors: any;
+  eve!: Subscription;
 
-  constructor(private tailorService: TailorService) {}
-  // ngOnInit(): void {
-  //   throw new Error('Method not implemented.');
-  // }
+  constructor(
+    private tailorService: TailorService,
+    private toastr: ToastrService
+  ) {}
+
+  ngOnInit(): void {}
 
   @Output() send = new EventEmitter();
 
-  sendSearch() {
-    this.filter();
-    this.send.emit(this.usersArray);
-  }
   filter() {
-    this.tailorService.get_tailors_info().subscribe(
+    this.eve = this.tailorService.get_tailor_search(this.searchText).subscribe(
       (res) => {
         this.tailors = res.body;
+        this.send.emit(this.tailors);
       },
       (err) => {
-        console.log(err);
+        this.toastr.error(err, 'Error', { positionClass: 'toast-top-center' });
       }
     );
-    if (this.searchText === '') {
-      this.usersArray = this.tailors;
-    } else {
-      let x;
-      let searchLower = this.searchText.toLocaleLowerCase();
-      this.usersArray = this.tailors.filter((it: any) => {
-        x = it.name.toLocaleLowerCase().includes(searchLower);
-        return x;
-      });
-    }
   }
-  ngOnInit(): void {
-    this.filter();
+  ngOnDestroy(): void {
+    if (this.eve != undefined) this.eve.unsubscribe();
   }
 }
