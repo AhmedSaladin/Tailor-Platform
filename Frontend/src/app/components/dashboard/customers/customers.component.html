@@ -312,6 +312,33 @@
       </tr>
     </tbody>
   </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <button
+          class="page-link"
+          tabindex="-1"
+          [disabled]="page === 1"
+          (click)="previousPage()"
+        >
+          &laquo;
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link">{{ page }}</button>
+      </li>
+      <li class="page-item">
+        <button
+          class="page-link"
+          [disabled]="page == totalPages"
+          (click)="nextPage()"
+        >
+          &raquo;
+        </button>
+      </li>
+    </ul>
+  </nav>
 </div>
 <ng-template #dd>
   <app-loading></app-loading>

@@ -108,13 +108,9 @@ export class BookingComponent implements OnInit, OnDestroy {
         (res) => {
           this.isLoading = false;
           if (!res.sizes) {
-            this.toastr.warning(
-              `Your didn't add for your profile `,
-              'warning',
-              {
-                positionClass: 'toast-top-center',
-              }
-            );
+            this.toastr.warning(`Your didn't add sizes yet`, 'warning', {
+              positionClass: 'toast-top-center',
+            });
           } else {
             customer_sizes.controls['chest'].setValue(res.sizes.chest);
             customer_sizes.controls['shoulder'].setValue(res.sizes.shoulder);

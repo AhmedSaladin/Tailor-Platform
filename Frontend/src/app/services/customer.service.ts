@@ -26,8 +26,8 @@ export class CustomerService {
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
   user = new BehaviorSubject<loginUser | null>(null);
-  private URL = 'https://tailor-s.herokuapp.com/api/users';
-  private test = 'http://localhost:3000/api/users';
+  private test = 'https://tailor-s.herokuapp.com/api/users';
+  private URL = 'http://localhost:3000/api/users';
 
   signUp(user: CustomerSignup) {
     return this.http
@@ -74,10 +74,13 @@ export class CustomerService {
 
   // remember to add autoLogout before token expire or request new token
 
-  get_all_customers() {
+  get_all_customers(page: number) {
     this.binding.changeLoading(true);
+    const limit = 5;
     return this.http
-      .get<Array<User>>(this.URL)
+      .get<{ totalPages: number; users: Array<User> }>(
+        `${this.URL}?page=${page}&limit=${limit}`
+      )
       .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
@@ -117,5 +120,4 @@ export class CustomerService {
     else if (!err.error.message) return throwError('Somthing went wrong.');
     return throwError(err.error.message);
   }
-
 }

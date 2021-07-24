@@ -24,13 +24,13 @@ module.exports = mongoose.model("orders", {
       shoulder: Number,
       inseam: Number,
     },
-    required: true,
   },
-  comments: Array,
   status: {
     type: String,
     required: true,
     default: "pending",
     enum: ["pending", "rejected", "accepted", "finished"],
   },
+  comments: Array,
+  price: Number,
 });
