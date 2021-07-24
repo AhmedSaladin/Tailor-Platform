@@ -55,6 +55,13 @@ export class OrderService {
       { observe: 'response' }
     );
   }
+  update_comment(comment: any, id: string) {
+    return this.http.patch(
+      `${this.urlBack }/comments/${id}`,
+      { comment: comment },
+      { observe: 'response' }
+    );
+  }
 
   getOrder() {
     this.binding.changeLoading(true);

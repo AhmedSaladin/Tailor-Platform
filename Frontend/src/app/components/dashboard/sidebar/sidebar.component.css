@@ -16,9 +16,9 @@ mat-nav-list{
     border-radius: 50%;
 }
 .logo h2{
-    font-size: 15px;
+    font-size: 20px;
     margin-top: 10px;
-    color: #2c3344;
+    color: #2e86ab;
     font-weight: bold;
 }
 .mat-divider {
@@ -27,7 +27,7 @@ mat-nav-list{
     margin: 15px;
 }
 .mat-list-item {
-    color: #718cb1 !important;
+    color: #3396c0 !important;
     font-size: 0.8rem;
     height: 44px !important;
     margin-bottom: 4px;

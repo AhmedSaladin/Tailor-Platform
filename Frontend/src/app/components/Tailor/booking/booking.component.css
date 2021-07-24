@@ -4,6 +4,8 @@
 .card-header {
     font-size: 1.4rem;
     font-weight: bold;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
 }
 
 .list-group-item span {

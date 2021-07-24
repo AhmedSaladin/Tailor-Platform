@@ -77,3 +77,10 @@ td {
 .commentArea {
   overflow-y: hidden;
 }
+
+.order-comment-body {
+  font-size: 1.2em;
+}
+.card-subtitle {
+  font-size: 0.75em;
+}

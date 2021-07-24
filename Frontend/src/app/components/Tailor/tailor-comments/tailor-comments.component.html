@@ -1,6 +1,6 @@
 <section class="comment mb-2">
   <div class="card-body text-start">
-    
+
     <h6 class="card-title comment-head">
       <div class="pt-3">
         <i class="fas fa-star" *ngFor="let star of rate"></i>
@@ -11,6 +11,13 @@
       <p class="mt-1 parg">
         {{ comment.body }}
       </p>
+      <p class="card-subtitle mb-1 text-muted">
+        {{ comment.date | date: "dd MMM, YYYY" }}
+      </p>
+      <p class="card-subtitle mb-1 text-muted">
+        {{ comment.date | date: 'h:mm a' }}
+      </p>
+
     </div>
   </div>
 </section>

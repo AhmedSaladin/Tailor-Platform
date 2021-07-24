@@ -12,8 +12,22 @@ const { cleaner } = require("../../utility/relationCleaner");
 
 filter_tailors_get = async (req, res, next) => {
   const filter = req.query;
+  console.log(filter)
   try {
     const tailors = await Tailor.find({ isTailor: true, ...filter });
+    res.status(200).json(tailors);
+  } catch (err) {
+    next(err);
+  }
+};
+
+search_tailors_get = async (req, res, next) => {
+  const { name } = req.query;
+  try {
+    const tailors = await Tailor.find({
+      name: { $regex: `${name}`, $options: "i" },
+    });
+
     res.status(200).json(tailors);
   } catch (err) {
     next(err);
@@ -129,6 +143,7 @@ img_delete = async (req, res, next) => {
 };
 
 module.exports = {
+  search_tailors_get,
   filter_tailors_get,
   all_tailors_get,
   tailor_get,

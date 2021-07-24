@@ -207,10 +207,12 @@ const view_orderByTailor = (req , res , next )=>{
          
         {   
             $project:{
+                comments:1,
                 designs:1,
                 status:1,
                 customer_sizes : 1,
                 customer_id:1,
+                tailor_id:1,
                 customer_name : "$customer.name",
                 tailor_name : "$tailor.name",
             } 
@@ -257,6 +259,7 @@ const view_orderByCustomer = (req , res , next )=>{
         {   
             $project:{
                 _id:1,
+                comments:1,
                 designs:1,
                 status:1,
                 customer_sizes : 1,
@@ -310,6 +313,7 @@ const view_orderByOrderId = (req , res , next )=>{
          
         {   
             $project:{
+                comments:1,
                 designs:1,
                 status:1,
                 customer_sizes : 1,
@@ -327,7 +331,6 @@ const view_orderByOrderId = (req , res , next )=>{
           .catch((error) => {
             console.log(error);
           });
-
 };
 
 const delete_order = (req , res , next )=>{
@@ -351,6 +354,36 @@ const updateStatus = (req, res) => {
         res.json(order);
     });
 };
+const updateComments = (req, res) => {
+  let comment=[];  
+    // console.log(req.params.id)
+    orderModel.findById(req.params.id)
+    .then(result =>{
+      comment=result.comments
+      if(comment!==null)
+        comment.unshift(req.body.comment)
+        else
+        comment=req.body.comment
+      console.log(comment)
+      orderModel.findOneAndUpdate(
+            { _id: req.params.id},
+            { comments:comment } ,
+            { new: true },
+            (err, order) => {
+                if (err) {
+                    return res.comment(400).json({error: "Cannot update order status"});
+                }
+            res.json(order.comments);
+        });
+        //res.status(200).json(result);
+    })
+      .catch(err =>{
+              res.status(500).json({
+                  error: err
+              })
+      });
+    
+};
 module.exports={
     create_order,
     view_order,
@@ -358,5 +391,6 @@ module.exports={
     view_orderByCustomer,
     view_orderByOrderId,
     delete_order,
-    updateStatus
+    updateStatus,
+    updateComments,
 }

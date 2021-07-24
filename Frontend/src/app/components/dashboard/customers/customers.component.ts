@@ -16,6 +16,8 @@ export class CustomersComponent implements OnInit, OnDestroy {
   id: any;
   formValidation: any;
   eve!: Subscription;
+  page: number = 1;
+  totalPages: number = 1;
 
   constructor(
     private customerServive: CustomerService,
@@ -126,14 +128,26 @@ export class CustomersComponent implements OnInit, OnDestroy {
   }
 
   get_customers() {
-    this.eve = this.customerServive.get_all_customers().subscribe(
+    this.eve = this.customerServive.get_all_customers(this.page).subscribe(
       (res) => {
-        this.users = res;
+        this.users = res.users;
+        this.totalPages = res.totalPages;
       },
       (err) => {
         this.if_error(err);
       }
     );
+  }
+
+  nextPage() {
+    if (this.page === this.totalPages) return;
+    this.page++;
+    this.get_customers();
+  }
+  previousPage() {
+    if (this.page === 1) return;
+    this.page--;
+    this.get_customers();
   }
 
   if_error(err: any) {

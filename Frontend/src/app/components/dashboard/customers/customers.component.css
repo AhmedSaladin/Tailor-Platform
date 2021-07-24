@@ -8,7 +8,7 @@ i{
     font-size: 25px;
 }
 .fa-eye{
-    color: #185ADB;
+    color: #3396c0;
 }
 .fa-user-edit{
     color: #FFC107;
@@ -24,21 +24,57 @@ th{
     font-weight: bold;
 }
 
+/*Start Pagination Styles*/
+
+.fa-backward,.fa-forward {
+  font-size: 12px;
+}
+
+.page-link{
+  background-color: #2e86ab;
+  color: white;
+  border: 1px solid #3396c0;
+  font-size: 13px;
+}
+.page-link:hover{
+  background-color: white;
+  color: #2e86ab;
+  border: 1px solid #2e86ab;
+}
+
+.page-link-left {
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+  font-size: 1px;
+  margin-top: 3px;
+}
+
+.page-link-right {
+  border-top-right-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+  font-size: 1px;
+  margin-top: 3px;
+}
+
+/*End Pagination Styles*/
+
+
+
 
 /* change border color to red when invalid */
 
 input.ng-invalid.ng-touched {
     border: 1.5px solid red;
   }
-  
+
   /* change border color to green when invalid */
-  
+
   input.ng-valid.ng-touched {
     border: 1.5px solid green;
   }
-  
+
   /* remove default input border shadow */
-  
+
   .no-box-shadow{
     box-shadow: none;
   }
