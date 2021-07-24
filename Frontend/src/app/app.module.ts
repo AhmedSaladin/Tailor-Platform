@@ -93,7 +93,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatDividerModule,
     MatListModule,
     ToastrModule.forRoot({
-      timeOut: 2000,
+      timeOut: 3000,
       positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),

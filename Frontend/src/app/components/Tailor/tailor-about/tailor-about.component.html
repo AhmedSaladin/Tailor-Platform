@@ -43,7 +43,7 @@
                 class="text-danger"
                 *ngIf="getControl.about.touched && getControl.about.invalid"
               >
-                <div *ngIf="getControl.about.errors.required">
+                <div *ngIf="getControl.about.errors?.required">
                   About can't be empty
                 </div>
                 <div *ngIf="getControl.about.errors?.minlength">
@@ -64,7 +64,7 @@
                 type="button"
                 class="btn btn-primary"
                 data-bs-dismiss="modal"
-                (click)="update_tailor_about_section(About.value)"
+                (click)="update_tailor_about_section(formValidation)"
                 [disabled]="formValidation.invalid"
               >
                 Save changes
