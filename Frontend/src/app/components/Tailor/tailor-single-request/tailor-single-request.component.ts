@@ -57,7 +57,9 @@ send_commment(message:any){
       send_from:'tailor'
     }
     this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
-      () => {
+      (res) => {
+        // console.log(res.body)
+        this.order=res.body;
         this.tostr.success('Message send', 'Success');
       },
       (err) => {
