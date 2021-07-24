@@ -109,6 +109,7 @@ const get_tailor_rate = async (req, res) => {
         rate: { $avg: "$rate" },
       },
     },
+    //  { $sort : { date : 1 } }
   ]);
   is_not_found(rate);
   res.status(OK).json(rate);
