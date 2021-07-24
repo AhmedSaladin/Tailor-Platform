@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CommentService } from 'src/app/services/comment.service';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-customer-single-request',
@@ -20,7 +21,8 @@ export class CustomerSingleRequestComponent implements OnInit {
   hasComment: any = false;
   constructor(
     private commentApi: CommentService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private order_api:OrderService
   ) {}
 
   ngOnInit(): void {this.imags = this.order.designs;
@@ -92,6 +94,33 @@ export class CustomerSingleRequestComponent implements OnInit {
       }
     );
   }
+
+
+  //////////////////////////////
+  send_commment(message:any){
+    if (message.value.length>0) {
+      let myDate = new Date();
+      let newComment={
+        date:myDate,
+        comment_body:message.value,
+        send_from:'customer'
+      }
+      this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
+        (res) => {
+           console.log(res.body)
+          this.order.comments=res.body;
+          this.toastr.success('Message send', 'Success');
+        },
+        (err) => {
+          this.toastr.error(err, 'Error');
+        }
+      );
+      message.value="";
+     // console.log(message)
+    }
+    //message.placeholder="Leave a comment here"
+  }
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
