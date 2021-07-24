@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 module.exports = mongoose.model("orders", {
   customer_id: {
     type: mongoose.Schema.Types.ObjectId,
-  //  ref:'user',
     required: true,
   },
   tailor_id: {
@@ -25,8 +24,9 @@ module.exports = mongoose.model("orders", {
       shoulder: Number,
       inseam: Number,
     },
-  //  required:true,
+    required: true,
   },
+  comments: Array,
   status: {
     type: String,
     required: true,

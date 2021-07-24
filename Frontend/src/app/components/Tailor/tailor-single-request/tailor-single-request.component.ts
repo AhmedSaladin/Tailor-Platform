@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
 
 @Component({
@@ -10,31 +10,15 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   @Input() order: any;
-  user: any;
   eve!: Subscription;
   imags: any;
   count: any = 0;
   current_image: any;
-  constructor(
-    private customer_api: CustomerService,
-    private order_api: OrderService
-  ) {}
+  constructor(private order_api: OrderService, private tostr: ToastrService) {}
 
   ngOnInit(): void {
-    this.get_customer_details(this.order.customer_id);
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
-  }
-
-  get_customer_details(id: any) {
-    this.eve = this.customer_api.get_customer_info_id(id).subscribe(
-      (response: any) => {
-        this.user = response;
-      },
-      (err) => {
-        console.error(err);
-      }
-    );
   }
 
   next_img() {
@@ -50,12 +34,13 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   }
 
   change_status(state: string) {
-    this.order_api.update_status(state, this.order._id).subscribe(
-      (res) => {
-        console.log(res);
+    this.eve = this.order_api.update_status(state, this.order._id).subscribe(
+      () => {
+        this.tostr.success('Order update successfuly', 'Success');
+        this.order.status = state;
       },
       (err) => {
-        console.log(err);
+        this.tostr.error(err, 'Error');
       }
     );
   }
