@@ -17,6 +17,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   constructor(private order_api: OrderService, private tostr: ToastrService) {}
 
   ngOnInit(): void {
+  //  console.log(this.order)
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
   }
@@ -45,6 +46,29 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
     );
   }
 
+
+  //////////////////////////////
+send_commment(message:any){
+  if (message.value.length>0) {
+    let myDate = new Date();
+    let newComment={
+      date:myDate,
+      comment_body:message.value,
+      send_from:'tailor'
+    }
+    this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
+      () => {
+        this.tostr.success('Message send', 'Success');
+      },
+      (err) => {
+        this.tostr.error(err, 'Error');
+      }
+    );
+    message.value="";
+   // console.log(message)
+  }
+  //message.placeholder="Leave a comment here"
+}
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
