@@ -12,14 +12,14 @@ const transporter = nodemailer.createTransport(sendgridTransport({
 
 
 // send email
-/*const mailCustomer = (email)=>{
+const mailCustomer = (email)=>{
     transporter.sendMail({
                     to: email ,
                     from: 'Tailor@Tailor_shop.com',
                     subject: "Don't replay to this",
                     html: '<h1>Thank you for choosing us , your order is made</h1>'
                 });
-};*/
+};
 
 
 
@@ -36,8 +36,8 @@ const create_order = (req , res , next )=>{
     order.save().then(result =>{
         console.log(result);
         res.status(201).json();
-        // customer_mail= userModel.findById(result.customer_id);
-        // mailCustomer()
+        customer_mail= userModel.findById(result.customer_id);
+        mailCustomer(customer_mail)
 
     }).catch(err=>{
         console.log(err.toString());
