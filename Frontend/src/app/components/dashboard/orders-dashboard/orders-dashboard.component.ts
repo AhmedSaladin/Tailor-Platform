@@ -38,6 +38,7 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
       }
     );
   }
+  
   deleteOrder(id: any) {
     const yes = confirm('Do you want delete this Order');
     if (yes) {
