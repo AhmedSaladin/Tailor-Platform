@@ -18,7 +18,6 @@ async function images_clean_up(oldImg) {
 }
 
 async function get_grouped_image_uuid(groupedImage) {
-  console.log(groupedImage);
   let uuid;
   await axios
     .get(`https://api.uploadcare.com/groups/${groupedImage}/`, {
@@ -27,7 +26,9 @@ async function get_grouped_image_uuid(groupedImage) {
         Accept: "application/vnd.uploadcare-v0.5+json",
       },
     })
-    .then((res) => (uuid = res.data.files[0].uuid))
+    .then((res) => {
+      uuid = res.data.files[0].uuid;
+    })
     .catch((err) => console.log(err.toString()));
   return uuid;
 }

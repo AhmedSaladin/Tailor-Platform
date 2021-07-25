@@ -138,10 +138,14 @@ tailor_delete = async (req, res, next) => {
 
 img_delete = async (req, res, next) => {
   const imgURL = req.query.img;
+  const { id } = req.query;
   try {
+    const tailor = await Tailor.findById(id);
     const uuid = await get_grouped_image_uuid(get_uuid(imgURL));
     is_not_found(uuid);
     await images_clean_up(uuid);
+    tailor.gallary = tailor.gallary.filter((img) => img !== imgURL);
+    await Tailor.findByIdAndUpdate(id, tailor);
     res.status(200).json();
   } catch (err) {
     next(err);
