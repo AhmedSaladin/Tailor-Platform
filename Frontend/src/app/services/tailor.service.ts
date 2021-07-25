@@ -11,14 +11,18 @@ import { BindingService } from './binding/binding.service';
 export class TailorService {
   private url = 'http://localhost:3000/api/tailors';
   constructor(private http: HttpClient, private binding: BindingService) {}
-  get_tailors_info() {
+  get_tailors_info(limit: number, page: number) {
     this.binding.changeLoading(true);
-    return this.http.get<Array<Tailor>>(this.url, { observe: 'response' }).pipe(
-      catchError(this.handleError),
-      tap(() => {
-        this.binding.changeLoading(false);
-      })
-    );
+    return this.http
+      .get<{ tailors: Array<Tailor>; totalPages: number }>(
+        `${this.url}?page=${page}&limit=${limit}`
+      )
+      .pipe(
+        catchError(this.handleError),
+        tap(() => {
+          this.binding.changeLoading(false);
+        })
+      );
   }
 
   get_tailor_search(tailorName: string) {

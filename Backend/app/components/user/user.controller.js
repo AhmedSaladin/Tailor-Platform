@@ -73,7 +73,6 @@ module.exports = {
         .limit(limit)
     );
     if_error(error, BAD_REQUEST);
-    console.log(totalPages);
     res.status(OK).json({ totalPages, users });
   },
 

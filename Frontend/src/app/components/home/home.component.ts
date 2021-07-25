@@ -56,7 +56,8 @@ export class HomeComponent implements OnInit {
       this.sub = this.tailorInfo.get_tailors_info_filter(queryString);
     } else {
       // get all tailors
-      this.sub = this.tailorInfo.get_tailors_info();
+      // check out later
+      this.sub = this.tailorInfo.get_tailors_info(2, 1);
     }
     this.sub.subscribe(
       (res: any) => {

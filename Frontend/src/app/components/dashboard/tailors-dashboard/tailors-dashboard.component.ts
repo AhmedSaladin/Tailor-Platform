@@ -16,6 +16,9 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
   isTailor = true;
   id: any;
   formValidation: any;
+  page: number = 1;
+  totalPages: number = 1;
+  limit: number = 5;
   eve!: Subscription;
 
   constructor(
@@ -127,16 +130,31 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
   }
 
   get_tailors() {
-    this.eve = this.tailorServive.get_tailors_info().subscribe(
-      (res) => {
-        if (res.body == null) this.tailors = [];
-        else this.tailors = res.body;
-      },
-      (err) => {
-        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
-      }
-    );
+    this.eve = this.tailorServive
+      .get_tailors_info(this.limit, this.page)
+      .subscribe(
+        (res) => {
+          this.totalPages = res.totalPages;
+          if (res == null) this.tailors = [];
+          else this.tailors = res.tailors;
+        },
+        (err) => {
+          this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+        }
+      );
   }
+
+  nextPage() {
+    if (this.page === this.totalPages) return;
+    this.page++;
+    this.get_tailors();
+  }
+  previousPage() {
+    if (this.page === 1) return;
+    this.page--;
+    this.get_tailors();
+  }
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
