@@ -91,27 +91,24 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
     if (this.img != this.user_info.avatar) this.img = this.user_info.avatar;
     this.upload_component.clearUploads();
   }
-  ///////////////////////get tailor rate//////////////////////////////////
+  
   review: any;
   get_tailor_rate() {
     this.eve = this.apiComment
       .getTailorRate(this.user_info._id)
       .subscribe((res) => {
-        console.log(res.body);
         this.review = res.body;
         if (this.review.length == 0) {
           this.review[0] = {
             count: 0,
             rate: 5,
           };
-          console.log(this.review);
         }
         this.review = this.review[0];
         this.displayRate(this.review.rate);
       });
   }
 
-  ///////////////displayRate//////////////////////
   starsTotal = 5;
   myStyle: any = {};
   displayRate(rate: any) {
@@ -119,13 +116,8 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
     // Round to nearest 10
     const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
     this.myStyle = { width: starPercentageRounded };
-    console.log(this.myStyle);
-    // Add number rating
-    // document.querySelector(`.${rating} .number-rating`).innerHTML = ratings[rating];
   }
 
-  ////////////////////////////////////
-  
   reset_form(form: FormGroup) {
     form.setValue({
       name: this.user_info.name,
