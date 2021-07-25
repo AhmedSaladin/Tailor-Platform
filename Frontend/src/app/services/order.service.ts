@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
+import { Order } from '../components/shared/models';
 import { BindingService } from './binding/binding.service';
 import { CustomerService } from './customer.service';
 
@@ -50,23 +51,26 @@ export class OrderService {
 
   update_status(state: string, id: string) {
     return this.http.patch(
-      `${this.urlBack }/${id}`,
+      `${this.urlBack}/${id}`,
       { status: state },
       { observe: 'response' }
     );
   }
   update_comment(comment: any, id: string) {
     return this.http.patch(
-      `${this.urlBack }/comments/${id}`,
+      `${this.urlBack}/comments/${id}`,
       { comment: comment },
       { observe: 'response' }
     );
   }
 
-  getOrder() {
+  getOrder(page: number) {
     this.binding.changeLoading(true);
+    const limit = 5;
     return this.http
-      .get(this.urlBack)
+      .get<{ totalPages: number; orders: Array<Order> }>(
+        `${this.urlBack}?page=${page}&limit=${limit}`
+      )
       .pipe(tap((res) => this.binding.changeLoading(false)));
   }
 

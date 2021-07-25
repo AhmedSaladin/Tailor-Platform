@@ -2,28 +2,6 @@ const  mongoose  = require('mongoose');
 const userModel = require('../user/user.model');
 const tailorModel = require('../tailor/tailor.model');
 const orderModel = require('./order.model');
-const nodemailer = require('nodemailer');
-const sendgridTransport = require('nodemailer-sendgrid-transport');
-const transporter = nodemailer.createTransport(sendgridTransport({
-    auth:{
-        api_key:'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',
-}
-}));
-
-
-// send email
-const mailCustomer = (email)=>{
-    transporter.sendMail({
-                    to: email ,
-                    from: 'Tailor@Tailor_shop.com',
-                    subject: "Don't replay to this",
-                    html: '<h1>Thank you for choosing us , your order is made</h1>'
-                });
-};
-
-
-
-
 
 const create_order = (req , res , next )=>{
     console.log(req.body);
@@ -36,19 +14,14 @@ const create_order = (req , res , next )=>{
     order.save().then(result =>{
         console.log(result);
         res.status(201).json();
-        customer_mail= userModel.findById(result.customer_id);
-        mailCustomer(customer_mail)
-
     }).catch(err=>{
         console.log(err.toString());
         res.status(500).json({message: err.toString()})
     });
 };
 
-const view_order = (req , res , next )=>{
-    // id ? tailor :cutomer
-    // get order by tailor id find({tailorID:tailor_id})
-    if(req.query.tailor_id){       
+const view_order = (req , res , next  )=>{
+        if(req.query.tailor_id){       
         const id = mongoose.Types.ObjectId(req.query.tailor_id);        
         orderModel.aggregate([
             { $match: {tailor_id:id} },
@@ -174,7 +147,7 @@ const view_order = (req , res , next )=>{
                 console.log(error);
               });
     
-    }    
+    }   
 };
 const view_orderByTailor = (req , res , next )=>{
     const id = mongoose.Types.ObjectId(req.params.id);
