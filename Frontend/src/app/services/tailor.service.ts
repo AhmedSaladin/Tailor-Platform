@@ -36,7 +36,9 @@ export class TailorService {
   }
 
   get_tailors_info_filter(filter: any) {
-    return this.http.get(`${this.url}/filter?${filter}`, { observe: 'response' });
+    return this.http.get(`${this.url}/filter?${filter}`, {
+      observe: 'response',
+    });
   }
 
   get_tailor_info(id: any) {
@@ -58,19 +60,29 @@ export class TailorService {
   }
 
   AddNewTailor(tailor: any) {
-    return this.http.post(this.url, tailor).pipe(catchError(this.handleError));
+    this.binding.changeLoading(true);
+    return this.http.post(this.url, tailor).pipe(
+      catchError(this.handleError),
+      tap(() => this.binding.changeLoading(false))
+    );
   }
 
   deleteTailor(id: any) {
-    return this.http
-      .delete(`${this.url}/${id}`, { observe: 'response' })
-      .pipe(catchError(this.handleError));
+    this.binding.changeLoading(true);
+    return this.http.delete(`${this.url}/${id}`, { observe: 'response' }).pipe(
+      catchError(this.handleError),
+      tap(() => this.binding.changeLoading(false))
+    );
   }
 
-  deleteSingleImg(imgURL: any) {
+  deleteSingleImg(imgURL: any, id: any) {
+    this.binding.changeLoading(true);
     return this.http
-      .delete(`${this.url}/?img=${imgURL}`, { observe: 'response' })
-      .pipe(catchError(this.handleError));
+      .delete(`${this.url}/?img=${imgURL}&id=${id}`, { observe: 'response' })
+      .pipe(
+        catchError(this.handleError),
+        tap(() => this.binding.changeLoading(false))
+      );
   }
 
   private handleError(err: HttpErrorResponse) {

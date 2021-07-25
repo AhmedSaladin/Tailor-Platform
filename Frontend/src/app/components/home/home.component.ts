@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   queryParamsFilter: any = this.route.snapshot.queryParams;
-  tailors: any;
+  tailors: any = [];
 
   // ==========search from header ========================
   FilterArr = [];

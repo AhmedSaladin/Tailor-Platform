@@ -1,6 +1,8 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
+import { BindingService } from 'src/app/services/binding/binding.service';
 import { TailorService } from 'src/app/services/tailor.service';
 // add delete to uploaded images from UI and DB
 @Component({
@@ -15,7 +17,11 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
   @ViewChild('upload_component')
   upload_component!: UcWidgetComponent;
   eve!: Subscription;
-  constructor(private api: TailorService) {}
+  constructor(
+    private api: TailorService,
+    private tostr: ToastrService,
+    private binding: BindingService
+  ) {}
 
   ngOnInit(): void {}
   on_upload_complete(event: any) {
@@ -24,7 +30,6 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
     for (let i = 0; i < length; i++) {
       this.gallery.push(`${url}nth/${i}/`);
     }
-    console.log(event);
     this.user_info.gallary = this.gallery;
     const { gallary } = this.user_info;
     this.eve = this.api
@@ -33,8 +38,19 @@ export class TailorGallaryComponent implements OnInit, OnDestroy {
     this.upload_component.clearUploads();
   }
 
-  DeleteFromGallery(imgURL: any) {
-    this.api.deleteSingleImg(imgURL).subscribe();
+  DeleteFromGallery(imgURL: string) {
+    this.api.deleteSingleImg(imgURL, this.currentUserId).subscribe(
+      () => {
+        this.tostr.success('Image deleted successfuly', 'Success', {
+          positionClass: 'toast-top-center',
+        });
+        this.gallery = this.gallery.filter((img: string) => img !== imgURL);
+      },
+      (err) => {
+        this.binding.changeLoading(false);
+        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+      }
+    );
   }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();

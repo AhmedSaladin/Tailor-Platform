@@ -1,4 +1,5 @@
 const Comment = require("./comment.model");
+const Tailor=require("../tailor/tailor.model") 
 const mongoose=require("mongoose")
 const { is_valid_id, is_not_found } = require("../../utility/errors");
 const { OK } = require("../../utility/statusCodes");
@@ -44,7 +45,37 @@ const get_comment = (req, res) => {
   }
 };
 
+
 const creat_comment = (req, res) => {
+  let { body } = req;
+  const id = mongoose.Types.ObjectId(body.tailor_id);
+  //console.log(body)
+  Tailor.findOne({_id:id})
+  .then((result)=>{
+    console.log(result)
+    // let totalRate=result.rate+body.rate;
+    let oldRate=result.rate;
+    let oldCount=result.count;
+    let sum=oldCount*oldRate;
+    let newRate=(sum+body.rate)/(oldCount+1)
+    console.log(sum)
+    console.log(oldCount)
+    console.log(newRate)
+    Tailor.findOneAndUpdate({ _id: result._id }, { rate: newRate, count:oldCount+1},{ new: true })
+    .then((result)=>{
+      console.log(result)
+    })
+  })
+  .then((result) => {
+    const comment = new Comment(body);
+    comment.save()
+    res.status(201).json(result);
+  })
+}
+
+
+
+/* const creat_comment = (req, res) => {
   let { body } = req;
   const comment = new Comment(body);
   comment
@@ -59,7 +90,7 @@ const creat_comment = (req, res) => {
       res.status(400).json(err);
     });
 };
-
+ */
 const get_comments_by_id = (req, res) => {
   Comment.findById(req.params.id)
     .populate("customer_id", "name")

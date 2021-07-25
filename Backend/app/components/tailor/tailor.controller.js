@@ -6,13 +6,17 @@ const {
   tailorUpdateNameSchema,
 } = require("../../utility/validationSchema");
 const { hashing } = require("../../utility/password");
-const { get_uuid, images_clean_up } = require("../../utility/imageHandling");
-const { is_valid_id } = require("../../utility/errors");
+const {
+  get_uuid,
+  images_clean_up,
+  get_grouped_image_uuid,
+} = require("../../utility/imageHandling");
+const { is_valid_id, is_not_found } = require("../../utility/errors");
 const { cleaner } = require("../../utility/relationCleaner");
 
 filter_tailors_get = async (req, res, next) => {
   const filter = req.query;
-  console.log(filter)
+  console.log(filter);
   try {
     const tailors = await Tailor.find({ isTailor: true, ...filter });
     res.status(200).json(tailors);
@@ -134,8 +138,14 @@ tailor_delete = async (req, res, next) => {
 
 img_delete = async (req, res, next) => {
   const imgURL = req.query.img;
+  const { id } = req.query;
   try {
-    await images_clean_up(get_uuid(imgURL));
+    const tailor = await Tailor.findById(id);
+    const uuid = await get_grouped_image_uuid(get_uuid(imgURL));
+    is_not_found(uuid);
+    await images_clean_up(uuid);
+    tailor.gallary = tailor.gallary.filter((img) => img !== imgURL);
+    await Tailor.findByIdAndUpdate(id, tailor);
     res.status(200).json();
   } catch (err) {
     next(err);
