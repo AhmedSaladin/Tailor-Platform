@@ -8,23 +8,22 @@ const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
       api_key:
-        "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",
+        "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",
     },
   })
 );
 
 // send email
-/*const mailCustomer = (email)=>{
-    transporter.sendMail({
-                    to: email ,
-                    from: 'Tailor@Tailor_shop.com',
-                    subject: "Don't replay to this",
-                    html: '<h1>Thank you for choosing us , your order is made</h1>'
-                });
-};*/
+// const mailCustomer = (email) => {
+//   transporter.sendMail({
+//     to: email,
+//     from: "Tailor@Tailor_shop.com",
+//     subject: "Don't replay to this",
+//     html: "<h1>Thank you for choosing us , your order is made</h1>",
+//   });
+// };
 
 const create_order = (req, res, next) => {
-  console.log(req.body);
   const order = new orderModel({
     customer_id: req.body.customer_id,
     tailor_id: req.body.tailor_id,
@@ -34,9 +33,10 @@ const create_order = (req, res, next) => {
   order
     .save()
     .then((result) => {
+      // const customer = userModel.findById(result.customer_id);
+      // mailCustomer(customer.email);
+      // console.log(customer);
       res.status(201).json();
-      // customer_mail= userModel.findById(result.customer_id);
-      // mailCustomer()
     })
     .catch((err) => {
       console.log(err.toString());
@@ -50,8 +50,7 @@ const view_order = async (req, res, next) => {
   const count = await orderModel.find({}).countDocuments();
   const totalPages = Math.ceil(count / limit);
   const skip = (currentPage - 1) * limit;
-  console.log(req.query);
-  console.log(totalPages);
+
   orderModel
     .aggregate([
       {
