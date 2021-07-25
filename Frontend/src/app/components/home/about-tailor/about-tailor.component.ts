@@ -14,7 +14,8 @@ export class AboutTailorComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl(`/tailor/${id}`);
   }
   ngOnInit(): void {
-    this.get_tailor_rate();
+    this.displayRate(this.tailor.rate);
+    // this.get_tailor_rate();
   }
   @Input() tailor: any;
   eve!: Subscription;
@@ -22,21 +23,7 @@ export class AboutTailorComponent implements OnInit, OnDestroy {
   starsTotal = 5;
   myStyle: any = {};
 
-  get_tailor_rate() {
-    this.eve = this.apiComment
-      .getTailorRate(this.tailor._id)
-      .subscribe((res) => {
-        this.review = res.body;
-        if (this.review.length == 0) {
-          this.review[0] = {
-            count: 0,
-            rate: 5,
-          };
-        }
-        this.review = this.review[0];
-        this.displayRate(this.review.rate);
-      });
-  }
+
 
   displayRate(rate: any) {
     const starPercentage = (rate / 5) * 100;

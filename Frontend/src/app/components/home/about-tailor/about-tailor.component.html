@@ -20,19 +20,18 @@
               >One of the most famous tailors in the world</small
             >
           </h6>
-          <div class="profile-info-rate" *ngIf="review">
+          <div class="profile-info-rate" ><!-- *ngIf="review" -->
             <!--  nancy will give api response all these data -->
             <span>
               <div class="stars-outer">
                 <div class="stars-inner" [ngStyle]="myStyle"></div>
               </div>
-              <!-- <span class="number-rating"></span> -->
             </span>
             <p class="card-text">
               <small
                 class="text-muted"
-                *ngIf="review && review.count != 0; else New"
-                >Rating of {{ review.count }} people</small
+                *ngIf="tailor.count != 0; else New"
+                >Rating of {{ tailor.count }} people</small
               >
               <ng-template #New>
                 <small class="text-muted">Joined Recently</small>
