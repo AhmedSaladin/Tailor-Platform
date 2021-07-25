@@ -31,9 +31,9 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
   }
 
   getOrders() {
-    this.eve = this.orderService.getOrder(this.page).subscribe(
+    this.orderService.getOrders(this.page).subscribe(
       (res) => {
-        this.orders = res;
+        this.orders = res.orders;
         this.totalPages = res.totalPages;
       },
       (err) => {

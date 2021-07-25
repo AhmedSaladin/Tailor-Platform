@@ -9,7 +9,6 @@ import { CustomerService } from './customer.service';
   providedIn: 'root',
 })
 export class OrderService {
-  private url = 'http://localhost:3000/orders';
   private urlBack = 'http://localhost:3000/api/orders';
 
   constructor(
@@ -27,22 +26,6 @@ export class OrderService {
     return this.http.get(`${this.urlBack}/customer-orders/${userId}`, {
       observe: 'response',
     });
-  }
-
-  get_tailor_requests(id: any) {
-    return this.http.get(`${this.url}?tailor_id=${id}`, {
-      observe: 'response',
-    });
-  }
-
-  get_customer_requests(id: any) {
-    return this.http.get(`${this.url}?customer_id=${id}`, {
-      observe: 'response',
-    });
-  }
-
-  get_tailor_request(id: any) {
-    return this.http.get(`${this.url}/${id}`, { observe: 'response' });
   }
 
   create_new_order(order: any) {
@@ -64,21 +47,22 @@ export class OrderService {
     );
   }
 
-  getOrder(page: number) {
+  getOrders(page: number) {
+    const limit: number = 5;
     this.binding.changeLoading(true);
-    const limit = 5;
     return this.http
-      .get<{ totalPages: number; orders: Array<Order> }>(
-        `${this.urlBack}?page=${page}&limit=${limit}`
-      )
-      .pipe(tap((res) => this.binding.changeLoading(false)));
+      .get<{
+        orders: Array<Order>;
+        totalPages: number;
+      }>(`${this.urlBack}?page=${page}&limit=${limit}`)
+      .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
   getOrderById(id: string) {
     this.binding.changeLoading(true);
     return this.http
       .get(`${this.urlBack}/${id}`, { observe: 'response' })
-      .pipe(tap((res) => this.binding.changeLoading(false)));
+      .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
   deleteOrder(id: any) {

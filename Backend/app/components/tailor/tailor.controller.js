@@ -40,8 +40,14 @@ search_tailors_get = async (req, res, next) => {
 
 all_tailors_get = async (req, res, next) => {
   try {
-    const tailors = await Tailor.find({ isTailor: true });
-    res.status(200).json(tailors);
+    const currentPage = parseInt(req.query.page || 1);
+    const limit = parseInt(req.query.limit || 2);
+    const count = await Tailor.find({ isTailor: true }).countDocuments();
+    const totalPages = Math.ceil(count / limit);
+    const tailors = await Tailor.find({ isTailor: true })
+      .skip((currentPage - 1) * limit)
+      .limit(limit);
+    res.status(200).json({ tailors, totalPages });
   } catch (err) {
     next(err);
   }

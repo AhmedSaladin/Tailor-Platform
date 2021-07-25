@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { BindingService } from 'src/app/services/binding/binding.service';
 import { TailorService } from 'src/app/services/tailor.service';
 import { Tailor } from '../../shared/models';
 
@@ -16,12 +17,16 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
   isTailor = true;
   id: any;
   formValidation: any;
+  page: number = 1;
+  totalPages: number = 1;
+  limit: number = 5;
   eve!: Subscription;
 
   constructor(
     private tailorServive: TailorService,
     private formBuilder: FormBuilder,
-    private tostr: ToastrService
+    private tostr: ToastrService,
+    private binding: BindingService
   ) {}
 
   ngOnInit(): void {
@@ -95,7 +100,7 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
         this.get_tailors();
       },
       (err) => {
-        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+        this.if_error(err);
       }
     );
     form.reset();
@@ -103,9 +108,11 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
 
   getTailor(id: any) {
     this.tailorServive.get_tailor_info(id).subscribe(
-      (res) => (this.tailor = res.body),
+      (res) => {
+        this.tailor = res.body;
+      },
       (err) => {
-        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+        this.if_error(err);
       }
     );
   }
@@ -120,23 +127,44 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
           });
           this.get_tailors();
         },
-        (err) =>
-          this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' })
+        (err) => {
+          this.if_error(err);
+        }
       );
     }
   }
 
   get_tailors() {
-    this.eve = this.tailorServive.get_tailors_info().subscribe(
-      (res) => {
-        if (res.body == null) this.tailors = [];
-        else this.tailors = res.body;
-      },
-      (err) => {
-        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
-      }
-    );
+    this.eve = this.tailorServive
+      .get_tailors_info(this.limit, this.page)
+      .subscribe(
+        (res) => {
+          this.totalPages = res.totalPages;
+          if (res == null) this.tailors = [];
+          else this.tailors = res.tailors;
+        },
+        (err) => {
+          this.if_error(err);
+        }
+      );
   }
+
+  nextPage() {
+    if (this.page === this.totalPages) return;
+    this.page++;
+    this.get_tailors();
+  }
+  previousPage() {
+    if (this.page === 1) return;
+    this.page--;
+    this.get_tailors();
+  }
+
+  if_error(err: any) {
+    this.binding.changeLoading(false);
+    this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+  }
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

@@ -19,7 +19,6 @@ th {
 table {
   margin-top: 75px;
 }
-/*Start Pagination Styles*/
 
 .fa-backward,
 .fa-forward {
@@ -51,5 +50,3 @@ table {
   font-size: 1px;
   margin-top: 3px;
 }
-
-/*End Pagination Styles*/
