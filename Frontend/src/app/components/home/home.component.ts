@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit {
     'designFor=Women': new FormControl(''),
     'gender=male': new FormControl(''),
     'gender=female': new FormControl(''),
+    'rate=1': new FormControl(''),
+    'rate=2': new FormControl(''),
+    'rate=3': new FormControl(''),
+    'rate=4': new FormControl(''),
+    'rate=5': new FormControl(''),
   });
   // filtering based on sidebar selection
   filterTailors(formValue: any) {
