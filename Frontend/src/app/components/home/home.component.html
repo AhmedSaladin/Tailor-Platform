@@ -193,7 +193,7 @@
       </form>
     </div>
     <!-- / side bar -->
-    <div class="col-12 col-lg-9">
+    <div class="col-12 col-lg-9" *ngIf="tailors; else noTailor">
       <div *ngIf="tailors.length > 0; else noTailor">
         <app-about-tailor
           *ngFor="let tailor of tailors"

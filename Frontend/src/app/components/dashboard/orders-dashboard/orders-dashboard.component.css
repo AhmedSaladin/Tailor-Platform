@@ -1,21 +1,52 @@
-i{
-    font-size: 25px;
-    cursor: pointer;
+i {
+  font-size: 25px;
+  cursor: pointer;
 }
-.fa-eye{
-    color: #3396c0;
+.fa-eye {
+  color: #3396c0;
 }
-.fa-trash-alt{
-    color: #CF0000;
+.fa-trash-alt {
+  color: #cf0000;
 }
-td{
-    font-weight: bold;
+td {
+  font-weight: bold;
 }
-th{
-    font-size: 20px;
-    font-weight: bold;
+th {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 table {
   margin-top: 75px;
+}
+
+.fa-backward,
+.fa-forward {
+  font-size: 12px;
+}
+
+.page-link {
+  background-color: #2e86ab;
+  color: white;
+  border: 1px solid #3396c0;
+  font-size: 13px;
+}
+.page-link:hover {
+  background-color: white;
+  color: #2e86ab;
+  border: 1px solid #2e86ab;
+}
+
+.page-link-left {
+  border-top-left-radius: 15px !important;
+  border-bottom-left-radius: 15px !important;
+  font-size: 1px;
+  margin-top: 3px;
+}
+
+.page-link-right {
+  border-top-right-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
+  font-size: 1px;
+  margin-top: 3px;
 }

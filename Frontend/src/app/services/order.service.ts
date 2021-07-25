@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
+import { Order } from '../components/shared/models';
 import { BindingService } from './binding/binding.service';
 import { CustomerService } from './customer.service';
 
@@ -8,7 +9,6 @@ import { CustomerService } from './customer.service';
   providedIn: 'root',
 })
 export class OrderService {
-  private url = 'http://localhost:3000/orders';
   private urlBack = 'http://localhost:3000/api/orders';
 
   constructor(
@@ -28,53 +28,41 @@ export class OrderService {
     });
   }
 
-  get_tailor_requests(id: any) {
-    return this.http.get(`${this.url}?tailor_id=${id}`, {
-      observe: 'response',
-    });
-  }
-
-  get_customer_requests(id: any) {
-    return this.http.get(`${this.url}?customer_id=${id}`, {
-      observe: 'response',
-    });
-  }
-
-  get_tailor_request(id: any) {
-    return this.http.get(`${this.url}/${id}`, { observe: 'response' });
-  }
-
   create_new_order(order: any) {
     return this.http.post(this.urlBack, order, { observe: 'response' });
   }
 
   update_status(state: string, id: string) {
     return this.http.patch(
-      `${this.urlBack }/${id}`,
+      `${this.urlBack}/${id}`,
       { status: state },
       { observe: 'response' }
     );
   }
   update_comment(comment: any, id: string) {
     return this.http.patch(
-      `${this.urlBack }/comments/${id}`,
+      `${this.urlBack}/comments/${id}`,
       { comment: comment },
       { observe: 'response' }
     );
   }
 
-  getOrder() {
+  getOrders(page: number) {
+    const limit: number = 5;
     this.binding.changeLoading(true);
     return this.http
-      .get(this.urlBack)
-      .pipe(tap((res) => this.binding.changeLoading(false)));
+      .get<{
+        orders: Array<Order>;
+        totalPages: number;
+      }>(`${this.urlBack}?page=${page}&limit=${limit}`)
+      .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
   getOrderById(id: string) {
     this.binding.changeLoading(true);
     return this.http
       .get(`${this.urlBack}/${id}`, { observe: 'response' })
-      .pipe(tap((res) => this.binding.changeLoading(false)));
+      .pipe(tap(() => this.binding.changeLoading(false)));
   }
 
   deleteOrder(id: any) {

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { BindingService } from 'src/app/services/binding/binding.service';
 import { TailorService } from 'src/app/services/tailor.service';
 import { Tailor } from '../../shared/models';
 
@@ -24,7 +25,8 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
   constructor(
     private tailorServive: TailorService,
     private formBuilder: FormBuilder,
-    private tostr: ToastrService
+    private tostr: ToastrService,
+    private binding: BindingService
   ) {}
 
   ngOnInit(): void {
@@ -98,7 +100,7 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
         this.get_tailors();
       },
       (err) => {
-        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+        this.if_error(err);
       }
     );
     form.reset();
@@ -106,9 +108,11 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
 
   getTailor(id: any) {
     this.tailorServive.get_tailor_info(id).subscribe(
-      (res) => (this.tailor = res.body),
+      (res) => {
+        this.tailor = res.body;
+      },
       (err) => {
-        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+        this.if_error(err);
       }
     );
   }
@@ -123,8 +127,9 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
           });
           this.get_tailors();
         },
-        (err) =>
-          this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' })
+        (err) => {
+          this.if_error(err);
+        }
       );
     }
   }
@@ -139,7 +144,7 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
           else this.tailors = res.tailors;
         },
         (err) => {
-          this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
+          this.if_error(err);
         }
       );
   }
@@ -153,6 +158,11 @@ export class TailorsDashboardComponant implements OnInit, OnDestroy {
     if (this.page === 1) return;
     this.page--;
     this.get_tailors();
+  }
+
+  if_error(err: any) {
+    this.binding.changeLoading(false);
+    this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
   }
 
   ngOnDestroy(): void {

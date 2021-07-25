@@ -1,3 +1,4 @@
+<div *ngIf="orders">
 <div class="table-responsive">
   <table class="table text-center">
     <thead>
@@ -117,59 +118,48 @@
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.chest }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Shoulder</td>
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.shoulder }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Inseam</td>
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.inseam }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Waist</td>
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.waist }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Height</td>
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.height }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Arm Length</td>
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.armLength }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Collar</td>
                               <td colspan="2">
                                 {{ cstOrder.customer_sizes.collar }}
                               </td>
-                              <!-- <td>CM</td> -->
                             </tr>
                             <tr>
                               <td>Thigh</td>
                               <td colspan="2">
                                 {{ order.customer_sizes.thigh }}
                               </td>
-
-                              <!-- <td>Sleeve</td>
-                                                        <td colspan="2">{{ cstOrder.customer_sizes.sleeve }}</td> -->
-                              <!-- <td>CM</td> -->
                             </tr>
                           </tbody>
                         </table>
@@ -188,5 +178,79 @@
       </tr>
     </tbody>
   </table>
+  <!-- Start Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center mt-4">
+      <li class="page-item">
+        <button
+          class="page-link page-link-left me-2"
+          tabindex="-1"
+          [disabled]="page === 1"
+          (click)="previousPage()"
+        >
+          <i class="fas fa-backward"></i>
+        </button>
+      </li>
+      <li class="page-item">
+        <button
+          class="page-link me-2"
+          style="
+            font-weight: bold;
+            background-color: white;
+            color: #2e86ab;
+            border-radius: 45px;
+          "
+        >
+          {{ page }}
+        </button>
+      </li>
+      <li class="page-item">
+        <button
+          class="page-link page-link-right"
+          [disabled]="page == totalPages"
+          (click)="nextPage()"
+        >
+          <i class="fas fa-forward"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center mt-3">
+    <li class="page-item">
+      <button
+        class="page-link page-link-left me-2"
+        tabindex="-1"
+        [disabled]="page === 1"
+        (click)="previousPage()"
+      >
+        <i class="fas fa-backward"></i>
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link me-2"
+        style="
+          font-weight: bold;
+          background-color: white;
+          color: #2e86ab;
+          border-radius: 45px;
+        "
+      >
+        {{ page }}
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link page-link-right"
+        [disabled]="page == totalPages"
+        (click)="nextPage()"
+      >
+        <i class="fas fa-forward"></i>
+      </button>
+    </li>
+  </ul>
+</nav>
 </div>
 <ng-template #dd></ng-template>
