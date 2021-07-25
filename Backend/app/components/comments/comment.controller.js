@@ -54,7 +54,7 @@ const creat_comment = (req, res) => {
       let oldRate = result.rate;
       let oldCount = result.count;
       let sum = oldCount * oldRate;
-      let newRate = Math.floor((sum + body.rate) / (oldCount + 1));
+      let newRate = Math.ceil((sum + body.rate) / (oldCount + 1));
       Tailor.findOneAndUpdate(
         { _id: result._id },
         { rate: newRate, count: oldCount + 1 },
