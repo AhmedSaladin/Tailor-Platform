@@ -45,131 +45,60 @@ const create_order = (req, res, next) => {
 };
 
 const view_order = async (req, res, next) => {
-  // id ? tailor :cutomer
-  // get order by tailor id find({tailorID:tailor_id})
+  const currentPage = parseInt(req.query.page || 1);
+  const limit = parseInt(req.query.limit || 4);
+  const count = await orderModel.find({}).countDocuments();
+  const totalPages = Math.ceil(count / limit);
+  const skip = (currentPage - 1) * limit;
+  console.log(req.query);
+  console.log(totalPages);
+  orderModel
+    .aggregate([
+      {
+        $lookup: {
+          from: userModel.collection.name,
+          localField: "customer_id",
+          foreignField: "_id",
+          as: "customer",
+        },
+      },
+      {
+        $unwind: "$customer",
+      },
+      {
+        $lookup: {
+          from: tailorModel.collection.name,
+          localField: "tailor_id",
+          foreignField: "_id",
+          as: "tailor",
+        },
+      },
+      {
+        $unwind: "$tailor",
+      },
 
-  if (req.query.tailor_id) {
-    const id = mongoose.Types.ObjectId(req.query.tailor_id);
-    orderModel
-      .aggregate([
-        { $match: { tailor_id: id } },
-        {
-          $lookup: {
-            from: userModel.collection.name,
-            let: { order_item: "$customer_id" },
-            pipeline: [
-              {
-                $match: {
-                  $expr: { $and: [{ $eq: ["$_id", "$$order_item"] }] },
-                },
-              },
-              { $project: { name: 1, _id: 0 } },
-            ],
-            as: "customer",
-          },
+      {
+        $project: {
+          designs: 1,
+          status: 1,
+          customer_sizes: 1,
+          customer_id: 1,
+          tailor_id: 1,
+          customer_name: "$customer.name",
+          tailor_name: "$tailor.name",
         },
-        {
-          $unwind: "$customer",
-        },
-      ])
-      .then((result) => {
-        console.log("line 78");
-        res.status(200).json(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-  // get order by customer id find({customerID:customer_id})
-  else if (req.query.customer_id) {
-    const id = mongoose.Types.ObjectId(req.query.customer_id);
-    orderModel
-      .aggregate([
-        { $match: { customer_id: id } },
-        {
-          $lookup: {
-            from: tailorModel.collection.name,
-            let: { order_item: "$tailor_id" },
-            pipeline: [
-              {
-                $match: {
-                  $expr: { $and: [{ $eq: ["$_id", "$$order_item"] }] },
-                },
-              },
-              //{ $project: { orders: 0, _id: 0,isTailor: 0, password: 0,gender: 0, avatar: 0, sizes: 0 } }
-              { $project: { name: 1 } },
-            ],
-
-            as: "tailor",
-          },
-        },
-        {
-          $unwind: "$tailor",
-        },
-      ])
-      .then((result) => {
-        console.log("line 119");
-        res.status(200).json(result);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  } else {
-    const currentPage = parseInt(req.query.page || 1);
-    const limit = parseInt(req.query.limit || 4);
-    const count = await orderModel.find({}).countDocuments();
-    const totalPages = Math.ceil(count / limit);
-    const skip = (currentPage - 1) * limit;
-    console.log(req.query);
-    console.log(totalPages);
-    orderModel
-      .aggregate([
-        ///join to get customer_name& tailo name
-        {
-          $lookup: {
-            from: userModel.collection.name,
-            localField: "customer_id",
-            foreignField: "_id",
-            as: "customer",
-          },
-        },
-        {
-          $unwind: "$customer",
-        },
-        {
-          $lookup: {
-            from: tailorModel.collection.name,
-            localField: "tailor_id",
-            foreignField: "_id",
-            as: "tailor",
-          },
-        },
-        {
-          $unwind: "$tailor",
-        },
-
-        {
-          $project: {
-            designs: 1,
-            status: 1,
-            customer_sizes: 1,
-            customer_id: 1,
-            tailor_id: 1,
-            customer_name: "$customer.name",
-            tailor_name: "$tailor.name",
-          },
-        },
-        { $skip: skip },
-        { $limit: limit },
-      ])
-      .then((result) => {
-        res.status(200).json({ orders: result, totalPages });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+      },
+      { $skip: skip },
+      { $limit: limit },
+    ])
+    .then((result) => {
+      res.status(200).json({ orders: result, totalPages });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
+
 const view_orderByTailor = (req, res, next) => {
   const id = mongoose.Types.ObjectId(req.params.id);
   orderModel
