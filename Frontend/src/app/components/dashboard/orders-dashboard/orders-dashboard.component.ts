@@ -28,17 +28,31 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
     this.getOrders();
   }
 
+  page: number = 1;
+  totalPages: number = 1;
   getOrders() {
-    this.orderService.getOrder().subscribe(
+    this.orderService.getOrders(this.page).subscribe(
       (res) => {
-        this.orders = res;
+        this.orders = res.orders;
+        this.totalPages = res.totalPages;
       },
       (err) => {
         this.if_error(err);
       }
     );
   }
-  
+
+  nextPage() {
+    if (this.page === this.totalPages) return;
+    this.page++;
+    this.getOrders();
+  }
+  previousPage() {
+    if (this.page === 1) return;
+    this.page--;
+    this.getOrders();
+  }
+
   deleteOrder(id: any) {
     const yes = confirm('Do you want delete this Order');
     if (yes) {

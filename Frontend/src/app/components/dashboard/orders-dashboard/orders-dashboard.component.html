@@ -189,4 +189,40 @@
     </tbody>
   </table>
 </div>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center mt-4">
+    <li class="page-item">
+      <button
+        class="page-link page-link-left me-2"
+        tabindex="-1"
+        [disabled]="page === 1"
+        (click)="previousPage()"
+      >
+        <i class="fas fa-backward"></i>
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link me-2"
+        style="
+          font-weight: bold;
+          background-color: white;
+          color: #2e86ab;
+          border-radius: 45px;
+        "
+      >
+        {{ page }}
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link page-link-right"
+        [disabled]="page == totalPages"
+        (click)="nextPage()"
+      >
+        <i class="fas fa-forward"></i>
+      </button>
+    </li>
+  </ul>
+</nav>
 <ng-template #dd></ng-template>
