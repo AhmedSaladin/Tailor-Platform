@@ -3,11 +3,7 @@ const userModel = require("../user/user.model");
 const tailorModel = require("../tailor/tailor.model");
 const orderModel = require("./order.model");
 
-const currentPage = parseInt(req.query.page || 1);
-const limit = parseInt(req.query.limit || 4);
-const count = await orderModel.find({}).countDocuments();
-const totalPages = Math.ceil(count / limit);
-const skip = (currentPage - 1) * limit;
+
 
 const create_order = (req, res, next) => {
   const order = new orderModel({
@@ -28,7 +24,11 @@ const create_order = (req, res, next) => {
 };
 
 const view_order = async (req, res, next) => {
-  
+  const currentPage = parseInt(req.query.page || 1);
+  const limit = parseInt(req.query.limit || 4);
+  const count = await orderModel.find({}).countDocuments();
+  const totalPages = Math.ceil(count / limit);
+  const skip = (currentPage - 1) * limit;
   orderModel
     .aggregate([
       {
