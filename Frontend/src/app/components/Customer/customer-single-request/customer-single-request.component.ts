@@ -22,10 +22,11 @@ export class CustomerSingleRequestComponent implements OnInit {
   constructor(
     private commentApi: CommentService,
     private toastr: ToastrService,
-    private order_api:OrderService
+    private order_api: OrderService
   ) {}
 
-  ngOnInit(): void {this.imags = this.order.designs;
+  ngOnInit(): void {
+    this.imags = this.order.designs;
     //get tailor & customer data  from ordeer
     this.current_image = this.imags[0];
     this.formValidation();
@@ -66,15 +67,15 @@ export class CustomerSingleRequestComponent implements OnInit {
         //name in join
         order_id: this.order._id,
       };
-    this.commentApi.CreateCommenr(newComment).subscribe(
-      res=>{
-        this.hasComment = true;
-        this.toastr.success('thanks ^-^');//create comment done
-      },
-      err=>{
-        this.toastr.error("error !-_-");
-      }
-    );
+      this.commentApi.CreateCommenr(newComment).subscribe(
+        (res) => {
+          this.hasComment = true;
+          this.toastr.success('thanks ^-^'); //create comment done
+        },
+        (err) => {
+          this.toastr.error('error !-_-');
+        }
+      );
     }
   }
 
@@ -95,32 +96,32 @@ export class CustomerSingleRequestComponent implements OnInit {
     );
   }
 
-
   //////////////////////////////
-  send_commment(message:any){
-    if (message.value.length>0) {
+  send_commment(message: any) {
+    if (message.value.length > 0) {
       let myDate = new Date();
-      let newComment={
-        date:myDate,
-        comment_body:message.value,
-        send_from:'customer'
-      }
-      this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
-        (res) => {
-           console.log(res.body)
-          this.order.comments=res.body;
-          this.toastr.success('Message send', 'Success');
-        },
-        (err) => {
-          this.toastr.error(err, 'Error');
-        }
-      );
-      message.value="";
-     // console.log(message)
+      let newComment = {
+        date: myDate,
+        comment_body: message.value,
+        send_from: 'customer',
+      };
+      this.eve = this.order_api
+        .update_comment(newComment, this.order._id)
+        .subscribe(
+          (res) => {
+            console.log(res.body);
+            this.order.comments = res.body;
+            this.toastr.success('Message send', 'Success');
+          },
+          (err) => {
+            this.toastr.error(err, 'Error');
+          }
+        );
+      message.value = '';
+      // console.log(message)
     }
     //message.placeholder="Leave a comment here"
   }
-
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

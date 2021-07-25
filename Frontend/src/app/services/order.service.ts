@@ -17,15 +17,24 @@ export class OrderService {
     private binding: BindingService
   ) {}
 
-  get_current_user_orders() {
+  get_current_user_orders(page: number) {
+    const tlimit: number = 5;
+    const ulimit: number = 4;
+
     const userId = this.user.user.value?.Id;
     if (this.user.user.value?.IsTailor)
-      return this.http.get(`${this.urlBack}/tailor-orders/${userId}`, {
-        observe: 'response',
-      });
-    return this.http.get(`${this.urlBack}/customer-orders/${userId}`, {
-      observe: 'response',
-    });
+      return this.http.get<{
+        orders: Array<Order>;
+        totalPages: number;
+      }>(
+        `${this.urlBack}/tailor-orders/${userId}?page=${page}&limit=${tlimit}`
+      );
+    return this.http.get<{
+      orders: Array<Order>;
+      totalPages: number;
+    }>(
+      `${this.urlBack}/customer-orders/${userId}?page=${page}&limit=${ulimit}`
+    );
   }
 
   create_new_order(order: any) {
