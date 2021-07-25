@@ -3,6 +3,12 @@ const userModel = require("../user/user.model");
 const tailorModel = require("../tailor/tailor.model");
 const orderModel = require("./order.model");
 
+const currentPage = parseInt(req.query.page || 1);
+const limit = parseInt(req.query.limit || 4);
+const count = await orderModel.find({}).countDocuments();
+const totalPages = Math.ceil(count / limit);
+const skip = (currentPage - 1) * limit;
+
 const create_order = (req, res, next) => {
   const order = new orderModel({
     customer_id: req.body.customer_id,
@@ -22,12 +28,7 @@ const create_order = (req, res, next) => {
 };
 
 const view_order = async (req, res, next) => {
-  const currentPage = parseInt(req.query.page || 1);
-  const limit = parseInt(req.query.limit || 4);
-  const count = await orderModel.find({}).countDocuments();
-  const totalPages = Math.ceil(count / limit);
-  const skip = (currentPage - 1) * limit;
-
+  
   orderModel
     .aggregate([
       {
@@ -115,6 +116,8 @@ const view_orderByTailor = (req, res, next) => {
           tailor_name: "$tailor.name",
         },
       },
+      { $skip: skip },
+      { $limit: limit },
     ])
     .then((result) => {
       console.log("line 221");
@@ -165,6 +168,8 @@ const view_orderByCustomer = (req, res, next) => {
           tailor_name: "$tailor.name",
         },
       },
+      { $skip: skip },
+      { $limit: limit },
     ])
     .then((result) => {
       console.log("line 273");
@@ -215,6 +220,8 @@ const view_orderByOrderId = (req, res, next) => {
           tailor_id: 1,
         },
       },
+      { $skip: skip },
+      { $limit: limit },
     ])
     .then((result) => {
       console.log("line 327");
