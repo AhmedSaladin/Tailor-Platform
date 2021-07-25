@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const userModel = require("../user/user.model");
 const tailorModel = require("../tailor/tailor.model");
 const orderModel = require("./order.model");
+
 const create_order = (req, res, next) => {
-  console.log(req.body);
   const order = new orderModel({
     customer_id: req.body.customer_id,
     tailor_id: req.body.tailor_id,
@@ -27,8 +27,7 @@ const view_order = async (req, res, next) => {
   const count = await orderModel.find({}).countDocuments();
   const totalPages = Math.ceil(count / limit);
   const skip = (currentPage - 1) * limit;
-  console.log(req.query);
-  console.log(totalPages);
+
   orderModel
     .aggregate([
       {
