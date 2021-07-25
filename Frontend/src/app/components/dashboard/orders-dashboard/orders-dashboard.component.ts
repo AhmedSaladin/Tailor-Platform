@@ -17,6 +17,8 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
   imags: any;
   count: any = 0;
   current_image: any;
+  page: number = 1;
+  totalPages: number = 1;
 
   constructor(
     private orderService: OrderService,
@@ -28,8 +30,6 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
     this.getOrders();
   }
 
-  page: number = 1;
-  totalPages: number = 1;
   getOrders() {
     this.orderService.getOrders(this.page).subscribe(
       (res) => {
@@ -40,17 +40,6 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
         this.if_error(err);
       }
     );
-  }
-
-  nextPage() {
-    if (this.page === this.totalPages) return;
-    this.page++;
-    this.getOrders();
-  }
-  previousPage() {
-    if (this.page === 1) return;
-    this.page--;
-    this.getOrders();
   }
 
   deleteOrder(id: any) {
@@ -92,6 +81,16 @@ export class OrdersDashboardComponent implements OnInit, OnDestroy {
     if (this.count == 0) this.count = this.imags.length - 1;
     else this.count--;
     this.current_image = this.imags[this.count];
+  }
+  nextPage() {
+    if (this.page === this.totalPages) return;
+    this.page++;
+    this.getOrders();
+  }
+  previousPage() {
+    if (this.page === 1) return;
+    this.page--;
+    this.getOrders();
   }
 
   if_error(err: any) {

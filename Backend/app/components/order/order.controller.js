@@ -2,26 +2,6 @@ const mongoose = require("mongoose");
 const userModel = require("../user/user.model");
 const tailorModel = require("../tailor/tailor.model");
 const orderModel = require("./order.model");
-const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport");
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key:
-        "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",
-    },
-  })
-);
-
-// send email
-// const mailCustomer = (email) => {
-//   transporter.sendMail({
-//     to: email,
-//     from: "Tailor@Tailor_shop.com",
-//     subject: "Don't replay to this",
-//     html: "<h1>Thank you for choosing us , your order is made</h1>",
-//   });
-// };
 
 const create_order = (req, res, next) => {
   const order = new orderModel({
@@ -33,9 +13,6 @@ const create_order = (req, res, next) => {
   order
     .save()
     .then((result) => {
-      // const customer = userModel.findById(result.customer_id);
-      // mailCustomer(customer.email);
-      // console.log(customer);
       res.status(201).json();
     })
     .catch((err) => {
