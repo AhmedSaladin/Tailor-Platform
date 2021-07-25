@@ -76,8 +76,14 @@ const view_order = async (req, res, next) => {
     });
 };
 
-const view_orderByTailor = (req, res, next) => {
+const view_orderByTailor = async (req, res, next) => {
   const id = mongoose.Types.ObjectId(req.params.id);
+
+   const currentPage = parseInt(req.query.page || 1);
+  const limit = parseInt(req.query.limit || 4);
+  const count = await orderModel.find({tailor_id: id}).countDocuments();
+  const totalPages = Math.ceil(count / limit);
+  const skip = (currentPage - 1) * limit;
   orderModel
     .aggregate([
       { $match: { tailor_id: id } },
@@ -121,14 +127,23 @@ const view_orderByTailor = (req, res, next) => {
     ])
     .then((result) => {
       console.log("line 221");
-      res.status(200).json(result);
+      res.status(200).json({
+        orders : result,
+        totalPages: totalPages,
+      });
     })
     .catch((error) => {
       console.log(error);
     });
 };
-const view_orderByCustomer = (req, res, next) => {
+const view_orderByCustomer = async (req, res, next) => {
   const id = mongoose.Types.ObjectId(req.params.id);
+
+   const currentPage = parseInt(req.query.page || 1);
+  const limit = parseInt(req.query.limit || 4);
+  const count = await orderModel.find({ customer_id: id }).countDocuments();
+  const totalPages = Math.ceil(count / limit);
+  const skip = (currentPage - 1) * limit;
   orderModel
     .aggregate([
       { $match: { customer_id: id } },
@@ -172,8 +187,10 @@ const view_orderByCustomer = (req, res, next) => {
       { $limit: limit },
     ])
     .then((result) => {
-      console.log("line 273");
-      res.status(200).json(result);
+       res.status(200).json({
+        orders : result,
+        totalPages: totalPages,
+      })
     })
     .catch((error) => {
       console.log(error);
@@ -181,7 +198,6 @@ const view_orderByCustomer = (req, res, next) => {
 };
 const view_orderByOrderId = (req, res, next) => {
   const id = mongoose.Types.ObjectId(req.params.id);
-
   orderModel
     .aggregate([
       { $match: { _id: id } },
@@ -220,8 +236,7 @@ const view_orderByOrderId = (req, res, next) => {
           tailor_id: 1,
         },
       },
-      { $skip: skip },
-      { $limit: limit },
+      
     ])
     .then((result) => {
       console.log("line 327");
