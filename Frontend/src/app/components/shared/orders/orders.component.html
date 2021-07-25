@@ -1,26 +1,63 @@
 <div class="side-bar">
-  <div class="card ">
-    <div class="card-header text-center"> <i class="fas fa-shopping-cart"></i> Orders
+  <div class="card">
+    <div class="card-header text-center">
+      <i class="fas fa-shopping-cart"></i> Orders
     </div>
     <div class="card-body">
-    <ul
-      class="list-group list-group-flush"
-      *ngIf="orders.length != 0; else nothingHere"
-    >
-      <li class="list-group-item" *ngFor="let order of orders">
-        <app-customer-single-request
-          *ngIf="!isTailor"
-          [order]="order"
-        ></app-customer-single-request>
-        <app-tailor-single-request
-          *ngIf="isTailor"
-          [order]="order"
-        ></app-tailor-single-request>
-      </li>
-    </ul>
-  </div>
+      <ul
+        class="list-group list-group-flush"
+        *ngIf="orders.length != 0; else nothingHere"
+      >
+        <li class="list-group-item" *ngFor="let order of orders">
+          <app-customer-single-request
+            *ngIf="!isTailor"
+            [order]="order"
+          ></app-customer-single-request>
+          <app-tailor-single-request
+            *ngIf="isTailor"
+            [order]="order"
+          ></app-tailor-single-request>
+        </li>
+      </ul>
+    </div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <button class="page-link page-link-left me-2" tabindex="-1">
+            <!-- [disabled]="page === 1"
+          (click)="previousPage()" -->
+            <i class="fas fa-backward"></i>
+          </button>
+        </li>
+        <li class="page-item">
+          <button
+            class="page-link me-2"
+            style="
+              font-weight: bold;
+              background-color: white;
+              color: #2e86ab;
+              border-radius: 45px;
+            "
+          >
+            {{ 1 }}
+          </button>
+        </li>
+        <li class="page-item">
+          <button class="page-link page-link-right">
+            <!-- [disabled]="page == totalPages"
+          (click)="nextPage()" -->
+            <i class="fas fa-forward"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
-<ng-template #nothingHere >
-  <div class="text-center" style="font-size: 15px; font-weight: bold; padding: 5px;">You didn't have orders to display</div>
+<ng-template #nothingHere>
+  <div
+    class="text-center"
+    style="font-size: 15px; font-weight: bold; padding: 5px"
+  >
+    You didn't have orders to display
+  </div>
 </ng-template>
