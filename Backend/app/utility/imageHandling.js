@@ -17,4 +17,19 @@ async function images_clean_up(oldImg) {
     .catch((err) => console.log(err.toString()));
 }
 
-module.exports = { get_uuid, images_clean_up };
+async function get_grouped_image_uuid(groupedImage) {
+  console.log(groupedImage);
+  let uuid;
+  await axios
+    .get(`https://api.uploadcare.com/groups/${groupedImage}/`, {
+      headers: {
+        Authorization: process.env.UPLOAD_CARE_HEADER,
+        Accept: "application/vnd.uploadcare-v0.5+json",
+      },
+    })
+    .then((res) => (uuid = res.data.files[0].uuid))
+    .catch((err) => console.log(err.toString()));
+  return uuid;
+}
+
+module.exports = { get_uuid, images_clean_up, get_grouped_image_uuid };
