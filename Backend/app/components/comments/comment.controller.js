@@ -58,9 +58,6 @@ const creat_comment = (req, res) => {
     let oldCount=result.count;
     let sum=oldCount*oldRate;
     let newRate=(sum+body.rate)/(oldCount+1)
-    console.log(sum)
-    console.log(oldCount)
-    console.log(newRate)
     Tailor.findOneAndUpdate({ _id: result._id }, { rate: newRate, count:oldCount+1},{ new: true })
     .then((result)=>{
       console.log(result)

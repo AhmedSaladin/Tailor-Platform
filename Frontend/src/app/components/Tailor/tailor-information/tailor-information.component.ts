@@ -55,7 +55,8 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
       ],
       design: [`${this.user_info.designFor}`, Validators.required],
     });
-    this.get_tailor_rate();
+    this.displayRate(this.user_info.rate);
+
   }
 
   get getControl() {
@@ -91,25 +92,25 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
     if (this.img != this.user_info.avatar) this.img = this.user_info.avatar;
     this.upload_component.clearUploads();
   }
-  
-  review: any;
-  get_tailor_rate() {
-    this.eve = this.apiComment
-      .getTailorRate(this.user_info._id)
-      .subscribe((res) => {
-        this.review = res.body;
-        if (this.review.length == 0) {
-          this.review[0] = {
-            count: 0,
-            rate: 5,
-          };
-        }
-        this.review = this.review[0];
-        this.displayRate(this.review.rate);
-      });
-  }
 
-  starsTotal = 5;
+  // review: any;
+  // get_tailor_rate() {
+  //   this.eve = this.apiComment
+  //     .getTailorRate(this.user_info._id)
+  //     .subscribe((res) => {
+  //       this.review = res.body;
+  //       if (this.review.length == 0) {
+  //         this.review[0] = {
+  //           count: 0,
+  //           rate: 5,
+  //         };
+  //       }
+  //       this.review = this.review[0];
+  //       this.displayRate(this.review.rate);
+  //     });
+  // }
+
+  // starsTotal = 5;
   myStyle: any = {};
   displayRate(rate: any) {
     const starPercentage = (rate / 5) * 100;
