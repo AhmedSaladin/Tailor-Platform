@@ -53,5 +53,13 @@ const tailorSchema = new mongoose.Schema({
     type: String,
     default: "Hello, I'm a new tailor here! I will be editing this soon.",
   },
+  rate:{
+    type:Number,
+    default:5
+  },
+  count:{
+    type:Number,
+    default:0
+  }
 });
 module.exports = mongoose.model("tailor", tailorSchema);
