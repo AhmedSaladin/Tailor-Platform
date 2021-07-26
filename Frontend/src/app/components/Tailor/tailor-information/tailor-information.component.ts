@@ -27,7 +27,6 @@ export class TailorInformationComponent implements OnInit, OnDestroy {
   ) {}
 
   update_tailor_info(form: FormGroup) {
-    console.log(form);
     if (form.pristine) return;
     this.user_info.name = form.value.name;
     this.user_info.designFor = form.value.design;

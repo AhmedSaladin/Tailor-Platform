@@ -1,6 +1,8 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { BindingService } from 'src/app/services/binding/binding.service';
 import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
@@ -15,7 +17,9 @@ export class CustomerProfileComponent implements OnInit {
   currentUserId: any;
   constructor(
     private custSer: CustomerService,
-    private activeRout: ActivatedRoute
+    private activeRout: ActivatedRoute,
+    private tostr: ToastrService,
+    private binding: BindingService
   ) {
     this.currentUserId = this.custSer.user.value?.Id;
     this.getCustomerINfo(activeRout.snapshot.params.id);
@@ -29,7 +33,8 @@ export class CustomerProfileComponent implements OnInit {
         this.custImg = this.cust.avatar;
       },
       (err) => {
-        console.log(err);
+        this.binding.changeLoading(false);
+        this.tostr.error(err, 'Error', { positionClass: 'toast-top-center' });
       }
     );
   }
