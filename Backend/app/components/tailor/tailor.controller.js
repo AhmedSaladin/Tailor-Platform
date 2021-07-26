@@ -15,11 +15,21 @@ const { is_valid_id, is_not_found } = require("../../utility/errors");
 const { cleaner } = require("../../utility/relationCleaner");
 
 filter_tailors_get = async (req, res, next) => {
-  const filter = req.query;
-  console.log(filter);
+  const filter = Object.assign({}, req.query);
+  delete filter.page
+  delete filter.limit
+  const currentPage = parseInt(req.query.page || 1);
+  const limit = parseInt(req.query.limit || 2);
   try {
-    const tailors = await Tailor.find({ isTailor: true, ...filter });
-    res.status(200).json(tailors);
+    const count = await Tailor.find({
+      isTailor: true,
+      ...filter,
+    }).countDocuments();
+    const totalPages = Math.ceil(count / limit);
+    const tailors = await Tailor.find({ isTailor: true, ...filter })
+      .skip((currentPage - 1) * limit)
+      .limit(limit);
+    res.status(200).json({ tailors, totalPages });
   } catch (err) {
     next(err);
   }

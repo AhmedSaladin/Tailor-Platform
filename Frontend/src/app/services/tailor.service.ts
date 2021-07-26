@@ -39,10 +39,17 @@ export class TailorService {
       );
   }
 
-  get_tailors_info_filter(filter: any) {
-    return this.http.get(`${this.url}/filter?${filter}`, {
-      observe: 'response',
-    });
+  get_tailors_info_filter(limit: number, page: number, filter: any) {
+    return this.http
+      .get<{ tailors: Array<Tailor>; totalPages: number }>(
+        `${this.url}/filter?${filter}&page=${page}&limit=${limit}`
+      )
+      .pipe(
+        catchError(this.handleError),
+        tap(() => {
+          this.binding.changeLoading(false);
+        })
+      );
   }
 
   get_tailor_info(id: any) {
