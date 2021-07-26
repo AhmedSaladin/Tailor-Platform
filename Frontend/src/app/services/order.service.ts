@@ -79,4 +79,14 @@ export class OrderService {
       observe: 'response',
     });
   }
+  update_price(price: any,deliveryDare:any, id: string) {
+    return this.http.patch(
+      `${this.urlBack }/price/${id}`,
+      {
+        price: price ,
+        deliveryDare:deliveryDare,
+      },
+      { observe: 'response' }
+    );
+  }
 }

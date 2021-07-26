@@ -65,6 +65,7 @@ const view_order = async (req, res, next) => {
           tailor_name: "$tailor.name",
         },
       },
+      {$sort: { _id:-1 } },
       { $skip: skip },
       { $limit: limit },
     ])
@@ -120,8 +121,11 @@ const view_orderByTailor = async (req, res, next) => {
           tailor_id: 1,
           customer_name: "$customer.name",
           tailor_name: "$tailor.name",
+          price:1,
+          deliveryDare:1
         },
       },
+      {$sort: { _id:-1 } },
       { $skip: skip },
       { $limit: limit },
     ])
@@ -181,8 +185,11 @@ const view_orderByCustomer = async (req, res, next) => {
           tailor_id: 1,
           customer_name: "$customer.name",
           tailor_name: "$tailor.name",
+          price:1,
+          deliveryDare:1
         },
       },
+      {$sort: { _id: -1 } },
       { $skip: skip },
       { $limit: limit },
     ])
@@ -234,6 +241,8 @@ const view_orderByOrderId = (req, res, next) => {
           tailor_name: "$tailor.name",
           customer_id: 1,
           tailor_id: 1,
+          price:1,
+          deliveryDare:1
         },
       },
       
@@ -305,6 +314,22 @@ const updateComments = (req, res) => {
       });
     });
 };
+
+const updatePrice = (req, res) => {  
+  // console.log(req.params.id)
+  orderModel.findOneAndUpdate(
+      { _id: req.params.id},
+      { price: req.body.price,deliveryDare:req.body.deliveryDare } ,
+      { new: true },
+      (err, order) => {
+          if (err) {
+              return res.status(400).json({error: "Cannot update order status"});
+          }
+          console.log(order)
+      res.json(order);
+  });
+};
+
 module.exports = {
   create_order,
   view_order,
@@ -314,4 +339,5 @@ module.exports = {
   delete_order,
   updateStatus,
   updateComments,
+  updatePrice
 };

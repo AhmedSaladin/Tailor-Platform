@@ -14,10 +14,12 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   imags: any;
   count: any = 0;
   current_image: any;
-  constructor(private order_api: OrderService, private tostr: ToastrService) {}
+  today:Date;
+  constructor(private order_api: OrderService, private tostr: ToastrService) {
+    this.today =new Date();
+  }
 
   ngOnInit(): void {
-  //  console.log(this.order)
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
   }
@@ -70,6 +72,26 @@ send_commment(message:any){
    // console.log(message)
   }
   //message.placeholder="Leave a comment here"
+}
+
+/////////////////////////////send price
+send_price(price:any,deadline:any){
+   console.log(deadline.valueAsDate);
+  // console.log(this.order.price);
+  if (price.value>0) {
+    this.eve = this.order_api.update_price(price.value,deadline.valueAsDate ,this.order._id).subscribe(
+      (res) => {
+          console.log(res.body)
+         this.order.price=price.value;
+         this.order.deliveryDare=deadline.valueAsDate;
+        this.tostr.success('send', 'Success');
+      },
+      (err) => {
+        this.tostr.error(err, 'Error');
+      }
+    );
+   // console.log(message)
+  }
 }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();

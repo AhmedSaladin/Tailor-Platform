@@ -33,4 +33,6 @@ module.exports = mongoose.model("orders", {
   },
   comments: Array,
   price: Number,
+  updateDate: { type: Date, default: Date.now },
+  deliveryDare:Date
 });

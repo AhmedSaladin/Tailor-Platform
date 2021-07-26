@@ -122,6 +122,21 @@ export class CustomerSingleRequestComponent implements OnInit {
     }
     //message.placeholder="Leave a comment here"
   }
+
+
+  /////////////////////////////////////////
+  change_status(state: string) {
+    this.eve = this.order_api.update_status(state, this.order._id).subscribe(
+      () => {
+        this.toastr.success('Order update successfuly', 'Success');
+        this.order.status = state;
+      },
+      (err) => {
+        this.toastr.error(err, 'Error');
+      }
+    );
+  }
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

@@ -64,6 +64,19 @@
               >
                 Messages
               </button>
+              <button
+                class="nav-link"
+                id="v-pills-offer-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-offer"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-offer"
+                aria-selected="false"
+                *ngIf="order.status === 'pending'&& order.price===undefined"
+                >
+                add offer
+              </button>
             </div>
           </div>
 
@@ -210,7 +223,7 @@
                 role="tabpanel"
                 aria-labelledby="v-pills-messages-tab"
               >
-                <div>
+                <div *ngIf="order.status === 'accepted';else notAccept">
                   <div
                     class="chat"
                     style="max-height: 400px; overflow-y: scroll"
@@ -274,7 +287,66 @@
                     </div>
                   </div>
                 </div>
+                <ng-template #notAccept>
+                  <h5>send message after {{order.customer_name}} accept offer</h5>
+                </ng-template>
               </div>
+              <!-- offer -->
+              <div
+                class="tab-pane fade"
+                id="v-{{ order._id }}-offer"
+                role="tabpanel"
+                aria-labelledby="v-pills-offer-tab"
+              >
+              <div>
+              <div class="col-12">
+                <div
+                  class="card massege"
+                >
+                  <div
+                    class="card-body"
+                    style="background-color: white !important"
+                  >
+                  <form id="form" action="" >
+
+                    <div class="modal-body">
+                      <span id="rateMe2" class="empty-stars"></span>
+                      <div class="container">
+                        <div class="mb-2 col-12">
+                          <label class="col-form-label">price:</label>
+                          <input type="number" class="form-control no-box-shadow" #price/>
+                        </div>
+                        <div class="mb-2 col-12">
+                          <label class="col-form-label">date:</label>
+                          <input type="date"
+                          [ngModel]="today | date:'yyyy-MM-dd'"
+                          name="dt"
+                          [min]="today| date:'yyyy-MM-dd'"
+                          class="form-control form-control-rounded" #deadline
+                          >
+
+                      </div>
+                      </div>
+                    </div>
+                  </form>
+
+                  </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                <button
+                  type="button"
+                  class="btn btn-primary form me-3"
+                  data-bs-dismiss="modal"
+                  (click)="send_price(price,deadline)"
+                  >
+                send offer
+                </button>
+                </div>
+              </div>
+              </div>
+            </div>
+            <!-- end offer -->
+
             </div>
           </div>
         </div>
@@ -297,15 +369,6 @@
           *ngIf="order.status === 'pending'"
         >
           Decline
-        </button>
-        <button
-          type="button"
-          class="btn btn-primary form"
-          data-bs-dismiss="modal"
-          (click)="change_status('accepted')"
-          *ngIf="order.status === 'pending'"
-        >
-          Accept
         </button>
         <button
           type="button"
