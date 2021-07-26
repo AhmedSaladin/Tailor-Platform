@@ -16,17 +16,19 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   current_image: any;
   today:any;
   currentPrice:any;
+  currentdate:any;
   constructor(private order_api: OrderService, private tostr: ToastrService) { }
 
   ngOnInit(): void {
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
+    this.today =new Date();
     if(this.order.deliveryDare===undefined)
-      this.today =new Date();
+    this.currentdate =new Date();
     else
     {
       this.currentPrice=this.order.price;
-      this.today =this.order.deliveryDare;
+      this.currentdate =this.order.deliveryDare;
     }
   }
 
