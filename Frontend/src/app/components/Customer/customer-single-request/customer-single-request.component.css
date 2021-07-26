@@ -110,21 +110,53 @@ td {
   color: #2e86ab;
 }
 
+/* Start Message*/
 .chat {
   background-color: whitesmoke;
+  /* background-color: #3396c0; */
+  /* border: 2px solid #2e86ab; */
 }
-.massege {
+.chatBox {
+  border: 2px solid #2e86ab;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: whitesmoke;
+  /* background-color: #3396c0; */
+}
+.message {
   border: 2px solid rgb(226, 223, 223);
   border-radius: 15px;
   margin: 10px;
 }
-.chat .card .card-body {
+.card-body {
   border-radius: 15px;
+}
+.commentArea {
+  overflow-y: hidden;
+}
+
+.order-comment-body {
+  font-size: 1.2em;
+  line-height: 1em;
+}
+.card-subtitle {
+  font-size: 0.75em;
 }
 
 .commentArea {
   overflow-y: hidden;
 }
+
+.meFormat{
+  color: #2e86ab;
+}
+
+.tailorFormat{
+  color: rgb(7, 153, 7);
+}
+
+/* End Message*/
+
 .page-link {
   background-color: #2e86ab;
   color: white;
