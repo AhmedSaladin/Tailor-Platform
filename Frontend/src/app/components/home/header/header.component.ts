@@ -11,6 +11,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   searchText: any = '';
   tailors: any;
   eve!: Subscription;
+  totalPages: number = 1;
+  page: number = 1;
+  limit: number = 3;
 
   constructor(
     private tailorService: TailorService,
@@ -22,9 +25,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @Output() send = new EventEmitter();
 
   filter() {
-    this.eve = this.tailorService.get_tailor_search(this.searchText).subscribe(
+    this.eve = this.tailorService.get_tailor_search(this.limit, this.page, this.searchText).subscribe(
       (res) => {
-        this.tailors = res.body;
+        this.totalPages = res.totalPages;
+          if (res == null) this.tailors = [];
+          else this.tailors = res.tailors;
         this.send.emit(this.tailors);
       },
       (err) => {

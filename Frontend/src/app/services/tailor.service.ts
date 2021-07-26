@@ -25,12 +25,12 @@ export class TailorService {
       );
   }
 
-  get_tailor_search(tailorName: string) {
+  get_tailor_search(limit: number, page: number, tailorName: string) {
     this.binding.changeLoading(true);
     return this.http
-      .get<Array<Tailor>>(`${this.url}/search?name=${tailorName}`, {
-        observe: 'response',
-      })
+      .get<{ tailors: Array<Tailor>; totalPages: number }>(
+        `${this.url}/search?name=${tailorName}&page=${page}&limit=${limit}`
+      )
       .pipe(
         catchError(this.handleError),
         tap(() => {

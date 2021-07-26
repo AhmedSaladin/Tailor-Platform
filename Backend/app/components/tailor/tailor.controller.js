@@ -16,8 +16,8 @@ const { cleaner } = require("../../utility/relationCleaner");
 
 filter_tailors_get = async (req, res, next) => {
   const filter = Object.assign({}, req.query);
-  delete filter.page
-  delete filter.limit
+  delete filter.page;
+  delete filter.limit;
   const currentPage = parseInt(req.query.page || 1);
   const limit = parseInt(req.query.limit || 2);
   try {
@@ -37,12 +37,19 @@ filter_tailors_get = async (req, res, next) => {
 
 search_tailors_get = async (req, res, next) => {
   const { name } = req.query;
+  const currentPage = parseInt(req.query.page || 1);
+  const limit = parseInt(req.query.limit || 2);
   try {
+    const count = await Tailor.find({
+      name: { $regex: `${name}`, $options: "i" },
+    }).countDocuments();
+    const totalPages = Math.ceil(count / limit);
     const tailors = await Tailor.find({
       name: { $regex: `${name}`, $options: "i" },
-    });
-
-    res.status(200).json(tailors);
+    })
+      .skip((currentPage - 1) * limit)
+      .limit(limit);
+    res.status(200).json({ tailors, totalPages });
   } catch (err) {
     next(err);
   }
