@@ -63,9 +63,10 @@ const view_order = async (req, res, next) => {
           tailor_id: 1,
           customer_name: "$customer.name",
           tailor_name: "$tailor.name",
+          updateDate:1
         },
       },
-      {$sort: { _id:-1 } },
+      {$sort: { updateDate:-1 } },
       { $skip: skip },
       { $limit: limit },
     ])
@@ -122,10 +123,11 @@ const view_orderByTailor = async (req, res, next) => {
           customer_name: "$customer.name",
           tailor_name: "$tailor.name",
           price:1,
-          deliveryDare:1
+          deliveryDare:1,
+          updateDate:1
         },
       },
-      {$sort: { _id:-1 } },
+      {$sort: { updateDate:-1 } },
       { $skip: skip },
       { $limit: limit },
     ])
@@ -186,10 +188,11 @@ const view_orderByCustomer = async (req, res, next) => {
           customer_name: "$customer.name",
           tailor_name: "$tailor.name",
           price:1,
-          deliveryDare:1
+          deliveryDare:1,
+          updateDate:1
         },
       },
-      {$sort: { _id: -1 } },
+      {$sort: { updateDate: -1 } },
       { $skip: skip },
       { $limit: limit },
     ])
@@ -273,7 +276,7 @@ const updateStatus = (req, res) => {
   // console.log(req.params.id)
   orderModel.findOneAndUpdate(
     { _id: req.params.id },
-    { status: req.body.status },
+    { status: req.body.status ,updateDate:new Date() },
     { new: true },
     (err, order) => {
       if (err) {
@@ -295,7 +298,7 @@ const updateComments = (req, res) => {
       console.log(comment);
       orderModel.findOneAndUpdate(
         { _id: req.params.id },
-        { comments: comment },
+        { comments: comment , updateDate:new Date() },
         { new: true },
         (err, order) => {
           if (err) {
@@ -317,9 +320,10 @@ const updateComments = (req, res) => {
 
 const updatePrice = (req, res) => {  
   // console.log(req.params.id)
+  let date =new Date() ;
   orderModel.findOneAndUpdate(
       { _id: req.params.id},
-      { price: req.body.price,deliveryDare:req.body.deliveryDare } ,
+      { price: req.body.price,deliveryDare:req.body.deliveryDare ,updateDate:date } ,
       { new: true },
       (err, order) => {
           if (err) {
