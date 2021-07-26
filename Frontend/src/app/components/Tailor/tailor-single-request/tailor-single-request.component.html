@@ -78,6 +78,19 @@
                 <!-- update offer if  order.price!==undefined-->
                 add offer
               </button>
+              <button
+                class="nav-link"
+                id="v-pills-offer-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-offer"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-offer"
+                aria-selected="false"
+                *ngIf="order.status !== 'finished'&& order.price!==undefined"
+                >
+                Udate offer
+              </button>
             </div>
           </div>
 
@@ -315,12 +328,12 @@
                       <div class="container">
                         <div class="mb-2 col-12">
                           <label class="col-form-label">price:</label>
-                          <input type="number" class="form-control no-box-shadow" #price/>
+                          <input type="number" placeholder="add desgin cost" value ={{currentPrice}} class="form-control no-box-shadow" #price/>
                         </div>
                         <div class="mb-2 col-12">
                           <label class="col-form-label">date:</label>
                           <input type="date"
-                          [ngModel]="today | date:'yyyy-MM-dd'"
+                          [ngModel]="currentdate | date:'yyyy-MM-dd'"
                           name="dt"
                           [min]="today| date:'yyyy-MM-dd'"
                           class="form-control form-control-rounded" #deadline

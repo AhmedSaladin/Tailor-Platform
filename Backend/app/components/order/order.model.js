@@ -29,7 +29,7 @@ module.exports = mongoose.model("orders", {
     type: String,
     required: true,
     default: "pending",
-    enum: ["pending", "rejected", "accepted", "finished"],
+    enum: ["pending", "rejected", "accepted", "updated" ,"finished"],
   },
   comments: Array,
   price: Number,

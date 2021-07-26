@@ -433,7 +433,7 @@
                   class="btn btn-secondary"
                   data-bs-dismiss="modal"
                   (click)="change_status('rejected')"
-                  *ngIf="order.status === 'pending'"
+                  *ngIf="order.status === 'pending'||order.status === 'updated'"
                 >
                   Decline
                 </button>
@@ -442,7 +442,7 @@
                   class="btn btn-primary form   ms-2 me-3"
                   data-bs-dismiss="modal"
                   (click)="change_status('accepted')"
-                  *ngIf="order.status === 'pending' && order.price!==undefined"
+                  *ngIf="(order.status === 'pending' && order.price!==undefined)||order.status === 'updated'"
                 >
                 Accept
                 </button>

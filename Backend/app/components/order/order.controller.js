@@ -323,7 +323,7 @@ const updatePrice = (req, res) => {
   let date =new Date() ;
   orderModel.findOneAndUpdate(
       { _id: req.params.id},
-      { price: req.body.price,deliveryDare:req.body.deliveryDare ,updateDate:date } ,
+      { price: req.body.price,deliveryDare:req.body.deliveryDare ,updateDate:date ,status: req.body.status} ,
       { new: true },
       (err, order) => {
           if (err) {

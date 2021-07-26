@@ -14,14 +14,22 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   imags: any;
   count: any = 0;
   current_image: any;
-  today:Date;
-  constructor(private order_api: OrderService, private tostr: ToastrService) {
-    this.today =new Date();
-  }
+  today:any;
+  currentPrice:any;
+  currentdate:any;
+  constructor(private order_api: OrderService, private tostr: ToastrService) { }
 
   ngOnInit(): void {
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
+    this.today =new Date();
+    if(this.order.deliveryDare===undefined)
+    this.currentdate =new Date();
+    else
+    {
+      this.currentPrice=this.order.price;
+      this.currentdate =this.order.deliveryDare;
+    }
   }
 
   next_img() {
@@ -77,12 +85,16 @@ send_commment(message:any){
 /////////////////////////////send price
 send_price(price:any,deadline:any){
    console.log(deadline.valueAsDate);
+   let updateStatus="pending";
   // console.log(this.order.price);
   if (price.value>0) {
-    this.eve = this.order_api.update_price(price.value,deadline.valueAsDate ,this.order._id).subscribe(
+    if(this.order.status==="accepted")
+      updateStatus="updated";
+    this.eve = this.order_api.update_price(price.value,deadline.valueAsDate ,updateStatus,this.order._id).subscribe(
       (res) => {
           console.log(res.body)
          this.order.price=price.value;
+         this.order.status=updateStatus;
          this.order.deliveryDare=deadline.valueAsDate;
         this.tostr.success('send', 'Success');
       },
