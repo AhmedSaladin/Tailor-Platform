@@ -84,7 +84,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   priceForm: any;
   priceValidation() {
     this.priceForm = new FormGroup({
-      offerPrice: new FormControl(this.currentPrice, [Validators.required]),
+      offerPrice: new FormControl(this.currentPrice, [Validators.required,Validators.minLength(2)]),
     });
   }
 
