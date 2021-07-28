@@ -79,8 +79,8 @@
                 "
               >
                 <!-- update offer if  order.price!==undefined-->
-                <span *ngIf="!order.price">Add Offer</span>
-                <span *ngIf="order.price"> Update Offer</span>
+                <span *ngIf="!order.price"><i class="fas fa-dollar-sign me-3"></i>Add Offer</span>
+                <span *ngIf="order.price"><i class="fas fa-dollar-sign ms-3 me-2"></i> Update Offer</span>
               </button>
             </div>
           </div>
@@ -352,7 +352,7 @@
                                 <small
                                   class="text-danger ms-2"
                                   style="width: 100%"
-                                  *ngIf="price.invalid && price.touched"
+                                  *ngIf="price.invalid"
                                 >
                                   must add price
                                 </small>
@@ -379,7 +379,7 @@
                         class="btn btn-primary form me-3"
                         data-bs-dismiss="modal"
                         (click)="send_price(deadline)"
-                        [disabled]="priceForm.invalid"
+                        [disabled]="price.invalid"
                       >
                         <span *ngIf="!order.price">Send Offer</span>
                         <span *ngIf="order.price > 0">Update Offer</span>
