@@ -94,7 +94,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
 
   /////////////////////////////send price
   send_price(deadline: any) {
-    if (this.price < 0 || !this.price) return;
+    if (this.price <= 0 || !this.price) return;
     let updateStatus = 'pending';
     if (this.priceForm.valid) {
       if (this.order.status === 'accepted') updateStatus = 'updated';
@@ -106,7 +106,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
           this.order._id
         )
         .subscribe(
-          (res) => {
+          () => {
             this.order.price = this.price?.value;
             this.order.status = updateStatus;
             this.order.deliveryDare = deadline.valueAsDate;
