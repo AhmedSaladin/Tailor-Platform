@@ -132,7 +132,6 @@ const view_orderByTailor = async (req, res, next) => {
       { $limit: limit },
     ])
     .then((result) => {
-      console.log("line 221");
       res.status(200).json({
         orders : result,
         totalPages: totalPages,
@@ -251,7 +250,6 @@ const view_orderByOrderId = (req, res, next) => {
       
     ])
     .then((result) => {
-      console.log("line 327");
       res.status(200).json(result);
     })
     .catch((error) => {
@@ -263,11 +261,9 @@ const delete_order = (req, res, next) => {
   orderModel
     .remove({ _id: req.params.id })
     .then((result) => {
-      console.log(result);
       res.status(201).json({ message: "Order deleted" });
     })
     .catch((err) => {
-      console.log(err.toString());
       res.status(500).json({ message: err.toString() });
     });
 };
@@ -329,7 +325,6 @@ const updatePrice = (req, res) => {
           if (err) {
               return res.status(400).json({error: "Cannot update order status"});
           }
-          console.log(order)
       res.json(order);
   });
 };

@@ -1,10 +1,20 @@
 <span>{{ order.customer_name }}</span>
-<button class="btn btn-primary float-end btn-sm" data-bs-toggle="modal"
-  attr.data-bs-target="#order{{ order._id }}Model">
+<button
+  class="btn btn-primary float-end btn-sm"
+  data-bs-toggle="modal"
+  attr.data-bs-target="#order{{ order._id }}Model"
+>
   View
 </button>
-<div class="modal fade" id="order{{ order._id }}Model" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-  aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  id="order{{ order._id }}Model"
+  tabindex="-1"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <!-- START POPUP -->
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content" *ngIf="order; else dd">
@@ -13,22 +23,47 @@
           {{ order.customer_name }}'s Request
         </h3>
         <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <!-- starting nav menu -->
         <div class="row">
           <div class="col-12 col-lg-2 order-first order-lg-last mb-2">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                attr.data-bs-target="#v-{{ order._id }}-home" type="button" role="tab" aria-controls="v-pills-home"
-                aria-selected="true">
-                Order Info
+            <div
+              class="nav flex-column nav-pills"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <button
+                class="nav-link active"
+                id="v-pills-home-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-home"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-home"
+                aria-selected="true"
+              >
+                <i class="fas fa-info-circle me-2"></i> Order Info
               </button>
-              <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                attr.data-bs-target="#v-{{ order._id }}-messages" type="button" role="tab"
-                aria-controls="v-pills-messages" aria-selected="false">
-                Messages
+              <button
+                class="nav-link"
+                id="v-pills-messages-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-messages"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-messages"
+                aria-selected="false"
+                *ngIf="order.status == 'updated' || order.status == 'accepted'"
+              >
+                <i class="fas fa-comment-dots me-2"></i> Messages
               </button>
               <button
                 class="nav-link"
@@ -39,53 +74,70 @@
                 role="tab"
                 aria-controls="v-pills-offer"
                 aria-selected="false"
-                *ngIf="order.status === 'pending'&& order.price===undefined"
-                >
+                *ngIf="
+                  order.status !== 'rejected' && order.status !== 'finished'
+                "
+              >
                 <!-- update offer if  order.price!==undefined-->
-                add offer
-              </button>
-              <button
-                class="nav-link"
-                id="v-pills-offer-tab"
-                data-bs-toggle="pill"
-                attr.data-bs-target="#v-{{ order._id }}-offer"
-                type="button"
-                role="tab"
-                aria-controls="v-pills-offer"
-                aria-selected="false"
-                *ngIf="order.status !== 'finished'&& order.price!==undefined"
-                >
-                Udate offer
+                <span *ngIf="!order.price">Add Offer</span>
+                <span *ngIf="order.price"> Update Offer</span>
               </button>
             </div>
           </div>
 
           <div class="col-12 col-lg-10">
             <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade show active" id="v-{{ order._id }}-home" role="tabpanel"
-                aria-labelledby="v-pills-home-tab">
+              <div
+                class="tab-pane fade show active"
+                id="v-{{ order._id }}-home"
+                role="tabpanel"
+                aria-labelledby="v-pills-home-tab"
+              >
                 <div class="card mb-3">
                   <div class="row">
                     <div class="col-12 col-lg-7 mb-2">
                       <!-- Start Carousel  -->
 
-                      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
-                        style="height: 100% !important">
+                      <div
+                        id="carouselExampleIndicators"
+                        class="carousel slide"
+                        data-bs-ride="carousel"
+                        style="height: 100% !important"
+                      >
                         <div class="carousel-indicators"></div>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{ current_image }}" class="d-block w-100"
-                              style="max-height: 700px; min-height: 700px" />
+                            <img
+                              src="{{ current_image }}"
+                              class="d-block w-100"
+                              style="max-height: 700px; min-height: 700px"
+                            />
                           </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="prev" (click)="last_img()">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <button
+                          class="carousel-control-prev"
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="prev"
+                          (click)="last_img()"
+                        >
+                          <span
+                            class="carousel-control-prev-icon"
+                            aria-hidden="true"
+                          ></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="next" (click)="next_img()">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <button
+                          class="carousel-control-next"
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="next"
+                          (click)="next_img()"
+                        >
+                          <span
+                            class="carousel-control-next-icon"
+                            aria-hidden="true"
+                          ></span>
                           <span class="visually-hidden">Next</span>
                         </button>
                       </div>
@@ -170,39 +222,66 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="v-{{ order._id }}-messages" role="tabpanel"
-                aria-labelledby="v-pills-messages-tab">
+              <div
+                class="tab-pane fade"
+                id="v-{{ order._id }}-messages"
+                role="tabpanel"
+                aria-labelledby="v-pills-messages-tab"
+              >
                 <div class="row">
                   <div class="col-lg-2"></div>
-                  <div class="col-lg-10">
+                  <div
+                    class="col-lg-10"
+                    *ngIf="
+                      order.status == 'updated' || order.status == 'accepted';
+                      else notAccept
+                    "
+                  >
                     <div class="chatBox">
-                      <div class="chat" style="max-height: 400px; overflow-y: scroll"
-                        *ngIf="order.comments.length > 0; else noMeassge">
+                      <div
+                        class="chat"
+                        style="max-height: 400px; overflow-y: scroll"
+                        *ngIf="order.comments.length > 0; else noMeassge"
+                      >
                         <div class="col-12">
-                          <div class="card message" *ngFor="let message of order.comments">
-                            <div class="card-body" style="background-color: white !important">
+                          <div
+                            class="card message"
+                            *ngFor="let message of order.comments"
+                          >
+                            <div
+                              class="card-body"
+                              style="background-color: white !important"
+                            >
                               <div class="row">
                                 <!-- <div class="col-sm-3 col-md-9 text-start"> -->
-                                  <h5 class="card-title meFormat" *ngIf="message.send_from === 'tailor'">
-                                    <i class="fas fa-cut me-2"></i> Me
-                                    <!-- {{ order.tailor_name  }} -->
-                                  </h5>
-                                  <h5 class="card-title customerFormat" *ngIf="message.send_from === 'customer'">
-                                    <i class="fas fa-user me-2"></i>
-                                    {{ order.customer_name }}
-                                  </h5>
+                                <h5
+                                  class="card-title meFormat"
+                                  *ngIf="message.send_from === 'tailor'"
+                                >
+                                  <i class="fas fa-cut me-2"></i> Me
+                                  <!-- {{ order.tailor_name  }} -->
+                                </h5>
+                                <h5
+                                  class="card-title customerFormat"
+                                  *ngIf="message.send_from === 'customer'"
+                                >
+                                  <i class="fas fa-user me-2"></i>
+                                  {{ order.customer_name }}
+                                </h5>
                                 <!-- </div> -->
                               </div>
-                              <p class="card-text order-comment-body text-start">
+                              <p
+                                class="card-text order-comment-body text-start"
+                              >
                                 {{ message.comment_body }}
                               </p>
                               <!-- <div class="col-sm-3 col-md-3 text-md-end"> -->
-                                <p class="card-subtitle mb-1 text-muted">
-                                  {{ message.date | date: "dd MMM, YYYY" }}
-                                </p>
-                                <p class="card-subtitle mb-1 text-muted">
-                                  {{ message.date | date: "h:mm a" }}
-                                </p>
+                              <p class="card-subtitle mb-1 text-muted">
+                                {{ message.date | date: "dd MMM, YYYY" }}
+                              </p>
+                              <p class="card-subtitle mb-1 text-muted">
+                                {{ message.date | date: "h:mm a" }}
+                              </p>
                               <!-- </div> -->
                             </div>
                           </div>
@@ -214,12 +293,19 @@
                       <div class="row mt-4">
                         <div class="col-12 col-lg-10">
                           <div class="form-floating">
-                            <textarea class="form-control commentArea" placeholder="Leave a comment here"
-                              id="floatingTextarea" #message></textarea>
+                            <textarea
+                              class="form-control commentArea"
+                              placeholder="Leave a comment here"
+                              id="floatingTextarea"
+                              #message
+                            ></textarea>
                           </div>
                         </div>
                         <div class="col-12 col-lg-2 mt-2">
-                          <button class="btn btn-primary align-items-end" (click)="send_commment(message)">
+                          <button
+                            class="btn btn-primary align-items-end"
+                            (click)="send_commment(message)"
+                          >
                             Send
                           </button>
                         </div>
@@ -228,7 +314,13 @@
                   </div>
                 </div>
                 <ng-template #notAccept>
-                  <h5>send message after {{order.customer_name}} accept offer</h5>
+                  <h5 *ngIf="order.status == 'rejected'">Order rejected</h5>
+                  <h5 *ngIf="order.status == 'pending' && !order.price">
+                    Send your offer to {{ order.customer_name }}
+                  </h5>
+                  <h5 *ngIf="order.status == 'pending' && order.price">
+                    Wait until {{ order.customer_name }} accept your offer
+                  </h5>
                 </ng-template>
               </div>
               <!-- offer -->
@@ -238,71 +330,90 @@
                 role="tabpanel"
                 aria-labelledby="v-pills-offer-tab"
               >
-              <div>
-              <div class="col-12">
-                <div
-                  class="card massege"
-                >
-                  <div
-                    class="card-body"
-                    style="background-color: white !important"
-                  >
-                    <div class="modal-body">
-                      <span id="rateMe2" class="empty-stars"></span>
-                      <div class="container">
-                        <div class="mb-2 col-12">
-                          <form id="form" [formGroup]="priceForm">
-                          <label class="col-form-label">price:</label>
-                          <input formControlName="offerPrice" type="number" placeholder="add desgin cost" class="form-control no-box-shadow"/>
-                          <small class="text-danger ms-2" style="width: 100%" *ngIf="price.invalid&&price.touched">
-                            must add price
-                          </small>
-                        </form>
+                <div>
+                  <div class="col-12">
+                    <div class="card massege">
+                      <div
+                        class="card-body"
+                        style="background-color: white !important"
+                      >
+                        <div class="modal-body">
+                          <span id="rateMe2" class="empty-stars"></span>
+                          <div class="container">
+                            <div class="mb-2 col-12">
+                              <form id="form" [formGroup]="priceForm">
+                                <label class="col-form-label">Price:</label>
+                                <input
+                                  formControlName="offerPrice"
+                                  type="number"
+                                  placeholder="add desgin cost"
+                                  class="form-control no-box-shadow"
+                                />
+                                <small
+                                  class="text-danger ms-2"
+                                  style="width: 100%"
+                                  *ngIf="price.invalid && price.touched"
+                                >
+                                  must add price
+                                </small>
+                              </form>
+                            </div>
+                            <div class="mb-2 col-12">
+                              <label class="col-form-label">Date:</label>
+                              <input
+                                type="date"
+                                [ngModel]="currentdate | date: 'yyyy-MM-dd'"
+                                name="dt"
+                                [min]="today | date: 'yyyy-MM-dd'"
+                                class="form-control form-control-rounded"
+                                #deadline
+                              />
+                            </div>
+                          </div>
                         </div>
-                        <div class="mb-2 col-12">
-                          <label class="col-form-label">date:</label>
-                          <input type="date"
-                          [ngModel]="currentdate | date:'yyyy-MM-dd'"
-                          name="dt"
-                          [min]="today| date:'yyyy-MM-dd'"
-                          class="form-control form-control-rounded" #deadline
-                          >
                       </div>
-                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button
+                        type="button"
+                        class="btn btn-primary form me-3"
+                        data-bs-dismiss="modal"
+                        (click)="send_price(deadline)"
+                        [disabled]="priceForm.invalid"
+                      >
+                        <span *ngIf="!order.price">Send Offer</span>
+                        <span *ngIf="order.price > 0">Update Offer</span>
+                      </button>
                     </div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-end">
-                <button
-                  type="button"
-                  class="btn btn-primary form me-3"
-                  data-bs-dismiss="modal"
-                  (click)="send_price(deadline)"
-                  [disabled]="priceForm.invalid"
-                  >
-                send offer
-                </button>
-                </div>
               </div>
-              </div>
-            </div>
-            <!-- end offer -->
-
+              <!-- end offer -->
             </div>
           </div>
         </div>
         <!-- end nav menu -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" *ngIf="order.status !== 'pending'">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="change_status('rejected')"
-          *ngIf="order.status === 'pending'">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+          (click)="change_status('rejected')"
+          *ngIf="order.status === 'pending'"
+        >
           Decline
         </button>
-        <button type="button" class="btn btn-primary form" data-bs-dismiss="modal" (click)="change_status('finished')"
-          *ngIf="order.status === 'accepted'">
+        <button
+          type="button"
+          class="btn btn-primary form"
+          data-bs-dismiss="modal"
+          (click)="change_status('finished')"
+          *ngIf="order.status === 'accepted'"
+        >
           Finished
         </button>
       </div>

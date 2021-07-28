@@ -33,8 +33,6 @@ export class OrdersComponent implements OnInit {
     this.eve = this.request_api.get_current_user_orders(this.page).subscribe(
       (res) => {
         this.totalPages = res.totalPages;
-        console.log(res);
-
         this.orders = res.orders;
       },
       (err) => {

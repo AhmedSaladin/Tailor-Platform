@@ -16,11 +16,9 @@ const get_comment = (req, res) => {
           console.log(err);
         } else {
           res.status(200).json(result);
-          console.log(result);
         }
       });
   } else if (req.query.order_id) {
-    console.log(req.query);
     Comment.find({ order_id: req.query.order_id })
       .populate("customer_id", "name")
       .exec((err, result) => {
@@ -28,7 +26,6 @@ const get_comment = (req, res) => {
           console.log(err);
         } else {
           res.status(200).json(result);
-          console.log(result);
         }
       });
   } else {
@@ -39,7 +36,6 @@ const get_comment = (req, res) => {
           console.log(err);
         } else {
           res.status(200).json(result);
-          console.log(result);
         }
       });
   }
@@ -80,7 +76,6 @@ const get_comments_by_id = (req, res) => {
         console.log(err);
       } else {
         res.status(200).json(result);
-        console.log(result);
       }
     });
 };
@@ -100,7 +95,6 @@ const get_all_rate = (req, res) => {
       if (error) {
         console.log(error);
       }
-      console.log(data.todos);
       return res.json(data);
       //handle error case also
     }

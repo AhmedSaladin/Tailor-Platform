@@ -15,21 +15,19 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   imags: any;
   count: any = 0;
   current_image: any;
-  today:any;
-  currentPrice=0;
-  currentdate:any;
-  constructor(private order_api: OrderService, private tostr: ToastrService) { }
+  today: any;
+  currentPrice = 0;
+  currentdate: any;
+  constructor(private order_api: OrderService, private tostr: ToastrService) {}
 
   ngOnInit(): void {
     this.imags = this.order.designs;
     this.current_image = this.imags[0];
-    this.today =new Date();
-    if(this.order.deliveryDare===undefined)
-      this.currentdate =new Date();
-    else
-    {
-      this.currentPrice=this.order.price;
-      this.currentdate =this.order.deliveryDare;
+    this.today = new Date();
+    if (this.order.deliveryDare === undefined) this.currentdate = new Date();
+    else {
+      this.currentPrice = this.order.price;
+      this.currentdate = this.order.deliveryDare;
     }
     this.priceValidation();
   }
@@ -58,62 +56,68 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
     );
   }
 
-
   //////////////////////////////
-send_commment(message:any){
-  if (message.value.length>0) {
-    let myDate = new Date();
-    let newComment={
-      date:myDate,
-      comment_body:message.value,
-      send_from:'tailor'
+  send_commment(message: any) {
+    if (message.value.length > 0) {
+      let myDate = new Date();
+      let newComment = {
+        date: myDate,
+        comment_body: message.value,
+        send_from: 'tailor',
+      };
+      this.eve = this.order_api
+        .update_comment(newComment, this.order._id)
+        .subscribe(
+          (res) => {
+            this.order.comments = res.body;
+            this.tostr.success('Message send', 'Success');
+          },
+          (err) => {
+            this.tostr.error(err, 'Error');
+          }
+        );
+      message.value = '';
     }
-    this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
-      (res) => {
-        this.order.comments=res.body;
-        this.tostr.success('Message send', 'Success');
-      },
-      (err) => {
-        this.tostr.error(err, 'Error');
-      }
-    );
-    message.value="";
   }
-}
 
-//////////////////vaildation//////////////////////////
-priceForm:any;
-priceValidation(){
-  this.priceForm=new FormGroup({
-    offerPrice:new FormControl(this.currentPrice,[Validators.required]),
-  })
-}
-
-get price(){return this.priceForm.get('offerPrice')}
-
-/////////////////////////////send price
-send_price(deadline:any){
-   console.log(deadline.valueAsDate);
-   let updateStatus="pending";
-  // console.log(this.order.price);
-  if (this.priceForm.valid) {
-    if(this.order.status==="accepted")
-      updateStatus="updated";
-    this.eve = this.order_api.update_price(this.price?.value,deadline.valueAsDate ,updateStatus,this.order._id).subscribe(
-      (res) => {
-          console.log(res.body)
-         this.order.price=this.price?.value;
-         this.order.status=updateStatus;
-         this.order.deliveryDare=deadline.valueAsDate;
-        this.tostr.success('send', 'Success');
-      },
-      (err) => {
-        this.tostr.error(err, 'Error');
-      }
-    );
-   // console.log(message)
+  //////////////////vaildation//////////////////////////
+  priceForm: any;
+  priceValidation() {
+    this.priceForm = new FormGroup({
+      offerPrice: new FormControl(this.currentPrice, [Validators.required]),
+    });
   }
-}
+
+  get price() {
+    return this.priceForm.get('offerPrice');
+  }
+
+  /////////////////////////////send price
+  send_price(deadline: any) {
+    if (this.price < 0 || !this.price) return;
+    let updateStatus = 'pending';
+    if (this.priceForm.valid) {
+      if (this.order.status === 'accepted') updateStatus = 'updated';
+      this.eve = this.order_api
+        .update_price(
+          this.price?.value,
+          deadline.valueAsDate,
+          updateStatus,
+          this.order._id
+        )
+        .subscribe(
+          (res) => {
+            this.order.price = this.price?.value;
+            this.order.status = updateStatus;
+            this.order.deliveryDare = deadline.valueAsDate;
+            this.tostr.success('Your offer send to customer', 'Success');
+          },
+          (err) => {
+            this.tostr.error(err, 'Error');
+          }
+        );
+    }
+  }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }

@@ -4,8 +4,12 @@
   </div>
   <div class="col-5 col-md-4" style="display: flex">
     <div class="col-6">
-      <button *ngIf="order.status == 'finished' && !hasComment" class="float-end btn btn-primary btn-sm me-2"
-        data-bs-toggle="modal" attr.data-bs-target="#review{{ order._id }}Model">
+      <button
+        *ngIf="order.status == 'finished' && !hasComment"
+        class="float-end btn btn-primary btn-sm me-2"
+        data-bs-toggle="modal"
+        attr.data-bs-target="#review{{ order._id }}Model"
+      >
         Review
       </button>
     </div>
@@ -13,8 +17,11 @@
     <div class="col-6">
       <!-- view -->
 
-      <button class="btn btn-primary float-end btn-sm" data-bs-toggle="modal"
-        attr.data-bs-target="#order{{ order._id }}Model">
+      <button
+        class="btn btn-primary float-end btn-sm"
+        data-bs-toggle="modal"
+        attr.data-bs-target="#order{{ order._id }}Model"
+      >
         View
       </button>
     </div>
@@ -23,13 +30,23 @@
 <!-- ===================== review button =================== -->
 <!-- [ngClass]="{'showModal': openModal}" -->
 <!-- =============================== REview popup =============================== -->
-<div class="modal fade" id="review{{ order._id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="review{{ order._id }}Model"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">FeedBack</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <form id="form" action="" [formGroup]="CommentForm">
         <div class="modal-body">
@@ -40,29 +57,51 @@
                 <span class="star" [class.filled]="fill === 100">&#9733;</span>
               </ng-template>
             </ngb-rating>
-            <div class="
+            <div
+              class="
                 starrating
                 risingstar
                 d-flex
                 justify-content-center
                 flex-row-reverse
-              "></div>
+              "
+            ></div>
           </div>
 
           <div class="input-group input-group-lg">
-            <textarea formControlName="comment" type="text" rows="4" cols="50" class="form-control" aria-label="Large"
-              placeholder="Give us your honest feedback"></textarea>
-            <div class="text-danger" style="width: 100%" *ngIf="comment.invalid">
+            <textarea
+              formControlName="comment"
+              type="text"
+              rows="4"
+              cols="50"
+              class="form-control"
+              aria-label="Large"
+              placeholder="Give us your honest feedback"
+            ></textarea>
+            <div
+              class="text-danger"
+              style="width: 100%"
+              *ngIf="comment.invalid"
+            >
               max length 1000
             </div>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
             Close
           </button>
-          <button [disabled]="CommentForm.invalid" type="submit" class="btn btn-primary" data-bs-dismiss="modal"
-            (click)="onSubmit()">
+          <button
+            [disabled]="CommentForm.invalid"
+            type="submit"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            (click)="onSubmit()"
+          >
             Save
           </button>
         </div>
@@ -71,8 +110,13 @@
   </div>
 </div>
 
-<div class="modal fade" id="order{{ order._id }}Model" tabindex="-1" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
+<div
+  class="modal fade"
+  id="order{{ order._id }}Model"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <!-- START POPUP -->
   <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content" *ngIf="order; else dd">
@@ -81,64 +125,116 @@
           Your Request to {{ order.tailor_name }}
         </h3>
         <h5 class="modal-title" id="exampleModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <!-- start nav -->
         <div class="row">
           <div class="col-12 col-lg-2 order-first order-lg-last mb-2">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill"
-                attr.data-bs-target="#v-{{ order._id }}-home" type="button" role="tab" aria-controls="v-pills-home"
-                aria-selected="true">
+            <div
+              class="nav flex-column nav-pills"
+              id="v-pills-tab"
+              role="tablist"
+              aria-orientation="vertical"
+            >
+              <button
+                class="nav-link active"
+                id="v-pills-home-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-home"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-home"
+                aria-selected="true"
+              >
                 <i class="fas fa-info-circle me-2"></i> Order Info
               </button>
-              <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill"
-                attr.data-bs-target="#v-{{ order._id }}-messages" type="button" role="tab"
-                aria-controls="v-pills-messages" aria-selected="false">
+              <button
+                class="nav-link"
+                id="v-pills-messages-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-messages"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-messages"
+                aria-selected="false"
+                *ngIf="order.status == 'updated' || order.status == 'accepted'"
+              >
                 <i class="fas fa-comment-dots me-2"></i> Messages
               </button>
               <button
-              class="nav-link"
-              id="v-pills-offer-tab"
-              data-bs-toggle="pill"
-              attr.data-bs-target="#v-{{ order._id }}-offer"
-              type="button"
-              role="tab"
-              aria-controls="v-pills-offer"
-              aria-selected="false"
-            >
-            display offer
-            </button>
+                class="nav-link"
+                id="v-pills-offer-tab"
+                data-bs-toggle="pill"
+                attr.data-bs-target="#v-{{ order._id }}-offer"
+                type="button"
+                role="tab"
+                aria-controls="v-pills-offer"
+                aria-selected="false"
+              >
+                Display Offer
+              </button>
             </div>
           </div>
 
           <div class="col-12 col-lg-10">
             <div class="tab-content" id="v-pills-tabContent">
-              <div class="tab-pane fade show active" id="v-{{ order._id }}-home" role="tabpanel"
-                aria-labelledby="v-pills-home-tab">
+              <div
+                class="tab-pane fade show active"
+                id="v-{{ order._id }}-home"
+                role="tabpanel"
+                aria-labelledby="v-pills-home-tab"
+              >
                 <div class="card mb-3">
                   <div class="row">
                     <div class="col-12 col-lg-7 mb-2">
                       <!-- Start Carousel  -->
 
-                      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel"
-                        style="height: 100% !important">
+                      <div
+                        id="carouselExampleIndicators"
+                        class="carousel slide"
+                        data-bs-ride="carousel"
+                        style="height: 100% !important"
+                      >
                         <div class="carousel-indicators"></div>
                         <div class="carousel-inner">
                           <div class="carousel-item active">
-                            <img src="{{ current_image }}" class="d-block w-100"
-                              style="max-height: 700px; min-height: 700px" />
+                            <img
+                              src="{{ current_image }}"
+                              class="d-block w-100"
+                              style="max-height: 700px; min-height: 700px"
+                            />
                           </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="prev" (click)="last_img()">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <button
+                          class="carousel-control-prev"
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="prev"
+                          (click)="last_img()"
+                        >
+                          <span
+                            class="carousel-control-prev-icon"
+                            aria-hidden="true"
+                          ></span>
                           <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                          data-bs-slide="next" (click)="next_img()">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <button
+                          class="carousel-control-next"
+                          type="button"
+                          data-bs-target="#carouselExampleIndicators"
+                          data-bs-slide="next"
+                          (click)="next_img()"
+                        >
+                          <span
+                            class="carousel-control-next-icon"
+                            aria-hidden="true"
+                          ></span>
                           <span class="visually-hidden">Next</span>
                         </button>
                       </div>
@@ -223,56 +319,90 @@
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="v-{{ order._id }}-messages" role="tabpanel"
-                aria-labelledby="v-pills-messages-tab">
+              <div
+                class="tab-pane fade"
+                id="v-{{ order._id }}-messages"
+                role="tabpanel"
+                aria-labelledby="v-pills-messages-tab"
+              >
                 <div class="row">
                   <div class="col-lg-2"></div>
-                  <div class="col-lg-10">
+                  <div
+                    class="col-lg-10"
+                    *ngIf="
+                      order.status == 'updated' || order.status == 'accepted';
+                      else notAccept
+                    "
+                  >
                     <div class="chatBox">
-                      <div class="chat" style="max-height: 400px; overflow-y: scroll"
-                        *ngIf="order.comments.length > 0; else noMeassge">
+                      <div
+                        class="chat"
+                        style="max-height: 400px; overflow-y: scroll"
+                        *ngIf="order.comments.length > 0; else noMeassge"
+                      >
                         <div class="col-12">
-                          <div class="card message" *ngFor="let message of order.comments">
-                            <div class="card-body" style="background-color: white !important">
+                          <div
+                            class="card message"
+                            *ngFor="let message of order.comments"
+                          >
+                            <div
+                              class="card-body"
+                              style="background-color: white !important"
+                            >
                               <div class="row">
                                 <div class="">
-                                  <h5 class="card-title tailorFormat" *ngIf="message.send_from === 'tailor'">
+                                  <h5
+                                    class="card-title tailorFormat"
+                                    *ngIf="message.send_from === 'tailor'"
+                                  >
                                     <i class="fas fa-cut me-2"></i>
                                     {{ order.tailor_name }}
                                   </h5>
-                                  <h5 class="card-title meFormat" *ngIf="message.send_from === 'customer'">
+                                  <h5
+                                    class="card-title meFormat"
+                                    *ngIf="message.send_from === 'customer'"
+                                  >
                                     <i class="fas fa-user me-2"></i> Me
                                     <!-- {{ order.customer_name  }} -->
                                   </h5>
                                 </div>
                               </div>
-                              <p class="card-text order-comment-body text-start">
+                              <p
+                                class="card-text order-comment-body text-start"
+                              >
                                 {{ message.comment_body }}
                               </p>
                               <!-- <div class=""> -->
-                                <p class="card-subtitle mb-1 text-muted">
-                                  {{ message.date | date: "dd MMM, YYYY" }}
-                                </p>
-                                <p class="card-subtitle mb-1 text-muted">
-                                  {{ message.date | date: "h:mm a" }}
-                                </p>
+                              <p class="card-subtitle mb-1 text-muted">
+                                {{ message.date | date: "dd MMM, YYYY" }}
+                              </p>
+                              <p class="card-subtitle mb-1 text-muted">
+                                {{ message.date | date: "h:mm a" }}
+                              </p>
                               <!-- </div> -->
                             </div>
                           </div>
                         </div>
                       </div>
                       <ng-template #noMeassge>
-                        <h5>NO Message</h5>
+                        <h5>No Message yet</h5>
                       </ng-template>
                       <div class="row mt-4">
                         <div class="col-12 col-lg-10">
                           <div class="form-floating">
-                            <textarea class="form-control commentArea ms-lg-2" placeholder="Leave a comment here"
-                              id="floatingTextarea" #message></textarea>
+                            <textarea
+                              class="form-control commentArea ms-lg-2"
+                              placeholder="Leave a comment here"
+                              id="floatingTextarea"
+                              #message
+                            ></textarea>
                           </div>
                         </div>
                         <div class="col-12 col-lg-2 mt-2">
-                          <button class="btn btn-primary align-items-end" (click)="send_commment(message)">
+                          <button
+                            class="btn btn-primary align-items-end"
+                            (click)="send_commment(message)"
+                          >
                             Send <i class="fas fa-paper-plane ms-2"></i>
                           </button>
                         </div>
@@ -281,7 +411,13 @@
                   </div>
                 </div>
                 <ng-template #notAccept>
-                  <h5>accept offer to send message</h5>
+                  <h5 *ngIf="order.status == 'rejected'">Order rejected</h5>
+                  <h5 *ngIf="order.status == 'pending' && order.price">
+                    You didn't accept offer yet
+                  </h5>
+                  <h5 *ngIf="order.status == 'pending' && !order.price">
+                    Tailor didn't view order yet
+                  </h5>
                 </ng-template>
               </div>
               <!-- offer -->
@@ -291,69 +427,70 @@
                 role="tabpanel"
                 aria-labelledby="v-pills-offer-tab"
               >
-              <div
-                *ngIf="order.price; else noOffer"
-              >
-              <div class="col-12">
-                <div
-                  class="card massege"
-                >
-                  <div
-                    class="card-body"
-                    style="background-color: white !important"
-                  >
-                  <p class="card-text order-comment-body">
-                    price
-                    <span class="card-title" >
-                      {{ order.price }}
-                    </span>
-                  </p>
+                <div *ngIf="order.price; else noOffer">
+                  <div class="col-12">
+                    <div class="card massege">
+                      <div
+                        class="card-body"
+                        style="background-color: white !important"
+                      >
+                        <p class="card-text order-comment-body">
+                          Price:
+                          <span class="card-title">
+                            {{ order.price }} EGP
+                          </span>
+                        </p>
 
-                    <p class="card-text order-comment-body">
-                     deadline
-                     <span class="card-title" >
-                      {{ order.deliveryDare | date: "dd MMM, YYYY" }}
-                    </span>
-                    </p>
-
+                        <p class="card-text order-comment-body">
+                          Deadline:
+                          <span class="card-title">
+                            {{ order.deliveryDare | date: "dd MMM, YYYY" }}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                        (click)="change_status('rejected')"
+                        *ngIf="
+                          order.status === 'pending' ||
+                          order.status === 'updated'
+                        "
+                      >
+                        Decline
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-primary form ms-2 me-3"
+                        data-bs-dismiss="modal"
+                        (click)="change_status('accepted')"
+                        *ngIf="
+                          (order.status === 'pending' &&
+                            order.price !== undefined) ||
+                          order.status === 'updated'
+                        "
+                      >
+                        Accept
+                      </button>
+                    </div>
                   </div>
                 </div>
-                <div class="d-flex justify-content-end">
-                  <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                  (click)="change_status('rejected')"
-                  *ngIf="order.status === 'pending'||order.status === 'updated'"
-                >
-                  Decline
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-primary form   ms-2 me-3"
-                  data-bs-dismiss="modal"
-                  (click)="change_status('accepted')"
-                  *ngIf="(order.status === 'pending' && order.price!==undefined)||order.status === 'updated'"
-                >
-                Accept
-                </button>
 
-                </div>
+                <ng-template #noOffer>
+                  <h5>Tailor didn't sent offer yet</h5>
+                </ng-template>
               </div>
-              </div>
-
-              <ng-template #noOffer>
-                <h5>NO offer send</h5>
-              </ng-template>
-            </div>
-            <!-- end offer -->
+              <!-- end offer -->
             </div>
           </div>
         </div>
         <!-- end nav menu -->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" *ngIf="order.status !== 'pending'">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Close
         </button>
       </div>
