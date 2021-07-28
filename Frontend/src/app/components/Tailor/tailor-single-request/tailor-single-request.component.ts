@@ -1,4 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { OrderService } from 'src/app/services/order.service';
@@ -15,7 +16,7 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
   count: any = 0;
   current_image: any;
   today:any;
-  currentPrice:any;
+  currentPrice=0;
   currentdate:any;
   constructor(private order_api: OrderService, private tostr: ToastrService) { }
 
@@ -24,12 +25,13 @@ export class TailorSingleRequestComponent implements OnInit, OnDestroy {
     this.current_image = this.imags[0];
     this.today =new Date();
     if(this.order.deliveryDare===undefined)
-    this.currentdate =new Date();
+      this.currentdate =new Date();
     else
     {
       this.currentPrice=this.order.price;
       this.currentdate =this.order.deliveryDare;
     }
+    this.priceValidation();
   }
 
   next_img() {
@@ -68,7 +70,6 @@ send_commment(message:any){
     }
     this.eve = this.order_api.update_comment(newComment, this.order._id).subscribe(
       (res) => {
-        // console.log(res.body)
         this.order.comments=res.body;
         this.tostr.success('Message send', 'Success');
       },
@@ -77,23 +78,31 @@ send_commment(message:any){
       }
     );
     message.value="";
-   // console.log(message)
   }
-  //message.placeholder="Leave a comment here"
 }
 
+//////////////////vaildation//////////////////////////
+priceForm:any;
+priceValidation(){
+  this.priceForm=new FormGroup({
+    offerPrice:new FormControl(this.currentPrice,[Validators.required]),
+  })
+}
+
+get price(){return this.priceForm.get('offerPrice')}
+
 /////////////////////////////send price
-send_price(price:any,deadline:any){
+send_price(deadline:any){
    console.log(deadline.valueAsDate);
    let updateStatus="pending";
   // console.log(this.order.price);
-  if (price.value>0) {
+  if (this.priceForm.valid) {
     if(this.order.status==="accepted")
       updateStatus="updated";
-    this.eve = this.order_api.update_price(price.value,deadline.valueAsDate ,updateStatus,this.order._id).subscribe(
+    this.eve = this.order_api.update_price(this.price?.value,deadline.valueAsDate ,updateStatus,this.order._id).subscribe(
       (res) => {
           console.log(res.body)
-         this.order.price=price.value;
+         this.order.price=this.price?.value;
          this.order.status=updateStatus;
          this.order.deliveryDare=deadline.valueAsDate;
         this.tostr.success('send', 'Success');
