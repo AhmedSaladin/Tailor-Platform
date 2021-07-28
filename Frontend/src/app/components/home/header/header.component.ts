@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { TailorService } from 'src/app/services/tailor.service';
@@ -14,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   totalPages: number = 1;
   page: number = 1;
   limit: number = 3;
+  @Output() send = new EventEmitter();
 
   constructor(
     private tailorService: TailorService,
@@ -22,20 +29,30 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {}
 
-  @Output() send = new EventEmitter();
-
   filter() {
-    this.eve = this.tailorService.get_tailor_search(this.limit, this.page, this.searchText).subscribe(
-      (res) => {
-        this.totalPages = res.totalPages;
+    this.eve = this.tailorService
+      .get_tailor_search(this.limit, this.page, this.searchText)
+      .subscribe(
+        (res) => {
+          this.totalPages = res.totalPages;
           if (res == null) this.tailors = [];
           else this.tailors = res.tailors;
-        this.send.emit(this.tailors);
-      },
-      (err) => {
-        this.toastr.error(err, 'Error', { positionClass: 'toast-top-center' });
-      }
-    );
+          this.send.emit({
+            tailors: this.tailors,
+            totalPages: this.totalPages,
+          });
+        },
+        (err) => {
+          this.toastr.error(err, 'Error', {
+            positionClass: 'toast-top-center',
+          });
+        }
+      );
+  }
+
+  new_page(page: number) {
+    this.page = page;
+    this.filter();
   }
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();

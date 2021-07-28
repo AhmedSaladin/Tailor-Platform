@@ -1,8 +1,15 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { TailorService } from 'src/app/services/tailor.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-home',
@@ -21,11 +28,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   limit: number = 3;
   sub: any;
   eve!: Subscription;
-  private dataFiltered = false;
-
+  dataFiltered = false;
+  search = false;
+  sendPage = new EventEmitter();
   // ==========search from header ========================
-  sendSearch(tailorSearchResult: any) {
-    this.tailors = tailorSearchResult;
+  sendSearch(obj: any) {
+    this.search = true;
+    this.tailors = obj.tailors;
+    this.totalPages = obj.totalPages;
   }
 
   // ============================================
@@ -44,6 +54,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // filtering based on sidebar selection
   filterTailors(formValue: any) {
     this.dataFiltered = true;
+    this.search = false;
+
     const Filtered = Object.keys(formValue).filter(
       (filter) => formValue[filter]
     );
@@ -87,27 +99,27 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     );
   }
+
   ngOnInit(): void {
     this.get_tailors();
   }
+  @ViewChild(HeaderComponent) header!: HeaderComponent;
+
   nextPage() {
     if (this.page === this.totalPages) return;
     this.page++;
-    if (this.dataFiltered === true) {
-      this.filterTailors(this.filterForm.value);
-    } else {
-      this.get_tailors();
-    }
+    if (this.dataFiltered) this.filterTailors(this.filterForm.value);
+    else if (this.search) this.header.new_page(this.page);
+    else this.get_tailors();
   }
   previousPage() {
     if (this.page === 1) return;
     this.page--;
-    if (this.dataFiltered === true) {
-      this.filterTailors(this.filterForm.value);
-    } else {
-      this.get_tailors();
-    }
+    if (this.dataFiltered) this.filterTailors(this.filterForm.value);
+    else if (this.search) this.header.new_page(this.page);
+    else this.get_tailors();
   }
+
   ngOnDestroy(): void {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
