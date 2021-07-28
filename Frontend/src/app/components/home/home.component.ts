@@ -10,6 +10,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HeaderComponent } from './header/header.component';
+import { Tailor } from '../shared/models';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {}
   queryParamsFilter: any = this.route.snapshot.queryParams;
-  tailors: any = [];
+  tailors!: Array<Tailor>;
   page: number = 1;
   totalPages: number = 1;
   limit: number = 3;

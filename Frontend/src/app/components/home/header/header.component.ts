@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .get_tailor_search(this.limit, this.page, this.searchText)
       .subscribe(
         (res) => {
+          console.log(res)
           this.totalPages = res.totalPages;
           if (res == null) this.tailors = [];
           else this.tailors = res.tailors;

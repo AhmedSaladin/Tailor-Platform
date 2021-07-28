@@ -1,258 +1,258 @@
 <!-- header -->
-<app-header (send)="sendSearch($event)"></app-header>
+<div *ngIf="tailors">
+  <app-header (send)="sendSearch($event)"></app-header>
 
-<!-- tailor information -->
-<div class="container">
-  <div class="row">
-    <!-- side bar -->
-    <div
-      class="col-12 col-lg-3 mt-5 m-auto mb-5 d-none d-lg-block order-lg-last"
-    >
-      <form
-        [formGroup]="filterForm"
-        (ngSubmit)="filterTailors(filterForm.value)"
+  <!-- tailor information -->
+  <div class="container">
+    <div class="row">
+      <!-- side bar -->
+      <div
+        class="col-12 col-lg-3 mt-5 m-auto mb-5 d-none d-lg-block order-lg-last"
       >
-        <div class="accordion" id="accordionPanelsStayOpenExample">
-          <div class="accordion-item">
-            <button class="accordion-button accordion-first-item">
-              <i class="fas fa-filter me-3"></i>
-              Filter
-            </button>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-              <button
-                class="accordion-button accBtn"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseOne"
-                aria-expanded="true"
-                aria-controls="panelsStayOpen-collapseOne"
-              >
-                <i class="fas fa-users me-3"></i>
-                Specialization
+        <form
+          [formGroup]="filterForm"
+          (ngSubmit)="filterTailors(filterForm.value)"
+        >
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <button class="accordion-button accordion-first-item">
+                <i class="fas fa-filter me-3"></i>
+                Filter
               </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseOne"
-              class="accordion-collapse collapse show"
-              aria-labelledby="panelsStayOpen-headingOne"
-            >
-              <div class="accordion-body">
-                <div class="list-group">
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      id="Spec1"
-                      formControlName="designFor=Men"
-                    />
-                    Men
-                  </label>
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      id="Spec2"
-                      value="women"
-                      formControlName="designFor=Women"
-                    />
-                    Women
-                  </label>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button
+                  class="accordion-button accBtn"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne"
+                >
+                  <i class="fas fa-users me-3"></i>
+                  Specialization
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="panelsStayOpen-headingOne"
+              >
+                <div class="accordion-body">
+                  <div class="list-group">
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        id="Spec1"
+                        formControlName="designFor=Men"
+                      />
+                      Men
+                    </label>
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        id="Spec2"
+                        value="women"
+                        formControlName="designFor=Women"
+                      />
+                      Women
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-              <button
-                class="accordion-button accBtn collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseTwo"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseTwo"
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button
+                  class="accordion-button accBtn collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo"
+                >
+                  <i class="fas fa-venus-mars me-3"></i>
+                  Gender
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo"
               >
-                <i class="fas fa-venus-mars me-3"></i>
-                Gender
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseTwo"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingTwo"
-            >
-              <div class="accordion-body">
-                <div class="list-group">
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      formControlName="gender=male"
-                    />
-                    Male
-                  </label>
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-1"
-                      type="checkbox"
-                      formControlName="gender=female"
-                    />
-                    Female
-                  </label>
+                <div class="accordion-body">
+                  <div class="list-group">
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        formControlName="gender=male"
+                      />
+                      Male
+                    </label>
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-1"
+                        type="checkbox"
+                        formControlName="gender=female"
+                      />
+                      Female
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-              <button
-                class="accordion-button accBtn collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#panelsStayOpen-collapseThree"
-                aria-expanded="false"
-                aria-controls="panelsStayOpen-collapseThree"
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button
+                  class="accordion-button accBtn collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  <i class="fas fa-star me-3"></i>
+                  Rate
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree"
               >
-                <i class="fas fa-star me-3"></i>
-                Rate
-              </button>
-            </h2>
-            <div
-              id="panelsStayOpen-collapseThree"
-              class="accordion-collapse collapse"
-              aria-labelledby="panelsStayOpen-headingThree"
-            >
-              <div class="accordion-body">
-                <div class="list-group">
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      formControlName="rate=1"
-                    />
-                    <i class="fas fa-star"></i>
-                  </label>
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      formControlName="rate=2"
-                    />
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </label>
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      formControlName="rate=3"
-                    />
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </label>
-                  <label class="list-group-item">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      formControlName="rate=4"
-                    />
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </label>
-                  <label class="list-group-item rateFive">
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      formControlName="rate=5"
-                    />
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </label>
+                <div class="accordion-body">
+                  <div class="list-group">
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        formControlName="rate=1"
+                      />
+                      <i class="fas fa-star"></i>
+                    </label>
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        formControlName="rate=2"
+                      />
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </label>
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        formControlName="rate=3"
+                      />
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </label>
+                    <label class="list-group-item">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        formControlName="rate=4"
+                      />
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </label>
+                    <label class="list-group-item rateFive">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        formControlName="rate=5"
+                      />
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="accordion-item">
+              <button
+                class="accordion-button accordion-last-item collapsed"
+                type="submit"
+                value="Get Tailors"
+              >
+                <i class="fas fa-search me-3"></i>
+                Get tailors
+              </button>
+            </div>
           </div>
-          <div class="accordion-item">
-            <button
-              class="accordion-button accordion-last-item collapsed"
-              type="submit"
-              value="Get Tailors"
-            >
-              <i class="fas fa-search me-3"></i>
-              Get tailors
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-    <!-- / side bar -->
-    <div class="col-12 col-lg-9">
-      <div *ngIf="tailors.length > 0">
-        <div *ngIf="tailors.length > 0 && !search; else noTailor">
+        </form>
+      </div>
+      <!-- / side bar -->
+      <div class="col-12 col-lg-9">
+        <div *ngIf="tailors.length > 0; else noTailor">
           <app-about-tailor
             *ngFor="let tailor of tailors"
             [tailor]="tailor"
           ></app-about-tailor>
         </div>
-      </div>
-      <nav
-        aria-label="Page navigation example"
-        class="mb-5"
-        *ngIf="tailors.length > 0"
-      >
-        <ul class="pagination justify-content-center mt-4">
-          <li class="page-item">
-            <button
-              class="page-link page-link-left me-2"
-              tabindex="-1"
-              [disabled]="page === 1"
-              (click)="previousPage()"
-            >
-              <i class="fas fa-backward"></i>
-            </button>
-          </li>
-          <li class="page-item">
-            <button
-              class="page-link me-2"
-              style="
-                font-weight: bold;
-                background-color: white;
-                color: #2e86ab;
-                border-radius: 45px;
-              "
-            >
-              {{ page }}
-            </button>
-          </li>
-          <li class="page-item">
-            <button
-              class="page-link page-link-right"
-              [disabled]="page == totalPages"
-              (click)="nextPage()"
-            >
-              <i class="fas fa-forward"></i>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
-
-    <ng-template #noTailor>
-      <div class="col-12 col-lg-9 mx-auto" style="width: 90%">
-        <div
-          class="row card mb-5 mt-5"
-          style="border-radius: 11px; color: darkred"
+        <nav
+          aria-label="Page navigation example"
+          class="mb-5"
+          *ngIf="tailors.length > 0"
         >
-          <h3 class="p-5">Oopsie! No tailors found.</h3>
-        </div>
+          <ul class="pagination justify-content-center mt-4">
+            <li class="page-item">
+              <button
+                class="page-link page-link-left me-2"
+                tabindex="-1"
+                [disabled]="page === 1"
+                (click)="previousPage()"
+              >
+                <i class="fas fa-backward"></i>
+              </button>
+            </li>
+            <li class="page-item">
+              <button
+                class="page-link me-2"
+                style="
+                  font-weight: bold;
+                  background-color: white;
+                  color: #2e86ab;
+                  border-radius: 45px;
+                "
+              >
+                {{ page }}
+              </button>
+            </li>
+            <li class="page-item">
+              <button
+                class="page-link page-link-right"
+                [disabled]="page == totalPages"
+                (click)="nextPage()"
+              >
+                <i class="fas fa-forward"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </ng-template>
+
+      <ng-template #noTailor>
+        <div class="col-12 col-lg-9 mx-auto" style="width: 90%">
+          <div
+            class="row card mb-5 mt-5"
+            style="border-radius: 11px; color: darkred"
+          >
+            <h3 class="p-5">Oopsie! No tailors found.</h3>
+          </div>
+        </div>
+      </ng-template>
+    </div>
   </div>
 </div>
