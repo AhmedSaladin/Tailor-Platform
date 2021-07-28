@@ -247,14 +247,17 @@
                     class="card-body"
                     style="background-color: white !important"
                   >
-                  <form id="form" action="" >
-
                     <div class="modal-body">
                       <span id="rateMe2" class="empty-stars"></span>
                       <div class="container">
                         <div class="mb-2 col-12">
+                          <form id="form" [formGroup]="priceForm">
                           <label class="col-form-label">price:</label>
-                          <input type="number" placeholder="add desgin cost" value ={{currentPrice}} class="form-control no-box-shadow" #price/>
+                          <input formControlName="offerPrice" type="number" placeholder="add desgin cost" class="form-control no-box-shadow"/>
+                          <small class="text-danger ms-2" style="width: 100%" *ngIf="price.invalid&&price.touched">
+                            must add price
+                          </small>
+                        </form>
                         </div>
                         <div class="mb-2 col-12">
                           <label class="col-form-label">date:</label>
@@ -264,12 +267,9 @@
                           [min]="today| date:'yyyy-MM-dd'"
                           class="form-control form-control-rounded" #deadline
                           >
-
                       </div>
                       </div>
                     </div>
-                  </form>
-
                   </div>
                 </div>
                 <div class="d-flex justify-content-end">
@@ -277,7 +277,8 @@
                   type="button"
                   class="btn btn-primary form me-3"
                   data-bs-dismiss="modal"
-                  (click)="send_price(price,deadline)"
+                  (click)="send_price(deadline)"
+                  [disabled]="priceForm.invalid"
                   >
                 send offer
                 </button>
@@ -299,10 +300,6 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="change_status('rejected')"
           *ngIf="order.status === 'pending'">
           Decline
-        </button>
-        <button type="button" class="btn btn-primary form" data-bs-dismiss="modal" (click)="change_status('accepted')"
-          *ngIf="order.status === 'pending'">
-          Accept
         </button>
         <button type="button" class="btn btn-primary form" data-bs-dismiss="modal" (click)="change_status('finished')"
           *ngIf="order.status === 'accepted'">
