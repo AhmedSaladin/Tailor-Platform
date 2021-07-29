@@ -5,11 +5,19 @@
       <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container-fluid">
-            <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.svg" style="background-color: white;"
-                class="img-fluid" /></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-              aria-label="Toggle navigation">
+
+            <a class="navbar-brand" routerLink="/"
+              ><img src="assets/images/logo.svg" class="img-fluid"
+            /></a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -31,8 +39,14 @@
                     routerLink="dashboard/customers">Dashboard</a>
                 </li>
                 <li class="nav-item" *ngIf="isAuthenticated">
-                  <a class="nav-link " routerLinkActive="active-link" style="cursor: pointer"
-                    (click)="onLogout()">Logout</a>
+                  <a
+                    class="nav-link"
+                    routerLinkActive="active-link"
+                    style="cursor: pointer"
+                    (click)="onLogout()"
+                    >Logout</a
+                  >
+
                 </li>
               </ul>
             </div>
