@@ -1,8 +1,7 @@
 header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)),
-    url(../../../../assets/images/test.jpg);
+    url(../../../../assets/images/home10.jpg);
   background-size: cover;
-  background-position: center;
   height: 33vh;
   background-attachment: fixed;
   border-radius: 0;
