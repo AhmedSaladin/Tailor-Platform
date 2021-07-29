@@ -133,9 +133,9 @@ header {
 .features-section .long-copy {
   margin-bottom: 30px;
 }
-.about-us p {
+/* .about-us p {
   text-align: justify;
-}
+} */
 /*End about us*/
 
 /* Start Features Section */
@@ -146,5 +146,8 @@ header {
 }
 .features-section h2::after {
   background-color: #f6f7f8;
+}
+.features-section p{
+  font-size: 18px;
 }
 /* End Features Section */
