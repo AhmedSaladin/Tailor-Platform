@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class CommentService {
-  private url = 'http://localhost:3000/api/comments';
+  private url = 'https://tailor-s.herokuapp.com/api/comments';
+  private test = 'http://localhost:3000/api/comments';
 
   constructor(private http: HttpClient) {}
   get_single_comment(id: string) {

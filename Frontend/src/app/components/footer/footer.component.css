@@ -27,3 +27,7 @@ footer{
   color: black !important;
   transition: 1s;
 }
+.fa-gem:hover{
+  color: #2e86ab;
+  transition: 1s;
+}

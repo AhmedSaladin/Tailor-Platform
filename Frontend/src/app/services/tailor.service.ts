@@ -9,7 +9,8 @@ import { BindingService } from './binding/binding.service';
   providedIn: 'root',
 })
 export class TailorService {
-  private url = 'http://localhost:3000/api/tailors';
+  private test = 'http://localhost:3000/api/tailors';
+  private url = 'https://tailor-s.herokuapp.com/api/tailors';
   constructor(private http: HttpClient, private binding: BindingService) {}
   get_tailors_info(limit: number, page: number) {
     this.binding.changeLoading(true);
