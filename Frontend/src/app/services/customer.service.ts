@@ -26,8 +26,8 @@ export class CustomerService {
   // BehaviourSubject will return the initial value or the current value on Subscription
   // Subject does not return the current value on Subscription. It triggers only on .next(value) call and return/output the value
   user = new BehaviorSubject<loginUser | null>(null);
-  private test = 'https://tailor-s.herokuapp.com/api/users';
-  private URL = 'http://localhost:3000/api/users';
+  private URL = 'https://tailor-s.herokuapp.com/api/users';
+  private test = 'http://localhost:3000/api/users';
 
   signUp(user: CustomerSignup) {
     return this.http

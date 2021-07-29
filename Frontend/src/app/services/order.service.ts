@@ -9,7 +9,8 @@ import { CustomerService } from './customer.service';
   providedIn: 'root',
 })
 export class OrderService {
-  private urlBack = 'http://localhost:3000/api/orders';
+  private urlBack = 'https://tailor-s.herokuapp.com/api/orders';
+  private test = 'http://localhost:3000/api/orders';
 
   constructor(
     private http: HttpClient,
