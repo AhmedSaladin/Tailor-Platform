@@ -1,10 +1,16 @@
 <mat-nav-list>
   <div class="logo">
-    <img src="../../../../assets/images/logo.jpg" alt="Company Logo" />
+    <img src="../../../../assets/images/logo.svg" alt="Company Logo" />
     <h2>Tailor-Shop Dashboard</h2>
   </div>
   <mat-divider></mat-divider>
-  <h2 matSubheader class="mt-2" style="color: #3396c0; font-weight: bold; font-size: 18px;"><i class="fas fa-users-cog me-2"></i> Admin</h2>
+  <h2
+    matSubheader
+    class="mt-2"
+    style="color: #3396c0; font-weight: bold; font-size: 18px"
+  >
+    <i class="fas fa-users-cog me-2"></i> Admin
+  </h2>
 
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/home">
     <mat-icon>home</mat-icon> Home
@@ -12,7 +18,13 @@
   <!-- <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
     <mat-icon>dashboard</mat-icon> Dashboard
   </a> -->
-  <a mat-list-item routerLink='/dashboard/tailors'> <mat-icon>account_box</mat-icon> Tailors </a>
-  <a mat-list-item routerLink='/dashboard/customers'> <mat-icon>account_box</mat-icon> Customers </a>
-  <a mat-list-item routerLink='/dashboard/orders'> <mat-icon>shopping_cart</mat-icon> Orders </a>
+  <a mat-list-item routerLink="/dashboard/tailors">
+    <mat-icon>account_box</mat-icon> Tailors
+  </a>
+  <a mat-list-item routerLink="/dashboard/customers">
+    <mat-icon>account_box</mat-icon> Customers
+  </a>
+  <a mat-list-item routerLink="/dashboard/orders">
+    <mat-icon>shopping_cart</mat-icon> Orders
+  </a>
 </mat-nav-list>
