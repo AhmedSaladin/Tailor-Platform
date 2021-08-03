@@ -61,7 +61,7 @@
                 role="tab"
                 aria-controls="v-pills-messages"
                 aria-selected="false"
-                *ngIf="order.status == 'pending'"
+                *ngIf="order.status !== 'rejected'"
               >
                 <i class="fas fa-comment-dots me-2"></i> Messages
               </button>
@@ -79,8 +79,13 @@
                 "
               >
                 <!-- update offer if  order.price!==undefined-->
-                <span *ngIf="!order.price"><i class="fas fa-dollar-sign me-3"></i>Add Offer</span>
-                <span *ngIf="order.price"><i class="fas fa-dollar-sign ms-3 me-2"></i> Update Offer</span>
+                <span *ngIf="!order.price"
+                  ><i class="fas fa-dollar-sign me-3"></i>Add Offer</span
+                >
+                <span *ngIf="order.price"
+                  ><i class="fas fa-dollar-sign ms-3 me-2"></i> Update
+                  Offer</span
+                >
               </button>
             </div>
           </div>
@@ -233,7 +238,8 @@
                   <div
                     class="col-lg-10"
                     *ngIf="
-                      order.status == 'updated' || order.status == 'pending';
+                      order.status !== 'rejected' ||
+                        order.status !== 'finished';
                       else notAccept
                     "
                   >
@@ -304,6 +310,7 @@
                         <div class="col-12 col-lg-2 mt-2">
                           <button
                             class="btn btn-primary align-items-end"
+                            [disabled]="order.status == 'finished'"
                             (click)="send_commment(message)"
                           >
                             Send
@@ -315,12 +322,7 @@
                 </div>
                 <ng-template #notAccept>
                   <h5 *ngIf="order.status == 'rejected'">Order rejected</h5>
-                  <!-- <h5 *ngIf="order.status == 'pending' && !order.price">
-                    Send your offer to {{ order.customer_name }}
-                  </h5>
-                  <h5 *ngIf="order.status == 'pending' && order.price">
-                    Wait until {{ order.customer_name }} accept your offer
-                  </h5> -->
+                  <h5 *ngIf="order.status == 'finished'">Order compeleted</h5>
                 </ng-template>
               </div>
               <!-- offer -->
