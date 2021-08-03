@@ -27,7 +27,7 @@ const tailorSchema = new mongoose.Schema({
   },
   avatar: {
     type: String,
-    default: "https://image.flaticon.com/icons/png/512/21/21104.png",
+    default: "https://ucarecdn.com/ff40ffec-ae73-4b9c-bd65-8d544de3efbb/21104.png",
   },
   orders: {
     type: Array,
