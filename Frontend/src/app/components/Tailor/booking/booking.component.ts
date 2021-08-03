@@ -120,6 +120,13 @@ export class BookingComponent implements OnInit, OnDestroy {
       );
     }
   }
+
+  delete_image(img: string) {
+    this.images = this.images.filter((image) => image != img);
+    if (this.images.length > 0) return (this.isUploading = false);
+    return (this.isUploading = true);
+  }
+  
   check_login() {
     if (this.currentUserId == undefined) {
       this.toastr.warning('Please sign in first.', 'Warning');
