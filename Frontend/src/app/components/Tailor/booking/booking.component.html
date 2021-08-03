@@ -5,94 +5,170 @@
       <p>Send me your design and your sizes to calculate your initial cost.</p>
 
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal"
-        style="margin-bottom: 18px">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#bookingModal"
+        style="margin-bottom: 18px"
+        (click)="check_login()"
+      >
         Send Your Design
       </button>
       <!-- Modal -->
-      <div class="modal fade" id="bookingModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-        aria-labelledby="bookingModal" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="bookingModal"
+        tabindex="-1"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        aria-labelledby="bookingModal"
+        aria-hidden="true"
+      >
         <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="bookingModalLabel">Booking</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                (click)="clear_uploads()"></button>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                (click)="clear_uploads()"
+              ></button>
             </div>
             <div class="modal-body">
               <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <button class="nav-link active" id="edit-size-tab" data-bs-toggle="tab" data-bs-target="#edit-size"
-                    type="button" role="tab" aria-controls="edit-size" aria-selected="false">
+                  <button
+                    class="nav-link active"
+                    id="edit-size-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#edit-size"
+                    type="button"
+                    role="tab"
+                    aria-controls="edit-size"
+                    aria-selected="false"
+                  >
                     Edit Your Sizes (cm)
                   </button>
-                  <button class="nav-link" id="upload-designs-tab" data-bs-toggle="tab" data-bs-target="#upload-designs"
-                    type="button" role="tab" aria-controls="upload-designs" aria-selected="false">
+                  <button
+                    class="nav-link"
+                    id="upload-designs-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#upload-designs"
+                    type="button"
+                    role="tab"
+                    aria-controls="upload-designs"
+                    aria-selected="false"
+                  >
                     Upload Your Designs
                   </button>
-                  <button class="btn btn-primary" id="my-designs-tab" type="button"
-                    (click)="get_user_sizes(sizesValidation)">
+                  <button
+                    class="btn btn-primary"
+                    id="my-designs-tab"
+                    type="button"
+                    (click)="get_user_sizes(sizesValidation)"
+                  >
                     <span *ngIf="!isLoading">Get My Sizes</span>
                     <span *ngIf="isLoading">Please Wait ...</span>
                   </button>
                 </div>
               </nav>
               <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="edit-size" role="tabpanel" aria-labelledby="edit-size-tab">
+                <div
+                  class="tab-pane fade show active"
+                  id="edit-size"
+                  role="tabpanel"
+                  aria-labelledby="edit-size-tab"
+                >
                   <!-- Start Editable Sizes Table  -->
-                  <div class="text-danger mt-3" *ngIf="
-                  sizesValidation.invalid
-                    ">
-                    You should put your sizes
+                  <div class="text-danger mt-3" *ngIf="sizesValidation.invalid">
+                    You haven't add your sizes yet
                   </div>
-                  <table class="table table-sm table-bordered w-100 mt-3" [formGroup]="sizesValidation">
+                  <table
+                    class="table table-sm table-bordered w-100 mt-3"
+                    [formGroup]="sizesValidation"
+                  >
                     <tbody class="tableBody">
                       <tr>
                         <td>Chest</td>
                         <td colspan="2">
-                          <input formControlName="chest" type="number" class="form-control" />
+                          <input
+                            formControlName="chest"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
                         <td>Shoulder</td>
                         <td colspan="2">
-                          <input formControlName="shoulder" type="number" class="form-control" />
+                          <input
+                            formControlName="shoulder"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
                         <td>Inseam</td>
                         <td colspan="2">
-                          <input formControlName="inseam" type="number" class="form-control" />
+                          <input
+                            formControlName="inseam"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
                         <td>Waist</td>
                         <td colspan="2">
-                          <input formControlName="waist" type="number" class="form-control" />
+                          <input
+                            formControlName="waist"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
                         <td>Height</td>
                         <td colspan="2">
-                          <input formControlName="height" type="number" class="form-control" />
+                          <input
+                            formControlName="height"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
                         <td>Arm Length</td>
                         <td colspan="2">
-                          <input formControlName="armLength" type="number" class="form-control" />
+                          <input
+                            formControlName="armLength"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
                         <td>Collar</td>
                         <td colspan="2">
-                          <input formControlName="collar" type="number" class="form-control" />
+                          <input
+                            formControlName="collar"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                       <tr>
-                        <td>thigh</td>
+                        <td>Thigh</td>
                         <td colspan="2">
-                          <input formControlName="thigh" type="number" class="form-control" />
+                          <input
+                            formControlName="thigh"
+                            type="number"
+                            class="form-control"
+                          />
                         </td>
                       </tr>
                     </tbody>
@@ -100,35 +176,61 @@
                   <!-- End Editable Sizes Table  -->
                 </div>
                 <!-- Start Upload Your Designs  -->
-                <div class="tab-pane fade show mt-3 text-center" id="upload-designs" role="tabpanel"
-                  aria-labelledby="upload-designs-tab">
+                <div
+                  class="tab-pane fade show mt-3 text-center"
+                  id="upload-designs"
+                  role="tabpanel"
+                  aria-labelledby="upload-designs-tab"
+                >
                   <div class="row scroll">
                     <p class="text-danger" *ngIf="images.length == 0">
                       You haven't upload designs yet.
                     </p>
-                    <div class="col-12 col-md-6 col-lg-3 delete-img text-center" *ngFor="let image of images">
-                      <img src="{{ image }}" class="m-2 mb-2 model-img img-fluid" />
+                    <div
+                      class="col-12 col-md-6 col-lg-3 delete-img text-center"
+                      *ngFor="let image of images"
+                    >
+                      <img
+                        src="{{ image }}"
+                        class="m-2 mb-2 model-img img-fluid"
+                      />
                       <div class="icon text-center">
-                        <i
-                        class="fas fa-trash"></i>
+                        <i class="fas fa-trash"></i>
                       </div>
                     </div>
                   </div>
-                  <ngx-uploadcare-widget public-key="d2eaba00baf97d93aeb1"
-                    (on-upload-complete)="on_upload_complete($event)" upll crop="free" [images-only]="true"
-                    input-accept-types="image/*" tabs="file gphotos instagram facebook" [multiple]="true"
-                    #order_upload_component>
+                  <ngx-uploadcare-widget
+                    public-key="d2eaba00baf97d93aeb1"
+                    (on-upload-complete)="on_upload_complete($event)"
+                    upll
+                    crop="free"
+                    [images-only]="true"
+                    input-accept-types="image/*"
+                    tabs="file gphotos instagram facebook"
+                    [multiple]="true"
+                    #order_upload_component
+                  >
                   </ngx-uploadcare-widget>
                 </div>
                 <!-- End Upload Your Designs  -->
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="clear_uploads()">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                (click)="clear_uploads()"
+              >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="submitD(sizesValidation)"
-                [disabled]="sizesValidation.invalid || isUploading">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                (click)="submitD(sizesValidation)"
+                [disabled]="sizesValidation.invalid || isUploading"
+              >
                 Order
               </button>
             </div>

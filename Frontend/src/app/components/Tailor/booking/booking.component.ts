@@ -6,7 +6,6 @@ import { UcWidgetComponent } from 'ngx-uploadcare-widget';
 import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
-import { User } from 'src/app/services/user.model';
 import { Order } from '../../shared/models';
 // form need validation about designs not to be empty
 // add delete to uploaded images from UI and DB
@@ -126,7 +125,9 @@ export class BookingComponent implements OnInit, OnDestroy {
           }
         },
         (err) => {
-          this.toastr.error(err);
+          this.toastr.error(err, 'Error', {
+            positionClass: 'toast-top-center',
+          });
         }
       );
     }
