@@ -27,7 +27,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
+          Validators.pattern('[A-Z-a-z0-9_ -]{3,10}$'),
         ],
       ],
       lname: [
@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         [
           Validators.required,
           Validators.minLength(3),
-          Validators.pattern('[A-Z-a-z0-9_-]{3,10}$'),
+          Validators.pattern('[A-Z-a-z0-9_ -]{3,10}$'),
         ],
       ],
       email: [

@@ -8,6 +8,7 @@
 .n-main .navbar-brand img {
   width: 50px;
   border-radius: 50%;
+  background-color: white;
 }
 
 .navbar-light .navbar-nav .nav-link {
