@@ -194,7 +194,10 @@
                         src="{{ image }}"
                         class="m-2 mb-2 model-img img-fluid"
                       />
-                      <div class="icon text-center">
+                      <div
+                        class="icon text-center"
+                        (click)="delete_image(image)"
+                      >
                         <i class="fas fa-trash"></i>
                       </div>
                     </div>
