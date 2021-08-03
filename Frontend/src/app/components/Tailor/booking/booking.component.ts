@@ -7,19 +7,6 @@ import { Subscription } from 'rxjs';
 import { CustomerService } from 'src/app/services/customer.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from '../../shared/models';
-// form need validation about designs not to be empty
-// add delete to uploaded images from UI and DB
-
-interface sizes {
-  chest: number;
-  armLength: number;
-  waist: number;
-  height: number;
-  inseam: number;
-  shoulder: number;
-  collar: number;
-  thigh: number;
-}
 
 @Component({
   selector: 'app-booking',
@@ -100,6 +87,7 @@ export class BookingComponent implements OnInit, OnDestroy {
   clear_uploads() {
     this.images = [];
   }
+
   get_user_sizes(customer_sizes: NgForm) {
     if (this.check_login()) {
       this.isLoading = true;
@@ -132,15 +120,17 @@ export class BookingComponent implements OnInit, OnDestroy {
       );
     }
   }
-
   check_login() {
     if (this.currentUserId == undefined) {
+      this.toastr.warning('Please sign in first.', 'Warning');
       this.router.navigate(['login']);
-      this.toastr.warning('Please sign in first.');
+      const modal = document.querySelector('.modal-backdrop');
+      if (modal != null) modal.remove();
       return false;
     }
     return true;
   }
+
   ngOnDestroy() {
     if (this.eve != undefined) this.eve.unsubscribe();
   }
