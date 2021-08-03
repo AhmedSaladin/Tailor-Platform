@@ -163,7 +163,7 @@
                 role="tab"
                 aria-controls="v-pills-messages"
                 aria-selected="false"
-                *ngIf="order.status == 'updated' || order.status == 'accepted'"
+                *ngIf="order.comments.length > 0"
               >
                 <i class="fas fa-comment-dots me-2"></i> Messages
               </button>
@@ -177,7 +177,7 @@
                 aria-controls="v-pills-offer"
                 aria-selected="false"
               >
-              <i class="fas fa-dollar-sign ms-3 me-2"></i>Display Offer
+                <i class="fas fa-dollar-sign ms-3 me-2"></i>Display Offer
               </button>
             </div>
           </div>
@@ -330,7 +330,7 @@
                   <div
                     class="col-lg-10"
                     *ngIf="
-                      order.status == 'updated' || order.status == 'accepted';
+                      order.status == 'updated' || order.status == 'pending';
                       else notAccept
                     "
                   >
@@ -412,12 +412,12 @@
                 </div>
                 <ng-template #notAccept>
                   <h5 *ngIf="order.status == 'rejected'">Order rejected</h5>
-                  <h5 *ngIf="order.status == 'pending' && order.price">
+                  <!-- <h5 *ngIf="order.status == 'pending' && order.price">
                     You didn't accept offer yet
                   </h5>
                   <h5 *ngIf="order.status == 'pending' && !order.price">
                     Tailor didn't view order yet
-                  </h5>
+                  </h5> -->
                 </ng-template>
               </div>
               <!-- offer -->
