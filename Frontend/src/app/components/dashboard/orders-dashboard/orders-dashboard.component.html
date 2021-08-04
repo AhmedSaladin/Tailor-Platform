@@ -41,8 +41,8 @@
                 <div class="modal-dialog modal-xl">
                   <div class="modal-content" *ngIf="cstOrder; else dd">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        {{ cstOrder.tailor_name }}
+                      <h5 class="modal-title fw-bolder" id="exampleModalLabel">
+                        Tailor Name: {{ cstOrder.tailor_name }}
                       </h5>
                       <button
                         type="button"
@@ -52,7 +52,7 @@
                       ></button>
                     </div>
 
-                    <div class="modal-body" *ngIf="cstOrder">
+                    <div class="modal-body overflow-auto" *ngIf="cstOrder">
                       <div class="row">
                         <div class="col-6">
                           <div
@@ -104,6 +104,15 @@
                         </div>
 
                         <div class="col-6">
+                          <div class="text-start">
+                            Customer Name: {{ cstOrder.customer_name }}
+                          </div>
+                          <div class="text-start">
+                            Order ID: {{ cstOrder._id }}
+                          </div>
+                          <div class="text-start">
+                            Order Status: {{ cstOrder.status }}
+                          </div>
                           <table
                             class="table table-sm table-bordered w-100 mt-3"
                           >
@@ -160,7 +169,7 @@
                               <tr>
                                 <td>Thigh</td>
                                 <td colspan="2">
-                                  {{ order.customer_sizes.thigh }}
+                                  {{ cstOrder.customer_sizes.thigh }}
                                 </td>
                               </tr>
                             </tbody>
